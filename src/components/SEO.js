@@ -1,0 +1,50 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import favicon from 'src/assets/favicon.ico';
+
+const SEO = ({ pageContext, location }) => (
+  <StaticQuery
+    query={graphql`
+     {
+        site {
+          siteMetadata {
+            title,
+            description
+          }
+        }
+      }
+    `}
+    render={({ site: { siteMetadata: seo } }) => {
+      let title = seo.title;
+      const description = seo.description;
+      if (pageContext) {
+        const { frontmatter } = pageContext;
+        title = `${frontmatter.title} - ${seo.title}`;
+      }
+      return (
+        <Helmet>
+          {/* General tags */}
+          <title>{title}</title>
+          <meta name="og:title" content={title} />
+          <meta name="description" content={description} />
+          <meta name="og:description" content={description} />
+          <link rel="icon" href={favicon} />
+          <link rel="preconnect" href="https://fonts.gstatic.com"/>
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+        </Helmet>
+
+      );
+    }}
+  />
+);
+
+SEO.propTypes = {
+  pageContext: PropTypes.any,
+};
+
+SEO.defaultProps = {
+};
+
+export default SEO;

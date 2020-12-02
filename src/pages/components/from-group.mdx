@@ -1,0 +1,81 @@
+---
+title: Form Group
+---
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+import groupBasic from 'src/examples/Form/groupBasic';
+import group2Basic from 'src/examples/Form/groupBasic-2';
+import group3Basic from 'src/examples/Form/groupBasic-3';
+import groupSearch from 'src/examples/Form/groupSearch';
+import groupMultipleAddon from 'src/examples/Form/groupMultipleAddon';
+import groupMultipleInput from 'src/examples/Form/groupMultipleInput';
+import groupSize from 'src/examples/Form/groupSize';
+import groupButtonAddon from 'src/examples/Form/groupButtonAddon';
+import group2ButtonAddon from 'src/examples/Form/groupButtonAddon-2';
+import group3ButtonAddon from 'src/examples/Form/groupButtonAddon-3';
+import group4ButtonAddon from 'src/examples/Form/groupButtonAddon-4';
+import group5ButtonAddon from 'src/examples/Form/groupButtonAddon-5';
+
+# Form Group
+
+## Introduction
+
+Input group wraps inputs and buttons for more complex components.
+
+## Examples
+
+### Basic example
+
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place  `<label>` above the input group.
+
+<CodeView codeText={groupBasic} />
+<CodeView codeText={group2Basic} />
+<CodeView codeText={group3Basic} />
+
+### Search box
+
+A search box acts as the field for a query input or search term from the user to search and retrieve related information from the database. It typically appears as a single-line text box and is usually accompanied by a search button that initiates the search command.
+
+<CodeView codeText={groupSearch} />
+
+### Button addons
+
+<CodeView codeText={groupButtonAddon} />
+<CodeView codeText={group2ButtonAddon} />
+<CodeView codeText={group3ButtonAddon} />
+<CodeView codeText={group4ButtonAddon} />
+<CodeView codeText={group5ButtonAddon} />
+
+### Multiple inputs
+
+<CodeView codeText={groupMultipleInput} />
+
+### Multiple addons
+
+<CodeView codeText={groupMultipleAddon} />
+
+### Sizes
+
+<CodeView codeText={groupSize} />
+
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.FormGroup} exportedBy={props.data.Form} />
+
+export const query = graphql`
+  query FormGroupQuery {
+    Form: componentMetadata(displayName: { eq: "Form" }) {
+      ...ComponentApi_metadata
+    }
+    FormGroup: componentMetadata(displayName: { eq: "FormGroup" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

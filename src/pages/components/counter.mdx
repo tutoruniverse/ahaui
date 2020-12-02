@@ -1,0 +1,111 @@
+---
+title: Counter
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+import timerCounter from 'src/examples/Counter/timer';
+import numberCounter from 'src/examples/Counter/number';
+import number2Counter from 'src/examples/Counter/number2';
+import timerTooltipCounter from 'src/examples/Counter/timerTooltip';
+import counterVariants from 'src/examples/Counter/variants';
+
+
+# Counter
+
+## Introduction
+
+The Counter indicates a countable value with its short description, for example, a timer or the number of sessions available of an user.
+
+<img
+  src={require('src/assets/structure/stb_counter-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_counter-structure@2x.jpg')} 2x`}
+  className="u-maxWidthFull"
+  alt="Counter"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Icon
+    <i className="u-text200">
+      - (Optional) Used to provide visual context for the label.
+    </i>
+  </li>
+  <li>
+    Label
+    <i className="u-text200">
+      - Shortly describe the value which the numbers represent.
+    </i>
+  </li>
+  <li>
+    Value
+    <i className="u-text200">
+      - Often a timer or normal numbers, in specific restricted cases, a locked icon.
+    </i>
+  </li>
+  <li>
+    Tooltip
+    <i className="u-text200">
+      - Triggerable, used to provide additional information.
+    </i>
+  </li>
+</ol>
+
+## Examples
+
+### Timer
+
+Timers are used  to count the remaining time of a session, or till a specific date in the future.
+
+<CodeView codeText={timerCounter} />
+<CodeView codeText={timerTooltipCounter} />
+
+### Number
+
+The number counter is used to represent the remaining values, for example the chat sessions available.
+
+<CodeView codeText={numberCounter} />
+<CodeView codeText={number2Counter} />
+
+### Colors
+
+<CodeView codeText={counterVariants} />
+
+<CodeView
+  exampleClassName="u-backgroundDark"
+  codeText={` <Counter
+  variant="white"
+  iconLeft="chatExtension"
+  label="Chat Extensions Remaining:"
+  number="2"
+>
+  <Overlay.Trigger
+    placement="bottom"
+    overlay={props => (
+      <Tooltip id="tooltip-chat-extension" {...props}>
+                Tooltip
+      </Tooltip>
+    )}
+  >
+    <Icon name="informationCircleOutline" className="u-textLight  u-cursorPointer" size="small" />
+  </Overlay.Trigger>
+</Counter>`}
+/>
+
+## Design Reference
+
+N/A
+
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+
+export const query = graphql`
+  query CounterQuery {
+    metadata: componentMetadata(displayName: { eq: "Counter" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

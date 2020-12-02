@@ -1,0 +1,64 @@
+---
+title: Problem Info
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+import customProblemInfo from 'src/examples/ProblemInfo/default';
+import noCategoryProblemInfo from 'src/examples/ProblemInfo/noCategory';
+
+# Problem Info
+
+## Introduction
+
+The `ProblemInfo` component is designed to recap the question information from Asker, including Description, Additional Information and Attached File (if any). The component is used for both Expert & Asker portals.
+
+<img
+  src={require('src/assets/structure/stb_problem-info-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_problem-info-structure@2x.jpg')} 2x`}
+  alt="ProblemInfo"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Image
+    <i className="u-text200"> -  Displays a small thumbnail of question type.</i>
+  </li>
+  <li>
+    Question category
+  </li>
+  <li>
+    Question description
+  </li>
+  <li>
+    Attached file
+  </li>
+</ol>
+
+## Examples
+
+### Default
+
+<CodeView codeText={customProblemInfo} />
+
+### Without Question category
+
+<CodeView codeText={noCategoryProblemInfo}
+/>
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+
+export const query = graphql`
+  query ProblemInfoQuery {
+    metadata: componentMetadata(displayName: { eq: "ProblemInfo" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

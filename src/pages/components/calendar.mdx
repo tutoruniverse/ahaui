@@ -1,0 +1,93 @@
+---
+title: Calendar
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+# Calendar
+
+## Normal
+
+Base on [react-calendar][1], modified default style.
+
+<CodeView codeText={`() => {
+  const [currentDate, setDate] = useState(new Date());
+  return (
+    <Calendar value={currentDate} onChange={date => setDate(currentDate)} />
+  );
+};`}
+/>
+
+
+### DatePicker
+
+Base on [react-date-picker][2], modified default style.
+
+<CodeView codeText={`() => {
+  const [currentDate, setDate] = useState(new Date());
+  return (
+    <DatePicker value={currentDate} onChange={date => setDate(currentDate)} />
+  );
+};`}
+/>
+
+
+### DateRangePicker
+
+Base on [@wojtekmaj/react-daterange-picker][4], modified default style.
+
+<CodeView codeText={`() => {
+  const [startDate, setStartDate] = useState([new Date(),new Date()]);
+  return (
+    <DateRangePicker value={startDate} onChange={date => setStartDate(date)} />
+  );
+};`}
+/>
+
+
+### TimePicker
+
+Base on [react-time-picker][3], modified default style.
+
+<CodeView codeText={`() => {
+  const [time, setTime] = useState('10:00');
+  return (
+    <TimePicker value={time} onChange={time => setTime(time)} />
+  );
+};`}
+/>
+
+
+
+## Design Reference
+
+N/A
+
+
+## API
+
+
+<ComponentApi metadata={props.data.DatePicker} />
+<ComponentApi metadata={props.data.DateRangePicker} />
+<ComponentApi metadata={props.data.TimePicker} />
+
+export const query = graphql`
+  query CalendarQuery {
+    DatePicker: componentMetadata(displayName: { eq: "DatePicker" }) {
+      ...ComponentApi_metadata
+    }
+    DateRangePicker: componentMetadata(displayName: { eq: "DateRangePicker" }) {
+      ...ComponentApi_metadata
+    }
+    TimePicker: componentMetadata(displayName: { eq: "TimePicker" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;
+
+[1]: https://www.npmjs.com/package/react-calendar
+[2]: https://www.npmjs.com/package/react-date-picker
+[3]: https://www.npmjs.com/package/react-time-picker
+[4]: https://www.npmjs.com/package/@wojtekmaj/react-daterange-picker

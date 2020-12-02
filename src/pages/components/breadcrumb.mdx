@@ -1,0 +1,68 @@
+---
+title: Breadcrumb
+---
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+import defaultBreadcrumb from 'src/examples/Breadcrumb/default';
+import schemaBreadcrumb from 'src/examples/Breadcrumb/schema';
+
+# Breadcrumb
+
+## Introduction
+
+Indicate the current page’s location within a navigational hierarchy.
+<img
+  src={require('src/assets/structure/stb_breadcrumb-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_breadcrumb-structure@2x.jpg')} 2x`}
+  alt="Breadcrumb structure"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+      Breadcrumb items
+    <i className="u-text200"> - Indicates pages in hierarchical order. Items are basically button links, except for the current page item.</i>
+  </li>
+  <li>
+      Separator
+    <i className="u-text200"> - Icon which is used to separate items.</i>
+  </li>
+</ol>
+
+## Examples
+
+<CodeView codeText={defaultBreadcrumb} />
+<CodeView codeText={schemaBreadcrumb} />
+
+## Design Reference
+
+Don’t use breadcrumbs for top-level or single-level pages.
+
+<div className="Grid u-marginBottomLarge">
+  <div className="u-sizeFull md:u-size1of2">
+    <img
+      className="u-maxWidthFull"
+      src={require('src/assets/ref/breadcrumb-structure-dont.jpg')}
+      srcSet={`${require('src/assets/ref/breadcrumb-structure-dont@2x.jpg')} 2x`}
+      alt="Breadcrumb Dont"
+    />
+    <div className="u-borderBottom u-borderLarge u-borderNegative u-marginTopSmall" />
+    <div className="u-textNegative">Don't</div>
+  </div>
+</div>
+
+## API
+
+<ComponentApi metadata={props.data.Breadcrumb} />
+<ComponentApi metadata={props.data.BreadcrumbItem} exportedBy={props.data.Breadcrumb}/>
+
+
+export const query = graphql`
+  query BreadcrumbQuery {
+    Breadcrumb: componentMetadata(displayName: { eq: "Breadcrumb" }) {
+      ...ComponentApi_metadata
+    }
+    BreadcrumbItem: componentMetadata(displayName: { eq: "BreadcrumbItem" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

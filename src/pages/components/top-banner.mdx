@@ -1,0 +1,81 @@
+---
+title: Top Banner
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+# Top Banner
+
+## Introduction
+
+Top banner is a top section on the website, which is designed for promotional purposes.
+
+<img
+  src={require('src/assets/structure/stb_top-banner-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_top-banner-structure@2x.jpg')} 2x`}
+  alt="Top banner structure"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Message
+    <i className="u-text200"> - A short (normally 1 line) text content.</i>
+  </li>
+  <li>
+    Action
+    <i className="u-text200"> - Resembles a button with an icon.</i>
+  </li>
+  <li>
+    Close button
+    <i className="u-text200"> - A button to close the banner (optional).</i>
+  </li>
+  <li>
+    Background
+    <i className="u-text200"> - An image or a color-background with the height of 48px.</i>
+  </li>
+</ol>
+
+## Examples
+
+### Styles
+
+Depending on the promotion themes, the top banner will be designed flexibly by color scheme which was defined in the Color library.
+
+* The height is fixed on all platforms (desktop, tablet and mobile).
+* Responsive: Using `marquee` from right to left to the top banner content on tablet and mobile.
+* Image background is inside the container (12 columns).
+
+<CodeView codeText={`<TopBanner className="u-backgroundPrimaryLight u-textPrimary" bgImage="https://design.got-it.io/assets/design-system/top-banner/bg-1.png" dismissible>
+  <div className="u-flex u-alignItemsCenter u-justifyContentCenter">
+    Connect anytime to free, instant, live Expert help by installing the Chrome extension
+    <div className="u-roundedMedium u-backgroundPrimary u-textWhite u-flexInline u-paddingVerticalTiny u-paddingHorizontalExtraSmall u-textUppercase u-marginLeftMedium">
+      <img src="https://design.got-it.io/assets/design-system/top-banner/chrome.svg" alt="" className="u-maxWidthFull u-marginRightExtraSmall" />
+      <span>Add Excelchat to Chome</span>
+    </div>
+  </div>
+</TopBanner>`}
+/>
+<CodeView codeText={`<TopBanner className="u-backgroundDarker u-textWhite" bgImage="https://design.got-it.io/assets/design-system/top-banner/bg-2.png" dismissible>
+  <div className="u-flex u-alignItemsCenter u-justifyContentCenter">
+    Make 2020 your most productive yet!  Spend less time on Excel and more time on the things you love!
+  </div>
+</TopBanner>`}
+/>
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+
+export const query = graphql`
+  query TopBannerQuery {
+    metadata: componentMetadata(displayName: { eq: "TopBanner" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

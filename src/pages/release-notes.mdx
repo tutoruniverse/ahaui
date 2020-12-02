@@ -1,0 +1,18 @@
+---
+title: What's New?
+---
+import { graphql } from 'gatsby';
+import ReactMD from 'react-markdown';
+
+# Release Notes
+<ReactMD source={props.data.file.childMarkdownRemark.rawMarkdownBody}/>
+
+export const pageQuery = graphql`
+  query ChangeLog {
+    file(absolutePath: {regex: "//CHANGELOG.md/"}) {
+      childMarkdownRemark {
+        rawMarkdownBody
+      }
+    }
+  }
+`;

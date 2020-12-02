@@ -1,0 +1,157 @@
+---
+title: Bubble Chat
+---
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+import textMessageBubbleChat from 'src/examples/BubbleChat/textMessage';
+import fileMessageBubbleChat from 'src/examples/BubbleChat/fileMessage';
+import typingMessageBubbleChat from 'src/examples/BubbleChat/typingMessage';
+import senderMessageBubbleChat from 'src/examples/BubbleChat/senderMessage';
+import reviserMessageBubbleChat from 'src/examples/BubbleChat/reviserMessage';
+import systemMessageBubbleChat from 'src/examples/BubbleChat/systemMessage';
+import imageMessageBubbleChat from 'src/examples/BubbleChat/imageMessage';
+
+# Bubble Chat
+
+## Introduction
+
+The component is used to represent the real-time and archived messages of three main objects: users, experts and system.
+
+<img
+  src={require('src/assets/structure/stb_bubble-chat-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_bubble-chat-structure@2x.jpg')} 2x`}
+  alt="Bubble Chat"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Message background
+  </li>
+  <li>Message content</li>
+  <li>Avatar</li>
+  <li>Time stamp</li>
+</ol>
+
+## Examples
+
+### Text Message
+
+<CodeView codeText={textMessageBubbleChat} />
+
+### File Message
+
+<CodeView codeText={fileMessageBubbleChat} />
+
+### Image Message
+
+<CodeView codeText={imageMessageBubbleChat} />
+
+### Typing Message
+
+<CodeView codeText={typingMessageBubbleChat} />
+
+### Outbound Message
+
+Normally this style is applied for users. Outbound messages use the system’s primary color and right-aligned.
+
+<CodeView codeText={senderMessageBubbleChat} />
+
+
+### Inbound Message
+
+Normally this style is applied for experts. Inbound messages use the system’s secondary color, left-aligned and have an avatar on the left.
+
+<CodeView codeText={reviserMessageBubbleChat} />
+
+### System Message
+
+System messages use the system’s primary-light color, left-aligned and have products’ avatars on the left.
+
+<CodeView codeText={systemMessageBubbleChat} />
+
+### Variants
+
+**Light**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="light"
+    type="outbound"
+    avatar="expert"
+    text="Welcome to Got It Design System"
+    time="16:23"
+  />
+</div>`} />
+
+**Primary**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="primary"
+    type="outbound"
+    avatar="expert"
+    text="Welcome to Got It Design System"
+    time="16:23"
+  />
+</div>`} />
+
+**PrimaryLight**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="primaryLight"
+    type="outbound"
+    avatar="expert"
+    text="Welcome to Got It Design System"
+    time="16:23"
+  />
+</div>`} />
+
+**Dark**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="dark"
+    type="outbound"
+    avatar="expert"
+    text="Welcome to Got It Design System"
+    time="16:23"
+  />
+</div>`} />
+
+**TransparentDark**
+<CodeView exampleClassName="u-backgroundDark" codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="transparentDark"
+    type="outbound"
+    avatar="expert"
+    text="Welcome to Got It Design System"
+    time="16:23"
+  />
+</div>`} />
+
+**TransparentLight**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="transparentLight"
+    type="outbound"
+    avatar="expert"
+    text="Welcome to Got It Design System"
+    time="16:23"
+  />
+</div>`} />
+
+
+## Design Reference
+
+N/A
+
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+
+export const query = graphql`
+  query BubbleChatQuery {
+    metadata: componentMetadata(displayName: { eq: "BubbleChat" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

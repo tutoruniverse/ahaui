@@ -1,0 +1,76 @@
+---
+title: Composer
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+import defaultComposer from 'src/examples/Composer/default';
+import multipleLineComposer from 'src/examples/Composer/multipleLine';
+import customSendButtonComposer from 'src/examples/Composer/customSendButton';
+
+# Composer
+
+
+## Introduction
+
+Displaying at the bottom of the chat window, the Composer component helps users to enter and edit the text messages, and also, attach files.
+<img
+  src={require('src/assets/structure/stb_composer-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_composer-structure@2x.jpg')} 2x`}
+  className="u-maxWidthFull"
+  alt="composer"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Input field
+    <i className="u-text200">
+      - A text field that lets users enter and edit text.
+    </i>
+  </li>
+  <li>
+    File attachment
+    <i className="u-text200">
+      - A button that lets users attach files.
+    </i>
+  </li>
+  <li>
+    Top divider
+    <i className="u-text200">
+      - Helps separating Composer with other components above (i.e. bubble chat).
+    </i>
+  </li>
+</ol>
+
+## Examples
+
+### Normal
+
+<CodeView codeText={defaultComposer} />
+
+### Custom
+
+<CodeView codeText={customSendButtonComposer} />
+
+### Multiple Lines
+
+In case the input text is too long, the Composer can expand to show a specific and predefined number of text lines.. A scroll bar will be displayed.
+
+<CodeView codeText={multipleLineComposer} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+
+export const query = graphql`
+  query ComposerQuery {
+    metadata: componentMetadata(displayName: { eq: "Composer" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

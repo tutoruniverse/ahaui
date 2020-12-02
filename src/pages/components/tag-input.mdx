@@ -1,0 +1,78 @@
+---
+title: Tag Input
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+import defaultTagInput from 'src/examples/TagInput/default';
+import variant1TagInput from 'src/examples/TagInput/variant-1';
+import variant2TagInput from 'src/examples/TagInput/variant-2';
+import widthButtonTagInput from 'src/examples/TagInput/widthButton';
+import widthButton2TagInput from 'src/examples/TagInput/widthButton-2';
+
+# Tag Input
+
+## Introduction
+
+Tag input component allows users enter one or several tags to an input field.
+
+This component is based on [react-tagsinput][1]
+
+<img
+  src={require('src/assets/structure/stb_tag-input-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_tag-input-structure@2x.jpg')} 2x`}
+  className="u-maxWidthFull"
+  alt="Tag Input"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Tag-Input field
+    <i className="u-text200"> - Be set single line as default, but it can be expand to several lines when users input more tags.</i>
+  </li>
+  <li>
+    Placeholder
+    <i className="u-text200"> - The placeholder attribute specifies a short hint that describes the expected value of an input field (e.g. Add a tag). The short hint is displayed in the input field before users typing a value and comebacks when a tag was selected.</i>
+  </li>
+  <li>
+    Tags
+    <i className="u-text200"> - The main values of the field, with removable tags allow users to remove.</i>
+  </li>
+  <li>
+    Button
+    <i className="u-text200"> - A button is separated from the field as default. In some cases, the button can be put next to the field, on the right side, as the form group.</i>
+  </li>
+</ol>
+
+## Examples
+
+### Variants
+
+The value `primary_subtle` is used as the default style, but there are also many other styles to use.
+
+<CodeView codeText={defaultTagInput} />
+<CodeView codeText={variant1TagInput} />
+<CodeView codeText={variant2TagInput} />
+
+### With button
+
+<CodeView codeText={widthButtonTagInput} />
+<CodeView codeText={widthButton2TagInput} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+[1]: https://www.npmjs.com/package/react-tagsinput
+export const query = graphql`
+  query TagInputQuery {
+    metadata: componentMetadata(displayName: { eq: "TagInput" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;
