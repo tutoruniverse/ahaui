@@ -22,6 +22,18 @@ import inputSizeSmall from 'src/examples/Form/inputSizeSmall';
 import inputSizeNormal from 'src/examples/Form/inputSizeNormal';
 import inputSizeLarge from 'src/examples/Form/inputSizeLarge';
 
+import groupBasic from 'src/examples/Form/groupBasic';
+import group2Basic from 'src/examples/Form/groupBasic-2';
+import group3Basic from 'src/examples/Form/groupBasic-3';
+import groupMultipleAddon from 'src/examples/Form/groupMultipleAddon';
+import groupMultipleInput from 'src/examples/Form/groupMultipleInput';
+import groupSize from 'src/examples/Form/groupSize';
+import groupButtonAddon from 'src/examples/Form/groupButtonAddon';
+import group2ButtonAddon from 'src/examples/Form/groupButtonAddon-2';
+import group3ButtonAddon from 'src/examples/Form/groupButtonAddon-3';
+import group4ButtonAddon from 'src/examples/Form/groupButtonAddon-4';
+import group5ButtonAddon from 'src/examples/Form/groupButtonAddon-5';
+
 # Inputs
 
 ## Introduction
@@ -152,6 +164,38 @@ Invalid fields contain values which are marked as invalid by real-time checking 
 
 <CodeView codeText={inputSizeLarge} />
 
+## Form Group
+
+Input group wraps inputs and buttons for more complex components.
+
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place  `<label>` above the input group.
+
+<CodeView codeText={groupBasic} />
+<CodeView codeText={group2Basic} />
+<CodeView codeText={group3Basic} />
+
+
+### Button addons
+
+<CodeView codeText={groupButtonAddon} />
+<CodeView codeText={group2ButtonAddon} />
+<CodeView codeText={group3ButtonAddon} />
+<CodeView codeText={group4ButtonAddon} />
+<CodeView codeText={group5ButtonAddon} />
+
+### Multiple inputs
+
+<CodeView codeText={groupMultipleInput} />
+
+### Multiple addons
+
+<CodeView codeText={groupMultipleAddon} />
+
+### Sizes
+
+<CodeView codeText={groupSize} />
+
+
 ## Design Reference
 
 Don’t use multiple lines for label & feedback
@@ -208,6 +252,7 @@ Avoid too long placeholder, label & feedback
 <ComponentApi metadata={props.data.FormFile} exportedBy={props.data.Form} />
 <ComponentApi metadata={props.data.FormSelect} exportedBy={props.data.Form} />
 <ComponentApi metadata={props.data.FormLabel} exportedBy={props.data.Form} />
+<ComponentApi metadata={props.data.FormGroup} exportedBy={props.data.Form} />
 
 export const query = graphql`
   query FormQuery {
@@ -230,6 +275,9 @@ export const query = graphql`
       ...ComponentApi_metadata
     }
     FormSelect: componentMetadata(displayName: { eq: "FormSelect" }) {
+      ...ComponentApi_metadata
+    }
+    FormGroup: componentMetadata(displayName: { eq: "FormGroup" }) {
       ...ComponentApi_metadata
     }
   }

@@ -16,7 +16,7 @@ export default withLayout(
                   <img src={require('src/assets/home-ilu.svg')} alt="" className="u-maxWidthFull" />
                 </div>
                 <div className="u-textPrimary u-text400 u-fontMedium u-textUppercase">
-                  Got It Design System
+                  Got It Aha Design System
                 </div>
                 <div className="u-text1000 u-marginTopMedium">
                   An ever-evolving system that enables us to build higher quality products more&nbsp;efficiently
@@ -32,7 +32,6 @@ export default withLayout(
                 <div className="u-marginTopSmall">
                   Current release:&nbsp;
                   <SafeAnchor href="/release-notes/">
-                    DS&nbsp;
                     {pkg.version}
                   </SafeAnchor>
                 </div>

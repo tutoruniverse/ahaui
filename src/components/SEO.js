@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import favicon from 'src/assets/favicon.ico';
 
 const SEO = ({ pageContext, location }) => (
   <StaticQuery
@@ -30,7 +29,8 @@ const SEO = ({ pageContext, location }) => (
           <meta name="og:title" content={title} />
           <meta name="description" content={description} />
           <meta name="og:description" content={description} />
-          <link rel="icon" href={favicon} />
+          <link rel="alternate icon" type="image/png" href={'/site/favicon.png'}/>
+          <link rel="icon" type="image/svg+xml" href={'/site/favicon.svg'}/>
           <link rel="preconnect" href="https://fonts.gstatic.com"/>
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
         </Helmet>

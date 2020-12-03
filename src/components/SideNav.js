@@ -3,7 +3,6 @@ import classNames from 'classnames';
 
 import { Collapse, Logo, SafeAnchor, Icon } from '@ahaui/react';
 import styled from 'astroturf';
-import Search from './Search';
 import Menu from './Menu';
 
 const searchIndices = [
@@ -55,7 +54,7 @@ const SideNav = React.forwardRef(({ location, ...props }, ref) => {
     <SidePanel {...props} ref={ref}>
       <div className="Grid Grid--withoutGutter u-paddingTopSmall">
         <div className="u-size6of12 md:u-sizeFull">
-          <Logo as={SafeAnchor} href="/" name="gotit" variant="original" height={48} />
+          <Logo as={SafeAnchor} href="/" src={'/site/logo.svg'}  height={48} />
         </div>
         <div className="u-size6of12">
           <div className="md:u-hidden u-flex u-alignItemsCenter u-justifyContentEnd">
@@ -63,9 +62,8 @@ const SideNav = React.forwardRef(({ location, ...props }, ref) => {
           </div>
         </div>
       </div>
-      <div className="u-paddingVerticalSmall u-positionRelative">
-        <Search collapse indices={searchIndices} />
-      </div>
+      {/* <div className="u-paddingVerticalSmall u-positionRelative">
+      </div> */}
 
       <Collapse in={collapsed}>
         <OverflowWrapper>

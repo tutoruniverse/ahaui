@@ -1,7 +1,6 @@
 const { cleanDoclets } = require('gatsby-transformer-react-docgen/doclets');
 const path = require('path');
 const remarkSlug = require('remark-slug');
-const queries = require('./src/utils/algolia');
 const defaultDescriptions = require('./src/defaultPropDescriptions');
 
 const activeEnv = process.env.ENV || 'dev';
@@ -12,7 +11,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'GotIt, Inc. Design System Documentation',
+    title: 'Got It Aha Design System - Documentation',
     description: 'An ever-evolving system that enables us to build higher quality products more efficiently',
     author: 'GotIt, Inc. contributors',
     browsers: [
@@ -91,15 +90,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-astroturf',
       options: { extension: '.module.scss' },
-    },
-    {
-      resolve: 'gatsby-plugin-algolia',
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
-        queries,
-        chunkSize: 10000, // default: 1000
-      },
     },
   ],
 };

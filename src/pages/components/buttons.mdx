@@ -9,6 +9,9 @@ import sizesButton from 'src/examples/Button/size';
 import widthDefault from 'src/examples/Button/widthDefault';
 import brandMicrosoft from 'src/examples/Button/brandMicrosoft';
 import brandGoogle from 'src/examples/Button/brandGoogle';
+import groupStylesButton from 'src/examples/Button/groupStyles';
+import groupIconsButton from 'src/examples/Button/groupIcons';
+import groupSizesButton from 'src/examples/Button/groupSizes';
 
 # Buttons
 
@@ -210,6 +213,19 @@ A button that contains an icon only.
 </Button>`}
 />
 
+### Button Group
+
+The Button Group component shares the same styles and state as normal Buttons.
+
+<CodeView codeText={groupStylesButton} />
+
+The Button Group component shares the same sizes as normal Buttons. However, buttons in one group must be the same size.
+
+<CodeView codeText={groupSizesButton} />
+
+<CodeView codeText={groupIconsButton} />
+
+
 ## Design Reference
 
 Two or more primary buttons should not be placed next to each other. Different than a primary button, two or more secondary buttons can be used in one layout.
@@ -235,13 +251,16 @@ Two or more primary buttons should not be placed next to each other. Different t
 
 ## API
 
-<ComponentApi metadata={props.data.metadata} />
+<ComponentApi metadata={props.data.Button} />
+<ComponentApi metadata={props.data.ButtonGroup} exportedBy={props.data.Button} />
 
 
 export const query = graphql`
-  query ButtonQuery {
-    metadata: componentMetadata(displayName: { eq: "Button" }) {
-      displayName
+  query ButtonGroupQuery {
+    Button: componentMetadata(displayName: { eq: "Button" }) {
+      ...ComponentApi_metadata
+    }
+    ButtonGroup: componentMetadata(displayName: { eq: "ButtonGroup" }) {
       ...ComponentApi_metadata
     }
   }
