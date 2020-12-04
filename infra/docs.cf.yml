@@ -18,9 +18,6 @@ Metadata:
           - StaticS3WebsiteURL
           - CFLogS3BucketName
           - SubDomain
-          - AlgoliaAppId
-          - AlgoliaSearchKey
-          - AlgoliaAdminKey
 
 Parameters:
   ApplicationName:
@@ -78,15 +75,6 @@ Parameters:
     Description: Sub-domain for the site
     Type: String
     Default: aha
-  AlgoliaAppId:
-    Description: Algolia App Id
-    Type: String
-  AlgoliaSearchKey:
-    Description: Algolia App Id
-    Type: String
-  AlgoliaAdminKey:
-    Description: Algolia App Id
-    Type: String
 
 Mappings:
   PublicHostedZones:
@@ -207,12 +195,6 @@ Resources:
                 - !Ref ApplicationName
           - Name: CLOUDFRONT
             Value: !Ref Distribution
-          - Name: GATSBY_ALGOLIA_APP_ID
-            Value: !Ref AlgoliaAppId
-          - Name: GATSBY_ALGOLIA_SEARCH_KEY
-            Value: !Ref AlgoliaSearchKey
-          - Name: GATSBY_ALGOLIA_ADMIN_KEY
-            Value: !Ref AlgoliaAdminKey
 
       Artifacts:
         Name: !Ref ApplicationName
