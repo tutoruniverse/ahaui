@@ -1,0 +1,20 @@
+// The CSS object-fit property is used to specify how an <img> or <video> should be resized to fit its container.
+.u-objectContain {
+  object-fit: contain;
+}
+
+.u-objectCover {
+  object-fit: cover;
+}
+
+.u-objectFill {
+  object-fit: fill;
+}
+
+.u-objectScaleDown {
+  object-fit: scale-down;
+}
+
+.u-objectNone {
+  object-fit: none;
+}

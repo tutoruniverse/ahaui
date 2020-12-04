@@ -1,0 +1,7 @@
+/* _delay.scss: */
+@each $key, $value in map-get($transition, "delay") {
+  .u-delay#{capitalize($key)},
+  .hover\:u-delay#{capitalize($key)}:hover {
+    transition-delay: #{$value};
+  }
+}

@@ -1,0 +1,29 @@
+.u-listStylePositionInside {
+  list-style-position: inside;
+}
+
+.u-listStyleTypeCircle {
+  list-style-type: circle;
+}
+
+.u-listStyleTypeSquare {
+  list-style-type: square;
+}
+
+.u-listStyleTypeUpperRoman {
+  list-style-type: upper-roman;
+}
+
+.u-listStyleTypeLowerAlpha {
+  list-style-type: lower-alpha;
+}
+
+.u-listStyleTypeNone {
+  list-style-type: none;
+}
+
+.u-listItemUnderline {
+  li {
+    border-bottom: 1px solid #{map-deep-get($colors, 'neutral40')};
+  }
+}

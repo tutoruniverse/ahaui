@@ -1,0 +1,16 @@
+:root {
+  @each $color, $value in $colors {
+    --color#{capitalize($color)}: #{$value};
+  }
+
+  --fontFamily: #{map-deep-get($fonts, "family", "base")};
+
+  @each $weight, $value in map-deep-get($fonts, "weights") {
+    --font#{capitalize($weight)}: #{$value};
+  }
+
+  --radiusExtraLarge: #{map-deep-get($borders, "radius", "extraLarge")};
+  --radiusLarge: #{map-deep-get($borders, "radius", "large")};
+  --radiusMedium: #{map-deep-get($borders, "radius", "medium")};
+  --radiusSmall: #{map-deep-get($borders, "radius", "small")};
+}

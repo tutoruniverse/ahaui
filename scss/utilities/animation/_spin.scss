@@ -1,0 +1,10 @@
+// Spin:
+.u-spin,
+.hover\:u-spin:hover {
+  animation: spin 1500ms infinite linear;
+}
+
+.u-spinReverse,
+.hover\:u-spinReverse:hover {
+  animation: spinReverse 1500ms infinite linear;
+}

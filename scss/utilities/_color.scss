@@ -1,0 +1,53 @@
+/* _colors.scss */
+
+// -------------------------------------------------
+// Background colors from $color-palette:
+// Examples: .u-backgroundBlue300, .u-backgroundNeutral800, .u-backgroundPurple50
+
+@each $key, $value in $color-palette {
+  .u-background#{capitalize($key)} {
+    background-color: $value;
+  }
+  .u-text#{capitalize($key)} {
+    color: #{$value};
+  }
+}
+
+// -------------------------------------------------
+// Text colors from $color.text:
+// Examples: .u-textPrimary, .hover:u-textPrimary
+
+@each $key, $value in map-get($colors-render, 'text') {
+  .u-text#{capitalize($key)} {
+    color: #{$value};
+  }
+  .hover\:u-text#{capitalize($key)}:hover {
+    @media (hover: hover) {
+      color: #{$value};
+    }
+  }
+}
+
+.u-textLink {
+  color: map-deep-get($colors-render, "linkHref", "color");
+}
+
+.hover\:u-textLink:hover {
+  @media (hover: hover) {
+    color: map-deep-get($colors-render, "linkHref", "hoverColor");
+  }
+}
+// -------------------------------------------------
+// Background colors from $color.bacground:
+// Examples: .u-backgroundAccent, .hover:u-backgroundAccent
+
+@each $key, $value in map-deep-get($colors-render, 'background') {
+  .u-background#{capitalize($key)} {
+    background-color: $value;
+  }
+  .hover\:u-background#{capitalize($key)}:hover {
+    @media (hover: hover) {
+      background-color: $value;
+    }
+  }
+}

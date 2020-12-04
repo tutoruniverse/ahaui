@@ -1,0 +1,6 @@
+@mixin before-after {
+  &::before,
+  &::after {
+    @content;
+  }
+}

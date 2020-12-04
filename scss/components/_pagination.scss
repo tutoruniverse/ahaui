@@ -1,0 +1,28 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.Pagination {
+  &-prev,
+  &-next {
+    .Button {
+      display: block;
+    }
+
+    svg {
+      line-height: 1;
+      margin-top: -4px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .Button--small {
+    min-width: 28px;
+    min-height: 28px;
+    display: flex;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

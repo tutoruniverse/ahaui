@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": 2,
+    "value-keyword-case": ["lower", {
+      "ignoreProperties": ["animation-name","-webkit-animation-name"],
+      "ignoreFunctions": ["var"]
+    }],
+    "scss/selector-no-union-class-name": [
+      true,
+      {
+        "ignore": [ "/^--(.*)$/"]
+      }
+    ]
+  }
+}

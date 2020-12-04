@@ -1,0 +1,8 @@
+.Container {
+  @include make-container();
+  @include make-container-max-widths();
+}
+
+.Container--fluid {
+  max-width: 100%;
+}

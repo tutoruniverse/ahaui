@@ -1,0 +1,120 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.Button {
+  $this: &;
+
+  @each $pro, $proval in map-deep-get($forms, 'sizes', 'base') {
+    @if $pro != 'border-radius' {
+      #{$pro}: $proval;
+    }
+  }
+
+  transition: all 0.15s ease-in-out;
+  user-select: none;
+
+  &-label {
+    + #{$this}-icon {
+      margin-left: 0.25rem;
+    }
+  }
+
+  &-icon {
+    line-height: 1;
+
+    + #{$this}-label {
+      margin-left: 0.25rem;
+    }
+  }
+
+  &.is-onlyIcon {
+    @each $pro, $proval in map-deep-get($forms, 'sizes', 'hasIcon', 'base') {
+      #{$pro}: $proval;
+    }
+  }
+  // Width:
+  &--minWidth {
+    min-width: 112px;
+  }
+  //Link
+  &--link {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  // Sizes:
+  &--small {
+    @each $pro, $proval in map-deep-get($forms, 'sizes', 'small') {
+      #{$pro}: $proval;
+    }
+
+    &.is-onlyIcon {
+      @each $pro, $proval in map-deep-get($forms, 'sizes', 'hasIcon', 'small') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+
+  &--large {
+    @each $pro, $proval in map-deep-get($forms, 'sizes', 'large') {
+      #{$pro}: $proval;
+    }
+
+    &.is-onlyIcon {
+      @each $pro, $proval in map-deep-get($forms, 'sizes', 'hasIcon', 'large') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+  // States:
+
+  &.is-disabled,
+  &[disabled] {
+    @each $pro, $proval in map-deep-get($forms, 'disabled') {
+      #{$pro}: $proval;
+    }
+
+    @each $pro, $proval in map-deep-get($forms, 'button', 'disabled') {
+      #{$pro}: $proval;
+    }
+
+    // Remove the focus state on a disabled button:
+    &.is-focus,
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &.is-hover,
+  &:hover {
+    transition: all 0.15s ease-in-out;
+  }
+
+  &:focus,
+  &.is-focus {
+    @each $pro, $proval in map-deep-get($forms, 'focus') {
+      #{$pro}: $proval;
+    }
+  }
+}
+
+.ButtonGroup {
+  vertical-align: middle;
+
+  > .Button {
+    flex: 1 1 auto;
+    position: relative;
+
+    &:not(:last-child) {
+      @include border-right-radius(0);
+    }
+
+    &:not(:first-child) {
+      @include border-left-radius(0);
+
+      margin-left: -1px;
+    }
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+}

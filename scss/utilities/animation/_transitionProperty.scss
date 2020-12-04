@@ -1,0 +1,6 @@
+/* __transitionProperty.scss: */
+@each $key, $value in map-get($transition, "property") {
+  .u-transition#{capitalize($key)} {
+    transition-property: #{$value};
+  }
+}

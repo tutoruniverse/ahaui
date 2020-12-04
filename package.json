@@ -1,0 +1,48 @@
+{
+  "name": "@ahaui/css",
+  "version": "2.0.0-alpha.1",
+  "description": "Aha Design System - CSS",
+  "style": "dist/index.min.css",
+  "sass": "scss/index.scss",
+  "files": [
+    "dist/*.{css,map}",
+    "scss/**/*.scss",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prepublishOnly": "yarn lint && yarn build",
+    "build": "yarn clean && yarn compile && yarn prefix && yarn minify",
+    "clean": "yarn del dist/*",
+    "compile": "node-sass --importer node_modules/node-sass-import --output-style compact --precision 6 scss/ -o dist/",
+    "prefix": "postcss --config config/postcss.config.js --replace \"dist/*.css\" \"!dist/*.min.css\"",
+    "minify": "yarn minify-index && yarn minify-utilities",
+    "minify-index": "cleancss --level 1 --format breakWith=lf  --output dist/index.min.css dist/index.css",
+    "minify-utilities": "cleancss --level 1 --format breakWith=lf  --output dist/utilities.min.css dist/utilities.css",
+    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd"
+    },
+  "author": "Got It, Inc.",
+  "homepage": "https://github.com/gotitinc/aha-css#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotitinc/aha-css.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "autoprefixer": "9.6.1",
+    "clean-css-cli": "4.3.0",
+    "del-cli": "3.0.1",
+    "node-sass": "4.12.0",
+    "node-sass-import": "2.0.1",
+    "postcss-cli": "6.1.2",
+    "stylelint": "^13.8.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0"
+  }
+}

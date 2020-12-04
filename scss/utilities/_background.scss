@@ -1,0 +1,36 @@
+/*
+==================================================
+BACKGROUND IMAGE
+==================================================
+*/
+
+/* Background Attachment: */
+@each $key, $value in map-deep-get($backgrounds, 'attachment') {
+  .u-background#{capitalize($key)} {
+    background-attachment: $value;
+  }
+}
+
+/* Background Size: */
+@each $key, $value in map-deep-get($backgrounds, 'size') {
+  .u-background#{capitalize($key)} {
+    background-size: $value;
+  }
+}
+
+/* Background Repeat: */
+@each $key, $value in map-deep-get($backgrounds, 'repeat') {
+  .u-background#{capitalize($key)} {
+    background-repeat: $value;
+  }
+}
+
+/* Background Position: */
+// Usage
+// Use the .u-background{side} utilities to control the position of an element's background image.
+
+@each $key, $value in map-deep-get($backgrounds, 'position') {
+  .u-background#{capitalize($key)} {
+    background-position: $value;
+  }
+}

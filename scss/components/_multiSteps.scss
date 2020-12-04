@@ -1,0 +1,24 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.MultiSteps {
+  $this: &;
+
+  &-line {
+    height: 4px;
+    z-index: 0;
+  }
+
+  &-dot {
+    height: 24px;
+    width: 24px;
+    z-index: 1;
+  }
+
+  &--vertical {
+    #{$this}-line {
+      height: 100%;
+      left: 10px;
+      width: 4px;
+    }
+  }
+}

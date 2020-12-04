@@ -1,0 +1,5 @@
+@each $key, $value in $zindexs {
+  .u-zIndex#{capitalize($key)} {
+    z-index: $value;
+  }
+}

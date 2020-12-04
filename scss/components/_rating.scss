@@ -1,0 +1,29 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.Rating {
+  $this: &;
+
+  &-item {
+    svg {
+      transition: 0.2s ease-in-out;
+
+      &.is-focus:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &-itemDecimal {
+    #{$this}-item:first-child {
+      overflow: hidden;
+      position: absolute;
+      width: 50%;
+      z-index: 1;
+    }
+  }
+
+  &-visuallyHidden {
+    clip: rect(0 0 0 0);
+    top: 20px;
+  }
+}

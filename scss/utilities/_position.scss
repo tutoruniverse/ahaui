@@ -1,0 +1,78 @@
+/* Position: */
+
+@each $position in (static, relative, absolute, fixed, sticky) {
+  .u-position#{capitalize($position)} {
+    position: $position;
+  }
+}
+
+.u-positionTop {
+  top: 0;
+}
+
+.u-positionTop-50 {
+  top: 50%;
+}
+
+.u-positionTop-100 {
+  top: 100%;
+}
+
+.u-positionRight {
+  right: 0;
+}
+
+.u-positionRight-50 {
+  right: 50%;
+}
+
+.u-positionRight-100 {
+  right: 100%;
+}
+
+.u-positionBottom {
+  bottom: 0;
+}
+
+.u-positionBottom-50 {
+  bottom: 50%;
+}
+
+.u-positionBottom-100 {
+  bottom: 100%;
+}
+
+.u-positionLeft {
+  left: 0;
+}
+
+.u-positionLeft-50 {
+  left: 50%;
+}
+
+.u-positionLeft-100 {
+  left: 100%;
+}
+
+.u-positionFull {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.u-positionCenter {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.u-positionHorizontalCenter {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.u-positionVerticalCenter {
+  top: 50%;
+  transform: translateY(-50%);
+}

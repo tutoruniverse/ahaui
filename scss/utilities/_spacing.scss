@@ -1,0 +1,65 @@
+// Margin and Padding
+@each $prop, $abbrev in (margin: margin, padding: padding) {
+  @each $size, $length in $spacers {
+    .u-#{$abbrev}#{capitalize($size)} {
+      #{$prop}: $length;
+    }
+
+    .u-#{$abbrev}Top#{capitalize($size)},
+    .u-#{$abbrev}Vertical#{capitalize($size)} {
+      #{$prop}-top: $length;
+    }
+
+    .u-#{$abbrev}Right#{capitalize($size)},
+    .u-#{$abbrev}Horizontal#{capitalize($size)} {
+      #{$prop}-right: $length;
+    }
+
+    .u-#{$abbrev}Bottom#{capitalize($size)},
+    .u-#{$abbrev}Vertical#{capitalize($size)} {
+      #{$prop}-bottom: $length;
+    }
+
+    .u-#{$abbrev}Left#{capitalize($size)},
+    .u-#{$abbrev}Horizontal#{capitalize($size)} {
+      #{$prop}-left: $length;
+    }
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      @each $prop, $abbrev in (margin: margin, padding: padding) {
+        @each $size, $length in $spacers {
+
+          .#{$infix}\:u-#{$abbrev}#{capitalize($size)} {
+            #{$prop}: $length;
+          }
+
+          .#{$infix}\:u-#{$abbrev}Top#{capitalize($size)},
+          .#{$infix}\:u-#{$abbrev}Vertical#{capitalize($size)} {
+            #{$prop}-top: $length;
+          }
+
+          .#{$infix}\:u-#{$abbrev}Right#{capitalize($size)},
+          .#{$infix}\:u-#{$abbrev}Horizontal#{capitalize($size)} {
+            #{$prop}-right: $length;
+          }
+
+          .#{$infix}\:u-#{$abbrev}Bottom#{capitalize($size)},
+          .#{$infix}\:u-#{$abbrev}Vertical#{capitalize($size)} {
+            #{$prop}-bottom: $length;
+          }
+
+          .#{$infix}\:u-#{$abbrev}Left#{capitalize($size)},
+          .#{$infix}\:u-#{$abbrev}Horizontal#{capitalize($size)} {
+            #{$prop}-left: $length;
+          }
+        }
+      }
+    }
+  }
+}

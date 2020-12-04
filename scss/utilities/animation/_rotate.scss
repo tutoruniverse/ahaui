@@ -1,0 +1,7 @@
+/* _rotate.scss.scss */
+@each $key, $value in map-get($transform, "rotate") {
+  .u-rotate#{capitalize($key)},
+  .hover\:u-rotate#{capitalize($key)}:hover {
+    transform: rotate(#{$value});
+  }
+}

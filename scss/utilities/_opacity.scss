@@ -1,0 +1,18 @@
+@each $key, $value in $opacity {
+  .u-opacity#{capitalize($key)} {
+    opacity: $value;
+  }
+  .hover\:u-opacity#{capitalize($key)}:hover {
+    @media (hover: hover) {
+      opacity: $value;
+    }
+  }
+}
+
+.u-visibilityVisible {
+  visibility: visible;
+}
+
+.u-visibilityHidden {
+  visibility: hidden;
+}

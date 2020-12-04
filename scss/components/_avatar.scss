@@ -1,0 +1,16 @@
+.Avatar svg,
+.Avatar--medium,
+.Avatar--medium svg {
+  height: map-deep-get($avatars, 'sizes', 'medium');
+  width: map-deep-get($avatars, 'sizes', 'medium');
+}
+
+@each $key, $value in map-get($avatars, 'sizes') {
+  @if $key != 'medium' {
+    .Avatar--#{$key},
+    .Avatar--#{$key} svg {
+      height: $value;
+      width: $value;
+    }
+  }
+}

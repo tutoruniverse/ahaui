@@ -1,0 +1,82 @@
+//
+// Utilities for common `display` values
+
+.u-flex {
+  display: flex;
+}
+
+.u-flexInline {
+  display: inline-flex;
+}
+
+.u-inline {
+  display: inline;
+}
+
+.u-inlineBlock {
+  display: inline-block;
+}
+
+.u-block {
+  display: block;
+}
+
+.u-table {
+  display: table;
+}
+
+.u-tableRow {
+  display: table-row;
+}
+
+.u-tableCell {
+  display: table-cell;
+}
+
+.u-hidden {
+  display: none;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      .#{$infix}\:u-flex {
+        display: flex;
+      }
+
+      .#{$infix}\:u-flexInline {
+        display: inline-flex;
+      }
+
+      .#{$infix}\:u-inline {
+        display: inline;
+      }
+
+      .#{$infix}\:u-inlineBlock {
+        display: inline-block;
+      }
+
+      .#{$infix}\:u-block {
+        display: block;
+      }
+
+      .#{$infix}\:u-table {
+        display: table;
+      }
+
+      .#{$infix}\:u-tableRow {
+        display: table-row;
+      }
+
+      .#{$infix}\:u-tableCell {
+        display: table-cell;
+      }
+
+      .#{$infix}\:u-hidden {
+        display: none;
+      }
+    }
+  }
+}

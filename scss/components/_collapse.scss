@@ -1,0 +1,18 @@
+.Collapse {
+  &:not(.Show) {
+    display: none;
+  }
+}
+
+.Collapsing {
+  &:not(.is-dimensionWidth) {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease;
+  }
+
+  &.is-dimensionWidth {
+    transition: width 1.5s ease;
+    width: 0;
+  }
+}

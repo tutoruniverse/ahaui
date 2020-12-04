@@ -1,0 +1,35 @@
+.Media {
+  &::before {
+    content: '';
+    display: block;
+  }
+
+  .Media-item,
+  iframe,
+  embed,
+  object,
+  img,
+  video {
+    border: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  img {
+    @supports (object-fit: cover) {
+      object-fit: cover;
+    }
+  }
+}
+
+@each $key, $ratio in map-get($media, 'ratio') {
+  .Media--#{$key} {
+    &::before {
+      padding-top: percentage(map-get($ratio, h) / map-get($ratio, w));
+    }
+  }
+}
