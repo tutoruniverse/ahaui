@@ -8,7 +8,7 @@
     </div>
   </Modal.Body>
   <Modal.Footer>
-    <div className="u-flex u-flexGrow-1 u-flexColumn">
+    <div className="u-flex u-flexGrow1 u-flexColumn">
       <Button variant="primary" width="full" className="u-marginBottomExtraSmall">Start working now</Button>
       <Button variant="secondary" width="full">Cancel</Button>
     </div>

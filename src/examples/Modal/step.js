@@ -8,7 +8,7 @@
     </div>
   </Modal.Body>
   <Modal.Footer>
-    <div className="u-flex u-flexGrow-1 u-justifyContentBetween">
+    <div className="u-flex u-flexGrow1 u-justifyContentBetween">
       <Button variant="secondary">
         <Button.Icon><Icon name="arrowRoundBack" /></Button.Icon>
         <Button.Label>Back</Button.Label>

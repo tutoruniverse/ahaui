@@ -3,7 +3,7 @@
   const [option, setOption] = useState(1);
   return (
     <div className="u-flex u-backgroundOpaline" style={{ height: '80vh' }}>
-      <div className="u-flexShrink-0 u-border u-backgroundWhite u-flex" style={{ width: 360 }}>
+      <div className="u-flexShrink0 u-border u-backgroundWhite u-flex" style={{ width: 360 }}>
         <ChatBox>
           <ChatBox.List>
             <BubbleChat
