@@ -5,7 +5,7 @@
     <div style={{ maxWidth: 360 }}>
       <BubbleChat
         text="This is a System message with Options."
-        avatar="excelchat"
+        avatar={(() => <Avatar size="small" className="u-backgroundPrimary u-textWhite u-text100" text="EC" />)}
         type="system"
         time="16:30"
         currentOption={option}
@@ -23,7 +23,7 @@
       />
       <BubbleChat
         text="This is a System message with Options."
-        avatar="excelchat"
+        avatar={(() => <Avatar size="small" className="u-backgroundPrimary u-textWhite u-text100" text="EC" />)}
         type="system"
         time="16:30"
         disabledOption
@@ -41,7 +41,7 @@
       />
       <BubbleChat
         text="This is a System message with Options."
-        avatar="excelchat"
+        avatar={(() => <Avatar size="small" className="u-backgroundPrimary u-textWhite u-text100" text="EC" />)}
         type="system"
         time="16:30"
         disabledOption

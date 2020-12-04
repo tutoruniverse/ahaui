@@ -11,7 +11,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Got It Aha Design System - Documentation',
+    title: 'Aha Design System - Documentation',
     description: 'An ever-evolving system that enables us to build higher quality products more efficiently',
     author: 'GotIt, Inc. contributors',
     browsers: [

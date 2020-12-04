@@ -2,8 +2,7 @@
   <div className="u-sizeFull lg:u-size4of12 u-marginBottomSmall">
     <div className="u-border u-roundedLarge u-backgroundWhite u-paddingSmall u-textCenter u-heightFull">
       <img
-        src="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-1.png"
-        srcSet="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-1.png, https://design.got-it.io/assets/design-system/block-layout/solutions-platform-1@2x.png 2x"
+        src="holder.js/200px140"
         className="u-maxWidthFull u-marginTopSmall u-marginBottomLarge"
         alt=""
       />
@@ -15,8 +14,7 @@
   <div className="u-sizeFull lg:u-size4of12 u-marginBottomSmall">
     <div className="u-border u-roundedLarge u-backgroundWhite u-paddingSmall u-textCenter u-heightFull">
       <img
-        src="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-2.png"
-        srcSet="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-2.png, https://design.got-it.io/assets/design-system/block-layout/solutions-platform-2@2x.png 2x"
+         src="holder.js/200px140"
         className="u-maxWidthFull u-marginTopSmall u-marginBottomLarge"
         alt=""
       />
@@ -28,8 +26,7 @@
   <div className="u-sizeFull lg:u-size4of12 u-marginBottomSmall">
     <div className="u-border u-roundedLarge u-backgroundWhite u-paddingSmall u-textCenter u-heightFull">
       <img
-        src="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-3.png"
-        srcSet="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-3.png, https://design.got-it.io/assets/design-system/block-layout/solutions-platform-3@2x.png 2x"
+        src="holder.js/200px140"
         className="u-maxWidthFull u-marginTopSmall u-marginBottomLarge"
         alt=""
       />

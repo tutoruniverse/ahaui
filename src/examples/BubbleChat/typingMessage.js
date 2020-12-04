@@ -2,6 +2,6 @@
   <BubbleChat
     isTyping
     type="outbound"
-    avatar="expert"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
   />
 </div>;

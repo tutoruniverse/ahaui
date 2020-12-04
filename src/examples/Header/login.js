@@ -3,7 +3,7 @@
   return (
     <Header fullWidth>
       <Header.Brand>
-        <Logo as={SafeAnchor} name="excelchat" variant="original" height={40} />
+        <Logo as={SafeAnchor} src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-with-text.svg" variant="original" height={40} />
       </Header.Brand>
       <Header.Main>
         <Header.Left>
@@ -11,22 +11,11 @@
             current={topMenuExcelchat}
             onSelect={setTopMenuExcelchat}
           >
-            <TopMenu.SubMenu eventKey="products" title="Products">
-              <TopMenu.Item eventKey="excelchat">Excelchat</TopMenu.Item>
-              <TopMenu.Item eventKey="excelchat_learning">Excelchat Learning</TopMenu.Item>
-              <TopMenu.Item eventKey="excelchat_slack">Excelchat for Slack</TopMenu.Item>
-            </TopMenu.SubMenu>
             <TopMenu.Item eventKey="my_sessions">My sessions</TopMenu.Item>
             <TopMenu.Item eventKey="pricing">Pricing</TopMenu.Item>
           </TopMenu>
         </Header.Left>
         <Header.Right>
-          <Button variant="secondary">
-            <Button.Label>Session Balance</Button.Label>
-            <Button.Icon>
-              <Badge variant="warning" className="u-marginLeftTiny u-textTransformNone">Unlimited</Badge>
-            </Button.Icon>
-          </Button>
           <Dropdown alignRight className="u-marginLeftExtraSmall">
             <Dropdown.Toggle className="u-textLight u-lineHeightNone">
               <Icon name="contact" size="medium" />

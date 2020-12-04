@@ -29,8 +29,8 @@ const SEO = ({ pageContext, location }) => (
           <meta name="og:title" content={title} />
           <meta name="description" content={description} />
           <meta name="og:description" content={description} />
-          <link rel="alternate icon" type="image/png" href={'/site/favicon.png'}/>
-          <link rel="icon" type="image/svg+xml" href={'/site/favicon.svg'}/>
+          <link rel="alternate icon" type="image/png" href="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/aha-favicon.png" />
+          <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/aha-favicon.svg" />
           <link rel="preconnect" href="https://fonts.gstatic.com"/>
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
         </Helmet>

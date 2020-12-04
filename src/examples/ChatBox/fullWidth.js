@@ -6,21 +6,14 @@
       <div className="u-flexShrink-0 u-border u-backgroundWhite u-flex" style={{ width: '100%' }}>
         <ChatBox>
           <ChatBox.List>
-            <ProblemInfo
-              onClickImage={() => window.open('https://design.got-it.io/assets/photo-study/expert-portal/exampleBidding.jpg', '_blank')}
-              src="https://design.got-it.io/assets/photo-study/expert-portal/exampleBidding.jpg"
-              topicName="Fixing formulas"
-              descriptionValue="Hey I’m in a rush and stuck on column H, I need to get this to my boss in an hour. Can you help me figure out which product sells the best?."
-              action={() => <SafeAnchor className="hover:u-textDecorationNone u-block">Download original file</SafeAnchor>}
-            />
             <BubbleChat
               text="System message"
-              avatar="gotit"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimary u-textWhite u-text100" text="EC" />)}
               type="system"
             />
             <BubbleChat
               text="This is a System message with Options."
-              avatar="gotit"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimary u-textWhite u-text100" text="EC" />)}
               type="system"
               currentOption={option}
               onSelectOption={setOption}
@@ -37,7 +30,7 @@
             />
             <BubbleChat
               text="This is a System message with Options."
-              avatar="gotit"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimary u-textWhite u-text100" text="EC" />)}
               type="system"
               currentOption={1}
               disabledOption
@@ -88,19 +81,19 @@
             <BubbleChat
               text="Reviser message"
               type="outbound"
-              avatar="expert"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
               time="11:28"
             />
             <Separator label="Light" className="u-marginBottomSmall" variant="light" lineType="dashed" />
             <BubbleChat
               text="This is an example for multiple lines or paragraph Outbound message."
               type="outbound"
-              avatar="expert"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
               time="11:29"
             />
             <BubbleChat
               type="outbound"
-              avatar="expert"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
               time="11:30"
             >
               <FileAttachment
@@ -112,7 +105,7 @@
             </BubbleChat>
             <BubbleChat
               type="outbound"
-              avatar="expert"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
               time="11:31"
             >
               <FileAttachment
@@ -126,13 +119,13 @@
             <BubbleChat
               text="File attachment message"
               type="outbound"
-              avatar="expert"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
               time="11:32"
             />
             <BubbleChat
               isTyping
               type="outbound"
-              avatar="expert"
+              avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
               time="11:33"
             />
           </ChatBox.List>

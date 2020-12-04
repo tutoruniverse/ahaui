@@ -3,7 +3,7 @@
     <HeaderMobile hasDropContext>
       <HeaderMobile.Context>
         <HeaderMobile.Brand>
-          <Logo as={SafeAnchor} name="gotit" variant="original" height={32} />
+          <Logo as={SafeAnchor} src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo.svg"  height={32} />
         </HeaderMobile.Brand>
         <HeaderMobile.Main>
           <div className="u-paddingHorizontalLarge u-backgroundPositiveLight">[RIGHT]</div>

@@ -1,17 +1,16 @@
 <div style={{ maxWidth: 360 }}>
   <BubbleChat
     type="outbound"
-    avatar="expert"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
     className="u-marginBottomNone"
   >
     <BubbleChat.Image
-      src="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-1.png"
-      srcSet="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-1.png, https://design.got-it.io/assets/design-system/block-layout/solutions-platform-1@2x.png 2x"
+      src="holder.js/250px120?text=Image"
     />
   </BubbleChat>
   <BubbleChat
     type="outbound"
-    avatar="expert"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
     text="This is an example for image"
     time="16:20"
   />
@@ -19,8 +18,7 @@
     className="u-marginBottomNone"
   >
     <BubbleChat.Image
-      src="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-2.png"
-      srcSet="https://design.got-it.io/assets/design-system/block-layout/solutions-platform-2.png, https://design.got-it.io/assets/design-system/block-layout/solutions-platform-2@2x.png 2x"
+      src="holder.js/250px120?text=Image"
     />
 
   </BubbleChat>
