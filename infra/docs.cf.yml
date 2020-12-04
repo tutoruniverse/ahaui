@@ -12,7 +12,6 @@ Metadata:
           - GitHubOwner
           - GitHubRepo
           - GitHubBranch
-          - GitHubToken
           - ArtifactBucket
           - StaticFilesS3BucketName
           - StaticS3WebsiteURL
@@ -37,10 +36,6 @@ Parameters:
     Type: String
     Default: master
     Description: GitHub repository branch
-  GitHubToken:
-    Type: String
-    ConstraintDescription: A GitHub token must be provided
-    Description: GitHub repository OAuth token
   ArtifactBucket:
     Type: String
     Default: cf-templates-5bizf5p6pxoh-ap-southeast-1
@@ -220,7 +215,7 @@ Resources:
                 Owner: !Ref GitHubOwner
                 Repo: !Ref GitHubRepo
                 Branch: !Ref GitHubBranch
-                OAuthToken: !Ref GitHubToken
+                OAuthToken: '{{resolve:ssm:/SETTING/PROD/GOTIT_OPENSOURCE_GITHUB_TOKEN:1}}'
                 PollForSourceChanges: true
               OutputArtifacts: [Name: Source]
               RunOrder: 1
