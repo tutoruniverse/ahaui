@@ -1,0 +1,353 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Aha Design System - Docs
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "Configurations"
+        Parameters:
+          - EnvironmentType
+          - ApplicationName
+          - GitHubOwner
+          - GitHubRepo
+          - GitHubBranch
+          - GitHubToken
+          - ArtifactBucket
+          - StaticFilesS3BucketName
+          - StaticS3WebsiteURL
+          - CFLogS3BucketName
+          - SubDomain
+          - AlgoliaAppId
+          - AlgoliaSearchKey
+          - AlgoliaAdminKey
+
+Parameters:
+  ApplicationName:
+    Description: This will be used to name the pipeline and build resources
+    Type: String
+    Default: aha-design-system-docs
+    AllowedPattern: '[A-Za-z0-9-]+'
+  GitHubOwner:
+    Type: String
+    Default: gotitinc
+    Description: GitHub repository owner
+  GitHubRepo:
+    Type: String
+    Default: aha
+    Description: GitHub repository name
+  GitHubBranch:
+    Type: String
+    Default: master
+    Description: GitHub repository branch
+  GitHubToken:
+    Type: String
+    ConstraintDescription: A GitHub token must be provided
+    Description: GitHub repository OAuth token
+  ArtifactBucket:
+    Type: String
+    Default: cf-templates-5bizf5p6pxoh-ap-southeast-1
+    AllowedValues:
+      - cf-templates-5bizf5p6pxoh-us-east-1
+      - cf-templates-5bizf5p6pxoh-us-east-2
+      - cf-templates-5bizf5p6pxoh-us-west-1
+      - cf-templates-5bizf5p6pxoh-us-west-2
+      - cf-templates-5bizf5p6pxoh-ap-northeast-1
+      - cf-templates-5bizf5p6pxoh-ap-southeast-1
+    Description: Name of existing S3 bucket for storing pipeline artifacts
+  EnvironmentType:
+    Description: Environment Type
+    Type: String
+    Default: prod
+    AllowedValues:
+      - alpha
+      - prod
+  StaticFilesS3BucketName:
+    Description: Name of S3 bucket which stores static files
+    Type: String
+    Default: got-it-frontends
+  StaticS3WebsiteURL:
+    Description: S3 website url
+    Type: String
+    Default: got-it-frontends.s3-website.us-east-2.amazonaws.com
+  CFLogS3BucketName:
+    Description: S3 bucket name to store Cloudfront logs
+    Type: String
+    Default: got-it-cloudfront-logs
+  SubDomain:
+    Description: Sub-domain for the site
+    Type: String
+    Default: aha
+  AlgoliaAppId:
+    Description: Algolia App Id
+    Type: String
+  AlgoliaSearchKey:
+    Description: Algolia App Id
+    Type: String
+  AlgoliaAdminKey:
+    Description: Algolia App Id
+    Type: String
+
+Mappings:
+  PublicHostedZones:
+    dev:
+      id: 'Z1ZY3RSTUXHEUN'
+      zone: 'got-it.io'
+    alpha:
+      id: 'Z1ZY3RSTUXHEUN'
+      zone: 'got-it.io'
+    prod:
+      id: 'Z1ZY3RSTUXHEUN'
+      zone: 'got-it.io'
+  ACMCertifficates:
+    dev:
+      arn: "arn:aws:acm:us-east-1:551980366224:certificate/25a2ea78-65e0-4b38-b466-f288af18143b"
+    alpha:
+      arn: "arn:aws:acm:us-east-1:551980366224:certificate/25a2ea78-65e0-4b38-b466-f288af18143b"
+    prod:
+      arn: "arn:aws:acm:us-east-1:551980366224:certificate/25a2ea78-65e0-4b38-b466-f288af18143b"
+
+Resources:
+  CodeBuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Path: /
+      RoleName: !Sub ${ApplicationName}-CodeBuild-${AWS::Region}
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action: "sts:AssumeRole"
+            Principal:
+              Service: "codebuild.amazonaws.com"
+      Policies:
+        - PolicyName: !Sub ${ApplicationName}-CodeBuild-${AWS::Region}
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Resource:
+                  - "*"
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+              - Effect: Allow
+                Resource:
+                  - !Join
+                    - ""
+                    - - "arn:aws:s3:::"
+                      - !Ref ArtifactBucket
+                  - !Join
+                    - ""
+                    - - "arn:aws:s3:::"
+                      - !Ref ArtifactBucket
+                      - "/*"
+                  - !Join
+                    - ""
+                    - - "arn:aws:s3:::"
+                      - !Ref StaticFilesS3BucketName
+                  - !Join
+                    - ""
+                    - - "arn:aws:s3:::"
+                      - !Ref StaticFilesS3BucketName
+                      - "/*"
+                Action:
+                  - "s3:DeleteObjectTagging"
+                  - "s3:GetObjectRetention"
+                  - "s3:DeleteObjectVersion"
+                  - "s3:GetObjectVersionTagging"
+                  - "s3:PutObjectVersionTagging"
+                  - "s3:ListBucket"
+                  - "s3:DeleteObjectVersionTagging"
+                  - "s3:PutObjectLegalHold"
+                  - "s3:GetObjectLegalHold"
+                  - "s3:GetObjectVersionTorrent"
+                  - "s3:PutObject"
+                  - "s3:GetObjectAcl"
+                  - "s3:GetObject"
+                  - "s3:GetObjectTorrent"
+                  - "s3:PutObjectRetention"
+                  - "s3:GetObjectVersionAcl"
+                  - "s3:GetObjectTagging"
+                  - "s3:PutObjectTagging"
+                  - "s3:GetObjectVersionForReplication"
+                  - "s3:DeleteObject"
+                  - "s3:GetObjectVersion"
+              - Effect: Allow
+                Resource:
+                  - "*"
+                Action:
+                  - "cloudfront:CreateInvalidation"
+  CodeBuild:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub ${ApplicationName}
+      Description: !Sub Build project for ${ApplicationName}
+      ServiceRole: !Ref CodeBuildRole
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: infra/docs.buildspec.yml
+        GitSubmodulesConfig:
+          FetchSubmodules: true
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/nodejs:10.14.1
+        Type: LINUX_CONTAINER
+        EnvironmentVariables:
+          - Name: ENV
+            Value: !Sub ${EnvironmentType}
+          - Name: S3
+            Value: !Join
+              - ""
+              - - !Ref StaticFilesS3BucketName
+                - "/"
+                - !Ref EnvironmentType
+                - "/"
+                - !Ref ApplicationName
+          - Name: CLOUDFRONT
+            Value: !Ref Distribution
+          - Name: GATSBY_ALGOLIA_APP_ID
+            Value: !Ref AlgoliaAppId
+          - Name: GATSBY_ALGOLIA_SEARCH_KEY
+            Value: !Ref AlgoliaSearchKey
+          - Name: GATSBY_ALGOLIA_ADMIN_KEY
+            Value: !Ref AlgoliaAdminKey
+
+      Artifacts:
+        Name: !Ref ApplicationName
+        Type: CODEPIPELINE
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      Name: !Sub ${ApplicationName}
+      RoleArn: arn:aws:iam::551980366224:role/AWS-CodePipeline-Service
+      ArtifactStore:
+        Type: S3
+        Location: !Ref ArtifactBucket
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: Source
+              ActionTypeId:
+                Category: Source
+                Owner: ThirdParty
+                Version: 1
+                Provider: GitHub
+              Configuration:
+                Owner: !Ref GitHubOwner
+                Repo: !Ref GitHubRepo
+                Branch: !Ref GitHubBranch
+                OAuthToken: !Ref GitHubToken
+                PollForSourceChanges: true
+              OutputArtifacts: [Name: Source]
+              RunOrder: 1
+        - Name: Build
+          Actions:
+            - Name: CodeBuild
+              InputArtifacts: [Name: Source]
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: 1
+              OutputArtifacts: [Name: Built]
+              Configuration:
+                ProjectName: !Ref CodeBuild
+
+  Distribution:
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Enabled: 'true'
+        Aliases:
+          - !Join
+            - "."
+            - - !Ref SubDomain
+              - !FindInMap
+                - PublicHostedZones
+                - !Ref EnvironmentType
+                - zone
+        Origins:
+          - DomainName: !Ref StaticS3WebsiteURL
+            OriginPath: !Join
+              - ""
+              - - "/"
+                - !Ref EnvironmentType
+                - "/"
+                - !Ref ApplicationName
+            Id: BucketCustomOrigin
+            CustomOriginConfig:
+              HTTPPort: '80'
+              HTTPSPort: '443'
+              OriginProtocolPolicy: http-only
+
+        DefaultCacheBehavior:
+          TargetOriginId: BucketCustomOrigin
+          ForwardedValues:
+            Cookies:
+              Forward: all
+            QueryString: true
+          ViewerProtocolPolicy: redirect-to-https
+          Compress: 'true'
+
+        CustomErrorResponses:
+          - ErrorCode: 404
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+            ErrorCachingMinTTL: 86400
+
+        Logging:
+          IncludeCookies: 'true'
+          Bucket: !Join
+            - ""
+            - - !Ref CFLogS3BucketName
+              - ".s3.amazonaws.com"
+          Prefix: !Join
+            - ""
+            - - !Ref EnvironmentType
+              - "/"
+              - !Ref ApplicationName
+        ViewerCertificate:
+          AcmCertificateArn: !FindInMap
+            - ACMCertifficates
+            - !Ref EnvironmentType
+            - arn
+          MinimumProtocolVersion: 'TLSv1.1_2016'
+          SslSupportMethod: 'sni-only'
+
+        HttpVersion: http2
+
+
+  DnsRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: !FindInMap
+        - PublicHostedZones
+        - !Ref EnvironmentType
+        - id
+      Comment: Aha Design System DNS name
+      Name: !Join
+        - "."
+        - - !Ref SubDomain
+          - !FindInMap
+            - PublicHostedZones
+            - !Ref EnvironmentType
+            - zone
+      Type: CNAME
+      TTL: '300'
+      ResourceRecords:
+        - !GetAtt [Distribution, DomainName]
+
+Outputs:
+  URL:
+    Value: !Join
+      - ""
+      - - "https://"
+        - !Join
+          - "."
+          - - !Ref SubDomain
+            - !FindInMap
+              - PublicHostedZones
+              - !Ref EnvironmentType
+              - zone

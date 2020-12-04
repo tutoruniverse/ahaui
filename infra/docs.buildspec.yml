@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 8
+    commands:
+      - cd $CODEBUILD_SRC_DIR
+      - npm install -g yarn
+      - yarn install
+      - cd aha-react
+      - yarn install
+  build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR
+      - yarn build
+  post_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR; bash infra/docs.deploy.sh
+artifacts:
+  files:
+    - 'www/public/**/*'
