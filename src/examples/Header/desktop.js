@@ -1,6 +1,6 @@
 <Header>
   <Header.Brand>
-    <Logo as={SafeAnchor} name="gotit" variant="original" height={32} />
+    <Logo as={SafeAnchor} src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-with-text.svg" variant="original" height={32} />
   </Header.Brand>
   <Header.Main className="u-backgroundLightest">
     <Header.Left>

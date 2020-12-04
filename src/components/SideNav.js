@@ -54,7 +54,7 @@ const SideNav = React.forwardRef(({ location, ...props }, ref) => {
     <SidePanel {...props} ref={ref}>
       <div className="Grid Grid--withoutGutter u-paddingTopSmall">
         <div className="u-size6of12 md:u-sizeFull">
-          <Logo as={SafeAnchor} href="/" src={'/site/logo.svg'}  height={48} />
+          <Logo as={SafeAnchor} href="/" src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-with-text.svg"  height={48} />
         </div>
         <div className="u-size6of12">
           <div className="md:u-hidden u-flex u-alignItemsCenter u-justifyContentEnd">

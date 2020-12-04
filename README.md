@@ -1,5 +1,5 @@
 
-<h3 align="center">Got It Aha Design System - Documentation </h3>
+<h3 align="center">Aha Design System - Documentation </h3>
 
 ## Quick start 
 

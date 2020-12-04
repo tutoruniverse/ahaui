@@ -39,13 +39,13 @@ To represent the media content such as image and video.
 **Excelchat Learning Lesson Item**
 
 <div className="u-flex u-paddingSmall u-border u-borderLighter u-roundedMedium u-marginBottomMedium">
-  <div className="u-flex u-flexColumn u-flexShrink-0  u-backgroundLightest" style={{ width: 210 }}>
+  <div className="u-flex u-flexColumn u-flexShrink0  u-backgroundLightest" style={{ width: 210 }}>
     <Media src="https://s3.us-east-2.amazonaws.com/gotit-pro-prod-excel-private/learning/assets/module-thumbnails/thumbnail-module-1.png" />
     <div className="u-fontMedium u-paddingExtraSmall">Lesson 1</div>
   </div>
-  <div className="u-marginLeftSmall u-flexGrow-1">
+  <div className="u-marginLeftSmall u-flexGrow1">
     <div className="u-flex u-justifyContentBetween u-marginBottomSmall">
-      <div className="u-text400 u-fontMedium u-flexGrow-1">Spreadsheet Design</div>
+      <div className="u-text400 u-fontMedium u-flexGrow1">Spreadsheet Design</div>
       <div className="u-textGray u-text200 u-flex u-alignItemsCenter">
         <Icon name="timer" size="extraSmall" className="u-marginRightTiny" />
                   20 mins to complete
@@ -56,7 +56,7 @@ To represent the media content such as image and video.
 </div>
 <CodeView codeText={`<div className="u-flex">
     <Skeleton width={210} height={118} />
-    <div className="u-marginLeftSmall u-flexGrow-1">
+    <div className="u-marginLeftSmall u-flexGrow1">
       <Skeleton width="60%" />
       <Skeleton />
       <Skeleton />
@@ -99,7 +99,7 @@ An avatar is always a circle even though it’s a photo, so don't use a rectangl
   <div className="u-sizeFull md:u-size1of4">
     <div>
       <div className="u-marginBottomSmall">
-        <Avatar url={require('src/assets/avatar/3.jpg')} width={96} height={96} />
+        <Avatar src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/gotit/avatar/default.svg" width={96} height={96} />
       </div>
       <div className="u-fontMedium u-text400">Lucifer S.Morningstar </div>
       <div>Head of Design</div>

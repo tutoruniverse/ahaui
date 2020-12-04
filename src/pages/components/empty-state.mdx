@@ -6,11 +6,7 @@ import { graphql } from 'gatsby';
 import ComponentApi from 'src/components/ComponentApi';
 import CodeView from 'src/components/CodeView';
 
-import sessionEmptyState from 'src/examples/EmptyState/session';
-import notificationEmptyState from 'src/examples/EmptyState/notification';
-import searchResultEmptyState from 'src/examples/EmptyState/searchResult';
 import generalEmptyState from 'src/examples/EmptyState/general';
-import inboxEmptyState from 'src/examples/EmptyState/inbox';
 
 # Empty State
 
@@ -44,30 +40,6 @@ Empty states are moments in a user’s experience with a product where there is 
 </ol>
 
 ## Examples
-
-### Empty session
-
-When there is not any session to show to the new users.
-
-<CodeView codeText={sessionEmptyState} />
-
-### Empty notification
-
-When there is not any notification to show.
-
-<CodeView codeText={notificationEmptyState} />
-
-### Empty search results
-
-When there is not any result to show.
-
-<CodeView codeText={searchResultEmptyState} />
-
-### Inbox empty
-
-When there is not any inbox(mail) to show.
-
-<CodeView codeText={inboxEmptyState} />
 
 ### General empty
 

@@ -1,8 +1,8 @@
 <div className="u-flex">
-  <div className="u-flexShrink-0 u-paddingRightSmall">
+  <div className="u-flexShrink0 u-paddingRightSmall">
     <Avatar size="extraLarge" src="holder.js/100px64?text=64x64" />
   </div>
-  <div className="u-flexGrow-1">
+  <div className="u-flexGrow1">
     <div className="u-marginBottomExtraSmall">
       <strong>Patrick</strong>
       <span className="u-marginLeftExtraSmall u-textLight">

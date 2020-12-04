@@ -1,5 +1,5 @@
 <div style={{ maxWidth: 300 }}>
-  <EmptyState name="general">
+  <EmptyState src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/gotit/emptyState/general.svg">
     <EmptyState.Heading>
       General empty
     </EmptyState.Heading>

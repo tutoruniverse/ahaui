@@ -1,11 +1,11 @@
 <>
   <div className="u-inlineBlock u-marginRightMedium">
-    <Avatar src="https://design.got-it.io/assets/design-system/uifaces/m-10.jpg" />
+    <Avatar src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/uifaces/m-10.jpg" />
   </div>
   <div className="u-inlineBlock u-marginRightMedium">
-    <Avatar src="https://design.got-it.io/assets/design-system/uifaces/f-10.jpg" />
+    <Avatar src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/uifaces/f-10.jpg" />
   </div>
   <div className="u-inlineBlock u-marginRightMedium">
-    <Avatar src="https://design.got-it.io/assets/design-system/uifaces/m-20.jpg" />
+    <Avatar src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/uifaces/m-20.jpg" />
   </div>
 </>;

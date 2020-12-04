@@ -20,12 +20,12 @@ function Main({ children, ...props }) {
     <main className="Container Container--fluid">
       <div className="Grid">
         <TocProvider>
-          <SideNav className="u-sizeFull md:u-size4of12 lg:u-size3of12 xl:u-size2of12" location={location} />
+          <SideNav className="u-sizeFull md:u-size3of12 xl:u-size2of12" location={location} />
           {hasToc && (
             <Toc className="u-hidden xl:u-block xl:u-size2of12" />
           )}
           <div className={classNames(
-            'u-sizeFull md:u-size8of12 lg:u-size9of12',
+            'u-sizeFull md:u-size9of12',
             hasToc ? 'xl:u-size8of12' : ' xl:u-size10of12',
           )}
           >
