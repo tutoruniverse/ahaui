@@ -24,6 +24,6 @@
 
 .u-listItemUnderline {
   li {
-    border-bottom: 1px solid #{map-deep-get($colors, 'neutral40')};
+    border-bottom: 1px solid #{map-deep-get($colors-render, 'border', 'default')};
   }
 }
