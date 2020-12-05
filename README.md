@@ -21,7 +21,6 @@
 [![CI](https://github.com/gotitinc/aha-css/workflows/Lint/badge.svg)](https://github.com/gotitinc/aha-css/actions) 
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css?label=CSS) 
 [![npm version](https://img.shields.io/npm/v/@ahaui/css)](https://www.npmjs.com/package/@ahaui/css) 
-[![peerDependencies Status](https://img.shields.io/david/peer/gotitinc/aha-css)](https://david-dm.org/gotitinc/aha-css?type=peer) 
 [![devDependency Status](https://img.shields.io/david/dev/gotitinc/aha-css)](https://david-dm.org/gotitinc/aha-css?type=dev) 
 
 ## Quick start
