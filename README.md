@@ -1,5 +1,12 @@
 
-<h3 align="center">Got It Aha Design System - Documentation </h3>
+<p align="center">
+  <a href="https://aha.got-it.ai">
+    <img src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-trasparent.svg" alt="Aha logo" width="150" height="150">
+  </a>
+</p>
+
+<h3 align="center">Aha Design System - Documentation</h3>
+
 
 ## Status
 
