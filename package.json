@@ -1,6 +1,6 @@
 {
   "name": "@ahaui/css",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Aha Design System - CSS",
   "style": "dist/index.min.css",
   "sass": "scss/index.scss",
@@ -36,7 +36,7 @@
     "autoprefixer": "9.6.1",
     "clean-css-cli": "4.3.0",
     "del-cli": "3.0.1",
-    "node-sass": "4.12.0",
+    "node-sass": "4.13.1",
     "node-sass-import": "2.0.1",
     "postcss-cli": "6.1.2",
     "stylelint": "^13.8.0",

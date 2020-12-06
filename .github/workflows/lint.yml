@@ -22,14 +22,11 @@ jobs:
         with:
           node-version: "${{ env.NODE }}"
 
-      - name: Set up npm cache
+      - name: Set up yarn cache
         uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('yarn.lock') }}
-            ${{ runner.OS }}-node-v${{ env.NODE }}-
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install npm dependencies
         run: yarn
 
