@@ -23,12 +23,15 @@ jobs:
           node-version: "${{ env.NODE }}"
 
       - name: Set up yarn cache
+        id: yarn-cache
         uses: actions/cache@v2
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install npm dependencies
-        run: yarn
+
+      - name: Install dependencies with yarn
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
 
       - name: Lint
         run: yarn lint
