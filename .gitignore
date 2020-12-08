@@ -105,3 +105,6 @@ dist
 
 # Local Env
 .env.local
+
+# Public folder
+public
