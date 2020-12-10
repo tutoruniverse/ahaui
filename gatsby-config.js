@@ -2,6 +2,7 @@ const { cleanDoclets } = require('gatsby-transformer-react-docgen/doclets');
 const path = require('path');
 const remarkSlug = require('remark-slug');
 const defaultDescriptions = require('./src/defaultPropDescriptions');
+const ahaReactConfig = require('./config');
 
 const activeEnv = process.env.ENV || 'dev';
 console.log(`Using environment config: '${activeEnv}'`);
@@ -21,6 +22,7 @@ module.exports = {
       'last 2 Safari versions',
     ],
   },
+  pathPrefix: ahaReactConfig.version,
   plugins: [
     'gatsby-plugin-sorted-assets',
     {

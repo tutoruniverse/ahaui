@@ -9,8 +9,10 @@ phases:
       - yarn install
       - cd aha-react
       - yarn install
+      - apt-get install jq
   build:
     commands:
+      - export VERSION=`jq -r .version package.json`
       - cd $CODEBUILD_SRC_DIR
       - yarn build
   post_build:
