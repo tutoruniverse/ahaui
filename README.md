@@ -1,6 +1,17 @@
+<p align="center">
+  <a href="https://aha.got-it.ai">
+    <img src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-trasparent.svg" alt="Aha logo" width="150" height="150">
+  </a>
+</p>
 
-<h3 align="center">Aha Design System - Documentation </h3>
+<h3 align="center">Aha Design System - Documentation</h3>
 
+
+## Status
+
+![Website](https://img.shields.io/website?url=https%3A%2F%2Faha.got-it.ai&label=Documentation)
+![npm](https://img.shields.io/npm/v/@ahaui/css?label=CSS)
+![npm](https://img.shields.io/npm/v/@ahaui/react?label=React)
 ## Quick start 
 
 Aha's documentation is built with Gatsby and publicly hosted at https://aha.got-it.ai/. The docs may also be run locally.
