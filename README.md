@@ -19,6 +19,7 @@
 ## Status
 
 [![CI](https://github.com/gotitinc/aha-css/workflows/Lint/badge.svg)](https://github.com/gotitinc/aha-css/actions) 
+[![](https://data.jsdelivr.com/v1/package/npm/@ahaui/css/badge)](https://www.jsdelivr.com/package/npm/@ahaui/css)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css?label=CSS) 
 [![npm version](https://img.shields.io/npm/v/@ahaui/css)](https://www.npmjs.com/package/@ahaui/css) 
 [![devDependency Status](https://img.shields.io/david/dev/gotitinc/aha-css)](https://david-dm.org/gotitinc/aha-css?type=dev) 
