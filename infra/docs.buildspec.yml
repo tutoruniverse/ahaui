@@ -4,21 +4,21 @@ phases:
     runtime-versions:
       nodejs: 12
     commands:
-      - cd $CODEBUILD_SRC_DIR
       - npm install -g yarn
+      - git clone git@github.com:${GITHUB_OWNER}/${GITHUB_REPO}.git /source
+      - cd /source
+      - git checkout -f "$CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - git submodule init
+      - git submodule update --recursive
+      - cd /source
       - yarn install
       - cd aha-react
       - yarn install
       - apt-get install jq
   build:
     commands:
-      - git clone git@github.com:${GITHUB_OWNER}/${GITHUB_REPO}.git /source
       - cd /source
-      - git checkout -f "$CODEBUILD_RESOLVED_SOURCE_VERSION"
-      - git submodule init
-      - git submodule update --recursive
       - export VERSION=`jq -r .version package.json`
-      - cd /source
       - yarn build
   post_build:
     commands:
