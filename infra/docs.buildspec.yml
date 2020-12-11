@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 8
+      nodejs: 12
     commands:
       - cd $CODEBUILD_SRC_DIR
       - npm install -g yarn
