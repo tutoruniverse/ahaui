@@ -20,4 +20,4 @@ phases:
       - cd $CODEBUILD_SRC_DIR; bash infra/docs.deploy.sh
 artifacts:
   files:
-    - 'www/public/**/*'
+    - 'public/**/*'
