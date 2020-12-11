@@ -5,6 +5,10 @@ phases:
       nodejs: 12
     commands:
       - npm install -g yarn
+      - ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
+      - git config --global url."git@github.com:".insteadOf "https://github.com/"
+      - git config --global user.email "gotitmachine@got-it.ai"
+      - git config --global user.name "GotIt Machine"
       - git clone https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}.git /source
       - cd /source
       - git checkout -f "$CODEBUILD_RESOLVED_SOURCE_VERSION"
