@@ -5,7 +5,7 @@ phases:
       nodejs: 12
     commands:
       - npm install -g yarn
-      - git clone git@github.com:${GITHUB_OWNER}/${GITHUB_REPO}.git /source
+      - git clone https://${GITHUB_OWNER}/${GITHUB_REPO}.git /source
       - cd /source
       - git checkout -f "$CODEBUILD_RESOLVED_SOURCE_VERSION"
       - git submodule init
