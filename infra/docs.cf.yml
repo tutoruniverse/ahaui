@@ -17,6 +17,7 @@ Metadata:
           - StaticS3WebsiteURL
           - CFLogS3BucketName
           - SubDomain
+          - ProxyIndexFunctionArn
 
 Parameters:
   ApplicationName:
@@ -38,14 +39,7 @@ Parameters:
     Description: GitHub repository branch
   ArtifactBucket:
     Type: String
-    Default: cf-templates-5bizf5p6pxoh-ap-southeast-1
-    AllowedValues:
-      - cf-templates-5bizf5p6pxoh-us-east-1
-      - cf-templates-5bizf5p6pxoh-us-east-2
-      - cf-templates-5bizf5p6pxoh-us-west-1
-      - cf-templates-5bizf5p6pxoh-us-west-2
-      - cf-templates-5bizf5p6pxoh-ap-northeast-1
-      - cf-templates-5bizf5p6pxoh-ap-southeast-1
+    Default: cf-templates-5bizf5p6pxoh-us-east-2
     Description: Name of existing S3 bucket for storing pipeline artifacts
   EnvironmentType:
     Description: Environment Type
@@ -70,25 +64,18 @@ Parameters:
     Description: Sub-domain for the site
     Type: String
     Default: aha
+  ProxyIndexFunctionArn:
+    Description: ARN for proxyIndex function
+    Type: String
 
 Mappings:
   PublicHostedZones:
-    dev:
-      id: 'Z1ZY3RSTUXHEUN'
-      zone: 'got-it.io'
-    alpha:
-      id: 'Z1ZY3RSTUXHEUN'
-      zone: 'got-it.io'
     prod:
-      id: 'Z1ZY3RSTUXHEUN'
-      zone: 'got-it.io'
+      id: 'Z2SDHRMFXAGDZ4'
+      zone: 'got-it.ai'
   ACMCertifficates:
-    dev:
-      arn: "arn:aws:acm:us-east-1:551980366224:certificate/25a2ea78-65e0-4b38-b466-f288af18143b"
-    alpha:
-      arn: "arn:aws:acm:us-east-1:551980366224:certificate/25a2ea78-65e0-4b38-b466-f288af18143b"
     prod:
-      arn: "arn:aws:acm:us-east-1:551980366224:certificate/25a2ea78-65e0-4b38-b466-f288af18143b"
+      arn: "arn:aws:acm:us-east-1:551980366224:certificate/38693dbf-4f98-4b9d-ae09-7f85e09a341a"
 
 Resources:
   CodeBuildRole:
@@ -171,8 +158,6 @@ Resources:
       Source:
         Type: CODEPIPELINE
         BuildSpec: infra/docs.buildspec.yml
-        GitSubmodulesConfig:
-          FetchSubmodules: true
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/nodejs:10.14.1
@@ -190,6 +175,10 @@ Resources:
                 - !Ref ApplicationName
           - Name: CLOUDFRONT
             Value: !Ref Distribution
+          - Name: GITHUB_OWNER
+            Value: !Ref GitHubOwner
+          - Name: GITHUB_REPO
+            Value: !Ref GitHubRepo
 
       Artifacts:
         Name: !Ref ApplicationName
@@ -267,6 +256,9 @@ Resources:
             QueryString: true
           ViewerProtocolPolicy: redirect-to-https
           Compress: 'true'
+          LambdaFunctionAssociations: 
+            - EventType: origin-request
+              LambdaFunctionARN: !Ref ProxyIndexFunctionArn
 
         CustomErrorResponses:
           - ErrorCode: 404

@@ -1,0 +1,38 @@
+service: AhaDocsRouter
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  stage: prod
+    
+
+functions:
+  proxyIndex:
+    handler: src/proxyIndex.handler
+
+resources:
+  Resources:
+    IamRoleLambdaExecution:
+      Type: AWS::IAM::Role
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+                  - edgelambda.amazonaws.com
+              Action: sts:AssumeRole
+        Policies:
+          - PolicyName: "AhaDocsRouterLogs"
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: "Allow"
+                  Action:
+                    - "logs:CreateLogGroup"
+                    - "logs:CreateLogStream"
+                    - "logs:PutLogEvents"
+                  Resource: "arn:aws:logs:*:*:*"

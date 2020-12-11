@@ -12,12 +12,18 @@ phases:
       - apt-get install jq
   build:
     commands:
+      - git clone git@github.com:${GITHUB_OWNER}/${GITHUB_REPO}.git /source
+      - cd /source
+      - git checkout -f "$CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - git submodule init
+      - git submodule update --recursive
       - export VERSION=`jq -r .version package.json`
-      - cd $CODEBUILD_SRC_DIR
+      - cd /source
       - yarn build
   post_build:
     commands:
-      - cd $CODEBUILD_SRC_DIR; bash infra/docs.deploy.sh
+      - cd /source; bash infra/docs.deploy.sh
+      
 artifacts:
   files:
     - 'public/**/*'
