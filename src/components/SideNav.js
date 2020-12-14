@@ -53,75 +53,88 @@ const MenuWrapper = styled('div')`
   }
 `;
 
+const VARIABLES = {
+  "--colorPrimaryLighter": "#e7ecfc",
+  "--colorPrimaryLight": "#d7defa",
+  "--colorPrimary": "#375de7",
+  "--colorFocusPrimary": "#375de733",
+  "--colorPrimaryDark": "#2c4ab8",
+  "--colorPrimaryDarker": "#21388b",
+  "--colorAccentLighter": "#fff1e8",
+  "--colorAccentLight": "#fbdfcc",
+  "--colorAccent": "#ed6200",
+  "--colorFocusAccent": "#ed620033",
+  "--colorAccentDark": "#d55800",
+  "--colorAccentDarker": "#a64500",
+  "--colorNegativeLighter": "#ffd2d8",
+  "--colorNegativeLight": "#f6bcc3",
+  "--colorNegative": "#d0021b",
+  "--colorFocusNegative": "#d0021b33",
+  "--colorNegativeDark": "#b50016",
+  "--colorNegativeDarker": "#960012",
+  "--colorWarningLighter": "#fdf4d0",
+  "--colorWarningLight": "#fff0b3",
+  "--colorWarning100": "#ffe380",
+  "--colorWarning": "#ffc400",
+  "--colorFocusWarning": "#ffc40033",
+  "--colorWarning300": "#ffab00",
+  "--colorWarningDark": "#ff991f",
+  "--colorPositiveLighter": "#d7f9e7",
+  "--colorPositiveLight": "#aceccb",
+  "--colorPositive": "#22a861",
+  "--colorFocusPositive": "#22a86133",
+  "--colorPositiveDark": "#019044",
+  "--colorPositiveDarker": "#017a3a",
+  "--colorInformationLighter": "#e7ecfc",
+  "--colorInformationLight": "#d7defa",
+  "--colorInformation": "#375de7",
+  "--colorFocusInformation": "#375de733",
+  "--colorInformationDark": "#2c4ab8",
+  "--colorInformationDarker": "#21388b",
+  "--fontFamily": "Roboto,'Helvetica Neue',Helvetica,Arial,sans-serif",
+  "--fontRegular": "400",
+  "--fontMedium": "500",
+  "--fontBold": "700",
+  "--radiusSmall": "2px",
+  "--radiusMedium": "4px",
+  "--radiusLarge": "8px",
+  "--radiusExtraLarge": "16px",
+};
+
 const defaultCustomStyle = `/*
 - Modify predefined CSS variables to custom your theme
 - More info: https://github.com/gotitinc/aha-css#customization
 */
 :root {
-  --colorPrimaryLighter: #e7ecfc;
-  --colorPrimaryLight: #d7defa;
-  --colorPrimary: #375de7;
-  --colorFocusPrimary: #375de733;
-  --colorPrimaryDark: #2c4ab8;
-  --colorPrimaryDarker: #21388b;
-  --colorAccentLighter: #fff1e8;
-  --colorAccentLight: #fbdfcc;
-  --colorAccent: #ed6200;
-  --colorFocusAccent: #ed620033;
-  --colorAccentDark: #d55800;
-  --colorAccentDarker: #a64500;
-  --colorNegativeLighter: #ffd2d8;
-  --colorNegativeLight: #f6bcc3;
-  --colorNegative: #d0021b;
-  --colorFocusNegative: #d0021b33;
-  --colorNegativeDark: #b50016;
-  --colorNegativeDarker: #960012;
-  --colorWarningLighter: #fdf4d0;
-  --colorWarningLight: #fff0b3;
-  --colorWarning100: #ffe380;
-  --colorWarning: #ffc400;
-  --colorFocusWarning: #ffc40033;
-  --colorWarning300: #ffab00;
-  --colorWarningDark: #ff991f;
-  --colorPositiveLighter: #d7f9e7;
-  --colorPositiveLight: #aceccb;
-  --colorPositive: #22a861;
-  --colorFocusPositive: #22a86133;
-  --colorPositiveDark: #019044;
-  --colorPositiveDarker: #017a3a;
-  --colorInformationLighter: #e7ecfc;
-  --colorInformationLight: #d7defa;
-  --colorInformation: #375de7;
-  --colorFocusInformation: #375de733;
-  --colorInformationDark: #2c4ab8;
-  --colorInformationDarker: #21388b;
-  --fontFamily: Roboto,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  --fontRegular: 400;
-  --fontMedium: 500;
-  --fontBold: 700;
-  --radiusSmall: 2px;
-  --radiusMedium: 4px;
-  --radiusLarge: 8px;
-  --radiusExtraLarge: 16px;
-}
+${Object.keys(VARIABLES).reduce((finalString, currentKey) => {
+  return `${finalString}  ${currentKey}: ${VARIABLES[currentKey]};\n`;
+}, '')}}
 `;
 
 const ahaVariablesCompleter = {
   getCompletions: function(editor, session, pos, prefix, callback) {
-    var wordList = ["--colorPrimaryLighter"];
-    callback(null, wordList.map(function(word) {
+    const variableList = Object.keys(VARIABLES);
+    callback(null, [
+      ...variableList.map(function(word) {
         return {
-            caption: word,
-            value: word,
-            meta: "static"
+          caption: word,
+          value: word,
+          meta: 'variable',
         };
-    }));
+      })
+    ]);
   }
 }
+
+langTools.addCompleter(ahaVariablesCompleter);
 
 const CustomTheme = () => {
   const STORAGE_KEY = 'aha-docs.custom-theme-style.v1';
   const [customStyle, setCustomStyle] = useState(defaultCustomStyle);
+
+  const onEditorChange = (value) => {
+    setCustomStyle(value);
+  }
 
   useEffect(() => {
     const savedCustomStyle = localStorage.getItem(STORAGE_KEY);
@@ -175,7 +188,7 @@ const CustomTheme = () => {
               tabSize: 2,
             }}
             value={customStyle}
-            onChange={setCustomStyle}
+            onChange={onEditorChange}
           />
         </Dropdown.Item>
       </Dropdown.Container>
