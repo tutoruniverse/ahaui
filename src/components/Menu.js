@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StaticQuery, graphql, navigate } from 'gatsby';
 import { startCase, sortBy } from 'lodash';
 import { SidebarMenu } from '@ahaui/react';
+import ahaReactConfig from '../../config';
 
 const flatten = arr => arr.map(({ node: { frontmatter, description, parent, subTitle, ...rest } }) => {
   const titleRelative = frontmatter.title;
@@ -113,7 +114,13 @@ const Menu = ({ location: { pathname } }) => (
         }
       });
       const newArr = sortBy(newMenu, 'index');
-      const useCurrent = pathname.replace(/\//g, '.').slice(1).slice(0, -1);
+      const useCurrent = pathname
+        .split('/')
+        .filter((item) => {
+          // Check if the path includes the pathPrefix (current version)
+          return (!!item && item !== ahaReactConfig.version)
+        })
+        .join('.')
       const [currentPath, setCurrentPath] = useState(useCurrent);
       const handleOnSelect = (e) => {
         const linkTo = e.replace(/\./g, '/');

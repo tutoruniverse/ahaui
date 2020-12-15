@@ -5,6 +5,7 @@
   "author": "Got It, Inc.",
   "dependencies": {
     "@ahaui/css": "^2.0.1",
+    "gatsby-plugin-nprogress": "^2.6.0",
     "react-split-pane": "^0.1.91"
   },
   "devDependencies": {
@@ -12,6 +13,7 @@
     "@mdx-js/react": "^1.5.1",
     "@restart/context": "^2.1.4",
     "@restart/hooks": "^0.3.19",
+    "ace-builds": "^1.4.12",
     "astroturf": "^0.10.2",
     "classnames": "^2.2.6",
     "common-tags": "^1.8.0",
@@ -39,6 +41,7 @@
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-ace": "^9.2.1",
     "react-docgen": "^4.1.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",

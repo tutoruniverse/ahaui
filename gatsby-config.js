@@ -93,5 +93,12 @@ module.exports = {
       resolve: 'gatsby-plugin-astroturf',
       options: { extension: '.module.scss' },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `tomato`,
+        showSpinner: false,
+      },
+    },
   ],
 };

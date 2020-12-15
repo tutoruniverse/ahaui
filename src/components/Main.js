@@ -20,7 +20,7 @@ function Main({ children, ...props }) {
     <main className="Container Container--fluid">
       <div className="Grid">
         <TocProvider>
-          <SideNav className="u-sizeFull md:u-size3of12 xl:u-size2of12" location={location} />
+          <SideNav className="u-sizeFull md:u-size3of12 xl:u-size2of12" style={{ padding: 0 }} location={location} />
           {hasToc && (
             <Toc className="u-hidden xl:u-block xl:u-size2of12" />
           )}
