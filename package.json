@@ -57,6 +57,14 @@
       "parser": "4catalyzer"
     }
   },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "homepage": "https://aha.got-it.ai/",
   "keywords": [
     "gatsby"
@@ -71,6 +79,8 @@
     "develop": "gatsby develop",
     "build": "gatsby build --prefix-paths && node renderRedirectIndex.js",
     "clean": "gatsby clean",
-    "sort": "import-sort 'src/pages/**/*.js'"
+    "sort": "import-sort 'src/pages/**/*.js'",
+    "format": "eslint --ext js src --fix",
+    "lint": "eslint --ext js src"
   }
 }

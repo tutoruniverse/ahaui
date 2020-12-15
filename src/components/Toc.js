@@ -67,7 +67,6 @@ function toTree(list) {
   }
   return root;
 }
-/* eslint-disable react/no-unused-state */
 export class TocProvider extends React.Component {
   constructor(...args) {
     super(...args);
@@ -98,7 +97,6 @@ export class TocProvider extends React.Component {
     );
   }
 }
-/* eslint-enable react/no-unused-state */
 
 TocProvider.propTypes = propTypes;
 
@@ -108,7 +106,6 @@ function renderNode(root) {
       {root.title && <a href={`#${root.id}`}>{root.title}</a>}
       <ul className="u-listStyleTypeNone u-listStylePositionInside">
         {root.children.map((item, idx) => (
-          // eslint-disable-next-line react/no-array-index-key
           <ListItem key={idx} level={item.level}>
             {renderNode(item)}
           </ListItem>

@@ -40,7 +40,6 @@ const CodeBlock = ({ className, mode, codeText, ...props }) => {
         styles.block,
         'u-paddingSmall u-roundedLarge',
       )}
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{
         __html:
           mode === null
