@@ -94,9 +94,9 @@ module.exports = {
       options: { extension: '.module.scss' },
     },
     {
-      resolve: `gatsby-plugin-nprogress`,
+      resolve: 'gatsby-plugin-nprogress',
       options: {
-        color: `tomato`,
+        color: 'var(--colorPrimary)',
         showSpinner: false,
       },
     },
