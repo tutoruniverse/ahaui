@@ -54,6 +54,14 @@
       "parser": "4catalyzer"
     }
   },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "homepage": "https://aha.got-it.ai/",
   "keywords": [
     "gatsby"
