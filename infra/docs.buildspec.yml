@@ -26,7 +26,3 @@ phases:
   post_build:
     commands:
       - cd /source; bash infra/docs.deploy.sh
-      
-artifacts:
-  files:
-    - 'public/**/*'
