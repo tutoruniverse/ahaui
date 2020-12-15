@@ -1,7 +1,7 @@
 {
   "name": "@ahaui/docs",
   "description": "Aha Design System - Documentation",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Got It, Inc.",
   "dependencies": {
     "@ahaui/css": "^2.0.1",
