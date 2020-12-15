@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import AceEditor from "react-ace";
 import classNames from 'classnames';
 
-import "ace-builds/src-noconflict/mode-css";
-import "ace-builds/src-noconflict/theme-github";
-import langTools from "ace-builds/src-noconflict/ext-language_tools";
-
-import { Collapse, Logo, SafeAnchor, Icon, Dropdown, Button } from '@ahaui/react';
+import { Collapse, Logo, SafeAnchor, Icon, Dropdown, Button, Loader } from '@ahaui/react';
 import styled from 'astroturf';
 import Menu from './Menu';
 
@@ -126,15 +121,23 @@ const ahaVariablesCompleter = {
   }
 }
 
-langTools.addCompleter(ahaVariablesCompleter);
-
 const CustomTheme = () => {
   const STORAGE_KEY = 'aha-docs.custom-theme-style.v1';
   const [customStyle, setCustomStyle] = useState(defaultCustomStyle);
+  const [AceClass, setAceClass] = useState(null);
 
   const onEditorChange = (value) => {
     setCustomStyle(value);
   }
+
+  useEffect(() => {
+    const AceEditor = require("react-ace").default;
+    require("ace-builds/src-noconflict/mode-css");
+    require("ace-builds/src-noconflict/theme-github");
+    const langTools = require("ace-builds/src-noconflict/ext-language_tools");
+    langTools.addCompleter(ahaVariablesCompleter);
+    setAceClass({ AceEditor });
+  }, []);
 
   useEffect(() => {
     const savedCustomStyle = localStorage.getItem(STORAGE_KEY);
@@ -169,27 +172,33 @@ const CustomTheme = () => {
           className="u-overflowHidden"
           style={{ padding: 0 }}
         >
-          <AceEditor
-            placeholder="Enter your custom CSS here"
-            mode="css"
-            theme="github"
-            name="custom-theme-editor"
-            fontSize={14}
-            showPrintMargin={true}
-            showGutter={true}
-            highlightActiveLine={true}
-            wrapEnabled={true}
-            width={700}
-            setOptions={{
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: false,
-              showLineNumbers: true,
-              tabSize: 2,
-            }}
-            value={customStyle}
-            onChange={onEditorChange}
-          />
+          {AceClass ? (
+            <AceClass.AceEditor
+              placeholder="Enter your custom CSS here"
+              mode="css"
+              theme="github"
+              name="custom-theme-editor"
+              fontSize={14}
+              showPrintMargin={true}
+              showGutter={true}
+              highlightActiveLine={true}
+              wrapEnabled={true}
+              width={700}
+              setOptions={{
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: false,
+                showLineNumbers: true,
+                tabSize: 2,
+              }}
+              value={customStyle}
+              onChange={onEditorChange}
+            />
+          ) : (
+            <div className="u-paddingHorizontalExtraLarge u-paddingVerticalTiny">
+              <Loader />
+            </div>
+          )}
         </Dropdown.Item>
       </Dropdown.Container>
     </Dropdown>
