@@ -76,6 +76,8 @@
     "develop": "gatsby develop",
     "build": "gatsby build --prefix-paths && node renderRedirectIndex.js",
     "clean": "gatsby clean",
-    "sort": "import-sort 'src/pages/**/*.js'"
+    "sort": "import-sort 'src/pages/**/*.js'",
+    "format": "eslint --ext js src --fix",
+    "lint": "eslint --ext js src"
   }
 }

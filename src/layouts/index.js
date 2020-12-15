@@ -16,12 +16,9 @@ const components = {
   h3: props => <LinkedHeading h="3" {...props} />,
   h4: props => <LinkedHeading h="4" {...props} />,
   h5: props => <LinkedHeading h="5" {...props} />,
-  // eslint-disable-next-line react/destructuring-assignment
   pre: props => (React.isValidElement(props.children) ? (
     <CodeBlock
-      // eslint-disable-next-line react/destructuring-assignment
       codeText={props.children.props.children}
-      // eslint-disable-next-line react/destructuring-assignment
       mode={getMode(props.children.props.className)}
     />
   ) : (
