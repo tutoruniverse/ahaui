@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 
 import { Collapse, Logo, SafeAnchor, Icon, Dropdown, Button, Loader } from '@ahaui/react';
+import { Link } from 'gatsby';
 import styled from 'astroturf';
 import Menu from './Menu';
 
@@ -218,7 +219,7 @@ const SideNav = React.forwardRef(({ location, ...props }, ref) => {
       </div>
       <div className="Grid Grid--withoutGutter u-paddingTopSmall u-paddingHorizontalSmall">
         <div className="u-size6of12 md:u-sizeFull">
-          <Logo as={SafeAnchor} href="/" src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-with-text.svg"  height={48} />
+          <Logo as={Link} to="/" src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-with-text.svg"  height={48} />
         </div>
         <div className="u-size6of12">
           <div className="md:u-hidden u-flex u-alignItemsCenter u-justifyContentEnd">
