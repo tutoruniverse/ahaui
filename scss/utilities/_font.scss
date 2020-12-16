@@ -150,29 +150,32 @@
   white-space: nowrap;
 }
 
-[class*="u-textTruncate-"] {
+.u-textTruncate2 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
 
-.u-textTruncate-2 {
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-}
-
-.u-textTruncate-3 {
+.u-textTruncate3 {
   -webkit-line-clamp: 3;
   line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
-.u-textTruncate-4 {
+.u-textTruncate4 {
   -webkit-line-clamp: 4;
   line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
-.u-textTruncate-5 {
+.u-textTruncate5 {
   -webkit-line-clamp: 5;
   line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 .u-textPlaceholder::placeholder {
