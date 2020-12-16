@@ -190,6 +190,7 @@ const CustomTheme = () => {
                 enableSnippets: false,
                 showLineNumbers: true,
                 tabSize: 2,
+                useWorker: false,
               }}
               value={customStyle}
               onChange={onEditorChange}
