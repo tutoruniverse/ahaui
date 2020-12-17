@@ -1,3 +1,7 @@
+## Release 2.0.2 - December 17, 2020
+### Fixed
+* CSSUtilities: revert some deprecated class, details in https://github.com/gotitinc/aha-css/blob/master/scss%2Futilities%2F_deprecated.scss
+
 ## Release 2.0.1 - December 6, 2020
 ### Fixed
 * CSSUtilities: fix `hr` and `u-listItemUnderline`
