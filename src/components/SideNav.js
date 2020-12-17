@@ -4,9 +4,10 @@ import classNames from 'classnames';
 import { Collapse, Logo, SafeAnchor, Icon, Dropdown, Button, Loader } from '@ahaui/react';
 import styled from 'astroturf';
 import Menu from './Menu';
+import AlgoliaSearch from './AlgoliaSearch';
 
 const searchIndices = [
-  { name: 'Docs', title: 'Docs', hitComp: 'AllHit' },
+  { name: 'Aha Design System - Docs', title: 'Aha Design System - Docs', hitComp: 'AllHit' },
 ];
 
 
@@ -225,7 +226,9 @@ const SideNav = React.forwardRef(({ location, ...props }, ref) => {
           </div>
         </div>
       </div>
-
+      <div className="u-paddingSmall u-positionRelative">
+        <AlgoliaSearch collapse indices={searchIndices} />
+      </div>
       <Collapse in={collapsed}>
         <OverflowWrapper>
           <MenuWrapper>

@@ -18,6 +18,9 @@ Metadata:
           - CFLogS3BucketName
           - SubDomain
           - ProxyIndexFunctionArn
+          - AlgoliaAppId
+          - AlgoliaSearchKey
+          - AlgoliaAdminKey
 
 Parameters:
   ApplicationName:
@@ -67,7 +70,15 @@ Parameters:
   ProxyIndexFunctionArn:
     Description: ARN for proxyIndex function
     Type: String
-
+  AlgoliaAppId:
+    Description: Algolia App Id
+    Type: String
+  AlgoliaSearchKey:
+    Description: Algolia Search Key
+    Type: String
+  AlgoliaApiKey:
+    Description: Algolia Api Key
+    Type: String
 Mappings:
   PublicHostedZones:
     prod:
@@ -179,6 +190,12 @@ Resources:
             Value: !Ref GitHubOwner
           - Name: GITHUB_REPO
             Value: !Ref GitHubRepo
+          - Name: GATSBY_ALGOLIA_APP_ID
+            Value: !Ref AlgoliaAppId
+          - Name: GATSBY_ALGOLIA_SEARCH_KEY
+            Value: !Ref AlgoliaSearchKey
+          - Name: GATSBY_ALGOLIA_API_KEY
+            Value: !Ref AlgoliaApiKey
 
       Artifacts:
         Name: !Ref ApplicationName

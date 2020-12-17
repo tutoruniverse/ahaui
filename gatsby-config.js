@@ -2,6 +2,7 @@ const { cleanDoclets } = require('gatsby-transformer-react-docgen/doclets');
 const path = require('path');
 const remarkSlug = require('remark-slug');
 const defaultDescriptions = require('./src/defaultPropDescriptions');
+const algoliaSearch = require('./algoliaSearch');
 const ahaReactConfig = require('./config');
 
 const activeEnv = process.env.ENV || 'dev';
@@ -98,6 +99,15 @@ module.exports = {
       options: {
         color: 'var(--colorPrimary)',
         showSpinner: false,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.GATSBY_ALGOLIA_API_KEY,
+        algoliaSearch,
+        chunkSize: 10000,
       },
     },
   ],
