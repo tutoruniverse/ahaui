@@ -106,6 +106,7 @@ module.exports = {
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.GATSBY_ALGOLIA_API_KEY,
+        indexName: ahaReactConfig.version,
         algoliaSearch,
         chunkSize: 10000,
       },

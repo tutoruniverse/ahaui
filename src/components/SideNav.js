@@ -5,9 +5,9 @@ import { Collapse, Logo, SafeAnchor, Icon, Dropdown, Button, Loader } from '@aha
 import styled from 'astroturf';
 import Menu from './Menu';
 import AlgoliaSearch from './AlgoliaSearch';
-
+import ahaReactConfig from '../../config';
 const searchIndices = [
-  { name: 'Aha Design System - Docs', title: 'Aha Design System - Docs', hitComp: 'AllHit' },
+  { name: ahaReactConfig.version , title: 'Aha Design System - Docs', hitComp: 'AllHit' },
 ];
 
 

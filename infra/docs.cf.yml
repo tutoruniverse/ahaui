@@ -20,7 +20,7 @@ Metadata:
           - ProxyIndexFunctionArn
           - AlgoliaAppId
           - AlgoliaSearchKey
-          - AlgoliaAdminKey
+          - AlgoliaApiKey
 
 Parameters:
   ApplicationName:

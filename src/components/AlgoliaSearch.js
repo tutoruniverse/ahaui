@@ -10,7 +10,7 @@ import {
   connectHighlight
 } from 'react-instantsearch-dom';
 import { Link } from 'gatsby';
-import algoliasearch from 'algoliasearch';
+import algoliasearch from 'algoliasearch/lite';
 import styled from 'astroturf';
 import { Form } from '@ahaui/react';
 
@@ -164,14 +164,14 @@ export default function Search({ indices, collapse }) {
   const [focus, setFocus] = useState(false);
   const appId = process.env.GATSBY_ALGOLIA_APP_ID;
   const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY;
-  // const searchClient = algoliasearch(appId,searchKey);
+  const searchClient = algoliasearch(appId,searchKey);
   const show = query.length > 0 && focus && collapse;
   useClickOutside(wrapperRef, () => setFocus(false));
 
   return (
     <div className="u-flex u-widthFull" ref={wrapperRef}>
       <InstantSearch
-        // searchClient={searchClient}
+        searchClient={searchClient}
         indexName={indices[0].name}
         onSearchStateChange={({ query }) => setQuery(query)}
         root={{ Root }}
