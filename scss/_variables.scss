@@ -297,7 +297,7 @@ $colors-render: (
     lightGray: map-get($color-palette, "neutral100"),
     semiGray: map-get($color-palette, "neutral90"),
     light: map-get($color-palette, "neutral80"),
-    lightalt: map-get($color-palette, "neutral70"),
+    lightAlt: map-get($color-palette, "neutral70"),
     nearlyLight: map-get($color-palette, "neutral60"),
     semiLight: map-get($color-palette, "neutral50"),
     lighter: map-get($color-palette, "neutral40"),
@@ -582,11 +582,11 @@ $zindexs: (
 // I-09. Opacity
 // --------------------------------------------------
 $opacity: (
-  none: 0,
-  quarter: 0.25,
-  half: 0.5,
-  threeQuarter: 0.75,
-  reset: 1
+  0: 0,
+  25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  100: 1
 ) !default;
 
 // I-10. Background

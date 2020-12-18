@@ -18,10 +18,11 @@
 
 ## Status
 
-[![CI](https://github.com/gotitinc/aha-css/workflows/Lint/badge.svg)](https://github.com/gotitinc/aha-css/actions) 
-![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css?label=CSS) 
-[![npm version](https://img.shields.io/npm/v/@ahaui/css)](https://www.npmjs.com/package/@ahaui/css) 
-[![devDependency Status](https://img.shields.io/david/dev/gotitinc/aha-css)](https://david-dm.org/gotitinc/aha-css?type=dev) 
+[![CI](https://github.com/gotitinc/aha-css/workflows/Lint/badge.svg)](https://github.com/gotitinc/aha-css/actions)
+[![](https://data.jsdelivr.com/v1/package/npm/@ahaui/css/badge)](https://www.jsdelivr.com/package/npm/@ahaui/css)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css?label=CSS)
+[![npm version](https://img.shields.io/npm/v/@ahaui/css)](https://www.npmjs.com/package/@ahaui/css)
+[![GitHub issues](https://img.shields.io/github/issues/gotitinc/aha-css)](https://github.com/gotitinc/aha-css/issues)
 
 ## Quick start
 
@@ -103,7 +104,7 @@ Full customizable variables:
   --colorFocusInformation: #375de733;
   --colorInformationDark: #2c4ab8;
   --colorInformationDarker: #21388b;
-  --fontFamily: Roboto,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --fontFamily: roboto, 'Helvetica Neue', helvetica, arial, sans-serif;
   --fontRegular: 400;
   --fontMedium: 500;
   --fontBold: 700;
