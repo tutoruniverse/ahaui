@@ -1,0 +1,208 @@
+/*!
+ * Deprecated Utilities class
+ * Since 2.0.2
+ */
+
+@mixin deprecated($className: '') {
+  --deprecated: "WARNING: Use '#{$className}' instead";
+}
+
+// Flex
+.u-flexGrow-0 {
+  flex-grow: 0;
+
+  @include deprecated('u-flexGrow0');
+}
+
+.u-flexGrow-1 {
+  flex-grow: 1;
+
+  @include deprecated('u-flexGrow1');
+}
+
+.u-flexShrink-0 {
+  flex-shrink: 0;
+
+  @include deprecated('u-flexShrink0');
+}
+
+.u-flexShrink-1 {
+  flex-shrink: 1;
+
+  @include deprecated('u-flexShrink1');
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      .#{$infix}\:u-flexGrow-0 {
+        flex-grow: 0;
+
+        @include deprecated('.#{$infix}\:u-flexGrow0');
+      }
+
+      .#{$infix}\:u-flexGrow-1 {
+        flex-grow: 1;
+
+        @include deprecated('.#{$infix}\:u-flexGrow1');
+      }
+
+      .#{$infix}\:u-flexShrink-0 {
+        flex-shrink: 0;
+
+        @include deprecated('.#{$infix}\:u-flexShrink0');
+      }
+
+      .#{$infix}\:u-flexShrink-1 {
+        flex-shrink: 1;
+
+        @include deprecated('.#{$infix}\:u-flexShrink1');
+      }
+    }
+  }
+}
+
+// Position
+.u-positionTop-50 {
+  top: 50%;
+
+  @include deprecated('u-positionTop50');
+}
+
+.u-positionTop-100 {
+  top: 100%;
+
+  @include deprecated('u-positionTop100');
+}
+
+.u-positionRight-50 {
+  right: 50%;
+
+  @include deprecated('u-positionRight50');
+}
+
+.u-positionRight-100 {
+  right: 100%;
+
+  @include deprecated('u-positionRight100');
+}
+
+.u-positionBottom-50 {
+  bottom: 50%;
+
+  @include deprecated('u-positionBottom50');
+}
+
+.u-positionBottom-100 {
+  bottom: 100%;
+
+  @include deprecated('u-positionBottom100');
+}
+
+.u-positionLeft-50 {
+  left: 50%;
+
+  @include deprecated('u-positionLeft50');
+}
+
+.u-positionLeft-100 {
+  left: 100%;
+
+  @include deprecated('u-positionLeft100');
+}
+
+// Opacity
+
+.u-opacityQuarter {
+  opacity: 0.25;
+
+  @include deprecated('u-opacity25');
+}
+
+.hover\:u-opacityQuarter:hover {
+  @media (hover: hover) {
+    opacity: 0.25;
+  }
+
+  @include deprecated('hover:u-opacity25');
+}
+
+.u-opacityHalf {
+  opacity: 0.5;
+
+  @include deprecated('u-opacity50');
+}
+
+.hover\:u-opacityHalf:hover {
+  @media (hover: hover) {
+    opacity: 0.5;
+  }
+
+  @include deprecated('hover:u-opacity50');
+}
+
+.u-opacityThreeQuarter {
+  opacity: 0.75;
+
+  @include deprecated('u-opacity75');
+}
+
+.hover\:u-opacityThreeQuarter:hover {
+  @media (hover: hover) {
+    opacity: 0.75;
+  }
+
+  @include deprecated('hover:u-opacity75');
+}
+
+// BackgroundColor
+.u-backgroundLightalt {
+  background-color: map-deep-get($colors-render, "background", "lightAlt");
+
+  @include deprecated('u-backgroundLightAlt');
+}
+
+.hover\:u-backgroundLightalt:hover {
+  @media (hover: hover) {
+    background-color: map-deep-get($colors-render, "background", "lightAlt");
+  }
+
+  @include deprecated('hover:u-backgroundLightAlt');
+}
+
+// Text
+
+[class*="u-textTruncate-"] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.u-textTruncate-2 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+
+  @include deprecated('u-textTruncate2');
+}
+
+.u-textTruncate-3 {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+
+  @include deprecated('u-textTruncate3');
+}
+
+.u-textTruncate-4 {
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+
+  @include deprecated('u-textTruncate4');
+}
+
+.u-textTruncate-5 {
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+
+  @include deprecated('u-textTruncate5');
+}

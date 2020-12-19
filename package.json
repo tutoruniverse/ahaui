@@ -1,6 +1,6 @@
 {
   "name": "@ahaui/css",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Aha Design System - CSS",
   "style": "dist/index.min.css",
   "sass": "scss/index.scss",
@@ -20,8 +20,10 @@
     "minify": "yarn minify-index && yarn minify-utilities",
     "minify-index": "cleancss --level 1 --format breakWith=lf  --output dist/index.min.css dist/index.css",
     "minify-utilities": "cleancss --level 1 --format breakWith=lf  --output dist/utilities.min.css dist/utilities.css",
-    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd"
-    },
+    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd",
+    "prepack": "clean-package -rm devDependencies scripts",
+    "postpack": "clean-package restore"
+  },
   "author": "Got It, Inc.",
   "homepage": "https://github.com/gotitinc/aha-css#readme",
   "license": "Apache-2.0",
@@ -35,6 +37,7 @@
   "devDependencies": {
     "autoprefixer": "9.6.1",
     "clean-css-cli": "4.3.0",
+    "clean-package": "^1.0.1",
     "del-cli": "3.0.1",
     "node-sass": "4.13.1",
     "node-sass-import": "2.0.1",
