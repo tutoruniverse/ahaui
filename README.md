@@ -104,7 +104,7 @@ Full customizable variables:
   --colorFocusInformation: #375de733;
   --colorInformationDark: #2c4ab8;
   --colorInformationDarker: #21388b;
-  --fontFamily: Roboto, 'Helvetica Neue', helvetica, arial, sans-serif;
+  --fontFamily: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --fontRegular: 400;
   --fontMedium: 500;
   --fontBold: 700;
