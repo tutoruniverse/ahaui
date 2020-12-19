@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, SafeAnchor } from '@ahaui/react';
+import { Button } from '@ahaui/react';
+import { Link } from 'gatsby';
 import pkg from '../../aha-react/package.json';
 
 import withLayout from '../withLayout';
@@ -22,18 +23,18 @@ export default withLayout(
                   An ever-evolving system that enables us to build higher quality products more&nbsp;efficiently
                 </div>
                 <Button
-                  as={SafeAnchor}
+                  as={Link}
                   size="large"
                   className="u-marginTopLarge"
-                  href="/getting-started/introduction"
+                  to="/getting-started/introduction"
                 >
                   Get started
                 </Button>
                 <div className="u-marginTopSmall">
                   Current release:&nbsp;
-                  <SafeAnchor href="/release-notes/">
+                  <Link to="/release-notes/">
                     {pkg.version}
-                  </SafeAnchor>
+                  </Link>
                 </div>
               </div>
             </div>
