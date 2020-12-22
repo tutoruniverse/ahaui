@@ -369,9 +369,9 @@ $colors-render: (
     transparent: transparent
   ),
   disabled: (
-    color: map-get($colors, "neutral80"),
-    background: map-get($colors, "neutral30"),
-    border: map-get($colors, "neutral30")
+    color: map-get($color-palette, "neutral80"),
+    background: map-get($color-palette, "neutral30"),
+    border: map-get($color-palette, "neutral30")
   ),
   linkHref: (
     color: var(--colorPrimary),
