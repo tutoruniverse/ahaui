@@ -1,3 +1,7 @@
+## Release 2.0.3 - December 23, 2020
+### Fixed
+* SCSS: fixed variables
+
 ## Release 2.0.2 - December 17, 2020
 ### Fixed
 * CSSUtilities: revert some deprecated class, details in [_deprecated.scss](https://github.com/gotitinc/aha-css/blob/master/scss/utilities/_deprecated.scss
