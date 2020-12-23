@@ -827,7 +827,7 @@ $forms: (
     box-shadow: 0 0 0 4px var(--colorFocusPrimary)
   ),
   placeholder: (
-    color: map-deep-get($colors, "neutral60")
+    color: map-deep-get($color-palette, "neutral60")
   ),
   disabled: (
     background-color: map-deep-get($colors-render, "disabled", "background"),
