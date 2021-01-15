@@ -27,6 +27,7 @@ export const AllIcons = () => {
      <SearchBox
         value={searchText}
         onChange={handleSearch}
+        placeholder="Search icon ..."
       />
      {iconDisplay && (
         <CodeView horizontal show codeText={`<Icon size="medium" name="${iconDisplay}"/>`} />
