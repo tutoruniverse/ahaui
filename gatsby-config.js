@@ -38,7 +38,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: path.resolve(__dirname, '../aha-react/src'),
+        path: path.resolve(__dirname, './aha-react/src'),
         name: 'source',
       },
     },
@@ -52,7 +52,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: path.resolve(__dirname, '../aha-react/CHANGELOG.md'),
+        path: path.resolve(__dirname, './aha-react/CHANGELOG.md'),
         name: 'CHANGELOG',
       },
     },
