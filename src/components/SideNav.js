@@ -185,7 +185,7 @@ const CustomTheme = () => {
               showGutter={true}
               highlightActiveLine={true}
               wrapEnabled={true}
-              width={'700px'}
+              width="700px"
               setOptions={{
                 enableBasicAutocompletion: true,
                 enableLiveAutocompletion: true,
