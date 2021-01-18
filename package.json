@@ -1,11 +1,10 @@
 {
   "name": "@ahaui/docs",
   "description": "Aha Design System - Documentation",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Got It, Inc.",
   "dependencies": {
-    "@ahaui/css": "^2.0.1",
-    "react-split-pane": "^0.1.91"
+    "@ahaui/css": "^2.0.1"
   },
   "devDependencies": {
     "@mdx-js/mdx": "^1.5.1",
