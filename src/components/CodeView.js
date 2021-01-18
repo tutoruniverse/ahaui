@@ -37,9 +37,11 @@ const scope = {
   Faker,
 };
 
+
+
 const StyledContainer = AhaReact.createBlock('u-positionRelative u-marginBottomLarge u-backgroundWhite');
 const EditorInfoMessage = AhaReact.createBlock('u-backgroundPositiveLighter u-textDark u-positionAbsolute u-positionTop u-positionRight u-text100 u-paddingHorizontalExtraSmall u-paddingVerticalTiny');
-const StyledPreview = AhaReact.createBlock('u-positionRelative u-paddingSmall u-paddingBottomMedium');
+const StyledPreview = AhaReact.createBlock('u-positionRelative u-paddingSmall');
 function Preview({ className, transparentBackground }) {
   const exampleRef = useRef();
   const live = useContext(LiveContext);
@@ -92,7 +94,7 @@ function Preview({ className, transparentBackground }) {
 
 let uid = 0;
 
-function Editor() {
+function Editor({className, liveEditorClassName}) {
   const [focused, setFocused] = useState(false);
   const [ignoreTab, setIgnoreTab] = useState(false);
   const [keyboardFocused, setKeyboardFocused] = useState(false);
@@ -137,13 +139,19 @@ function Editor() {
 
   return (
     <div
-      className="u-positionRelative u-overflowVerticalAuto"
+      className={classNames(
+        'u-positionRelative u-overflowVerticalAuto',
+        className
+      )}
       style={{
         maxHeight: '60vh',
       }}
     >
       <LiveEditor
-        className="u-positionRelative u-backgroundDark u-textWhite"
+        className={classNames(
+          'u-positionRelative u-backgroundDark u-textWhite',
+          liveEditorClassName
+        )}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
@@ -179,15 +187,19 @@ const propTypes = {
   codeText: PropTypes.string.isRequired,
 };
 
-function CodeView({ codeText, exampleClassName, showCode = true, transparentBackground = false }) {
+function CodeView({ codeText, exampleClassName, showCode = true, transparentBackground = false, show = false, horizontal = false,  }) {
   // Remove Prettier comments and trailing semicolons in JSX in displayed code.
   const code = codeText
     .replace(PRETTIER_IGNORE_REGEX, '')
     .trim()
     .replace(/>;$/, '>');
-  const [openCode, setOpenCode] = useState(false);
+  const [openCode, setOpenCode] = useState(show);
   return (
-    <StyledContainer>
+    <StyledContainer 
+      className={classNames(
+        horizontal && 'u-flex'
+      )}
+    >
       <LiveProvider
         scope={scope}
         code={code}
@@ -195,8 +207,11 @@ function CodeView({ codeText, exampleClassName, showCode = true, transparentBack
         noInline={codeText.includes('render(')}
       >
         <div className="u-positionRelative u-border u-borderUltraLight">
-          <Preview transparentBackground={transparentBackground} showCode={showCode} className={exampleClassName} />
-          {showCode && (
+          <Preview
+            transparentBackground={transparentBackground} 
+            showCode={showCode} 
+            className={exampleClassName} horizontal show />
+          {showCode && !show && (
             <AhaReact.Overlay.Trigger
               placement="top"
               overlay={props => (
@@ -221,9 +236,16 @@ function CodeView({ codeText, exampleClassName, showCode = true, transparentBack
         {showCode && (
           <AhaReact.Collapse
             in={openCode}
-          >
+            className={classNames(
+              horizontal && 'u-flexGrow1 u-flex'
+            )}>
             <div>
-              <Editor />
+              <Editor className={classNames(
+                horizontal && 'u-flexGrow1 u-flex'
+              )} 
+              liveEditorClassName={classNames(
+                horizontal && 'u-flexGrow1'
+              )}/>
             </div>
           </AhaReact.Collapse>
         )}

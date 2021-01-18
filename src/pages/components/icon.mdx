@@ -4,7 +4,8 @@ title: Icon
 import { graphql } from 'gatsby';
 import { useState } from 'react';
 import classNames from 'classnames';
-import { Icon } from '@ahaui/react';
+import copy from 'copy-text-to-clipboard';
+import { Icon, SearchBox, Overlay, Tooltip } from '@ahaui/react';
 import { icons } from '@ahaui/react/constants/icons';
 import ComponentApi from 'src/components/ComponentApi';
 import CodeView from 'src/components/CodeView';
@@ -12,15 +13,27 @@ import colorIcon from 'src/examples/Icon/color';
 import sizeIcon from 'src/examples/Icon/size';
 
 
+
 export const AllIcons = () => {
   const [iconDisplay, setIconDisplay] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setIconDisplay(null);
+    setSearchText(value.toLowerCase())
+  }
   return (
     <>
+     <SearchBox
+        value={searchText}
+        onChange={handleSearch}
+        placeholder="Search icon ..."
+      />
      {iconDisplay && (
-        <CodeView codeText={`<Icon size="extraLarge" name="${iconDisplay}"/>`} />
+        <CodeView horizontal show codeText={`<Icon size="medium" name="${iconDisplay}"/>`} />
       )}
       <div className="u-positionRelative u-paddingSmall u-marginBottomExtraSmall u-border u-borderSmall u-borderUltraLight u-roundedMedium">
-        {Object.keys(icons).map(item => (
+        {Object.keys(icons).filter(item => item.includes(searchText)).map(item => (
           <div
             onClick={() => setIconDisplay(item)}
             key={item}
@@ -29,7 +42,18 @@ export const AllIcons = () => {
               (iconDisplay === item) && 'u-textPrimary'
             )}
           >
-            <Icon name={item} size="large" />
+          <Overlay.Trigger
+            placement="bottom"
+            delay={{ show: 500, hide: 1000 }}
+            hoverOverlay
+            overlay={props => (
+              <Tooltip id="tooltip-icon-search" {...props}>
+                  {item}
+              </Tooltip>
+            )}
+            >
+              <Icon name={item} size="medium" />
+            </Overlay.Trigger>
           </div>
         ))}
       </div>

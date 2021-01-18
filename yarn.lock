@@ -3,9 +3,9 @@
 
 
 "@ahaui/css@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@ahaui/css/-/css-2.0.1.tgz#f3767736a6b33fcb8b48fde9d763a85f47b15d63"
-  integrity sha512-ousMzxbsxIaVaM9FxXHF/tEJy20Rr5gcfNbD0CQ3mz2QPepWUAHk3+KAgQSJI9oqy7BlssY5racYRslmUaWyYg==
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@ahaui/css/-/css-2.0.3.tgz#f2571bd74eaa52bb3062fdd259b3e9486356ed9d"
+  integrity sha512-S6zVKqXOEau5I2rvNA2XFs3ZZbbdbgYEQc13g522OVX32hFvQqJed9/hSU/a2kpD7LTQrugkt6LFedb1zx3gUw==
 
 "@algolia/cache-browser-local-storage@4.8.3":
   version "4.8.3"
