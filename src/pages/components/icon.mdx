@@ -5,7 +5,7 @@ import { graphql } from 'gatsby';
 import { useState } from 'react';
 import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
-import { Icon, SearchBox, Overlay, Tooltip } from '@ahaui/react';
+import { Icon, Form, Overlay, Tooltip } from '@ahaui/react';
 import { icons } from '@ahaui/react/constants/icons';
 import ComponentApi from 'src/components/ComponentApi';
 import CodeView from 'src/components/CodeView';
@@ -24,11 +24,13 @@ export const AllIcons = () => {
   }
   return (
     <>
-     <SearchBox
-        value={searchText}
-        onChange={handleSearch}
-        placeholder="Search icon ..."
-      />
+      <Form.Group controlId="search-icon" sizeControl="small">
+        <Form.Input
+          value={searchText}
+          onChange={handleSearch}
+          placeholder="Search icon ..."
+        />
+      </Form.Group>
      {iconDisplay && (
         <CodeView horizontal show codeText={`<Icon size="medium" name="${iconDisplay}"/>`} />
       )}
