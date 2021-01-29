@@ -365,7 +365,7 @@ $colors-render: (
     negative: var(--colorNegative),
     negativeLight: var(--colorNegativeLight),
     negativeLighter: var(--colorNegativeLighter),
-    white: map-get($colors, white),
+    white: map-get($color-palette, white),
     transparent: transparent
   ),
   disabled: (
