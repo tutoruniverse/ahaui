@@ -451,6 +451,12 @@ textarea.FormInput {
 .FormInput--select {
   padding: 0;
 
+  &.is-disabled {
+    @each $pro, $proval in map-deep-get($forms, 'disabled') {
+      #{$pro}: $proval;
+    }
+  }
+
   .FormInput-select {
     padding: map-deep-get($forms, 'sizes', 'base', 'padding');
     padding-right: 2rem;
