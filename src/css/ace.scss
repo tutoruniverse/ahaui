@@ -1,0 +1,22 @@
+.ace_hex-color {
+  position: relative;
+  color: #059a9a;
+}
+
+.ace_hex-color::after {
+  position: absolute;
+  content: '';
+  right: -25px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  background-color: #8f8f8f;
+  background-color: var(--hexColor);
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+// Color picker
+.sketch-picker input {
+  box-sizing: content-box;
+}

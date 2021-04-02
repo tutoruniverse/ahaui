@@ -1,4 +1,4 @@
-// require('../../scss/index-sfvn.scss');
+require('./css/ace.scss');
 const React = require('react');
 const { MDXProvider } = require('@mdx-js/react');
 
