@@ -1,6 +1,6 @@
 {
   "name": "@ahaui/css",
-  "version": "2.0.4-alpha.3",
+  "version": "2.0.4-alpha.4",
   "description": "Aha Design System - CSS",
   "style": "dist/index.min.css",
   "sass": "scss/index.scss",
