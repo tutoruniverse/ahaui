@@ -1,6 +1,7 @@
 ## Release 2.0.3 - December 23, 2020
 ### Fixed
 * SCSS: fixed variables that affected disabled Button style
+* SCSS: TopMenu-itemAfter, TopMenu-itemBefore of TopMenu-subMenu has wrong position
 
 ## Release 2.0.2 - December 17, 2020
 ### Fixed
