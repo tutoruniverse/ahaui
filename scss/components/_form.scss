@@ -474,4 +474,10 @@ textarea.FormInput {
   &.is-multiple {
     height: auto;
   }
+
+  &.is-disabled {
+    @each $pro, $proval in map-deep-get($forms, 'disabled') {
+      #{$pro}: $proval;
+    }
+  }
 }
