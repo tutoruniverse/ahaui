@@ -387,9 +387,9 @@ $fonts: (
     monospace: "SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace",
   ),
   weights: (
-    regular: var(--fontRegular),
-    medium: var(--fontMedium),
-    bold: var(--fontBold)
+    regular: 400,
+    medium: 500,
+    bold: 700
   ),
   lineHeights: (
     medium: 1.5,
