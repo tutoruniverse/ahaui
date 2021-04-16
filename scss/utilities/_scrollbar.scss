@@ -10,21 +10,31 @@
 
 .u-webkitScrollbar--white::-webkit-scrollbar-thumb:vertical,
 .u-webkitScrollbar--white::-webkit-scrollbar-thumb:horizontal {
-  background-color: map-get($webkit-scrollbar, bg);
+  background-color: map-get($webkit-scrollbar, white);
 }
 
 .u-webkitScrollbar::-webkit-scrollbar-thumb:vertical {
-  margin: map-get($webkit-scrollbar, width);
+  margin: map-get($webkit-scrollbar, margin);
   -webkit-border-radius: map-get($webkit-scrollbar, width);
 }
 
 .u-webkitScrollbar::-webkit-scrollbar-thumb:horizontal {
   margin: 0;
-  -webkit-border-radius: 2.5px;
+  -webkit-border-radius: map-get($webkit-scrollbar, width) /2;
 }
 
 .u-webkitScrollbar::-webkit-scrollbar-button:start:decrement,
 .u-webkitScrollbar::-webkit-scrollbar-button:end:increment {
   height: map-get($webkit-scrollbar, width);
   display: block;
+}
+
+.u-webkitScrollbar--hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.u-webkitScrollbar--hidden::-webkit-scrollbar {
+  width: 0;
+  display: none;
 }
