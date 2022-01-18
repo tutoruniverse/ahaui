@@ -1,3 +1,17 @@
+## Release 2.0.4 - January 18, 2022
+### Fixed
+* SCSS:
+  - TopMenu-itemAfter, TopMenu-itemBefore of TopMenu-subMenu has wrong position
+  - BubbleChat: update opacity of typing indicators (three dots)
+  - Form: update `is-disabled` styles
+  - Toastify: Toastify--animate and Toastify__toast to support new version
+* CSSUtilities:
+  - u-fontRegular, u-fontMedium, u-fontBold are now using variables
+  - u-webkitScrollbar: update styles
+### Updated
+* Shadow: increase `y` value of all sizes
+* Size: added `u-minHeightFull`, `u-maxHeightFull`
+
 ## Release 2.0.3 - December 23, 2020
 ### Fixed
 * SCSS: fixed variables that affected disabled Button style

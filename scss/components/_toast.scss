@@ -1,14 +1,14 @@
 @charset "UTF-8";
 /* stylelint-disable scss/selector-no-union-class-name */
 
-/* fork from react-toastify */
+/* fork from react-toastify@7.0.4 */
 $rt-toast-width: 320px !default;
 $rt-toast-background: #fff !default;
 $rt-toast-min-height: 64px !default;
 $rt-toast-max-height: 800px !default;
 
 $rt-color-default: #fff !default;
-$rt-color-dark: map-deep-get($colors-render, 'background', 'dark') !default;
+$rt-color-dark: map-deep-get($colors-render, "background", "dark") !default;
 $rt-color-info: var(--colorInformation) !default;
 $rt-color-success: var(--colorPositive) !default;
 $rt-color-warning: var(--colorWarning) !default;
@@ -20,6 +20,8 @@ $rt-text-color-dark: #fff !default;
 $rt-color-progress-dark: #bb86fc !default;
 $rt-mobile: "only screen and (max-width : 480px)" !default;
 $rt-z-index: 9999 !default;
+
+/* react-toastify/scss/_toast.scss */
 
 .Toastify__toast {
   padding: 16px;
@@ -69,6 +71,18 @@ $rt-z-index: 9999 !default;
   &-body {
     margin: auto 0;
     flex: 1 1 auto;
+  }
+}
+
+.Toastify--animate {
+  animation-fill-mode: both;
+  animation-duration: 0.7s;
+}
+
+@media #{$rt-mobile} {
+  .Toastify__toast {
+    margin-bottom: 0;
+    border-radius: 0;
   }
 }
 
@@ -142,12 +156,6 @@ $rt-z-index: 9999 !default;
   }
 }
 
-@media #{$rt-mobile} {
-  .Toastify__toast {
-    margin-bottom: 0;
-  }
-}
-
 @keyframes trackProgress {
   0% {
     transform: scaleX(1);
@@ -193,6 +201,8 @@ $rt-z-index: 9999 !default;
 }
 
 // entrance and exit animations
+
+/* react-toastify/scss/animations/_bounce.scss */
 .Toastify__bounce-enter {
   &--top-left,
   &--bottom-left {
@@ -233,6 +243,7 @@ $rt-z-index: 9999 !default;
   }
 }
 
+/* react-toastify/scss/animations/_zoom.scss */
 .Toastify__zoom-enter {
   animation-name: zoomIn;
 }
@@ -241,6 +252,7 @@ $rt-z-index: 9999 !default;
   animation-name: zoomOut;
 }
 
+/* react-toastify/scss/animations/_flip.scss */
 .Toastify__flip-enter {
   animation-name: flipIn;
 }
@@ -249,6 +261,7 @@ $rt-z-index: 9999 !default;
   animation-name: flipOut;
 }
 
+/* react-toastify/scss/animations/_slide.scss */
 .Toastify__slide-enter {
   &--top-left,
   &--bottom-left {
@@ -289,6 +302,7 @@ $rt-z-index: 9999 !default;
   }
 }
 
+/* react-toastify/scss/_closeButton.scss */
 .Toastify__close-button {
   opacity: 0.5;
 

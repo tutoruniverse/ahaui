@@ -33,7 +33,7 @@
 // Example class name: .u-fontRegular
 @each $key, $value in map-get($fonts, "weights") {
   .u-font#{capitalize($key)} {
-    font-weight: $value;
+    font-weight: var(--font#{capitalize($key)});
   }
 }
 
