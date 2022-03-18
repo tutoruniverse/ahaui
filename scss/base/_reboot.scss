@@ -32,6 +32,8 @@ body {
   font-weight: var(--fontRegular);
   line-height: map-deep-get($fonts, "sizes", "text300", "line-height");
   margin: 0;
+  -webkit-font-smooth: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 //Render the `main` element consistently in IE.
