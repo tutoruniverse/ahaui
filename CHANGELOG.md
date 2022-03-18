@@ -2,6 +2,8 @@
 ### Fixed
 * SCSS:
   - FormCheck-label: use `display: block` to prevent wrong position of `::before` pseudoelement, when it contains other `display: block` elements (Firefox bug).
+### Updated
+* Add font-smooth
 
 ## Release 2.0.4 - January 18, 2022
 ### Fixed
