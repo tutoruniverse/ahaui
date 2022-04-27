@@ -386,6 +386,10 @@ $fonts: (
     base: "Roboto,'Helvetica Neue',Helvetica,Arial,sans-serif",
     monospace: "SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace",
   ),
+  smoothing: (
+    webkit: 'antialiased',
+    moz: 'grayscale',
+  ),
   weights: (
     regular: 400,
     medium: 500,

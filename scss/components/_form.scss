@@ -9,6 +9,7 @@
 
   &-label {
     position: relative;
+    display: block;
 
     &::before,
     &::after {
@@ -17,7 +18,7 @@
       height: 1rem;
       left: -1.5rem;
       position: absolute;
-      top: 2px;
+      top: 4px;
       width: 1rem;
     }
 

@@ -4,6 +4,8 @@
   }
 
   --fontFamily: #{map-deep-get($fonts, "family", "base")};
+  --webkitFontSmoothing: #{map-deep-get($fonts, "smoothing", "webkit")};
+  --mozFontSmoothing: #{map-deep-get($fonts, "smoothing", "moz")};
 
   @each $weight, $value in map-deep-get($fonts, "weights") {
     --font#{capitalize($weight)}: #{$value};
