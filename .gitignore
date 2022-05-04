@@ -110,3 +110,5 @@ dist
 public
 
 gh-pages-root
+
+.DS_Store
