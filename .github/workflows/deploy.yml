@@ -19,4 +19,8 @@ jobs:
       - run: yarn install && cd aha-react && yarn install
       - run: npm run build
       - run: npm run deploy
+        env:
+          GATSBY_ALGOLIA_API_KEY: ${{ secrets.GATSBY_ALGOLIA_API_KEY }}
+          GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
+          GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
 
