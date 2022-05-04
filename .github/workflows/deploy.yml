@@ -22,5 +22,5 @@ jobs:
           GATSBY_ALGOLIA_API_KEY: ${{ secrets.GATSBY_ALGOLIA_API_KEY }}
           GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
           GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
-      - run: npm run deploy
+      - run: npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
 
