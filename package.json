@@ -87,7 +87,6 @@
     "clean": "gatsby clean",
     "sort": "import-sort 'src/pages/**/*.js'",
     "format": "eslint --ext js src --fix",
-    "lint": "eslint --ext js src",
-    "deploy": "gh-pages -d public"
+    "lint": "eslint --ext js src"
   }
 }

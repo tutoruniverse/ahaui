@@ -4,4 +4,4 @@ const ahaReactConfig = require('./config');
 
 const templateFile = fs.readFileSync('redirect.ejs', 'utf-8');
 const html = ejs.render(templateFile, { version: ahaReactConfig.version });
-fs.writeFileSync('index.html', html);
+fs.writeFileSync('gh-pages-root/index.html', html);

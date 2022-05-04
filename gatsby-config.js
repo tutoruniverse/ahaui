@@ -23,7 +23,7 @@ module.exports = {
       'last 2 Safari versions',
     ],
   },
-  pathPrefix: ahaReactConfig.version,
+  pathPrefix: 'aha/' + ahaReactConfig.version,
   plugins: [
     'gatsby-plugin-sorted-assets',
     {
