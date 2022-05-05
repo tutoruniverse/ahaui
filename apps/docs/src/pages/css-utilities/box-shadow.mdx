@@ -1,0 +1,56 @@
+---
+title: Box Shadow
+---
+import classNames from 'classnames';
+
+export const classExtractBoxShadow = [
+  { className: 'u-shadowSmall' },
+  { className: 'u-shadowMedium' },
+  { className: 'u-shadowLarge' },
+  { className: 'u-shadowExtraLarge' },
+  { className: 'u-shadowNone' },
+  { className: 'focus:u-shadowOutline', clickAble: true },
+];
+
+# Box Shadow
+
+## Introduction
+
+Add or remove shadows to elements with box-shadow CSS-Utilities.
+
+## ClassName
+<table className="Table Table--layoutFixed u-backgroundWhite u-textDark u-border u-borderTopNone">
+  <thead>
+    <tr>
+      <th>CSS Class</th>
+      <th width="240">Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    {classExtractBoxShadow.map((item) => {
+      const Component = item.clickAble ? 'button' : 'div';
+      return (
+        <tr key={item.index}>
+          <td className="u-textNoWrap">
+            <code>.{item.className}</code>
+          </td>
+          <td className="u-positionRelative u-paddingExtraSmall u-flex">
+            <Component
+              className={classNames(
+                'u-marginExtraSmall u-paddingVerticalSmall u-backgroundOpaline u-sizeFill',
+                item.clickAble && 'u-border',
+                item.className && item.className
+              )}
+            />
+          </td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
+
+## Hover
+
+Convey meaning through opacity with a handful of shadow utility classes. Includes support for styling links with hover states, too.
+
+Example: &nbsp;<code className="hover:u-shadowLarge">.hover:u-shadowLarge</code>

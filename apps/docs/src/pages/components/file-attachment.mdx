@@ -1,0 +1,115 @@
+---
+title: File Attachment
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+import textFileAttachment from 'src/examples/FileAttachment/text';
+import imageFileAttachment from 'src/examples/FileAttachment/image';
+import codeFileAttachment from 'src/examples/FileAttachment/code';
+import spreadsheetFileAttachment from 'src/examples/FileAttachment/spreadsheet';
+import queryFileAttachment from 'src/examples/FileAttachment/query';
+import powerpointFileAttachment from 'src/examples/FileAttachment/powerpoint';
+import withActionsFileAttachment from 'src/examples/FileAttachment/withAction';
+
+# File Attachment
+
+## Introduction
+
+The File Attachment component is using to show the attached file types which were browsed and chosen by users from the input file field.
+
+<img
+  src={require('src/assets/structure/stb_file-attachment-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_file-attachment-structure@2x.jpg')} 2x`}
+  className="u-maxWidthFull"
+  alt="File Attachment"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    File type icon
+    <i className="u-text200"> - Showing an icon of text files, images, code files, etc.</i>
+  </li>
+  <li>
+    File type label
+    <i className="u-text200"> - In some cases, there are some file types that used the same icon. So this file type label can specifically show the file type. For example, .PNG and .JPG will be used as the same icon for images.</i>
+  </li>
+  <li>
+    File name label
+    <i className="u-text200"> -  Showing the name of the file.</i>
+  </li>
+  <li>
+    Remove button
+    <i className="u-text200"> - (Optional) Designed to remove the attached file purpose.</i>
+  </li>
+  <li>
+    Actions
+    <i className="u-text200"> - (Optional) Designed to show the actions when using the file attachment component as bubble chat.</i>
+  </li>
+  <li>
+    Background
+    <i className="u-text200"> - Including background-color and background-border, it helps to separate the file with each other.</i>
+  </li>
+</ol>
+
+## Examples
+
+### Text file
+
+Using for .txt file.
+
+<CodeView codeText={textFileAttachment} />
+
+### Image file
+
+Using for .png, .jpg and .gif files
+
+<CodeView codeText={imageFileAttachment} />
+
+### Code file
+
+Using for .html, .svg, .js and .md files.
+
+<CodeView codeText={codeFileAttachment} />
+
+### Spreadsheet file
+
+Using for .xlsx and .csv files.
+
+<CodeView codeText={spreadsheetFileAttachment} />
+
+### PowerPoint file
+
+Using for .ppt and .pptx files.
+
+<CodeView codeText={powerpointFileAttachment} />
+
+### Query file
+
+Using for .sql file.
+
+<CodeView codeText={queryFileAttachment} />
+
+### With actions
+
+Users can click on the buttons to execute the corresponding features. The maximum of buttons is 2.
+
+<CodeView codeText={withActionsFileAttachment} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+
+export const query = graphql`
+  query FileAttachmentQuery {
+    metadata: componentMetadata(displayName: { eq: "FileAttachment" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

@@ -1,0 +1,53 @@
+---
+title: Avatars
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+import photoAvatar from 'src/examples/Avatars/photo';
+import sizesAvatar from 'src/examples/Avatars/size';
+import textsAvatar from 'src/examples/Avatars/text';
+
+# Avatars
+
+## Introduction
+An avatar is a circular component, which is used to represent people (askers & experts) and objects (system). Avatars can be photos, illustrations or icons.
+
+## Examples
+
+### Variants
+
+#### Photo avatar
+Uploaded by users. When an image hasn't been uploaded, the default avatar will be used.
+
+<CodeView codeText={photoAvatar} />
+
+#### Text avatar
+
+<CodeView codeText={textsAvatar} />
+
+
+#### Sizes
+
+The following are the available sizes of the avatars:
+
+<CodeView codeText={sizesAvatar} />
+
+## Design Reference
+
+N/A
+
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+export const query = graphql`
+  query AvatarQuery {
+    metadata: componentMetadata(displayName: { eq: "Avatar" }) {
+      displayName
+      ...ComponentApi_metadata
+    }
+  }
+`;

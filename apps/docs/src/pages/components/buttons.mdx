@@ -1,0 +1,267 @@
+---
+title: Buttons
+---
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+import { Button } from '@ahaui/react';
+import sizesButton from 'src/examples/Button/size';
+import widthDefault from 'src/examples/Button/widthDefault';
+import brandMicrosoft from 'src/examples/Button/brandMicrosoft';
+import brandGoogle from 'src/examples/Button/brandGoogle';
+import groupStylesButton from 'src/examples/Button/groupStyles';
+import groupIconsButton from 'src/examples/Button/groupIcons';
+import groupSizesButton from 'src/examples/Button/groupSizes';
+
+# Buttons
+
+## Introduction
+
+A button is a clickable item used to execute an action either in the background or foreground.
+
+<img
+  className="u-maxWidthFull"
+  src={require('src/assets/structure/stb_button-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_button-structure@2x.jpg')} 2x`}
+  alt="Button structure"
+/>
+<ol className="u-paddingLeftLarge u-textGray u-marginTopTiny">
+  <li>
+      Button text
+  </li>
+  <li>
+      Left icon
+  </li>
+  <li>
+      Right icon
+  </li>
+  <li>
+      Text underline&nbsp;
+    <i className="u-text200">- The underline is used for button link hover state.</i>
+  </li>
+  <li>
+      Border
+  </li>
+  <li>
+      Background
+  </li>
+  <li>
+      Focus border
+  </li>
+</ol>
+
+## Examples
+
+### Variants
+
+**Primary**
+
+Most of the time, a primary button is used when the consequent action is the main action of a layout.
+
+<CodeView codeText={`<Button variant="primary">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+    />
+
+**Secondary**
+
+Secondary buttons are used to indicate supplementary actions
+
+<CodeView codeText={`<Button variant="secondary">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+      />
+
+**Primary Outline**
+
+A primary outline button is used when the consequent action is considered less important than the primary button but more important than the secondary button.
+
+<CodeView codeText={`<Button variant="primary_outline">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+      />
+
+**Accent**
+
+On some specific layouts (i.e. ask flow or payment), accent buttons overrule the primary buttons to indicate the most important actions.
+
+<CodeView codeText={`<Button variant="accent">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+      />
+
+**Positive**
+
+Positive buttons are used for positive actions (i.e. when users finish a flow). They can be used to update the positive status of an action in view-only mode.
+
+<CodeView codeText={`<Button variant="positive">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+      />
+
+**Negative**
+
+Negative buttons are used for negative actions (i.e. when users quit or stop an important flow).
+<CodeView codeText={`<Button variant="negative">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+      />
+
+**White**
+
+Using it as a primary button in color or dark background.
+<CodeView
+  transparentBackground
+  codeText={`<Button variant="white">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+/>
+
+**White Ouline**
+
+Using it as a secondary button in color or dark background.
+<CodeView
+  exampleClassName="u-backgroundDark"
+  codeText={`<Button variant="white_outline">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+/>
+
+**Link**
+
+The button link is the least prominent button. It's often standing next to other buttons to indicate a less important action.
+
+Having paddings, a button link is different, and also, represents a more important action than a text link.
+<CodeView
+  transparentBackground
+  codeText={`<Button as={SafeAnchor} href="https://designsystem.got-it.io/" variant="link">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+/>
+
+### States
+
+**Disabled**
+
+Disabled buttons allow users to know the consequent actions but prevent them from executing these actions.
+<CodeView
+  codeText={`<Button disabled>
+  <Button.Label>Button</Button.Label>
+</Button>`}
+/>
+
+**Sizes**
+
+Similar to input forms, buttons have three sizes: Small (28px), Medium (default - 36px) and Large (48px).
+<CodeView codeText={sizesButton} />
+
+### Widths
+
+**Default**
+
+Flexible with the label inside the button.
+<CodeView codeText={widthDefault} />
+
+**Min width**
+
+The minimum width is 112px.
+<CodeView
+  codeText={`<Button width="min">
+  <Button.Label>Ok</Button.Label>
+</Button>`}/>
+
+**Full width**
+
+When a button’s width is set 100%, the button fully expands to the full width of its parent container.
+<CodeView
+  codeText={`<Button width="full">
+  <Button.Label>Button</Button.Label>
+</Button>`}
+/>
+
+### Buttons with icons
+
+**Text & icon**
+
+A button that contains a label and an icon on the left or right of the label.
+<CodeView
+  codeText={`<Button>
+  <Button.Icon><Icon name="refresh"/></Button.Icon>
+  <Button.Label>Refresh</Button.Label>
+</Button>`}
+/>
+
+**Orther Brand**
+
+***Microsoft***
+<CodeView
+  codeText={brandMicrosoft}
+/>
+
+***Google***
+<CodeView
+  codeText={brandGoogle}
+/>
+
+
+**Icon only**
+
+A button that contains an icon only.
+<CodeView
+  codeText={`<Button onlyIcon>
+  <Button.Icon><Icon name="refresh"/></Button.Icon>
+</Button>`}
+/>
+
+### Button Group
+
+The Button Group component shares the same styles and state as normal Buttons.
+
+<CodeView codeText={groupStylesButton} />
+
+The Button Group component shares the same sizes as normal Buttons. However, buttons in one group must be the same size.
+
+<CodeView codeText={groupSizesButton} />
+
+<CodeView codeText={groupIconsButton} />
+
+
+## Design Reference
+
+Two or more primary buttons should not be placed next to each other. Different than a primary button, two or more secondary buttons can be used in one layout.
+
+<div className="Grid u-marginBottomLarge">
+  <div className="u-sizeFull md:u-size1of2">
+    <div className="u-flex">
+      <Button variant="secondary">Button</Button>
+      <Button className="u-marginLeftExtraSmall">Button</Button>
+    </div>
+    <div className="u-borderBottom u-borderLarge u-borderPositive u-marginTopSmall" />
+    <div className="u-textPositive">Do</div>
+  </div>
+  <div className="u-sizeFull md:u-size1of2">
+    <div className="u-flex">
+      <Button>Button</Button>
+      <Button className="u-marginLeftExtraSmall">Button</Button>
+    </div>
+    <div className="u-borderBottom u-borderLarge u-borderNegative u-marginTopSmall" />
+    <div className="u-textNegative">Don't</div>
+  </div>
+</div>
+
+## API
+
+<ComponentApi metadata={props.data.Button} />
+<ComponentApi metadata={props.data.ButtonGroup} exportedBy={props.data.Button} />
+
+
+export const query = graphql`
+  query ButtonGroupQuery {
+    Button: componentMetadata(displayName: { eq: "Button" }) {
+      ...ComponentApi_metadata
+    }
+    ButtonGroup: componentMetadata(displayName: { eq: "ButtonGroup" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

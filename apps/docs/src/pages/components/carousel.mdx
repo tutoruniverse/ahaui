@@ -1,0 +1,67 @@
+---
+title: Carousel
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+import defaultCarousel from 'src/examples/Carousel/default';
+import dotInsideCarousel from 'src/examples/Carousel/dotInside';
+
+# Carousel
+
+## Introduction
+
+A carousel allows multiple pieces of content to be featured in a predefined amount of space. The pieces are horizontally scrollable. The component is based on [Slick Carousel][1].
+<img
+  className="u-maxWidthFull"
+  src={require('src/assets/structure/stb_carousel-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_carousel-structure@2x.jpg')} 2x`}
+  alt="Carousel structure"
+/>
+<ol className="u-paddingLeftLarge u-textGray u-marginTopTiny">
+  <li>
+    Navigation buttons&nbsp;
+    <i className="u-text200">- Used to navigate horizontally.</i>
+  </li>
+  <li>
+    Indicator&nbsp;
+    <i className="u-text200">- Used to indicate the currently visible contents as well as the invisible contents left.</i>
+  </li>
+  <li>
+    Content&nbsp;
+    <i className="u-text200">- Pieces of content.</i>
+  </li>
+</ol>
+
+## Examples
+
+### Default
+
+<CodeView codeText={defaultCarousel} />
+
+### Indicator Inside
+
+In case the carousel is displaying only one piece of content in full width, the component’s indicator can be placed inside the content.
+
+<CodeView codeText={dotInsideCarousel} />
+
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+
+export const query = graphql`
+  query CarouselQuery {
+    metadata: componentMetadata(displayName: { eq: "Carousel" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;
+
+[1]: http://kenwheeler.github.io/slick/

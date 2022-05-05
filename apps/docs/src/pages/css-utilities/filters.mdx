@@ -1,0 +1,97 @@
+---
+title: Filters
+---
+import classNames from 'classnames';
+
+export const classFilterGrayscale = [
+  { className: 'u-grayscale', description: 'Change all images to black and white (100% gray)' },
+  { className: 'u-grayscaleNone', description: 'Reset to the original image' },
+  { className: 'hover:u-grayscale', description: 'Mouse hover: Change all images to black and white' },
+  { className: 'u-grayscale hover:u-grayscaleNone', description: 'Mouse hover: Reset to the original image' },
+];
+
+export const classBackdropFilterBlur = [
+  { className: 'u-backdropBlurSmall', description: '' },
+  { className: 'u-backdropBlurMedium', description: '' },
+  { className: 'u-backdropBlurLarge', description: '' },
+  { className: 'u-backdropBlurNone', description: '' },
+];
+
+export const classBackdropFilterGrayscale = [
+  { className: 'u-backdropGrayscale', description: '' },
+  { className: 'u-backdropGrayscaleNone', description: '' },
+];
+
+# Filter and Backdrop Filter
+
+## Filter
+
+The `filter` property is the CSS way of applying filter effects to elements on a web page (mostly images).
+
+### Grayscale
+
+<div class="u-border u-paddingMedium u-marginBottomLarge">
+  <div className="Grid">
+    {classFilterGrayscale.map(item => (
+      <div key={item.index} className="u-sizeFull md:u-size1of4 u-marginBottomMedium">
+        <img src={require("src/assets/demo/flower.jpg")}
+          className={classNames('u-block u-widthFull u-transitionAll u-duration100 u-easeInOut', item.className && item.className)}
+          title="" />
+        <div className="u-marginVerticalExtraSmall"><code>.{item.className}</code></div>
+        <div className="u-textGray">{item.description}</div>
+      </div>
+    ))}
+  </div>
+</div>
+
+## Backdrop Filter
+
+The `backdrop-filter` CSS property lets you apply graphical effects such as blurring or color shifting to the area behind an element. Because it applies to everything behind the element, to see the effect you must make the element or its background at least partially transparent.
+
+### Grayscale
+
+<div
+  class="u-border u-paddingExtraLarge u-backgroundCover u-backgroundFixed u-textCenter u-marginBottomLarge"
+  style={{ backgroundImage: `url(${require("src/assets/demo/flower.jpg")})` }}
+>
+  <div className="Grid">
+    {classBackdropFilterGrayscale.map(item => (
+      <div key={item.index} className="u-sizeFull md:u-size1of2 u-marginVerticalLarge">
+        <div className={classNames(
+          'u-border u-paddingVerticalExtraLarge',
+          item.className && item.className
+          )}
+        >
+          <div class="u-inlineBlock u-paddingTiny u-backgroundWhite">
+            <code>.{item.className}</code>
+          </div>
+          {/* <div>{item.description}</div> */}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+### Blur
+
+<div
+  class="u-border u-paddingExtraLarge u-backgroundCover u-backgroundFixed u-textCenter u-marginBottomLarge"
+  style={{ backgroundImage: `url(${require("src/assets/demo/flower.jpg")})` }}
+>
+  <div className="Grid">
+    {classBackdropFilterBlur.map(item => (
+      <div key={item.index} className="u-sizeFull md:u-size1of2 u-marginVerticalLarge">
+        <div className={classNames(
+          'u-border u-paddingVerticalExtraLarge',
+          item.className && item.className
+          )}
+        >
+          <div class="u-inlineBlock u-paddingTiny u-backgroundWhite">
+            <code>.{item.className}</code>
+          </div>
+          {/* <div>{item.description}</div> */}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

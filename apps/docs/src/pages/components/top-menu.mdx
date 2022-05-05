@@ -1,0 +1,89 @@
+---
+title: Top Menu
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+import defaultTopMenu from 'src/examples/TopMenu/default';
+
+# Top Menu
+
+## Introduction
+
+Top menu is the main navigation of the site, which is usually accompanied by the logo. Top menu is used to navigate between pages.
+
+<img
+  src={require('src/assets/structure/stb_top-menu-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_top-menu-structure@2x.jpg')} 2x`}
+  className="u-maxWidthFull"
+  alt="Top Menu"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+      Label
+    <i className="u-text200"> - Concise explanations of the content within.</i>
+  </li>
+  <li>
+      Indicator
+    <i className="u-text200"> - A 2px primary color bar that indicates current/active page.</i>
+  </li>
+  <li>
+      Toggle icon
+    <i className="u-text200"> - A right-aligned arrow icon used to visualize the sub-menu and provide clickable action to open and close the sub-menu.</i>
+  </li>
+  <li>
+      Badge
+    <i className="u-text200"> - An optional right-alined badge contains a status or a numeric value, which indicates a running tally or quantity-based summary.</i>
+  </li>
+  <li>
+      Spacing
+    <i className="u-text200"> - The space between nav-items should be 24px at minimum.</i>
+  </li>
+</ol>
+
+## Examples
+
+### States
+
+
+#### Normal
+
+The default state of an enable nav-item.
+
+#### Active
+
+The state of the current active nav-item.
+
+#### Disabled
+
+The state indicates that the nav-item cannot be interacted with.
+
+<CodeView codeText={defaultTopMenu} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.TopMenu} />
+<ComponentApi metadata={props.data.TopMenuItem} exportedBy={props.data.TopMenu} />
+<ComponentApi metadata={props.data.TopMenuSubMenu} exportedBy={props.data.TopMenu} />
+
+
+
+export const query = graphql`
+  query TopMenuQuery {
+    TopMenu: componentMetadata(displayName: { eq: "TopMenu" }) {
+      ...ComponentApi_metadata
+    }
+    TopMenuItem: componentMetadata(displayName: { eq: "TopMenuItem" }) {
+      ...ComponentApi_metadata
+    }
+    TopMenuSubMenu: componentMetadata(displayName: { eq: "TopMenuSubMenu" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

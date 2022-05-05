@@ -1,0 +1,116 @@
+---
+title: Overlay
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+import basicOverlay from 'src/examples/Overlay/default';
+import triggerOverlay from 'src/examples/Overlay/trigger';
+import shortTooltip from 'src/examples/Overlay/tooltip';
+import shortTooltipWhite from 'src/examples/Overlay/tooltipWhite';
+import longTooltip from 'src/examples/Overlay/tooltipLong';
+import basicDelay from 'src/examples/Overlay/basicDelay';
+import delayWithHoverOverlay from 'src/examples/Overlay/delayWithHoverOverlay';
+
+# Overlay
+
+## Introduction
+
+A set of components for positioning beautiful overlays, tooltips, and anything else you need.
+
+### Overlay
+
+`Overlay` is the fundamental component for positioning and controlling tooltip visibility. It's a wrapper around react-popper, that adds support for transitions, and visibility toggling.
+
+### Overlay trigger
+
+Since the above pattern is pretty common, but verbose, we've included `<Overlay.Trigger>`  component to help with common use-cases. It even has functionality to delayed show or hides, and a few different "trigger" events you can mix and match.
+
+### Tooltips
+
+Tooltips provide a small amount of information to an element on hover. Typically, tooltips are used to help users understand the meaning or purpose of icons, showing the full version of truncated text.
+
+<img
+  src={require('src/assets/structure/stb_tooltips-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_tooltips-structure@2x.jpg')} 2x`}
+  className="u-maxWidthFull"
+  alt="Tooltip"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+          Label
+    <i className="u-text200"> - Showing the information which makes more sense for an element.</i>
+  </li>
+  <li>
+          Background
+    <i className="u-text200"> - Default is transparent black background.</i>
+  </li>
+  <li>
+          Arrow
+    <i className="u-text200"> - Depending on the direction of the tooltips to set a small arrow's position which can be on top, bottom, left of right.</i>
+  </li>
+</ol>
+
+## Examples
+
+### Basic
+
+You can pass the `Overlay`  injected props directly to the `Tooltip` component.
+
+<CodeView codeText={basicOverlay} />
+
+Or pass a `Tooltip` component to  `Overlay.Trigger` instead.
+
+<CodeView codeText={triggerOverlay} />
+
+### Tooltip placement
+
+Short content.
+
+<CodeView codeText={shortTooltip} />
+
+Long content.
+
+<CodeView codeText={longTooltip} />
+
+### White
+
+<CodeView codeText={shortTooltipWhite} />
+
+### Delay
+
+Basic delay.
+
+<CodeView codeText={basicDelay} />
+
+If your want the tooltip not to disappear when you hover it, combine `delay` and `hoverOverlay`.
+
+<CodeView codeText={delayWithHoverOverlay} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.Overlay} />
+<ComponentApi metadata={props.data.OverlayTrigger} exportedBy={props.data.Overlay} />
+<ComponentApi metadata={props.data.Tooltip} />
+
+
+
+export const query = graphql`
+  query OverlayQuery {
+    Tooltip: componentMetadata(displayName: { eq: "Tooltip" }) {
+      ...ComponentApi_metadata
+    }
+    Overlay: componentMetadata(displayName: { eq: "Overlay" }) {
+      ...ComponentApi_metadata
+    }
+    OverlayTrigger: componentMetadata(displayName: { eq: "OverlayTrigger" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

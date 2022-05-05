@@ -1,0 +1,54 @@
+---
+title: Page Layout
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+import defaultLayout from 'src/examples/PageLayout/default';
+import withoutFooterLayout from 'src/examples/PageLayout/withoutFooter';
+import bodyOnlyLayout from 'src/examples/PageLayout/bodyOnly';
+
+
+# Page Layout
+
+## Introduction
+
+A web page layout is a pattern that defines a website’s structure. It helps to build consistent structures across the site.
+
+## Examples
+
+### Default
+
+The most basic usage, which has 3 main parts across the page: Header, Body and Footer.
+
+<CodeView codeText={defaultLayout} />
+
+### Without Footer
+
+Used for pages where the footer is not necessary, for example inside a web app.
+
+<CodeView codeText={withoutFooterLayout} />
+
+### Body only
+
+Recommended to use when showing the system messages related pages, such as "System maintenance" or "Page not found".
+
+<CodeView codeText={bodyOnlyLayout} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+export const query = graphql`
+  query PageLayoutQuery {
+    metadata: componentMetadata(displayName: { eq: "PageLayout" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

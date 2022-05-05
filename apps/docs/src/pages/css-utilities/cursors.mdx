@@ -1,0 +1,61 @@
+---
+title: Cursors
+---
+import classNames from 'classnames';
+
+export const classExtractCursors = [
+  { className: 'u-cursorDefault', description: 'The default cursor' },
+  { className: 'u-cursorPointer', description: 'The cursor is a pointer and indicates a link' },
+  { className: 'u-cursorMove', description: 'The cursor indicates something is to be moved' },
+  { className: 'u-cursorNotAllow', description: 'The cursor indicates that the requested action will not be executed' },
+  { className: 'u-cursorHelp', description: 'The cursor indicates that help is available' },
+  { className: 'u-cursorProgress', description: 'The cursor indicates that the program is busy (in progress)' },
+  { className: 'u-cursorGrab', description: 'The cursor indicates that something can be grabbed' },
+  { className: 'u-cursorGrabbing', description: 'The cursor indicates that something can be grabbed' },
+  { className: 'u-cursorZoomIn', description: 'The cursor indicates that something can be zoomed in' },
+  { className: 'u-cursorZoomOut', description: 'The cursor indicates that something can be zoomed out' },
+  { className: 'u-cursorColResize', description: 'The cursor indicates that the column can be resized horizontally' },
+  { className: 'u-cursorRowResize', description: 'The cursor indicates that the row can be resized vertically' },
+  { className: 'u-cursorEwResize', description: 'Indicates a bidirectional resize cursor' },
+  { className: 'u-cursorNsResize', description: 'Indicates a bidirectional resize cursor' },
+];
+
+# Cursors
+
+## Introduction
+
+Use the CSS-Utility cursor to control the cursor style when hovering over an element.
+
+## ClassName
+
+<table className="Table Table--layoutFixed u-backgroundWhite u-textDark u-border u-borderTopNone">
+  <thead>
+    <tr>
+      <th width="200">CSS Class</th>
+      <th width="140">Preview</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {classExtractCursors.map(item => (
+      <tr key={item.index}>
+        <td className="u-textNoWrap">
+          <code>.{item.className}</code>
+        </td>
+        <td className="u-positionRelative">
+          <div
+            className={classNames(
+              'u-marginExtraSmall u-positionAbsolute u-positionFull u-backgroundOpaline u-flex u-alignItemsCenter u-justifyContentCenter u-border',
+              item.className && item.className
+            )}
+          >
+            Hover me !
+          </div>
+        </td>
+        <td className="u-textGray">
+          {item.description}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

@@ -1,0 +1,66 @@
+---
+title: Empty State
+---
+
+import { graphql } from 'gatsby';
+import ComponentApi from 'src/components/ComponentApi';
+import CodeView from 'src/components/CodeView';
+
+import generalEmptyState from 'src/examples/EmptyState/general';
+
+# Empty State
+
+## Introduction
+
+Empty states are moments in a user’s experience with a product where there is nothing to display.
+
+<img
+  src={require('src/assets/structure/stb_empty-states-structure.jpg')}
+  srcSet={`${require('src/assets/structure/stb_empty-states-structure@2x.jpg')} 2x`}
+  className="u-maxWidthFull"
+  alt="Empty states"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Illustration
+    <i className="u-text200"> - It has a purpose to overview or add more detail for the title below.</i>
+  </li>
+  <li>
+    Heading
+    <i className="u-text200"> - Naming the state or call to action content.</i>
+  </li>
+  <li>
+    Description
+    <i className="u-text200"> - Adding more detail for the heading, giving directions for users to walk-through the empty states.</i>
+  </li>
+  <li>
+    CTA Buttons
+    <i className="u-text200"> - CTA Buttons - Optional call to actions to walk-through the empty states.</i>
+  </li>
+</ol>
+
+## Examples
+
+### General empty
+
+Nothing to show.
+
+<CodeView codeText={generalEmptyState} />
+
+## Design Reference
+
+N/A
+
+
+## API
+
+<ComponentApi metadata={props.data.metadata} />
+
+
+export const query = graphql`
+  query EmptyStateQuery {
+    metadata: componentMetadata(displayName: { eq: "EmptyState" }) {
+      ...ComponentApi_metadata
+    }
+  }
+`;

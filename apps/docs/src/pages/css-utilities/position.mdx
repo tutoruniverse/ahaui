@@ -1,0 +1,68 @@
+---
+title: Position
+---
+
+import CodeView from 'src/components/CodeView';
+
+import absoluteSingle from 'src/examples/CSS/Position/absoluteSingle';
+import absoluteTop from 'src/examples/CSS/Position/absoluteTop';
+import absoluteRight from 'src/examples/CSS/Position/absoluteRight';
+import absoluteBottom from 'src/examples/CSS/Position/absoluteBottom';
+import absoluteLeft from 'src/examples/CSS/Position/absoluteLeft';
+import absoluteCenter from 'src/examples/CSS/Position/absoluteCenter';
+import absoluteMixed from 'src/examples/CSS/Position/absoluteMixed';
+//import sticky from 'src/examples/CSS/Position/sticky';
+import fixed from 'src/examples/CSS/Position/fixed';
+
+# Position
+
+## Examples
+
+### Relative and Absolute
+
+Absolute (`.u-positionAbsolute`) elements should be in side a relative (`.u-positionRelative`) element.
+
+### Corners
+* Top-Left: `.u-positionAbsolute .u-positionTop .u-positionLeft`
+* Top-Right: `.u-positionAbsolute .u-positionTop .u-positionRight`
+* Bottom-Left: `.u-positionAbsolute .u-positionBottom .u-positionLeft`
+* Bottom-Right: `.u-positionAbsolute .u-positionBottom .u-positionRight`
+
+<CodeView codeText={absoluteSingle} />
+
+### Directions
+
+#### Top
+
+<CodeView codeText={absoluteTop} />
+
+#### Bottom
+
+<CodeView codeText={absoluteBottom} />
+
+#### Left
+
+<CodeView codeText={absoluteLeft} />
+
+#### Right
+
+<CodeView codeText={absoluteRight} />
+
+#### Center
+
+<CodeView codeText={absoluteCenter} />
+
+### Sides
+
+* Top: `.u-positionAbsolute .u-positionTop .u-positionLeft .u-positionRight`
+* Right: `.u-positionAbsolute .u-positionRight .u-positionTop .u-positionBottom`
+* Bottom: `.u-positionAbsolute .u-positionBottom .u-positionLeft .u-positionRight`
+* Left: `.u-positionAbsolute .u-positionLeft .u-positionTop .u-positionBottom`
+
+<CodeView codeText={absoluteMixed} />
+
+### Fixed
+
+See the blue bar at the bottom
+
+<CodeView codeText={fixed} />
