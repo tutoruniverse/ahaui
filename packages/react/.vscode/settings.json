@@ -1,0 +1,30 @@
+{
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "editor.wordWrap": "on",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "files.associations": {
+    "*.mdx": "mdx"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "cSpell.words": [
+    "Docgen",
+    "Doclet",
+    "Doclets",
+    "Menlo",
+    "astroturf",
+    "frontmatter",
+    "gotitinc",
+    "lifecycles",
+    "monospace",
+    "noopener",
+    "noreferrer",
+    "tutoruniverse"
+  ]
+}

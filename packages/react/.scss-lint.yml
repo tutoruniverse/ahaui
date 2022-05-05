@@ -1,0 +1,20 @@
+
+scss_files: 'src/**/**.scss'
+plugin_directories: ['.scss-linters']
+plugin_gems: []
+severity: warning
+linters:
+  BorderZero:
+    enabled: true
+    convention: zero
+  NameFormat:
+    enabled: true
+  PrivateNamingConvention:
+    enabled: true
+    prefix: _
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: false
+  StringQuotes:
+    enabled: true
+    style: double_quotes
