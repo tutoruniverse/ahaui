@@ -1,0 +1,16 @@
+.Breadcrumb-item {
+  + .Breadcrumb-item {
+    margin-left: 4px;
+  }
+
+  + .Breadcrumb-item::before {
+    content: url("data:image/svg+xml,%3Csvg width='12px' height='12px' class='' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' style='display: inline-block; vertical-align: middle;'%3E%3Cpath d='m13.9854587 11.9966505-6.6183511-6.80610342c-.4894768-.50375884-.4894768-1.3183476 0-1.8167473.48947679-.49839971 1.28097118-.49839971 1.77044798 0l7.49836792 7.71179752c.4738552.4876814.4842696 1.2701154.0364504 1.7738742l-7.52961112 7.7653889c-.2447384.2518795-.5675848.3751396-.88522399.3751396-.3176392 0-.6404856-.1232601-.88522399-.3751396-.4894768-.5037588-.4894768-1.3183476 0-1.8167473z' fill='%23C1C7D0'%3E%3C/path%3E%3C/svg%3E");
+    margin-right: 4px;
+  }
+
+  &:last-child {
+    > * {
+      color: map-deep-get($colors-render, 'text', 'light');
+    }
+  }
+}

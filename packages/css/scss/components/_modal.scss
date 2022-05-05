@@ -1,0 +1,108 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.Modal {
+  $this: &;
+
+  &-close {
+    right: 12px;
+    top: 12px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-header {
+    @each $pro, $proval in map-get($modals, 'header') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &-body {
+    &:first-child {
+      @each $pro, $proval in map-get($modals, 'noHeader') {
+        #{$pro}: $proval;
+      }
+    }
+
+    &:last-child {
+      @each $pro, $proval in map-get($modals, 'noFooter') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+
+  &-footer {
+    @each $pro, $proval in map-get($modals, 'footer') {
+      #{$pro}: $proval;
+    }
+
+    > :not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+
+  &-dialog {
+    max-width: map-deep-get($modals, "sizes", 'medium');
+  }
+
+  &-backDrop {
+    &.Fade {
+      opacity: 0;
+    }
+
+    &.Show {
+      opacity: 0.5;
+    }
+  }
+
+  &.Fade {
+    #{$this}-dialog {
+      transform: translateY(-50px);
+      transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    }
+  }
+
+  &.Show {
+    #{$this}-dialog {
+      margin: 1.75rem auto;
+      transform: none;
+    }
+  }
+
+  &--centered {
+    #{$this}-dialog {
+      align-items: center;
+      display: flex;
+      min-height: calc(100% - 3.5rem);
+    }
+  }
+}
+
+@each $key, $value in map-get($modals, 'sizes') {
+  .Modal--#{$key} {
+    .Modal-dialog {
+      max-width: $value;
+    }
+  }
+}
+
+.ModalInside {
+  .Modal {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+.ModalOpen {
+  overflow: hidden;
+
+  .Modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}

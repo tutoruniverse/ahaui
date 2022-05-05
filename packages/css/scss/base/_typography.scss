@@ -1,0 +1,7 @@
+@each $key, $value in map-deep-get($fonts, "typography") {
+  #{$key} {
+    @each $pro, $proval in map-get(map-deep-get($fonts, "typography"), $key) {
+      #{$pro}: $proval;
+    }
+  }
+}

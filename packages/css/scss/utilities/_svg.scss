@@ -1,0 +1,30 @@
+/* ==================================================
+SVG
+==================================================
+*/
+
+/* Stroke: */
+.u-strokeCurrent {
+  stroke: currentColor;
+}
+
+.u-stroke-0 {
+  stroke-width: 0;
+}
+
+.u-stroke-1 {
+  stroke-width: 1;
+}
+
+.u-stroke-2 {
+  stroke-width: 2;
+}
+
+/* Fill: */
+.u-fillCurrent {
+  fill: currentColor;
+}
+
+.u-fillNone {
+  fill-opacity: 0;
+}

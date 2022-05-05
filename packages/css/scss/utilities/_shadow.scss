@@ -1,0 +1,28 @@
+@each $shadow, $value in $shadows {
+  @if $shadow != 'default' {
+    .u-shadow#{capitalize($shadow)} {
+      box-shadow:
+        map-deep-get($value, 'x')
+        map-deep-get($value, 'y')
+        map-deep-get($value, 'blur')
+        map-deep-get($shadows, 'default', 'color');
+    }
+    .hover\:u-shadow#{capitalize($shadow)}:hover {
+      @media (hover: hover) {
+        box-shadow:
+          map-deep-get($value, 'x')
+          map-deep-get($value, 'y')
+          map-deep-get($value, 'blur')
+          map-deep-get($shadows, 'default', 'color');
+      }
+    }
+  }
+}
+
+.focus\:u-shadowOutline:focus {
+  box-shadow: 0 0 0 4px var(--colorFocusPrimary);
+}
+
+.u-shadowNone {
+  box-shadow: none;
+}

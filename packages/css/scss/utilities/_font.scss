@@ -1,0 +1,185 @@
+@each $key, $value in map-deep-get($fonts, "sizes") {
+  @if $key != "default" {
+    .u-#{$key} {
+      @each $pro, $proval in map-get(map-deep-get($fonts, "sizes"), $key) {
+        @if $pro != "tag" {
+          #{$pro}: $proval;
+        }
+      }
+    }
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      @each $key, $value in map-deep-get($fonts, "sizes") {
+        @if $key != "default" {
+          .#{$infix}\:u-#{$key} {
+            @each $pro, $proval in map-get(map-deep-get($fonts, "sizes"), $key) {
+              @if $pro != "tag" {
+                #{$pro}: $proval;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Example class name: .u-fontRegular
+@each $key, $value in map-get($fonts, "weights") {
+  .u-font#{capitalize($key)} {
+    font-weight: var(--font#{capitalize($key)});
+  }
+}
+
+@each $key, $value in map-get($fonts, "lineHeights") {
+  .u-lineHeight#{capitalize($key)} {
+    line-height: $value;
+  }
+}
+
+@each $align in (left, center, right) {
+  .u-text#{capitalize($align)} {
+    text-align: $align;
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      @each $align in (left, center, right) {
+        .#{$infix}\:u-text#{capitalize($align)} {
+          text-align: $align;
+        }
+      }
+    }
+  }
+}
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
+.u-fontEmoji {
+  font-family: apple color emoji, segoe ui emoji, noto color emoji, android emoji, emojisymbols, emojione mozilla, twemoji mozilla, segoe ui symbol;
+}
+/* stylelint-enable */
+
+// No responsive:
+// -----------------------
+
+.u-fontItalic {
+  font-style: italic;
+}
+
+.u-fontSizeNone {
+  font-size: 0;
+}
+
+.u-fontReset {
+  font-style: normal;
+  font-weight: normal;
+}
+
+.u-textCapitalize {
+  text-transform: capitalize;
+}
+
+.u-textUppercase {
+  text-transform: uppercase;
+}
+
+.u-textLowercase {
+  text-transform: lowercase;
+}
+
+.u-textTransformNone {
+  text-transform: none;
+}
+
+.u-textNoWrap {
+  white-space: nowrap;
+}
+
+.u-textWordWrap { /* this class should be removed */
+  word-wrap: break-word;
+}
+
+.u-textWordBreak {
+  word-break: break-word;
+}
+
+.u-textWordBreakAll {
+  word-break: break-all;
+}
+
+//open for <pre>
+.u-textPreLine {
+  white-space: pre-line;
+}
+
+.u-textPreWrap {
+  white-space: pre-wrap;
+}
+
+.u-textLineThrough,
+.hover\:u-textLineThrough:hover {
+  text-decoration: line-through;
+}
+
+.u-textUnderline,
+.hover\:u-textUnderline:hover {
+  text-decoration: underline;
+}
+
+.u-textDecorationNone,
+.hover\:u-textDecorationNone:hover {
+  text-decoration: none;
+}
+
+[class*="u-textTruncate"] {
+  overflow: hidden;
+}
+
+.u-textTruncate {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.u-textTruncate2 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.u-textTruncate3 {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.u-textTruncate4 {
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.u-textTruncate5 {
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.u-textPlaceholder::placeholder {
+  @each $pro, $proval in map-deep-get($forms, 'placeholder') {
+    #{$pro}: $proval;
+  }
+}

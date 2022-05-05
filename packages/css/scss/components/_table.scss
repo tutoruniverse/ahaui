@@ -1,0 +1,113 @@
+// Default:
+.Table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 100%;
+
+  th,
+  td {
+    padding: 0.75rem;
+    vertical-align: top;
+    position: relative;
+
+    &::after {
+      content: '';
+      height: 1px;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: map-deep-get($colors-render, 'background', 'lighter');
+    }
+  }
+
+  thead {
+    th {
+      background-color: white;
+      vertical-align: bottom;
+
+      &::before {
+        content: '';
+        height: 2px;
+        display: block;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        background-color: map-deep-get($colors-render, 'background', 'lighter');
+      }
+    }
+  }
+}
+
+// Fixed the header on top during vertical scrolling:
+.Table--stickyHeader {
+  thead {
+    th {
+      position: sticky;
+      top: 0;
+      z-index: map-get($zindexs, 'positive');
+    }
+  }
+}
+
+// Striped:
+.Table--striped {
+  tbody {
+    tr:nth-of-type(odd) {
+      background-color: map-deep-get($colors-render, 'background', 'lightest'); //N20  // rgba(0,0,0,.05);
+    }
+  }
+}
+/* stylelint-disable no-descending-specificity */
+
+// Bordered:
+.Table--bordered {
+  border-width: 0 1px 1px 0;
+  border-color: map-deep-get($colors-render, 'border', 'default');
+  border-style: solid;
+
+  th,
+  td {
+    border-left: 1px solid map-deep-get($colors-render, 'border', 'default');
+  }
+}
+
+// Hoverable:
+// Important: Put the hover color into `td` and `th`
+.Table--hoverable {
+  tbody tr:hover {
+    td,
+    th {
+      background-color: map-deep-get($colors-render, 'background', 'opaline'); //N900
+      color: map-deep-get($colors-render, 'text', 'dark');
+    }
+  }
+}
+
+// Sizes:
+// narrow | small
+.Table--narrow {
+  // reduce the padding of table cells
+  th,
+  td {
+    padding: 0.5rem;
+  }
+}
+
+.Table--small {
+  // reduce font size
+  // reduce the padding of table cells
+  th,
+  td {
+    padding: 0.25rem;
+  }
+}
+
+// Layout:
+// https://www.w3schools.com/cssref/pr_tab_table-layout.asp
+.Table--layoutFixed {
+  table-layout: fixed;
+}

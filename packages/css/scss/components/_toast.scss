@@ -1,0 +1,317 @@
+@charset "UTF-8";
+/* stylelint-disable scss/selector-no-union-class-name */
+
+/* fork from react-toastify@7.0.4 */
+$rt-toast-width: 320px !default;
+$rt-toast-background: #fff !default;
+$rt-toast-min-height: 64px !default;
+$rt-toast-max-height: 800px !default;
+
+$rt-color-default: #fff !default;
+$rt-color-dark: map-deep-get($colors-render, "background", "dark") !default;
+$rt-color-info: var(--colorInformation) !default;
+$rt-color-success: var(--colorPositive) !default;
+$rt-color-warning: var(--colorWarning) !default;
+$rt-color-error: var(--colorNegative) !default;
+$rt-color-progress-default: var(--colorPrimary) !default;
+
+$rt-text-color-default: #aaa !default;
+$rt-text-color-dark: #fff !default;
+$rt-color-progress-dark: #bb86fc !default;
+$rt-mobile: "only screen and (max-width : 480px)" !default;
+$rt-z-index: 9999 !default;
+
+/* react-toastify/scss/_toast.scss */
+
+.Toastify__toast {
+  padding: 16px;
+  position: relative;
+  min-height: $rt-toast-min-height;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  border-radius: 1px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  max-height: $rt-toast-max-height;
+  overflow: hidden;
+  cursor: pointer;
+  direction: ltr;
+
+  &--rtl {
+    direction: rtl;
+  }
+
+  &--dark {
+    background: $rt-color-dark;
+    color: $rt-text-color-dark;
+  }
+
+  &--default {
+    background: $rt-color-default;
+    color: $rt-text-color-default;
+  }
+
+  &--info {
+    background: $rt-color-info;
+  }
+
+  &--success {
+    background: $rt-color-success;
+  }
+
+  &--warning {
+    background: $rt-color-warning;
+  }
+
+  &--error {
+    background: $rt-color-error;
+  }
+
+  &-body {
+    margin: auto 0;
+    flex: 1 1 auto;
+  }
+}
+
+.Toastify--animate {
+  animation-fill-mode: both;
+  animation-duration: 0.7s;
+}
+
+@media #{$rt-mobile} {
+  .Toastify__toast {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+}
+
+.Toastify__toast-container {
+  z-index: $rt-z-index;
+  transform: translate3d(0, 0, #{$rt-z-index}px);
+  position: fixed;
+  padding: 4px;
+  width: $rt-toast-width;
+  box-sizing: border-box;
+  color: #fff;
+
+  &--top-left {
+    top: 1em;
+    left: 1em;
+  }
+
+  &--top-center {
+    top: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &--top-right {
+    top: 1em;
+    right: 1em;
+  }
+
+  &--bottom-left {
+    bottom: 1em;
+    left: 1em;
+  }
+
+  &--bottom-center {
+    bottom: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &--bottom-right {
+    bottom: 1em;
+    right: 1em;
+  }
+}
+
+@media #{$rt-mobile} {
+  .Toastify__toast-container {
+    width: 100vw;
+    padding: 0;
+    left: 0;
+    margin: 0;
+
+    &--top-left,
+    &--top-center,
+    &--top-right {
+      top: 0;
+      transform: translateX(0);
+    }
+
+    &--bottom-left,
+    &--bottom-center,
+    &--bottom-right {
+      bottom: 0;
+      transform: translateX(0);
+    }
+
+    &--rtl {
+      right: 0;
+      left: initial;
+    }
+  }
+}
+
+@keyframes trackProgress {
+  0% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+.Toastify__progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  z-index: $rt-z-index;
+  opacity: 0.7;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform-origin: left;
+
+  &--animated {
+    animation: trackProgress linear 1 forwards;
+  }
+
+  &--controlled {
+    transition: transform 0.2s;
+  }
+
+  &--rtl {
+    right: 0;
+    left: initial;
+    transform-origin: right;
+  }
+
+  &--default {
+    background: $rt-color-progress-default;
+  }
+
+  &--dark {
+    background: $rt-color-progress-dark;
+  }
+}
+
+// entrance and exit animations
+
+/* react-toastify/scss/animations/_bounce.scss */
+.Toastify__bounce-enter {
+  &--top-left,
+  &--bottom-left {
+    animation-name: bounceInLeft;
+  }
+
+  &--top-right,
+  &--bottom-right {
+    animation-name: bounceInRight;
+  }
+
+  &--top-center {
+    animation-name: bounceInDown;
+  }
+
+  &--bottom-center {
+    animation-name: bounceInUp;
+  }
+}
+
+.Toastify__bounce-exit {
+  &--top-left,
+  &--bottom-left {
+    animation-name: bounceOutLeft;
+  }
+
+  &--top-right,
+  &--bottom-right {
+    animation-name: bounceOutRight;
+  }
+
+  &--top-center {
+    animation-name: bounceOutUp;
+  }
+
+  &--bottom-center {
+    animation-name: bounceOutDown;
+  }
+}
+
+/* react-toastify/scss/animations/_zoom.scss */
+.Toastify__zoom-enter {
+  animation-name: zoomIn;
+}
+
+.Toastify__zoom-exit {
+  animation-name: zoomOut;
+}
+
+/* react-toastify/scss/animations/_flip.scss */
+.Toastify__flip-enter {
+  animation-name: flipIn;
+}
+
+.Toastify__flip-exit {
+  animation-name: flipOut;
+}
+
+/* react-toastify/scss/animations/_slide.scss */
+.Toastify__slide-enter {
+  &--top-left,
+  &--bottom-left {
+    animation-name: slideInLeft;
+  }
+
+  &--top-right,
+  &--bottom-right {
+    animation-name: slideInRight;
+  }
+
+  &--top-center {
+    animation-name: slideInDown;
+  }
+
+  &--bottom-center {
+    animation-name: slideInUp;
+  }
+}
+
+.Toastify__slide-exit {
+  &--top-left,
+  &--bottom-left {
+    animation-name: slideOutLeft;
+  }
+
+  &--top-right,
+  &--bottom-right {
+    animation-name: slideOutRight;
+  }
+
+  &--top-center {
+    animation-name: slideOutUp;
+  }
+
+  &--bottom-center {
+    animation-name: slideOutDown;
+  }
+}
+
+/* react-toastify/scss/_closeButton.scss */
+.Toastify__close-button {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.Toastify__toast--warning,
+.Toastify__toast--default {
+  color: map-deep-get($colors-render, 'text', 'dark');
+}

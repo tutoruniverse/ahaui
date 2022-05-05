@@ -1,0 +1,635 @@
+/* stylelint-disable scss/selector-no-union-class-name, no-descending-specificity */
+
+.react-calendar {
+  padding: 0 16px;
+  border-radius: var(--radiusMedium);
+  width: 350px;
+  max-width: 100%;
+  background: white;
+  border: 1px solid map-deep-get($colors-render, "border", "default");
+  line-height: 1.125em;
+
+  &--doubleView {
+    width: 700px;
+
+    .react-calendar__viewContainer {
+      display: flex;
+      margin-bottom: -0.5em -0.5em 16px;
+
+      > * {
+        width: 50%;
+        margin: 0.5em;
+      }
+    }
+  }
+
+  &,
+  & *,
+  & *::before,
+  & *::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  button {
+    margin: 0;
+    border: 0;
+    outline: none;
+
+    &:enabled {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__navigation {
+    height: 44px;
+    margin-bottom: 8px;
+
+    button {
+      min-width: 44px;
+      background: none;
+
+      &:enabled {
+        &:hover,
+        &:focus {
+          background-color: var(--colorPrimaryLighter);
+        }
+      }
+
+      &[disabled] {
+        background-color: map-deep-get($forms, "disabled", "background-color");
+      }
+    }
+  }
+
+  &__month-view {
+    &__weekdays {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 0.75em;
+
+      &__weekday {
+        padding: 0.5em;
+      }
+    }
+
+    &__weekNumbers {
+      font-weight: bold;
+
+      .react-calendar__tile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75em;
+        padding: calc(0.75em / 0.75) calc(0.5em / 0.75);
+      }
+    }
+
+    &__days {
+      &__day {
+        &--weekend {
+          color: var(--colorNegative);
+        }
+
+        &--neighboringMonth {
+          color: rgb(117, 117, 117);
+        }
+      }
+    }
+  }
+
+  &__year-view,
+  &__decade-view,
+  &__century-view {
+    .react-calendar__tile {
+      padding: 2em 0.5em;
+    }
+  }
+
+  &__tile {
+    max-width: 100%;
+    text-align: center;
+    padding: 0.75em 0.5em;
+    background: none;
+    line-height: 1;
+
+    &:disabled {
+      background-color: map-deep-get($forms, "disabled", "background-color");
+    }
+
+    &:enabled {
+      &:hover,
+      &:focus {
+        background-color: var(--colorPrimaryLighter);
+      }
+    }
+
+    &--hasActive {
+      background: var(--colorPrimaryLight);
+
+      &:enabled {
+        &:hover,
+        &:focus {
+          background: var(--colorPrimaryLighter);
+        }
+      }
+    }
+
+    &--active {
+      background: var(--colorPrimaryDark);
+      color: white;
+
+      &:enabled {
+        &:hover,
+        &:focus {
+          background: var(--colorPrimary);
+        }
+      }
+    }
+  }
+
+  &--selectRange {
+    .react-calendar__tile {
+      &--hover {
+        background-color: var(--colorPrimaryLighter);
+      }
+    }
+  }
+}
+
+.react-date-picker {
+  display: inline-flex;
+  position: relative;
+
+  &,
+  & *,
+  & *::before,
+  & *::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &--disabled {
+    background-color: rgb(240, 240, 240);
+    color: rgb(109, 109, 109);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border: thin solid gray;
+  }
+
+  &__inputGroup {
+    // own padding + inputs padding + digits width + dots width
+    min-width: calc((4px * 3) + 0.54em * 8 + 0.217em * 2);
+    flex-grow: 1;
+    padding: 0 2px;
+    box-sizing: content-box;
+
+    &__divider {
+      padding: 1px 0;
+      white-space: pre;
+    }
+
+    &__input {
+      min-width: 0.54em;
+      height: 100%;
+      position: relative;
+      padding: 0 1px;
+      border: 0;
+      background: none;
+      font: inherit;
+      box-sizing: content-box;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:invalid {
+        background: fade(red, 10%);
+      }
+
+      &--hasLeadingZero {
+        margin-left: -0.54em;
+        padding-left: calc(1px + 0.54em);
+      }
+    }
+  }
+
+  &__button {
+    border: 0;
+    background: transparent;
+    // padding: 4px 6px;
+
+    &:enabled {
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        .react-date-picker__button__icon {
+          stroke: rgb(0, 120, 215);
+        }
+      }
+    }
+
+    &:disabled {
+      .react-date-picker__button__icon {
+        stroke: rgb(109, 109, 109);
+      }
+    }
+
+    svg {
+      display: inherit;
+    }
+  }
+
+  &__calendar {
+    width: 350px;
+    max-width: 100vw;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+
+    &--closed {
+      display: none;
+    }
+
+    .react-calendar {
+      border-width: thin;
+    }
+  }
+}
+
+.react-daterange-picker {
+  display: inline-flex;
+  position: relative;
+
+  &,
+  & *,
+  & *::before,
+  & *::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &--disabled {
+    background-color: rgb(240, 240, 240);
+    color: rgb(109, 109, 109);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    align-items: center;
+    border: thin solid gray;
+  }
+
+  &__inputGroup {
+    // own padding + inputs padding + digits width + dots width
+    min-width: calc((4px * 3) + 0.54em * 8 + 0.217em * 2);
+    height: 100%;
+    flex-grow: 1;
+    padding: 0 2px;
+    box-sizing: content-box;
+
+    &__divider {
+      padding: 1px 0;
+      white-space: pre;
+    }
+
+    &__input {
+      min-width: 0.54em;
+      height: 100%;
+      position: relative;
+      padding: 0 1px;
+      border: 0;
+      background: none;
+      font: inherit;
+      box-sizing: content-box;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:invalid {
+        background: fade(red, 10%);
+      }
+
+      &--hasLeadingZero {
+        margin-left: -0.54em;
+        padding-left: calc(1px + 0.54em);
+      }
+    }
+  }
+
+  &__button {
+    border: 0;
+    background: transparent;
+    // padding: 4px 6px;
+
+    &:enabled {
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        .react-daterange-picker__button__icon {
+          stroke: rgb(0, 120, 215);
+        }
+      }
+    }
+
+    &:disabled {
+      .react-daterange-picker__button__icon {
+        stroke: rgb(109, 109, 109);
+      }
+    }
+
+    svg {
+      display: inherit;
+    }
+  }
+
+  &__calendar {
+    width: 350px;
+    max-width: 100vw;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+
+    &--closed {
+      display: none;
+    }
+
+    .react-calendar {
+      border-width: thin;
+    }
+  }
+}
+
+.react-time-picker {
+  display: inline-flex;
+  position: relative;
+
+  &,
+  & *,
+  & *::before,
+  & *::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &--disabled {
+    background-color: rgb(240, 240, 240);
+    color: rgb(109, 109, 109);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border: thin solid gray;
+  }
+
+  &__inputGroup {
+    // own padding + inputs padding + digits width + dots width
+    min-width: calc((4px * 3) + 0.54em * 6 + 0.217em * 2);
+    flex-grow: 1;
+    padding: 0 2px;
+    box-sizing: content-box;
+
+    &__divider {
+      padding: 1px 0;
+      white-space: pre;
+    }
+
+    &__input {
+      min-width: 0.54em;
+      height: auto;
+      position: relative;
+      padding: 0 1px;
+      border: 0;
+      background: none;
+      font: inherit;
+      box-sizing: content-box;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:invalid {
+        background: fade(red, 10%);
+      }
+
+      &--hasLeadingZero {
+        margin-left: -0.54em;
+        padding-left: calc(1px + 0.54em);
+      }
+    }
+
+    &__amPm {
+      font: inherit;
+      -moz-appearance: menulist;
+    }
+  }
+
+  &__button {
+    border: 0;
+    background: transparent;
+    // padding: 4px 6px;
+
+    &:enabled {
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        .react-time-picker__button__icon {
+          stroke: rgb(0, 120, 215);
+        }
+      }
+    }
+
+    &:disabled {
+      .react-time-picker__button__icon {
+        stroke: rgb(109, 109, 109);
+      }
+    }
+
+    svg {
+      display: inherit;
+    }
+  }
+
+  &__clock {
+    width: 200px;
+    height: 200px;
+    max-width: 100vw;
+    padding: 25px;
+    background-color: white;
+    border: thin solid map-deep-get($forms, "input", "base", "border-color");
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: map-deep-get($forms, "sizes", "base", "border-radius");
+
+    &--closed {
+      display: none;
+    }
+  }
+}
+
+.react-clock {
+  display: block;
+  position: relative;
+
+  &,
+  & *,
+  & *::before,
+  & *::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &__face {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid black;
+    border-radius: 50%;
+  }
+
+  &__hand {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+
+    &__body {
+      position: absolute;
+      background-color: black;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__mark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+
+    &__body {
+      position: absolute;
+      background-color: black;
+      transform: translateX(-50%);
+    }
+
+    &__number {
+      position: absolute;
+      left: -40px;
+      width: 80px;
+      text-align: center;
+    }
+  }
+
+  &__second-hand {
+    &__body {
+      background-color: var(--colorNegative);
+    }
+  }
+}
+
+.DateRangePicker,
+.DatePicker,
+.TimePicker {
+  .react-daterange-picker,
+  .react-date-picker,
+  .react-time-picker {
+    &__calendar {
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    &__button {
+      line-height: 0;
+
+      &:hover {
+        color: var(--colorPrimary);
+      }
+    }
+
+    &__wrapper {
+      width: 100%;
+      transition: all 0.15s ease-in-out;
+
+      @each $pro, $proval in map-deep-get($forms, "sizes", "base") {
+        #{$pro}: $proval;
+      }
+
+      @each $pro, $proval in map-deep-get($forms, "input", "base") {
+        #{$pro}: $proval;
+      }
+
+      &:hover {
+        @each $pro, $proval in map-deep-get($forms, "focus") {
+          #{$pro}: $proval;
+        }
+      }
+    }
+  }
+
+  &--small {
+    .react-daterange-picker__wrapper,
+    .react-date-picker__wrapper,
+    .react-time-picker__wrapper {
+      @each $pro, $proval in map-deep-get($forms, "sizes", "small") {
+        #{$pro}: $proval;
+      }
+
+      @each $pro, $proval in map-deep-get($forms, "input", "small") {
+        #{$pro}: $proval;
+      }
+    }
+  }
+
+  &--large {
+    .react-daterange-picker__wrapper,
+    .react-date-picker__wrapper,
+    .react-time-picker__wrapper {
+      @each $pro, $proval in map-deep-get($forms, "sizes", "large") {
+        #{$pro}: $proval;
+      }
+
+      @each $pro, $proval in map-deep-get($forms, "input", "large") {
+        #{$pro}: $proval;
+      }
+    }
+  }
+}

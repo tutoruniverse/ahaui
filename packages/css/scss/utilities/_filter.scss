@@ -1,0 +1,12 @@
+// Grayscale
+@each $key, $value in map-deep-get($filter, 'grayscale') {
+  .u-grayscale#{capitalize($key)} {
+    filter: grayscale($value);
+  }
+
+  .hover\:u-grayscale#{capitalize($key)}:hover {
+    @media (hover: hover) {
+      filter: grayscale($value);
+    }
+  }
+}

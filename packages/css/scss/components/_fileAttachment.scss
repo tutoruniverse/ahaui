@@ -1,0 +1,7 @@
+.FileAttachment {
+  $this: &;
+
+  + #{$this} {
+    margin-top: map-deep-get($spacers, 'extraSmall');
+  }
+}

@@ -1,0 +1,304 @@
+// Utilities for flex container &  additional flex alignment options.
+.u-flexRow {
+  flex-direction: row;
+}
+
+.u-flexColumn {
+  flex-direction: column;
+}
+
+.u-flexRowReverse {
+  flex-direction: row-reverse;
+}
+
+.u-flexColumnReverse {
+  flex-direction: column-reverse;
+}
+
+.u-flexFill {
+  flex: 1 1 auto;
+}
+
+.u-flexGrow0 {
+  flex-grow: 0;
+}
+
+.u-flexGrow1 {
+  flex-grow: 1;
+}
+
+.u-flexShrink0 {
+  flex-shrink: 0;
+}
+
+.u-flexShrink1 {
+  flex-shrink: 1;
+}
+
+.u-flexWrap {
+  flex-wrap: wrap;
+}
+
+.u-flexNowrap {
+  flex-wrap: nowrap;
+}
+
+.u-flexWrapReverse {
+  flex-wrap: wrap-reverse;
+}
+
+.u-alignContentStart {
+  align-content: flex-start;
+}
+
+.u-alignContentEnd {
+  align-content: flex-end;
+}
+
+.u-alignContentCenter {
+  align-content: center;
+}
+
+.u-alignContentBetween {
+  align-content: space-between;
+}
+
+.u-alignContentAround {
+  align-content: space-around;
+}
+
+.u-alignContentStretch {
+  align-content: stretch;
+}
+
+.u-alignItemsStart {
+  align-items: flex-start;
+}
+
+.u-alignItemsEnd {
+  align-items: flex-end;
+}
+
+.u-alignItemsCenter {
+  align-items: center;
+}
+
+.u-alignItemsBaseline {
+  align-items: baseline;
+}
+
+.u-alignItemsStretch {
+  align-items: stretch;
+}
+
+.u-alignSelfAuto {
+  align-self: auto;
+}
+
+.u-alignSelfStart {
+  align-self: flex-start;
+}
+
+.u-alignSelfEnd {
+  align-self: flex-end;
+}
+
+.u-alignSelfCenter {
+  align-self: center;
+}
+
+.u-alignSelfBaseline {
+  align-self: baseline;
+}
+
+.u-alignSelfStretch {
+  align-self: stretch;
+}
+
+.u-justifyContentStart {
+  justify-content: flex-start;
+}
+
+.u-justifyContentEnd {
+  justify-content: flex-end;
+}
+
+.u-justifyContentCenter {
+  justify-content: center;
+}
+
+.u-justifyContentBetween {
+  justify-content: space-between;
+}
+
+.u-justifyContentAround {
+  justify-content: space-around;
+}
+
+.u-flexOrderFirst {
+  order: -1;
+}
+
+.u-flexOrderLast {
+  order: 1;
+}
+
+.u-flexOrderNone {
+  order: 0;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      .#{$infix}\:u-flexRow {
+        flex-direction: row;
+      }
+
+      .#{$infix}\:u-flexColumn {
+        flex-direction: column;
+      }
+
+      .#{$infix}\:u-flexRowReverse {
+        flex-direction: row-reverse;
+      }
+
+      .#{$infix}\:u-flexColumnReverse {
+        flex-direction: column-reverse;
+      }
+
+      .#{$infix}\:u-flexFill {
+        flex: 1 1 auto;
+      }
+
+      .#{$infix}\:u-flexGrow0 {
+        flex-grow: 0;
+      }
+
+      .#{$infix}\:u-flexGrow1 {
+        flex-grow: 1;
+      }
+
+      .#{$infix}\:u-flexShrink0 {
+        flex-shrink: 0;
+      }
+
+      .#{$infix}\:u-flexShrink1 {
+        flex-shrink: 1;
+      }
+
+      .#{$infix}\:u-flexWrap {
+        flex-wrap: wrap;
+      }
+
+      .#{$infix}\:u-flexNowrap {
+        flex-wrap: nowrap;
+      }
+
+      .#{$infix}\:u-flexWrapReverse {
+        flex-wrap: wrap-reverse;
+      }
+
+      .#{$infix}\:u-alignContentStart {
+        align-content: flex-start;
+      }
+
+      .#{$infix}\:u-alignContentEnd {
+        align-content: flex-end;
+      }
+
+      .#{$infix}\:u-alignContentCenter {
+        align-content: center;
+      }
+
+      .#{$infix}\:u-alignContentBetween {
+        align-content: space-between;
+      }
+
+      .#{$infix}\:u-alignContentAround {
+        align-content: space-around;
+      }
+
+      .#{$infix}\:u-alignContentStretch {
+        align-content: stretch;
+      }
+
+      .#{$infix}\:u-alignItemsStart {
+        align-items: flex-start;
+      }
+
+      .#{$infix}\:u-alignItemsEnd {
+        align-items: flex-end;
+      }
+
+      .#{$infix}\:u-alignItemsCenter {
+        align-items: center;
+      }
+
+      .#{$infix}\:u-alignItemsBaseline {
+        align-items: baseline;
+      }
+
+      .#{$infix}\:u-alignItemsStretch {
+        align-items: stretch;
+      }
+
+      .#{$infix}\:u-alignSelfAuto {
+        align-self: auto;
+      }
+
+      .#{$infix}\:u-alignSelfStart {
+        align-self: flex-start;
+      }
+
+      .#{$infix}\:u-alignSelfEnd {
+        align-self: flex-end;
+      }
+
+      .#{$infix}\:u-alignSelfCenter {
+        align-self: center;
+      }
+
+      .#{$infix}\:u-alignSelfBaseline {
+        align-self: baseline;
+      }
+
+      .#{$infix}\:u-alignSelfStretch {
+        align-self: stretch;
+      }
+
+      .#{$infix}\:u-justifyContentStart {
+        justify-content: flex-start;
+      }
+
+      .#{$infix}\:u-justifyContentEnd {
+        justify-content: flex-end;
+      }
+
+      .#{$infix}\:u-justifyContentCenter {
+        justify-content: center;
+      }
+
+      .#{$infix}\:u-justifyContentBetween {
+        justify-content: space-between;
+      }
+
+      .#{$infix}\:u-justifyContentAround {
+        justify-content: space-around;
+      }
+
+      .#{$infix}\:u-flexOrderFirst {
+        order: -1;
+      }
+
+      .#{$infix}\:u-flexOrderLast {
+        order: 1;
+      }
+
+      .#{$infix}\:u-flexOrderNone {
+        order: 0;
+      }
+    }
+  }
+}

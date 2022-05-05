@@ -1,0 +1,139 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.Slider {
+  $this: &;
+  %postionBbsolute {
+    position: absolute;
+  }
+
+  &-rail,
+  &-track,
+  &-mark {
+    @extend %postionBbsolute;
+
+    height: 8px;
+  }
+
+  &-rail,
+  &-track {
+    border-radius: var(--radiusLarge);
+  }
+
+  &-rail,
+  &-mark {
+    width: 100%;
+  }
+
+  &-rail {
+    background-color: map-deep-get($colors-render, 'background', 'lighter');
+  }
+
+  &-track {
+    background-color: var(--colorPrimary);
+  }
+
+  &-mark {
+    top: 20px;
+    left: 0;
+    font-size: map-deep-get($fonts, "sizes", "text100", "font-size");
+
+    &-text {
+      @extend %postionBbsolute;
+
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      color: map-deep-get($colors-render, 'text', 'light');
+    }
+  }
+
+  &-handle {
+    @extend %postionBbsolute;
+
+    border-radius: 50%;
+    margin-top: -8px;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    touch-action: pan-x;
+    background-color: var(--colorPrimary);
+    border: 4px solid #fff;
+    box-shadow: map-deep-get($shadows, 'medium', 'x') map-deep-get($shadows, 'medium', 'y') map-deep-get($shadows, 'small', 'blur') map-deep-get($shadows, 'default', 'color');
+  }
+
+  &-vertical {
+    width: 8px;
+    #{$this}-rail,
+    #{$this}-track {
+      width: 8px;
+    }
+    #{$this}-rail {
+      height: 100%;
+    }
+    #{$this}-track {
+      left: 4px;
+      bottom: 0;
+    }
+    #{$this}-handle {
+      margin-left: -8px;
+      margin-top: -14px;
+      margin-bottom: 6px;
+      touch-action: pan-x;
+    }
+    #{$this}-mark {
+      top: 0;
+      left: 20px;
+      height: 100%;
+    }
+  }
+}
+
+.Slider-tooltip {
+  $this: &;
+
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  visibility: visible;
+
+  &-hidden {
+    display: none;
+  }
+
+  &-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  &-inner {
+    padding: 2px 6px;
+    background-color: map-deep-get($colors-render, 'background', black);
+    color: map-deep-get($colors-render, 'text', white);
+    border-radius: var(--radiusMedium);
+    font-size: map-deep-get($fonts, "sizes", "text100", "font-size");
+  }
+
+  &-placement-top {
+    padding: 4px 0 4px 0;
+    #{$this}-arrow {
+      bottom: 0;
+      left: 50%;
+      margin-left: -4px;
+      border-width: 4px 4px 0;
+      border-top-color: map-deep-get($colors-render, 'background', black);
+    }
+  }
+}
+
+@each $variant in (accent, positive, negative, warning ) {
+  .Slider--#{$variant} {
+    .Slider-track,
+    .Slider-handle {
+      background-color: var(--color#{capitalize($variant)}),;
+    }
+  }
+}

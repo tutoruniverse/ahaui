@@ -1,0 +1,6 @@
+/* _speed.scss: */
+@each $key, $value in map-get($transition, "speed") {
+  .u-animated#{capitalize($key)} {
+    animation-duration: #{$value};
+  }
+}

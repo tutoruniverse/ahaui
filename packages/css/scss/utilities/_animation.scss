@@ -1,0 +1,25 @@
+.u-animated {
+  //-webkit-animation-duration: 150ms;
+  animation-duration: 150ms;
+  //-webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@import "animation/bounceIn";
+@import "animation/fadeIn";
+@import "animation/fadeOut";
+@import "animation/flash";
+@import "animation/shake";
+@import "animation/zoomIn";
+@import "animation/zoomOut";
+@import "animation/spin";
+@import "animation/rotate";
+@import "animation/scale";
+@import "animation/flip";
+@import "animation/skew";
+@import "animation/delay";
+@import "animation/duration";
+@import "animation/speed";
+@import "animation/ease";
+@import "animation/transitionProperty";
+@import "animation/iterationCount";

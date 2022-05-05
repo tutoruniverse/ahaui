@@ -1,0 +1,53 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.BubbleChat {
+  $this: &;
+
+  &-container {
+    max-width: 560px;
+  }
+
+  &-typing {
+    &::after,
+    #{$this}-typingContext::before,
+    #{$this}-typingContext::after {
+      animation: typing 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+      background: #0000001e;
+      border: 0;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 4px;
+      left: 50%;
+      margin-top: 4px;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 4px;
+      z-index: 2;
+    }
+
+    &::after {
+      animation-delay: 0.15s;
+    }
+
+    &[class*="u-textWhite"] {
+      &::after,
+      #{$this}-typingContext::before,
+      #{$this}-typingContext::after {
+        background: #ffffff6e;
+      }
+    }
+  }
+
+  #{$this}-typingContext {
+    &::before {
+      margin-left: 8px;
+    }
+
+    &::after {
+      animation-delay: 0.3s;
+      margin-left: -8px;
+    }
+  }
+}
