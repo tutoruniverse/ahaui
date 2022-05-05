@@ -15,7 +15,6 @@
     "build:lib": "NODE_ENV=production BABEL_ENV=production webpack --config ./config/webpack.config.lib.js",
     "prepublishOnly": "yarn build",
     "clean": "rimraf lib es",
-    "start": "node scripts/start",
     "format": "eslint --ext js src --fix",
     "lint": "eslint --ext js src",
     "prepack": "clean-package -rm devDependencies scripts",

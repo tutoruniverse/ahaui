@@ -11,7 +11,7 @@
   "scripts": {
     "build": "node scripts/build",
     "prepublishOnly": "yarn build",
-    "start": "node scripts/start",
+    "dev": "node scripts/start",
     "format": "eslint --ext js src --fix",
     "lint": "eslint --ext js src",
     "prepack": "clean-package -rm devDependencies scripts",

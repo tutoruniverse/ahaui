@@ -31,9 +31,9 @@ exports.onCreateWebpackConfig = function onCreateWebpackConfig({
     resolve: {
       symlinks: false,
       alias: {
-        react: path.resolve(__dirname, './aha-react/node_modules/react'),
-        'react-dom': path.resolve(__dirname, './aha-react/node_modules/react-dom'),
-        '@ahaui/react': path.resolve(__dirname, './aha-react/src'),
+        react: path.resolve(__dirname, '../../packages/react/node_modules/react'),
+        'react-dom': path.resolve(__dirname, '../../packages/react/node_modules/react-dom'),
+        '@ahaui/react': path.resolve(__dirname, '../../packages/react/src/'),
         src: path.resolve(__dirname, './src'),
       },
     },

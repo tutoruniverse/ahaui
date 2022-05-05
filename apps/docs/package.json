@@ -1,12 +1,13 @@
 {
-  "name": "@ahaui/docs",
+  "name": "ahaui-docs",
   "description": "Aha Design System - Documentation",
   "version": "2.0.2",
   "author": "Got It, Inc.",
   "dependencies": {
     "copy-to-clipboard": "^3.3.1",
     "react-color": "^2.19.3",
-    "react-split-pane": "^0.1.91"
+    "react-split-pane": "^0.1.91",
+    "@ahaui/css": "*"
   },
   "devDependencies": {
     "@mdx-js/mdx": "^1.5.1",
@@ -80,8 +81,7 @@
     "url": "git+https://github.com/gotitinc/aha.git"
   },
   "scripts": {
-    "start": "yarn develop",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "build": "gatsby build --prefix-paths && node renderRedirectIndex.js",
     "clean": "gatsby clean",
     "sort": "import-sort 'src/pages/**/*.js'",
