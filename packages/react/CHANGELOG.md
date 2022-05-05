@@ -6,6 +6,9 @@
 * Composer: Allow passing `className` and `style` to `attachButtonProps`, `inputProps`, and `sendButtonProps`
 * Button: add className `u-fontMedium` to sync value with UI
 * Message, Modal, Toggle: add aria-label for accessibility
+### Added
+* Type definitions
+
 ## Release 2.0.3 - January 18, 2022
 ### Fixed
 * Code base: use absolute imports, rearrange hooks and utils

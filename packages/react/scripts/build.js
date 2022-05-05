@@ -125,6 +125,7 @@ const measureAndBuild = (outputPath, configs) => {
             );
             console.log();
           }
+          fs.copySync(paths.appSrc + '/index.d.ts', config.output.path + '/index.d.ts');
         })
       },
       err => {

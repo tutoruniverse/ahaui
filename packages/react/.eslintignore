@@ -1,2 +1,3 @@
 /config
 /scripts
+/**/*.d.ts
