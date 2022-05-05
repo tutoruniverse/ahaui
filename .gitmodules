@@ -1,4 +1,0 @@
-[submodule "aha-react"]
-	path = aha-react
-	url = https://github.com/gotitinc/aha-react.git
-  branch = master
