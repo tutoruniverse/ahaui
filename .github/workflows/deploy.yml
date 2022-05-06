@@ -3,27 +3,26 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Use Node.js 12
+      - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - run: git remote set-url origin https://git:${ACCESS_TOKEN}@github.com/gotitinc/aha.git
+      - run: git remote set-url origin https://git:${ACCESS_TOKEN}@github.com/ahaui/ahaui.github.io.git
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      - run: yarn install && cd aha-react && yarn install
-      - run: npm run build
+      - run: yarn install
+      - run: yarn build
         env:
           GATSBY_ALGOLIA_API_KEY: ${{ secrets.GATSBY_ALGOLIA_API_KEY }}
           GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
           GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
-      - run: node deploy.js
-
+      - run: cd apps/docs && node deploy.js

@@ -6,13 +6,13 @@
 
 <h3 align="center">Aha Design System - Documentation</h3>
 
-
 ## Status
 
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Faha.got-it.ai&label=Documentation)
 ![npm](https://img.shields.io/npm/v/@ahaui/css?label=CSS)
 ![npm](https://img.shields.io/npm/v/@ahaui/react?label=React)
-## Quick start 
+
+## Quick start
 
 Aha's documentation is built with Gatsby and publicly hosted at https://aha.got-it.ai/. The docs may also be run locally.
 
@@ -25,7 +25,6 @@ Aha's documentation is built with Gatsby and publicly hosted at https://aha.got-
 4. `yarn install && cd aha-react && yarn install`
 5. `yarn start`
 6. Open `http://localhost:8000/` in your browser.
-
 
 ## Copyright and license
 

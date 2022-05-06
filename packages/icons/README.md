@@ -17,12 +17,15 @@
 </p>
 
 ## Status
+
 [![CI](https://github.com/gotitinc/aha-icons/workflows/Lint/badge.svg)](https://github.com/gotitinc/aha-icons/actions)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/icons)
 [![npm version](https://img.shields.io/npm/v/@ahaui/icons)](https://www.npmjs.com/package/@ahaui/icons)
+
 ## Quick start
 
 ### Installation
+
 ```sh
 # With npm
 npm install @ahaui/icons
@@ -32,7 +35,9 @@ yarn add @ahaui/icons
 ```
 
 ### Usage
+
 With [Aha React](https://github.com/gotitinc/aha-react)
+
 ```jsx
 import React from 'react';
 import { Plugins, Icon } from '@ahaui/react';
@@ -50,6 +55,7 @@ function ExampleIcon() {
 ```
 
 With pure React component
+
 ```jsx
 import React from 'react';
 import { Icons } from '@ahaui/icons';
@@ -64,10 +70,7 @@ function ExampleIcon() {
       aria-hidden="true"
       focusable="false"
     >
-      <path
-        d={Icons[0].path}
-        fill="#000000"
-      />
+      <path d={Icons[0].path} fill="#000000" />
     </svg>
   );
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import createBlock from '../../utils/createBlock';
 import { PluginType } from '../../constants/common';
-import Plugins from '../../plugins';
+import Plugins from '../../utils/Plugins';
 
 const propTypes = {
   /** The EmptyState visual name, should be provide via an AssetPlugin with prefix "emptyState" */

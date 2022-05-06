@@ -1,4 +1,5 @@
 require('./css/ace.scss');
+require('./css/app.scss');
 const React = require('react');
 const { MDXProvider } = require('@mdx-js/react');
 

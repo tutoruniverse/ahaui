@@ -1,34 +1,15 @@
-import styled from 'astroturf';
-import copy from 'copy-text-to-clipboard';
-import React, { useCallback, useMemo, useState } from 'react';
-import { Tooltip, Overlay, Icon } from '@ahaui/react';
+import React, { useCallback, useMemo, useState } from "react";
+import copy from "copy-text-to-clipboard";
+import { Tooltip, Overlay, Icon } from "@ahaui/react";
 
-const Link = styled('span')`
-  font-size: 1rem;
-  padding: 0 0.5rem;
-  cursor: pointer;
-`;
-
-const Keyword = styled('span')`
-  color: #a626a4;
-`;
-
-const Code = styled('code')`
-  padding: 0;
-  display: inline-block;
-  color: #50a14f;
-  background-color: transparent;
-  margin-bottom: 1rem;
-`;
-
-const COPY_IMPORT_TEXT = 'Copy import code';
-const COPIED_IMPORT_TEXT = 'Copied!';
+const COPY_IMPORT_TEXT = "Copy import code";
+const COPIED_IMPORT_TEXT = "Copied!";
 
 const CopyImport = ({ name }) => {
   const [text, setText] = useState(COPY_IMPORT_TEXT);
   const textToCopy = useMemo(
     () => `import { ${name} } from '@ahaui/react'`,
-    [name],
+    [name]
   );
 
   const handleCopy = useCallback(() => {
@@ -39,29 +20,37 @@ const CopyImport = ({ name }) => {
 
   return (
     <Overlay.Trigger
-      overlay={props => (
-        <Tooltip {...props} id={`copy-${name}-import-tooltip`}>{text}</Tooltip>
+      delay={{ show: 500, hide: 2000 }}
+      overlay={(props) => (
+        <Tooltip {...props} id={`copy-${name}-import-tooltip`}>
+          {text}
+        </Tooltip>
       )}
     >
-      <Link onClick={handleCopy} className="js-search-exclude">
+      <span
+        onClick={handleCopy}
+        className="js-search-exclude u-text300 u-paddingHorizontalExtraSmall u-cursorPointer"
+      >
         <Icon name="copy" />
         <span className="u-srOnly">{`Copy import code for the ${name} component`}</span>
-      </Link>
+      </span>
     </Overlay.Trigger>
   );
 };
 
 export default ({ name }) => (
   <>
-    <Code aria-label={`Import code for the ${name} component`}>
-      <Keyword>import</Keyword>
+    <code
+      className="u-paddingNone u-inlineBlock u-textGreen300 u-backgroundTransparent u-marginBottomSmall"
+      aria-label={`Import code for the ${name} component`}
+    >
+      <span className="u-textPurple300">import</span>
       &nbsp;
       {`{ ${name} }`}
       &nbsp;
-      <Keyword>from</Keyword>
-      &nbsp;
-      '@ahaui/react'
-    </Code>
+      <span className="u-textPurple300">from</span>
+      &nbsp; '@ahaui/react'
+    </code>
     <CopyImport name={name} />
   </>
 );

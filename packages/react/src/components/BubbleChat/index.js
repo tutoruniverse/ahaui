@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import PropTypes, { any } from 'prop-types';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Avatar from 'components/Avatar';
 import BubbleChatImage from './Image';
@@ -59,7 +59,7 @@ const propTypes = {
     PropTypes.arrayOf(PropTypes.string),
   ]),
   /** Render actionBar after text content  */
-  actionBar: any,
+  actionBar: PropTypes.any,
   /**  */
   actionBarClassName: PropTypes.oneOfType([
     PropTypes.string,

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'astroturf';
 import { graphql } from 'gatsby';
 import capitalize from 'lodash/capitalize';
 
@@ -8,18 +7,6 @@ function getDoclet(doclets = [], tag) {
   const doclet = doclets.find(d => d.tag === tag);
   return doclet && doclet.value;
 }
-
-const Code = styled('code')`
-  white-space: nowrap;
-`;
-
-const PropDescription = styled('div')`
-  & pre {
-    border-radius: 0;
-    border-width: 0;
-    border-left-width: 3px;
-  }
-`;
 
 function cleanDocletValue(str) {
   return str
@@ -122,7 +109,7 @@ class PropTable extends React.Component {
                 </div>
               )}
               {this.renderControllableNote(propData, name)}
-              <PropDescription dangerouslySetInnerHTML={{ __html: descHtml }} />
+              <div className="PropDescription" dangerouslySetInnerHTML={{ __html: descHtml }} />
             </td>
           </tr>
         );
@@ -133,7 +120,7 @@ class PropTable extends React.Component {
     let value = prop.defaultValue && prop.defaultValue.value;
     if (value == null) return null;
     if (getTypeName(prop) === 'elementType') { value = `<${value.replace(/('|")/g, '')}>`; }
-    return <Code>{value}</Code>;
+    return <code className="u-textNoWrap">{value}</code>;
   }
 
   renderControllableNote(prop, propName) {
@@ -154,10 +141,10 @@ class PropTable extends React.Component {
       <span>
           controlled by:
         {' '}
-        <Code>{controllable}</Code>
+        <code className="u-textNoWrap">{controllable}</code>
           , initial prop:
         {' '}
-        <Code>{`default${capitalize(propName)}`}</Code>
+        <code className="u-textNoWrap">{`default${capitalize(propName)}`}</code>
       </span>
     );
 

@@ -27,11 +27,16 @@
 ## Quick start
 
 ### Option 1: Via HTML tag
+
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ahaui/css/dist/index.min.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@ahaui/css/dist/index.min.css"
+/>
 ```
 
 ### Option 2: Via node module
+
 ```sh
 # With npm
 npm install @ahaui/css
@@ -42,7 +47,7 @@ yarn add @ahaui/css
 
 ```js
 /* In JS file */
-import '@ahaui/css/index.min.css';
+import "@ahaui/css/index.min.css";
 ```
 
 ```css
@@ -65,7 +70,6 @@ After importing the Aha CSS file, you can override following CSS variables to ma
 Full customizable variables:
 
 ```css
-
 :root {
   --colorPrimaryLighter: #e7ecfc;
   --colorPrimaryLight: #d7defa;
@@ -104,7 +108,7 @@ Full customizable variables:
   --colorFocusInformation: #375de733;
   --colorInformationDark: #2c4ab8;
   --colorInformationDarker: #21388b;
-  --fontFamily: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --fontFamily: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --fontRegular: 400;
   --fontMedium: 500;
   --fontBold: 700;
@@ -134,11 +138,11 @@ Within the download you'll find the following directories and files, logically g
 
 ## Browser support
 
-* Google Chrome (latest)
-* Microsoft Edge (latest)
-* Opera (latest)
-* Firefox 4+
-* Safari 7+
+- Google Chrome (latest)
+- Microsoft Edge (latest)
+- Opera (latest)
+- Firefox 4+
+- Safari 7+
 
 ## Copyright and license
 

@@ -2,7 +2,7 @@ import { contains } from 'dom-helpers';
 import React, { cloneElement, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import warning from 'warning';
-import Overlay from './index';
+import OverlayBase from './Base';
 
 const normalizeDelay = delay => ((delay && typeof delay === 'object') ? delay : { show: delay, hide: delay });
 const triggerType = PropTypes.oneOf(['click', 'hover', 'focus']);
@@ -153,7 +153,7 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
   return (
     <>
       {cloneElement(child, { ref: triggerRef, ...triggerProps })}
-      <Overlay
+      <OverlayBase
         {...props}
         popperConfig={{
           ...popperConfig,
@@ -166,7 +166,7 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
         target={triggerRef.current}
       >
         {props => overlay({ ...props, ...overlayProps })}
-      </Overlay>
+      </OverlayBase>
     </>
   );
 });

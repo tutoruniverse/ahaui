@@ -24,7 +24,7 @@ const propTypes = {
    * Popper's `flip` modifier config.
    * @see https://popper.js.org/docs/v2/modifiers/flip/
    */
-  flip: PropTypes.boolean,
+  flip: PropTypes.bool,
   /**
    * A set of popper options and props passed directly to react-popper's Popper component.
    * @default {}

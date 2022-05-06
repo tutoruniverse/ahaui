@@ -1,5 +1,4 @@
 /* stylelint-disable scss/selector-no-union-class-name, no-descending-specificity */
-
 .react-calendar {
   padding: 0 16px;
   border-radius: var(--radiusMedium);
@@ -482,7 +481,6 @@
 
   &__clock {
     width: 200px;
-    height: 200px;
     max-width: 100vw;
     padding: 25px;
     background-color: white;
@@ -579,6 +577,7 @@
 
     &__button {
       line-height: 0;
+      padding: 0 4px;
 
       &:hover {
         color: var(--colorPrimary);
@@ -588,6 +587,7 @@
     &__wrapper {
       width: 100%;
       transition: all 0.15s ease-in-out;
+      align-items: center;
 
       @each $pro, $proval in map-deep-get($forms, "sizes", "base") {
         #{$pro}: $proval;
@@ -630,6 +630,14 @@
       @each $pro, $proval in map-deep-get($forms, "input", "large") {
         #{$pro}: $proval;
       }
+    }
+  }
+}
+
+.TimePicker {
+  .react-time-picker {
+    &__clock {
+      height: 200px !important;
     }
   }
 }

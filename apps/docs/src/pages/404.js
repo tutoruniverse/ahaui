@@ -1,7 +1,4 @@
 import React from 'react';
-import { Button, SafeAnchor } from '@ahaui/react';
-import pkg from '../../aha-react/package.json';
-
 import withLayout from '../withLayout';
 
 export default withLayout(

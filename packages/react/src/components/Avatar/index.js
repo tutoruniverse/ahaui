@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Plugins from 'plugins';
+import Plugins from 'utils/Plugins';
 import { PluginType } from 'constants/common';
 
 const propTypes = {

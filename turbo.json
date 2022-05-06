@@ -9,6 +9,10 @@
     },
     "dev": {
       "cache": false
+    },
+    "deploy": {
+      "outputs": [],
+      "cache": false
     }
   }
 }
