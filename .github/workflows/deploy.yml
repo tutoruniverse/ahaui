@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -19,11 +19,11 @@ jobs:
       - run: git remote set-url origin https://git:${ACCESS_TOKEN}@github.com/gotitinc/aha.git
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      - run: yarn install && cd aha-react && yarn install
+      - run: yarn install
       - run: npm run build
         env:
           GATSBY_ALGOLIA_API_KEY: ${{ secrets.GATSBY_ALGOLIA_API_KEY }}
           GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
           GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
-      - run: node deploy.js
+      - run: node apps/docs/deploy.js
 
