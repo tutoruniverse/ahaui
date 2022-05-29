@@ -12,6 +12,8 @@ const propTypes = {
   ]),
   /** You can use a custom element type for this component. */
   as: PropTypes.elementType,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 const defaultProps = {
   aspectRatio: 'wide',
