@@ -16,7 +16,6 @@
     "@restart/hooks": "^0.3.19",
     "ace-builds": "^1.4.12",
     "algoliasearch": "^4.8.3",
-    "astroturf": "^0.10.2",
     "classnames": "^2.2.6",
     "common-tags": "^1.8.0",
     "copy-text-to-clipboard": "^2.1.1",
@@ -26,7 +25,6 @@
     "formik": "^2.0.8",
     "gatsby": "^2.18.12",
     "gatsby-plugin-algolia": "^0.16.1",
-    "gatsby-plugin-astroturf": "^0.2.1",
     "gatsby-plugin-catch-links": "^2.1.21",
     "gatsby-plugin-mdx": "1.1.6",
     "gatsby-plugin-nprogress": "^2.6.0",
@@ -34,6 +32,7 @@
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-prismjs": "^3.3.27",
     "gatsby-source-filesystem": "2.9.0",
+    "gatsby-plugin-root-import": "2.0.8",
     "gatsby-transformer-react-docgen": "^5.7.0",
     "gatsby-transformer-remark": "^2.6.42",
     "gh-pages": "^3.2.3",
@@ -80,6 +79,7 @@
     "type": "git",
     "url": "git+https://github.com/gotitinc/aha.git"
   },
+  "type": "commonjs",
   "scripts": {
     "dev": "gatsby develop",
     "build": "gatsby build --prefix-paths && node renderRedirectIndex.js",

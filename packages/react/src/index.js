@@ -51,5 +51,5 @@ export { default as SafeAnchor } from './components/SafeAnchor';
 export { default as Fade } from './components/Fade';
 export { default as createBlock } from './utils/createBlock';
 export { default as useRootClose } from './hooks/useRootClose';
-export { default as Plugins } from './plugins';
-export { default as AssetPlugin } from './plugins/AssetPlugin';
+export { default as Plugins } from './utils/Plugins';
+export { default as AssetPlugin } from './utils/AssetPlugin';

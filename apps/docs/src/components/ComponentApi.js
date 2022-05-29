@@ -29,9 +29,6 @@ function ComponentApi({ heading, metadata, exportedBy }) {
           <Anchor target={id}>
             <span className=" text-monospace">{name}</span>
           </Anchor>
-
-          {/* <span className="u-marginLeftAuto" />
-          <LinkToSource component={name} /> */}
         </div>
       </Heading>
 

@@ -43,6 +43,16 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-root-import",
+      options: {
+        utils:  path.resolve(__dirname, '../../packages/react/src/utils/'),
+        components:  path.resolve(__dirname, '../../packages/react/src/components/'),
+        hooks:  path.resolve(__dirname, '../../packages/react/src/hooks/'),
+        constants:  path.resolve(__dirname, '../../packages/react/src/constants/'),
+        'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: path.resolve(__dirname, './src/pages'),
@@ -90,10 +100,6 @@ module.exports = {
     },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sass',
-    {
-      resolve: 'gatsby-plugin-astroturf',
-      options: { extension: '.module.scss' },
-    },
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {

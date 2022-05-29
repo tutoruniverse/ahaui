@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@ahaui/react';
 import { Link } from 'gatsby';
-import pkg from '../../aha-react/package.json';
+import pkg from '../../../../packages/react/package.json';
 
 import withLayout from '../withLayout';
 
