@@ -7,6 +7,31 @@
   resolved "https://registry.yarnpkg.com/@ahaui/css/-/css-2.0.5.tgz#1219ed7a73055dbbd95e2d7f61b9d439c55a8cec"
   integrity sha512-DAE5vAGqzW3haJjwyGGPom5rAgxpKKe/VoBqNBgo+JiN/53ydH/tp5B1/etsoQRuYpdbXbqysU8OuYi9B+nMlg==
 
+"@ahaui/react@*":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@ahaui/react/-/react-2.0.3.tgz#567a8cb62693ae105fff5fdb8794eee82f7b683d"
+  integrity sha512-mgS8Go2LL0JLvJ0UpOqtpU0HqfrofoY6bPBtKXiHfLJ10/FnD827Ef6VAlytKR3/xRLwu7YgbBR6vHOZZ3jF7w==
+  dependencies:
+    "@restart/hooks" "0.3.25"
+    "@wojtekmaj/predict-input-value" "1.0.0"
+    "@wojtekmaj/react-daterange-picker" "2.5.0"
+    classnames "2.2.6"
+    dom-helpers "5.1.0"
+    popper.js "1.15.0"
+    prop-types "15.7.2"
+    prop-types-extra "1.1.0"
+    rc-slider "8.7.1"
+    react-date-picker "7.10.0"
+    react-slick "0.27.13"
+    react-split-pane "0.1.92"
+    react-tagsinput "3.19.0"
+    react-textarea-autosize "7.1.2"
+    react-time-picker "3.9.0"
+    react-toastify "7.0.4"
+    react-transition-group "4.0.0"
+    uncontrollable "7.1.1"
+    warning "4.0.3"
+    
 "@algolia/cache-browser-local-storage@4.13.0":
   version "4.13.0"
   resolved "https://registry.yarnpkg.com/@algolia/cache-browser-local-storage/-/cache-browser-local-storage-4.13.0.tgz#f8aa4fe31104b19d616ea392f9ed5c2ea847d964"

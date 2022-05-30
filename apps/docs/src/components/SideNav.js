@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Collapse, Logo, SafeAnchor, Icon } from "@ahaui/react";
+import { Collapse, Logo, SafeAnchor, Icon, createBlock } from "@ahaui/react";
 import { Link } from "gatsby";
 import Menu from "./Menu";
 import AlgoliaSearch from "./AlgoliaSearch";
@@ -15,14 +15,12 @@ const searchIndices = [
   },
 ];
 
+const SidePanel = createBlock("SidePanel u-flex u-flexColumn u-backgroundWhite");
+
 const SideNav = React.forwardRef(({ location, ...props }, ref) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <div
-      className="SidePanel u-flex u-flexColumn u-backgroundWhite"
-      {...props}
-      ref={ref}
-    >
+    <SidePanel {...props} ref={ref}>
       {/* Only show theme editor on large screen */}
       <div className="u-hidden md:u-block">
         <div className="u-positionFixed u-positionTop u-positionRight u-marginMedium">
@@ -70,7 +68,7 @@ const SideNav = React.forwardRef(({ location, ...props }, ref) => {
         &nbsp;
         <SafeAnchor href="https://www.got-it.ai/">Got It, Inc.</SafeAnchor>
       </div>
-    </div>
+    </SidePanel>
   );
 });
 
