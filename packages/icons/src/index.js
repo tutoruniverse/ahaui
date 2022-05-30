@@ -12,7 +12,7 @@ const Icons = [
   ...requireAllSVGs('User'),
 ];
 
-const createIconAssetsPlugin = () => {
+export const createIconAssetsPlugin = () => {
   const IconAssetsPlugin = new AssetPlugin({
     prefix: 'icon',
     assets: Icons.reduce((finalResult, currentItem) => {
@@ -33,7 +33,4 @@ const createIconAssetsPlugin = () => {
   return IconAssetsPlugin;
 };
 
-export default {
-  Icons,
-  createIconAssetsPlugin,
-};
+export default Icons;

@@ -1,9 +1,9 @@
-const path = require('path');
-const config = require('./config');
+const path = require("path");
+const config = require("./config");
 
 const stringifiedConfig = Object.entries(config).reduce(
   (acc, [key, value]) => ({ ...acc, [key]: JSON.stringify(value) }),
-  {},
+  {}
 );
 
 exports.onCreateWebpackConfig = function onCreateWebpackConfig({
@@ -15,15 +15,15 @@ exports.onCreateWebpackConfig = function onCreateWebpackConfig({
 }) {
   actions.setWebpackConfig({
     node: {
-      fs: 'empty',
+      fs: "empty",
     },
-    devtool: stage.includes('develop')
-      ? 'inline-module-source-map'
-      : 'source-map',
+    devtool: stage.includes("develop")
+      ? "inline-module-source-map"
+      : "source-map",
     module: {
       rules: [
         {
-          include: path.resolve(__dirname, 'src/examples'),
+          include: path.resolve(__dirname, "src/examples"),
           use: loaders.raw(),
         },
       ],
@@ -31,10 +31,10 @@ exports.onCreateWebpackConfig = function onCreateWebpackConfig({
     resolve: {
       symlinks: false,
       alias: {
-        react: path.resolve(__dirname, '../../packages/react/node_modules/react'),
-        'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
-        '@ahaui/react': path.resolve(__dirname, '../../packages/react/src/'),
-        src: path.resolve(__dirname, './src'),
+        react: path.resolve(__dirname, "../../node_modules/react"),
+        "react-dom": path.resolve(__dirname, "../../node_modules/react-dom"),
+        "@ahaui/react": path.resolve(__dirname, "../../packages/react/src/"),
+        src: path.resolve(__dirname, "./src"),
       },
     },
     plugins: [
@@ -47,15 +47,20 @@ exports.onCreateWebpackConfig = function onCreateWebpackConfig({
   });
 
   // eslint-disable-next-line no-param-reassign
-  getConfig().resolve.modules = ['node_modules'];
+  getConfig().resolve.modules = ["node_modules"];
 };
-
 
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelOptions({
     options: {
-      envName: 'docs',
-      root: path.resolve(__dirname, '../'),
+      envName: "docs",
+      root: path.resolve(__dirname, "../"),
+    },
+  });
+  actions.setBabelPlugin({
+    name: "@babel/plugin-transform-react-jsx",
+    options: {
+      runtime: "automatic",
     },
   });
 };
