@@ -830,7 +830,7 @@ declare module '@ahaui/react' {
     }
     export const Rating: React.FC<RatingProps>;
 
-    export interface SafeAnchorProps extends BasicProps {
+    export interface SafeAnchorProps extends BasicAsProps {
         href?: string;
         onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
         onKeyDown?: (event: React.KeyboardEvent<HTMLAnchorElement>) => void;
