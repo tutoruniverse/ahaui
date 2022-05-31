@@ -11,64 +11,10 @@ import {
 } from 'react-instantsearch-dom';
 import { Link } from 'gatsby';
 import algoliasearch from 'algoliasearch/lite';
-import styled from 'astroturf';
-import { Form } from '@ahaui/react';
+import { Form,createBlock } from '@ahaui/react';
 
 
-const Root = styled('div')`
-  position: relative;
-  display: grid;
-  grid-gap: 1em;
-`;
-
-const HitsWrapper = styled('div')`
-  @import '../css/theme';
-  composes: u-flexGrow-1 u-overflowScroll u-paddingSmall u-webkitScrollbar from global;
-  max-height: 50vh;
-  > * + * {
-    padding-top: 1em;
-    border-top: 1px solid #DFE1E6;
-  }
-  li + li {
-    margin-top: 0.7em;
-    padding-top: 0.7em;
-    border-top: 1px solid #DFE1E6;
-  }
-  * {
-    margin-top: 0;
-    padding: 0;
-  }
-  ul {
-    list-style: none;
-  }
-`;
-const StyleLink = styled(Link)`
-  @import '../css/theme';
-  mark {
-    color: map-deep-get($colors-render, 'text', 'dark');
-    background: map-deep-get($colors-render, 'background', 'warning');
-  }
-`;
-const StyleSubLink = styled(Link)`
-  @import '../css/theme';
-  composes:  u-textGray u-fontMedium u-marginBottomTiny from global;
-`;
-const StyleDesc = styled('div')`
-  @import '../css/theme';
-  composes: u-textGray u-text100 u-marginBottomExtraSmall from global;
-  mark {
-    background: transparent;
-    border-bottom: 2px solid map-deep-get($colors-render, 'border', 'warning');
-  }
-`;
-const StyleSubTitle = styled('div')`
-  @import '../css/theme';
-  composes: u-marginBottomExtraSmall from global;
-  mark {
-    background: transparent;
-    border-bottom: 2px solid map-deep-get($colors-render, 'border', 'warning');
-  }
-`;
+const Root = createBlock('InstantSearchRoot u-positionRelative');
 
 const CustomHighlight = connectHighlight(({ highlight, attribute, hit }) => {
   const parsedHit = highlight({
@@ -86,7 +32,7 @@ const CustomHighlight = connectHighlight(({ highlight, attribute, hit }) => {
         const isLast = i === parsedHit.length - 1;
         return (
           <React.Fragment key={path + i}>
-            <StyleSubLink to={path}>
+            <Link className="u-textGray u-fontMedium u-marginBottomTiny" to={path}>
               {part.map(element => (
                 element.isHighlighted ? (
                   <mark key={element.value}>{element.value}</mark>
@@ -94,7 +40,7 @@ const CustomHighlight = connectHighlight(({ highlight, attribute, hit }) => {
                   <span key={element.value}>{element.value}</span>
                 )
               ))}
-            </StyleSubLink>
+            </Link>
             {!isLast && <span className="u-marginHorizontalTiny">,</span>}
           </React.Fragment>
         );
@@ -108,20 +54,20 @@ const Hits = connectHits(function HitComp({ hits, onClick }) {
     const path = `/${hit.path}/`;
     return (
       <div key={hit.objectID}>
-        <StyleLink to={path} onClick={onClick} className="u-textDark">
+        <Link to={path} onClick={onClick} className="StyleLink u-textDark">
           <Highlight attribute="title" hit={hit} tagName="mark" />
-        </StyleLink>
-        <StyleDesc>
+        </Link>
+        <div className="StyleDesc u-textGray u-text100 u-marginBottomExtraSmall">
           <Highlight attribute="description" hit={hit} tagName="mark" />
-        </StyleDesc>
-        <StyleSubTitle>
+        </div>
+        <div className="StyleSubTitle u-marginBottomExtraSmall">
           <div className="u-text200 u-marginBottomTiny">
             <CustomHighlight attribute="tocDepth2" hit={hit} tagName="mark" />
           </div>
           <div className="u-text100">
             <CustomHighlight attribute="tocDepth3" hit={hit} tagName="mark" />
           </div>
-        </StyleSubTitle>
+        </div>
       </div>
     );
   });
@@ -189,14 +135,14 @@ export default function Search({ indices, collapse }) {
             top: 'calc(100% + 0.5em)',
           }}
         >
-          <HitsWrapper>
+          <div className="HitsWrapper u-flexGrow1 u-overflowScroll u-paddingSmall u-webkitScrollbar">
             {indices.map(({ name, type }) => (
               <Index key={name} indexName={name}>
                 <Results />
                 <Hits type={type} onClick={() => setFocus(false)} />
               </Index>
             ))}
-          </HitsWrapper>
+          </div>
 
           <div
             className="u-textGray u-borderTop u-text200 u-flexInline u-justifyContentEnd u-paddingVerticalExtraSmall u-paddingHorizontalSmall"

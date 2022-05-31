@@ -175,6 +175,7 @@ export default function CustomTheme() {
                   <Dropdown.Container className="u-paddingVerticalTiny u-shadowMedium">
                     {Object.keys(Presets).map((presetKey) => (
                       <Dropdown.Item
+                        key={presetKey}
                         className="u-cursorPointer"
                         onClick={() => onSelectPreset(presetKey)}
                         style={{

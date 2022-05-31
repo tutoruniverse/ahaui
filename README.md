@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://aha.got-it.ai">
-    <img src="https://raw.githubusercontent.com/gotitinc/aha/main/libs/assets/origin/ahaui-logo-trasparent.svg" alt="Aha logo" width="150" height="150">
+    <img src="https://raw.githubusercontent.com/gotitinc/ahaui/main/libs/assets/origin/ahaui-logo-trasparent.svg" alt="Aha logo" width="150" height="150">
   </a>
 </p>
 
@@ -11,6 +11,7 @@
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fgotitinc.github.io/aha&label=Documentation)
 ![npm](https://img.shields.io/npm/v/@ahaui/css?label=CSS)
 ![npm](https://img.shields.io/npm/v/@ahaui/react?label=React)
+![npm](https://img.shields.io/npm/v/@ahaui/icons?label=Icon)
 
 ## Installation
 You have to install both `@ahaui/react` and `@ahaui/css`

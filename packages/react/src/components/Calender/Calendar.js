@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import CalendarBase from 'react-calendar/dist/entry.nostyle';
+import CalendarBase from 'react-calendar';
 
 const Calendar = React.forwardRef(({ className, ...props }, ref) => (
   <CalendarBase

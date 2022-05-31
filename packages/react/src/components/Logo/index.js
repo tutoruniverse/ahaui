@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { PluginType } from 'constants/common';
-import Plugins from 'plugins';
+import Plugins from 'utils/Plugins';
 
 const propTypes = {
   /** The Logo visual name, should be provide via an AssetPlugin with prefix "logo" */

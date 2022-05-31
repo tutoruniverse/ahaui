@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import isRequiredForA11y from 'prop-types-extra/lib/isRequiredForA11y';
 
 const propTypes = {
   /**
@@ -9,9 +8,7 @@ const propTypes = {
    * @type {string|number}
    * @required
    */
-  id: isRequiredForA11y(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  ),
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Remove arrow
    */
@@ -49,10 +46,7 @@ const propTypes = {
     style: PropTypes.object,
   }),
   /** The Tooltip visual variant */
-  variant: PropTypes.oneOf([
-    'white',
-    'black',
-  ]),
+  variant: PropTypes.oneOf(['white', 'black']),
   /** @private */
   scheduleUpdate: PropTypes.func,
 
@@ -68,54 +62,55 @@ const variantsClassName = {
   black: 'u-textWhite u-backgroundBlack',
   white: 'u-textDark u-backgroundWhite u-border',
 };
-const Tooltip = React.forwardRef(({
-  className,
-  show,
-  variant,
-  children,
-  noArrow,
-  arrowProps,
-  styleTooltip,
-  placement,
-  scheduleUpdate: _,
-  outOfBoundaries: _1,
-  ...props
-}, ref) => (
-  <div
-    ref={ref}
-    {...props}
-    style={styleTooltip}
-    x-placement={placement}
-    className={classNames(
-      'Tooltip',
-      variant && `Tooltip--${variant}`,
-      'u-positionAbsolute u-zIndexTooltip u-roundedMedium',
-      show ? 'u-opacityReset u-visibilityVisible' : 'u-opacityNone u-visibilityHidden',
-      placement && `Tooltip--${placement}`,
-      variant && variantsClassName[variant],
-      className && className
-    )}
-  >
-    {!noArrow && (
+const Tooltip = React.forwardRef(
+  (
+    {
+      className,
+      show,
+      variant,
+      children,
+      noArrow,
+      arrowProps,
+      styleTooltip,
+      placement,
+      scheduleUpdate: _,
+      outOfBoundaries: _1,
+      ...props
+    },
+    ref,
+  ) => (
     <div
+      ref={ref}
+      {...props}
+      style={styleTooltip}
+      x-placement={placement}
       className={classNames(
-        'Tooltip-arrow',
-        'u-positionAbsolute',
-      )}
-      {...arrowProps}
-    />
-    )}
-    <div
-      style={{ ...props.style }}
-      className={classNames(
-        'Tooltip-body',
-        'u-text200 u-paddingExtraSmall',
+        'Tooltip',
+        variant && `Tooltip--${variant}`,
+        'u-positionAbsolute u-zIndexTooltip u-roundedMedium',
+        show
+          ? 'u-opacityReset u-visibilityVisible'
+          : 'u-opacityNone u-visibilityHidden',
+        placement && `Tooltip--${placement}`,
+        variant && variantsClassName[variant],
+        className && className,
       )}
     >
-      {children}
+      {!noArrow && (
+        <div
+          className={classNames('Tooltip-arrow', 'u-positionAbsolute')}
+          {...arrowProps}
+        />
+      )}
+      <div
+        style={{ ...props.style }}
+        className={classNames('Tooltip-body', 'u-text200 u-paddingExtraSmall')}
+      >
+        {children}
+      </div>
     </div>
-  </div>
-));
+  ),
+);
 
 Tooltip.displayName = 'Tooltip';
 Tooltip.defaultProps = defaultProps;
