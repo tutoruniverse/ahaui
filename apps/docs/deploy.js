@@ -2,7 +2,7 @@ const ghpages = require('gh-pages');
 const ahaReactConfig = require('./config');
 
 ghpages.publish('public', {
-  dest: ahaReactConfig.version,
+  dest: ahaReactConfig.version.split('.')[0],
   add: true,
   user: {
     name: 'github-actions-bot',

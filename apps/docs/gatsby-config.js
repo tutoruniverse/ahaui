@@ -29,7 +29,7 @@ module.exports = {
     PARALLEL_SOURCING: true,
     FAST_DEV: true,
   },
-  pathPrefix: ahaReactConfig.version,
+  pathPrefix: ahaReactConfig.version.split(".")[0],
   plugins: [
     "gatsby-plugin-sorted-assets",
     {
