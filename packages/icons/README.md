@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://aha.got-it.ai">
-    <img src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-trasparent.svg" alt="Aha logo" width="150" height="150">
+    <img src="https://raw.githubusercontent.com/gotitinc/ahaui/main/libs/assets/origin/ahaui-logo-trasparent.svg" alt="Aha logo" width="150" height="150">
   </a>
 </p>
 
@@ -8,18 +8,16 @@
 <p align="center">
   Collection of SVG icons for building web applications.
   <br>
-  <a href="https://aha.got-it.ai"><strong>Explore Aha docs »</strong></a>
+  <a href="https://ahaui.github.io"><strong>Explore Aha docs »</strong></a>
   <br>
   <br>
-  <a href="https://github.com/gotitinc/aha-icons/issues/new?template=bug_report.md">Report bug</a>
+  <a href="https://github.com/gotitinc/ahaui/issues/new?template=bug_report.md">Report bug</a>
   ·
-  <a href="https://github.com/gotitinc/aha-icons/issues/new?template=feature_request.md">Request feature</a>
+  <a href="https://github.com/gotitinc/ahaui/issues/new?template=feature_request.md">Request feature</a>
 </p>
 
 ## Status
-
-[![CI](https://github.com/gotitinc/aha-icons/workflows/Lint/badge.svg)](https://github.com/gotitinc/aha-icons/actions)
-![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/icons)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/icons?label=Size)
 [![npm version](https://img.shields.io/npm/v/@ahaui/icons)](https://www.npmjs.com/package/@ahaui/icons)
 
 ## Quick start
@@ -36,7 +34,7 @@ yarn add @ahaui/icons
 
 ### Usage
 
-With [Aha React](https://github.com/gotitinc/aha-react)
+With `@ahaui/react`
 
 ```jsx
 import React from 'react';
@@ -78,4 +76,4 @@ function ExampleIcon() {
 
 ## Copyright and License
 
-Code and documentation copyright 2020 the [Got It, Inc.](https://www.got-it.ai) Code released under the [Apache-2.0 License](https://github.com/gotitinc/aha-icons/blob/master/LICENSE).
+AhaUI-Icons is licensed under the [Apache-2.0 License](https://github.com/gotitinc/ahaui/blob/main/LICENSE), sponsored and supported by [Got It, Inc.](https://www.got-it.co).

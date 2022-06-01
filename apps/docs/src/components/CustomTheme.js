@@ -9,7 +9,7 @@ import { VARIABLES, Presets } from '../constants/common';
 
 const getSlylesheetFromVariables = (variables) => `/*
 - Modify predefined CSS variables to custom your theme.
-- More info: https://github.com/gotitinc/aha-css#customization
+- More info: https://github.com/gotitinc/ahaui/tree/main/packages/css#customization
 - NOTE: previewing unimported --fontFamily is not supported.
 */
 :root {

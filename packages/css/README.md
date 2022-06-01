@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://aha.got-it.ai">
-    <img src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/origin/ahaui-logo-trasparent.svg" alt="Aha logo" width="150" height="150">
+    <img src="https://raw.githubusercontent.com/gotitinc/ahaui/main/libs/assets/origin/ahaui-logo-trasparent.svg" alt="Aha logo" width="150" height="150">
   </a>
 </p>
 
@@ -8,21 +8,20 @@
 <p align="center">
   Style tools for component-based UI development.
   <br>
-  <a href="https://aha.got-it.ai"><strong>Explore Aha docs »</strong></a>
+  <a href="https://ahaui.github.io"><strong>Explore Aha docs »</strong></a>
   <br>
   <br>
-  <a href="https://github.com/gotitinc/aha-css/issues/new?template=bug_report.md">Report bug</a>
+  <a href="https://github.com/gotitinc/ahaui/issues/new?template=bug_report.md">Report bug</a>
   ·
-  <a href="https://github.com/gotitinc/aha-css/issues/new?template=feature_request.md">Request feature</a>
+  <a href="https://github.com/gotitinc/ahaui/issues/new?template=feature_request.md">Request feature</a>
 </p>
 
 ## Status
 
-[![CI](https://github.com/gotitinc/aha-css/workflows/Lint/badge.svg)](https://github.com/gotitinc/aha-css/actions)
 [![](https://data.jsdelivr.com/v1/package/npm/@ahaui/css/badge)](https://www.jsdelivr.com/package/npm/@ahaui/css)
-![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css?label=CSS)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css?label=Size)
 [![npm version](https://img.shields.io/npm/v/@ahaui/css)](https://www.npmjs.com/package/@ahaui/css)
-[![GitHub issues](https://img.shields.io/github/issues/gotitinc/aha-css)](https://github.com/gotitinc/aha-css/issues)
+
 
 ## Quick start
 
@@ -146,4 +145,5 @@ Within the download you'll find the following directories and files, logically g
 
 ## Copyright and license
 
-Code and documentation copyright 2020 the [Got It, Inc.](https://www.got-it.ai) Code released under the [Apache-2.0 License](https://github.com/gotitinc/aha-css/blob/master/LICENSE).
+
+AhaUI-CSS is licensed under the [Apache-2.0 License](https://github.com/gotitinc/ahaui/blob/main/LICENSE), sponsored and supported by [Got It, Inc.](https://www.got-it.co).

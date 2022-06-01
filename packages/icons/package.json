@@ -1,6 +1,6 @@
 {
   "name": "@ahaui/icons",
-  "version": "2.1.0-alpha.0",
+  "version": "2.1.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -32,11 +32,11 @@
     "trailingComma": "all"
   },
   "author": "Got It, Inc.",
-  "homepage": "https://github.com/gotitinc/aha-icons#readme",
+  "homepage": "https://github.com/gotitinc/ahaui/blob/main/packages/icons#readme",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gotitinc/aha-icons.git"
+    "url": "git+https://github.com/gotitinc/ahaui.git"
   },
   "description": "Aha Design System - Icons",
   "directories": {

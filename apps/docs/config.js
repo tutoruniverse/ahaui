@@ -1,5 +1,3 @@
-const config = {
-  version: require('../../packages/react/package.json').version,
-};
+const config = require('../../package.json');
 
 module.exports = config;

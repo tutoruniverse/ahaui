@@ -37,7 +37,7 @@
 
 ### Fixed
 
-- CSSUtilities: revert some deprecated class, details in [\_deprecated.scss](https://github.com/gotitinc/aha-css/blob/master/scss/utilities/_deprecated.scss)
+- CSSUtilities: revert some deprecated class, details in [\_deprecated.scss](https://github.com/gotitinc/ahaui/blob/main/packages/css/scss/utilities/_deprecated.scss)
 
 ## Release 2.0.1 - December 6, 2020
 

@@ -1,6 +1,6 @@
 {
   "name": "ahaui",
-  "version": "0.0.0",
+  "version": "2.1.0",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -58,6 +58,13 @@
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
+  },
+  "author": "Got It, Inc.",
+  "homepage": "https://github.com/gotitinc/ahaui#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotitinc/ahaui.git"
   },
   "packageManager": "yarn@1.22.18"
 }
