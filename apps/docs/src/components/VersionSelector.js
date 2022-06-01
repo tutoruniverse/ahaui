@@ -51,7 +51,6 @@ export default function VersionSelector() {
       <Dropdown show={show} onToggle={onToggle}>
         <Dropdown.Button variant="secondary" size="small" className="">
           <Button.Label className="u-marginRightExtraSmall u-fontMedium">
-            <span>Aha React:&nbsp;</span>
             <span className="u-textPrimary">{`v${currentVersion}.x`}</span>
           </Button.Label>
           <Button.Icon>
@@ -63,7 +62,7 @@ export default function VersionSelector() {
             <Dropdown.Item
               key={version}
               className={classNames(
-                "u-flex u-justifyContentBetween u-alignItemsCenter",
+                "u-flex u-justifyContentBetween u-alignItemsCenter u-text200",
                 version !== currentVersion && "u-cursorPointer"
               )}
               onClick={() => onVersionClick(version)}

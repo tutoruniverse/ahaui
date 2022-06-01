@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@ahaui/react';
 import { Link } from 'gatsby';
-import pkg from '../../../../packages/react/package.json';
+import ahaReactConfig from "../../config";
 
 import withLayout from '../withLayout';
 
@@ -24,6 +24,7 @@ export default withLayout(
                 </div>
                 <Button
                   as={Link}
+                  width="min"
                   size="large"
                   className="u-marginTopLarge"
                   to="/getting-started/introduction"
@@ -33,7 +34,7 @@ export default withLayout(
                 <div className="u-marginTopSmall">
                   Current release:&nbsp;
                   <Link to="/release-notes/">
-                    {pkg.version}
+                    {ahaReactConfig.version}
                   </Link>
                 </div>
               </div>

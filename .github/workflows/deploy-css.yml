@@ -1,0 +1,18 @@
+name: Deploy CSS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - run: cd packages/css && deploy.sh
+        if: "github.event.head_commit.message == 'chore: Deploy'"

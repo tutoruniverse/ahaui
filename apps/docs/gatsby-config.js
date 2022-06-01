@@ -4,7 +4,7 @@ const remarkSlug = require("remark-slug");
 const defaultDescriptions = require("./src/defaultPropDescriptions");
 const algoliaSearch = require("./algoliaSearch");
 const ahaReactConfig = require("./config");
-
+const version = ahaReactConfig.version.split(".")[0];
 const activeEnv = process.env.ENV || "dev";
 console.log(`Using environment config: '${activeEnv}'`);
 require("dotenv").config({
@@ -13,7 +13,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "Aha Design System - Documentation",
+    title: `Aha Design System - Documentation | v.${version}.x`,
     description:
       "An ever-evolving system that enables us to build higher quality products more efficiently",
     author: "GotIt, Inc. contributors",
@@ -29,7 +29,7 @@ module.exports = {
     PARALLEL_SOURCING: true,
     FAST_DEV: true,
   },
-  pathPrefix: ahaReactConfig.version.split(".")[0],
+  pathPrefix: version,
   plugins: [
     "gatsby-plugin-sorted-assets",
     {

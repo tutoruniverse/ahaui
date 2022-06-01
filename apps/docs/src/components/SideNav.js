@@ -5,8 +5,10 @@ import { Link } from "gatsby";
 import Menu from "./Menu";
 import AlgoliaSearch from "./AlgoliaSearch";
 import CustomTheme from "./CustomTheme";
+import GitHubIcon from "./GitHubIcon";
 import VersionSelector from "./VersionSelector";
 import ahaReactConfig from "../../config";
+import SlackIcon from "./SlackIcon";
 const searchIndices = [
   {
     name: ahaReactConfig.version,
@@ -15,7 +17,9 @@ const searchIndices = [
   },
 ];
 
-const SidePanel = createBlock("SidePanel u-flex u-flexColumn u-backgroundWhite");
+const SidePanel = createBlock(
+  "SidePanel u-flex u-flexColumn u-backgroundWhite"
+);
 
 const SideNav = React.forwardRef(({ location, ...props }, ref) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -63,10 +67,26 @@ const SideNav = React.forwardRef(({ location, ...props }, ref) => {
           </div>
         </div>
       </Collapse>
-      <div className="u-text100 u-textGray u-hidden md:u-block u-paddingVerticalExtraSmall u-paddingHorizontalSmall u-marginTopSmall u-borderTop">
+      <div className="u-text100 u-textGray u-hidden md:u-flex u-alignItemsCenter u-paddingVerticalExtraSmall u-paddingHorizontalSmall u-marginTopSmall u-borderTop">
         <span>Powered by</span>
         &nbsp;
         <SafeAnchor href="https://www.got-it.ai/">Got It, Inc.</SafeAnchor>
+        <SafeAnchor
+          title="GitHub"
+          className="u-marginLeftExtraSmall u-inlineBlock u-lineHeightNone"
+          target="_blank"
+          href={ahaReactConfig.homepage}
+        >
+          <GitHubIcon />
+        </SafeAnchor>
+        <SafeAnchor
+          title="Slack"
+          className="u-marginLeftExtraSmall u-inlineBlock u-lineHeightNone"
+          href={ahaReactConfig.slack}
+          target="_blank"
+        >
+          <SlackIcon />
+        </SafeAnchor>
       </div>
     </SidePanel>
   );

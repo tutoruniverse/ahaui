@@ -108,3 +108,4 @@ package.json.backup
 lib
 es
 dist
+.DS_Store
