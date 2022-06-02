@@ -1,4 +1,4 @@
-name: Deploy CSS
+name: Release Icons
 
 on:
   workflow_dispatch:
@@ -36,7 +36,7 @@ jobs:
           CI: true
 
       - name: Publish
-        run: cd packages/css && yarn build && npm publish
+        run: cd packages/icons && yarn build && npm publish
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

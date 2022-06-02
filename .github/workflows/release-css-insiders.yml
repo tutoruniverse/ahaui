@@ -1,4 +1,4 @@
-name: Deploy Icons Insiders
+name: Release CSS Insiders
 
 on:
   workflow_dispatch:
@@ -40,10 +40,10 @@ jobs:
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
       - name: "Version based on commit: 0.0.0-insiders.${{ steps.vars.outputs.sha_short }}"
-        run: cd packages/icons && npm version 0.0.0-insiders.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version
+        run: cd packages/css && npm version 0.0.0-insiders.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version
 
       - name: Publish
-        run: cd packages/icons && npm publish --tag insiders
+        run: cd packages/css && npm publish --tag insiders
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
