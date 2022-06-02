@@ -1,22 +1,33 @@
 // Type definitions for @ahaui/react v2.1.0
 // Project: https://github.com/gotitinc/ahaui
 // Definitions by: KyleTV <https://github.com/tinhvqbk>
-// TypeScript Version: 3.3
+// TypeScript Version: 2.8
 
 declare module '@ahaui/react' {
-    import React, { ChangeEvent, HtmlHTMLAttributes } from 'react';
+    import React from 'react';
     import { TextareaAutosizeProps } from 'react-textarea-autosize';
-    import { any, ReactNodeLike } from 'prop-types';
+    import { ReactNodeLike } from 'prop-types';
     import { CalendarProps as ReactCalendarProps } from 'react-calendar';
     import { DatePickerProps as ReactDatePickerProps } from 'react-date-picker';
     import { Settings as SlickSettingsProps } from 'react-slick';
     import { PopperOptions, Placement as PopperPlacement } from 'popper.js';
     import { toast as toastBase, ToastPosition } from 'react-toastify';
     import ReactTagsInput from 'react-tagsinput';
-    import { TransitionActions } from 'react-transition-group/Transition';
+    import { EnterHandler, ExitHandler } from 'react-transition-group/Transition';
+
+    export type RefElement = undefined | HTMLElement;
+    export type RefHandler<
+        RefElement extends undefined | HTMLElement,
+        ImplicitRefHandler extends (node: HTMLElement, ...args: any[]) => void,
+        ExplicitRefHandler extends (...args: any[]) => void
+    > = {
+        implicit: ImplicitRefHandler;
+        explicit: ExplicitRefHandler;
+    }[RefElement extends undefined ? 'implicit' : 'explicit'];
 
     export interface ImageBaseProps
         extends React.ImgHTMLAttributes<HTMLImageElement> {}
+
     export interface InputBaseProps
         extends React.InputHTMLAttributes<HTMLInputElement> {}
     export interface TextareaBaseProps
@@ -32,7 +43,8 @@ declare module '@ahaui/react' {
     export interface MediaBaseProps
         extends React.MediaHTMLAttributes<HTMLMediaElement> {}
 
-    export interface BasicProps extends React.DOMAttributes<HTMLElement> {
+    export interface DOMBaseProps extends React.DOMAttributes<HTMLElement> {}
+    export interface BasicProps {
         className?: string;
         style?: React.CSSProperties;
         children?: React.ReactNode;
@@ -203,9 +215,8 @@ declare module '@ahaui/react' {
         id: string | number;
     }
 
-    export interface AccordionToggleProps extends BasicProps {
+    export interface AccordionToggleProps extends BasicProps, DOMBaseProps {
         eventKey: string;
-        onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
         disabled?: boolean;
     }
 
@@ -235,7 +246,7 @@ declare module '@ahaui/react' {
         Note: React.FC<BasicProps>;
     };
 
-    export interface AvatarProps extends BasicWithAsProps, ImageBaseProps {
+    export interface AvatarProps extends ImageBaseProps {
         as?: React.ElementType;
         name: string;
         size:
@@ -246,11 +257,7 @@ declare module '@ahaui/react' {
             | 'extraLarge'
             | 'extraLargePlus'
             | 'huge';
-        src?: string;
         text?: string;
-        alt?: string;
-        width?: number | string;
-        height?: number | string;
     }
 
     export const Avatar: React.FC<AvatarProps>;
@@ -516,13 +523,10 @@ declare module '@ahaui/react' {
         },
     ];
 
-    export interface EmptyStateProps extends BasicProps {
+    export interface EmptyStateProps extends BasicProps, ImageBaseProps {
         name?: string;
-        src?: string;
-        alt?: string;
-        width?: number;
-        height?: number;
     }
+
     export const EmptyState: React.FC<EmptyStateProps> & {
         Heading: React.FC<BasicWithAsProps>;
         Description: React.FC<BasicWithAsProps>;
@@ -534,12 +538,12 @@ declare module '@ahaui/react' {
         unmountOnExit?: boolean;
         appear?: boolean;
         timeout?: number;
-        onEnter?: Pick<TransitionActions, 'onEnter'>;
-        onEntering?: Pick<TransitionActions, 'onEntering'>;
-        onEntered?: Pick<TransitionActions, 'onEntered'>;
-        onExit?: Pick<TransitionActions, 'onExit'>;
-        onExiting?: Pick<TransitionActions, 'onExiting'>;
-        onExited?: Pick<TransitionActions, 'onExited'>;
+        onEnter?: EnterHandler<RefElement>;
+        onEntering?: EnterHandler<RefElement>;
+        onEntered?: EnterHandler<RefElement>;
+        onExit?: ExitHandler<RefElement>;
+        onExiting?: ExitHandler<RefElement>;
+        onExited?: ExitHandler<RefElement>;
     }
     export const Fade: React.FC<FadeProps>;
 
@@ -681,16 +685,12 @@ declare module '@ahaui/react' {
     }
     export const Loader: React.FC<LoaderProps>;
 
-    export interface LogoProps extends BasicProps, ImageBaseProps {
+    export interface LogoProps extends ImageBaseProps {
         name?: string;
     }
     export const Logo: React.FC<LogoProps>;
 
-    export interface MediaProps
-        extends BasicWithAsProps,
-            IframeBaseProps,
-            ImageBaseProps,
-            MediaBaseProps {
+    export interface MediaProps extends MediaBaseProps {
         aspectRatio?: 'square' | 'classic' | 'wide' | 'cinema';
     }
     export const Media: React.FC<MediaProps>;
@@ -814,7 +814,7 @@ declare module '@ahaui/react' {
     }
     export const ProblemInfo: React.FC<ProblemInfoProps>;
 
-    export interface ProgressProps extends BasicAsProps {
+    export interface ProgressProps extends BasicWithAsProps {
         variant?: 'primary' | 'accent' | 'positive' | 'warning' | 'negative';
         now?: number;
         height?: number;
@@ -826,12 +826,12 @@ declare module '@ahaui/react' {
     }
     export const Progress: React.FC<ProgressProps>;
 
-    export interface RatingProps extends BasicAsProps {
+    export interface RatingProps extends BasicWithAsProps {
         disabled?: boolean;
         emptyIcon?: IconType;
         readOnly?: boolean;
         onChange?: (
-            event: ChangeEvent<HTMLInputElement>,
+            event: React.ChangeEvent<HTMLInputElement>,
             value: number,
         ) => void;
         onChangeActive?: (event: MouseEvent, value: number) => void;
@@ -844,7 +844,7 @@ declare module '@ahaui/react' {
     }
     export const Rating: React.FC<RatingProps>;
 
-    export interface SafeAnchorProps extends BasicAsProps {
+    export interface SafeAnchorProps extends BasicWithAsProps {
         href?: string;
         onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
         onKeyDown?: (event: React.KeyboardEvent<HTMLAnchorElement>) => void;
@@ -875,14 +875,14 @@ declare module '@ahaui/react' {
     }
     export const Separator: React.FC<SeparatorProps>;
 
-    export interface SessionTypeProps extends BasicAsProps {
+    export interface SessionTypeProps extends BasicWithAsProps {
         label?: string | FuncType;
         leftLabel?: string;
         variant?: 'default' | 'positive' | 'accent' | 'warning';
     }
     export const SessionType: React.FC<SessionTypeProps>;
 
-    export interface SidebarMenuItemProps extends BasicAsProps {
+    export interface SidebarMenuItemProps extends BasicWithAsProps {
         eventKey?: string;
         disabled?: boolean;
         icon?: IconType;
@@ -893,7 +893,7 @@ declare module '@ahaui/react' {
     export interface SidebarMenuSubMenuProps extends SidebarMenuItemProps {
         title: string;
     }
-    export interface SidebarMenuProps extends BasicAsProps {
+    export interface SidebarMenuProps extends BasicWithAsProps {
         size?: 'small' | 'medium';
         current?: string;
         onSelect?: (eventKey: string) => void;
@@ -1101,7 +1101,7 @@ declare module '@ahaui/react' {
         _?: RootCloseProps,
     );
 
-    declare class AssetPlugin extends Plugin {
+    class AssetPlugin extends Plugin {
         constructor(param: {
             prefix: 'avatar' | 'logo' | 'emptyState';
             assets: Record<string, any>;
@@ -1115,11 +1115,11 @@ declare module '@ahaui/react' {
         getAsset(prefix: string, assetName: string): any;
     }
 
-    declare class PluginArray<T = Plugin> extends Array<T> {
+    class PluginArray<T = Plugin> extends Array<T> {
         traverseCall(methodName: string, ...args: any[]): any;
     }
 
-    declare class PluginsType {
+    class PluginsType {
         plugins: PluginArray;
         validatePlugin(plugin: Plugin);
         loadPlugin(plugin: Plugin);
