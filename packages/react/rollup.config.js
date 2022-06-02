@@ -1,7 +1,10 @@
 // Rollup plugins
+import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
+import alias from '@rollup/plugin-alias';
+import includePaths from 'rollup-plugin-includepaths';
 import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
@@ -35,9 +38,17 @@ export default {
   ],
   external,
   plugins: [
+    alias({
+      entries: [
+        {
+          find: 'constants',
+          replacement: path.resolve(path.resolve(__dirname), 'src/constants'),
+        },
+      ],
+    }),
     resolve(),
     babel({
-      babelHelpers: 'external',
+      babelHelpers: 'runtime',
       exclude: 'node_modules/**',
       presets: ['@babel/env', '@babel/preset-react'],
       plugins: [
@@ -45,11 +56,14 @@ export default {
         '@babel/plugin-syntax-dynamic-import',
         '@babel/plugin-syntax-class-properties',
         '@babel/plugin-syntax-optional-chaining',
-        '@babel/plugin-external-helpers',
       ],
     }),
     commonjs({
       include: 'node_modules/**',
+    }),
+    includePaths({
+      paths: ['src'],
+      extensions: ['.js', '.jsx'],
     }),
     terser(),
   ],

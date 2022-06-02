@@ -3,11 +3,9 @@
 // Definitions by: KyleTV <https://github.com/tinhvqbk>
 // TypeScript Version: 3.3
 
-import { ChangeEvent } from 'react';
-import { TextareaAutosizeProps } from 'react-textarea-autosize';
-
 declare module '@ahaui/react' {
-    import React from 'react';
+    import React, { ChangeEvent, HtmlHTMLAttributes } from 'react';
+    import { TextareaAutosizeProps } from 'react-textarea-autosize';
     import { any, ReactNodeLike } from 'prop-types';
     import { CalendarProps as ReactCalendarProps } from 'react-calendar';
     import { DatePickerProps as ReactDatePickerProps } from 'react-date-picker';
@@ -16,7 +14,25 @@ declare module '@ahaui/react' {
     import { toast as toastBase, ToastPosition } from 'react-toastify';
     import ReactTagsInput from 'react-tagsinput';
     import { TransitionActions } from 'react-transition-group/Transition';
-    export interface BasicProps {
+
+    export interface ImageBaseProps
+        extends React.ImgHTMLAttributes<HTMLImageElement> {}
+    export interface InputBaseProps
+        extends React.InputHTMLAttributes<HTMLInputElement> {}
+    export interface TextareaBaseProps
+        extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+    export interface SelectBaseProps
+        extends React.SelectHTMLAttributes<HTMLSelectElement> {}
+    export interface ButtonBaseProps
+        extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+    export interface LinkBaseProps
+        extends React.AnchorHTMLAttributes<HTMLAnchorElement> {}
+    export interface IframeBaseProps
+        extends React.IframeHTMLAttributes<HTMLIFrameElement> {}
+    export interface MediaBaseProps
+        extends React.MediaHTMLAttributes<HTMLMediaElement> {}
+
+    export interface BasicProps extends React.DOMAttributes<HTMLElement> {
         className?: string;
         style?: React.CSSProperties;
         children?: React.ReactNode;
@@ -219,7 +235,8 @@ declare module '@ahaui/react' {
         Note: React.FC<BasicProps>;
     };
 
-    export interface AvatarProps extends BasicWithAsProps {
+    export interface AvatarProps extends BasicWithAsProps, ImageBaseProps {
+        as?: React.ElementType;
         name: string;
         size:
             | 'extraSmall'
@@ -664,20 +681,17 @@ declare module '@ahaui/react' {
     }
     export const Loader: React.FC<LoaderProps>;
 
-    export interface LogoProps extends BasicProps {
+    export interface LogoProps extends BasicProps, ImageBaseProps {
         name?: string;
-        src?: string;
-        alt?: string;
-        width?: number;
-        height?: number;
     }
     export const Logo: React.FC<LogoProps>;
 
-    export interface MediaProps extends BasicWithAsProps {
+    export interface MediaProps
+        extends BasicWithAsProps,
+            IframeBaseProps,
+            ImageBaseProps,
+            MediaBaseProps {
         aspectRatio?: 'square' | 'classic' | 'wide' | 'cinema';
-        src?: string;
-        width?: number | string;
-        height?: number | string;
     }
     export const Media: React.FC<MediaProps>;
 
@@ -944,15 +958,9 @@ declare module '@ahaui/react' {
         ariaLabelledBy?: string;
         ariaValueTextFormatter?: (value: number) => string;
     }
-    export function createSliderWithTooltip({
-        tipFormatter,
-        handleStyle,
-        tipProps,
-    }: {
-        tipFormatter?: (value: number) => string;
-        handleStyle?: React.CSSProperties;
-        tipProps?: object;
-    });
+    export function createSliderWithTooltip(
+        Component: React.ComponentType<any>,
+    ): React.ComponentType<RCSliderBaseProps>;
     export interface SliderProps extends RCSliderBaseProps {
         variant?: 'primary' | 'accent' | 'positive' | 'warning' | 'negative';
         vertical?: boolean;

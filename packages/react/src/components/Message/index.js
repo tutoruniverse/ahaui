@@ -5,9 +5,9 @@ import { useUncontrolled } from 'uncontrollable';
 import useEventCallback from '@restart/hooks/useEventCallback';
 import { elementType } from 'prop-types-extra';
 import createBlock from 'utils/createBlock';
-import { messagesVariants } from 'constants/messages';
 import Icon from 'components/Icon';
 import Fade from 'components/Fade';
+import { messagesVariants } from 'constants/messages';
 import Context from './Context';
 import Title from './Title';
 
