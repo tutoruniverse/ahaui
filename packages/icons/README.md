@@ -17,6 +17,7 @@
 </p>
 
 ## Status
+![npm](https://img.shields.io/npm/dt/@ahaui/icons)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/icons?label=Size)
 [![npm version](https://img.shields.io/npm/v/@ahaui/icons)](https://www.npmjs.com/package/@ahaui/icons)
 

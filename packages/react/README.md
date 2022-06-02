@@ -17,7 +17,7 @@
 </p>
 
 ## Status
-
+![npm](https://img.shields.io/npm/dt/@ahaui/react)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/react?label=Size)
 [![npm version](https://img.shields.io/npm/v/@ahaui/react)](https://www.npmjs.com/package/@ahaui/react)
 

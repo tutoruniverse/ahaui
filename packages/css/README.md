@@ -17,7 +17,7 @@
 </p>
 
 ## Status
-
+![npm](https://img.shields.io/npm/dt/@ahaui/css)
 [![](https://data.jsdelivr.com/v1/package/npm/@ahaui/css/badge)](https://www.jsdelivr.com/package/npm/@ahaui/css)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css?label=Size)
 [![npm version](https://img.shields.io/npm/v/@ahaui/css)](https://www.npmjs.com/package/@ahaui/css)
