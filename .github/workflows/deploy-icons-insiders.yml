@@ -31,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install
+        run: yarn global add clean-package && yarn install
         env:
           CI: true
 
@@ -40,10 +40,10 @@ jobs:
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
       - name: "Version based on commit: 0.0.0-insiders.${{ steps.vars.outputs.sha_short }}"
-        run: npm version 0.0.0-insiders.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version
+        run: cd packages/icons && npm version 0.0.0-insiders.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version
 
       - name: Publish
-        run: cd packages/icons && yarn build && npm publish --tag insiders
+        run: cd packages/icons && npm publish --tag insiders
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

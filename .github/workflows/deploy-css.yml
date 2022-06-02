@@ -1,4 +1,4 @@
-name: Deploy CSS Insiders
+name: Deploy CSS
 
 on:
   workflow_dispatch:
@@ -31,8 +31,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install
-        run: yarn build
+        run: yarn global add clean-package && yarn install
         env:
           CI: true
 
