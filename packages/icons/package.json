@@ -12,11 +12,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "prepublishOnly": "yarn build",
-    "clean": "rimraf lib es",
     "format": "eslint --ext js src --fix",
-    "lint": "eslint --ext js src",
-    "prepack": "clean-package -rm scripts",
-    "postpack": "clean-package restore"
+    "lint": "eslint --ext js src"
   },
   "publishConfig": {
     "access": "public"

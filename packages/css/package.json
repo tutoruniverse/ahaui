@@ -12,7 +12,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "prepublishOnly": "yarn lint && yarn build",
+    "prepublishOnly": "yarn build",
     "build": "yarn clean && yarn compile && yarn prefix && yarn minify",
     "clean": "yarn del dist/*",
     "compile": "node-sass --importer ../../node_modules/node-sass-import --output-style compact --precision 6 scss/ -o dist/",
@@ -20,9 +20,7 @@
     "minify": "yarn minify-index && yarn minify-utilities",
     "minify-index": "cleancss --level 1 --format breakWith=lf  --output dist/index.min.css dist/index.css",
     "minify-utilities": "cleancss --level 1 --format breakWith=lf  --output dist/utilities.min.css dist/utilities.css",
-    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd",
-    "prepack": "clean-package -rm devDependencies scripts",
-    "postpack": "clean-package restore"
+    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd"
   },
   "author": "Got It, Inc.",
   "homepage": "https://github.com/gotitinc/ahaui/blob/main/packages/css#readme",

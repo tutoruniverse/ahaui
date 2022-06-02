@@ -4671,7 +4671,7 @@ clean-css@^4.2.1:
   dependencies:
     source-map "~0.6.0"
 
-clean-package@1.0.1, clean-package@^1.0.1:
+clean-package@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/clean-package/-/clean-package-1.0.1.tgz#8e8d5ca7b2c73149799c29bf5ebaf36187bb140f"
   integrity sha512-WNOxoT/VWurM4nWcZQ3+b6hex6wsptN2zYhiRx0+E7SQ96VuVjtcjZPwmNREGpqidr0ZVHOUySXxvwGdeJomow==

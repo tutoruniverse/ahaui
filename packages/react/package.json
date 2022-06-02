@@ -15,9 +15,7 @@
     "prepublishOnly": "yarn build",
     "dev": "rollup -c -w",
     "format": "eslint --ext js src --fix",
-    "lint": "eslint --ext js src",
-    "prepack": "clean-package -rm scripts",
-    "postpack": "clean-package restore"
+    "lint": "eslint --ext js src"
   },
   "publishConfig": {
     "access": "public"
