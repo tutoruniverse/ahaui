@@ -15,170 +15,196 @@ const propTypes = {
    * A set of AttachButton props
    */
   attachButtonProps: PropTypes.object,
-  /** Disable the Attach button to render */
-  disabledAttachButton: PropTypes.bool,
-  /** Custom tooltip of the attach button  */
-  tooltipAttachButton: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-  ]),
   /**
    * A set of SendButton props
    */
   sendButtonProps: PropTypes.object,
-  /** Manually set the visual state of the attach button to :active */
-  sendButtonActive: PropTypes.bool,
-  /** Disable the Send button to render */
-  disabledSendButton: PropTypes.bool,
-  /** Custom tooltip of the send button  */
-  tooltipSendButton: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-  ]),
-  /** Custom sendButton Icon */
-  sendButtonIcon: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]),
   /** Set it will disabled `inputProps` */
   children: PropTypes.any,
 };
 const defaultProps = {
   inputProps: {},
-  attachButtonProps: {},
-  disabledAttachButton: false,
-  disabledSendButton: true,
-  sendButtonProps: {},
-  sendButtonActive: false,
-  sendButtonIcon: 'send',
+  attachButtonProps: {
+    icon: 'attach',
+    tooltip: null,
+    isDisabled: false,
+  },
+  sendButtonProps: {
+    icon: 'send',
+    tooltip: null,
+    isDisabled: false,
+    isActive: false,
+  },
 };
 
-const Composer = React.forwardRef(({ className, children, sendButtonIcon, iconLeft, label, number, inputProps, disabledAttachButton, tooltipAttachButton, attachButtonProps, sendButtonProps, disabledSendButton, sendButtonActive, tooltipSendButton, as: Component = 'div', ...props }, ref) => (
-  <Component
-    ref={ref}
-    {...props}
-    className={classNames(
-      'Composer',
-      'u-flex u-alignItemsEnd u-borderTop u-paddingTiny',
-      className && className,
-    )}
-  >
-    {!disabledAttachButton && (
-
-    <div className="u-flexShrink0 u-marginRightTiny">
-      {tooltipAttachButton ? (
-        <Overlay.Trigger
-          placement="top-start"
-          overlay={props => (
-            <Tooltip id="tooltip-attachButton" {...props}>
-              {typeof (tooltipAttachButton) === 'function'
-                ? tooltipAttachButton()
-                : tooltipAttachButton}
-            </Tooltip>
-          )}
-        >
-          <div
-            {...attachButtonProps}
+const Composer = React.forwardRef(
+  (
+    {
+      className,
+      children,
+      inputProps,
+      attachButtonProps,
+      sendButtonProps,
+      as: Component = 'div',
+      ...props
+    },
+    ref,
+  ) => {
+    const attachButtonConfigs = {
+      icon: defaultProps.attachButtonProps.icon,
+      tooltip: defaultProps.attachButtonProps.tooltip,
+      isDisabled: defaultProps.attachButtonProps.isDisabled,
+      ...attachButtonProps,
+    };
+    const sendButtonConfigs = {
+      icon: defaultProps.sendButtonProps.icon,
+      tooltip: defaultProps.sendButtonProps.tooltip,
+      isDisabled: defaultProps.sendButtonProps.isDisabled,
+      isActive: defaultProps.sendButtonProps.isActive,
+      ...sendButtonProps,
+    };
+    return (
+      <Component
+        ref={ref}
+        {...props}
+        className={classNames(
+          'Composer',
+          'u-flex u-alignItemsEnd u-borderTop u-paddingTiny',
+          className && className,
+        )}
+      >
+        {!attachButtonConfigs?.isDisabled && (
+          <div className="u-flexShrink0 u-marginRightTiny">
+            {attachButtonConfigs?.tooltip ? (
+              <Overlay.Trigger
+                placement="top-start"
+                delay={{ show: 500, hide: 0 }}
+                overlay={(props) => (
+                  <Tooltip id="tooltip-attachButton" {...props}>
+                    {typeof attachButtonConfigs?.tooltip === 'function'
+                      ? attachButtonConfigs?.tooltip()
+                      : attachButtonConfigs?.tooltip}
+                  </Tooltip>
+                )}
+              >
+                <div
+                  {...attachButtonConfigs}
+                  className={classNames(
+                    'hover:u-backgroundPrimary hover:u-textWhite u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-cursorPointer',
+                    attachButtonConfigs.className &&
+                      attachButtonConfigs.className,
+                  )}
+                  style={{
+                    width: 42,
+                    height: 42,
+                    ...attachButtonConfigs.style,
+                  }}
+                >
+                  {typeof attachButtonConfigs.icon === 'function' ? (
+                    attachButtonConfigs.icon()
+                  ) : (
+                    <Icon name={attachButtonConfigs.icon} />
+                  )}
+                </div>
+              </Overlay.Trigger>
+            ) : (
+              <div
+                {...attachButtonConfigs}
+                className={classNames(
+                  'hover:u-backgroundPrimary hover:u-textWhite u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-cursorPointer',
+                  attachButtonConfigs.className &&
+                    attachButtonConfigs.className,
+                )}
+                style={{
+                  width: 42,
+                  height: 42,
+                  ...attachButtonConfigs.style,
+                }}
+              >
+                {typeof attachButtonConfigs.icon === 'function' ? (
+                  attachButtonConfigs.icon()
+                ) : (
+                  <Icon name={attachButtonConfigs.icon} />
+                )}
+              </div>
+            )}
+          </div>
+        )}
+        {children || (
+          <TextareaAutoSize
+            {...inputProps}
             className={classNames(
-              'hover:u-backgroundPrimary hover:u-textWhite u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-cursorPointer',
-              attachButtonProps.className && attachButtonProps.className,
+              'u-widthFull u-paddingVerticalExtraSmall u-border u-borderTransparent u-textPlaceholder',
+              inputProps.className && inputProps.className,
             )}
             style={{
-              width: 42,
-              height: 42,
-              ...attachButtonProps.style,
+              resize: 'none',
+              ...inputProps.style,
             }}
-          >
-            <Icon
-              name="attach"
-            />
-          </div>
-        </Overlay.Trigger>
-      ) : (
-        <div
-          {...attachButtonProps}
-          className={classNames(
-            'hover:u-backgroundPrimary hover:u-textWhite u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-cursorPointer',
-            attachButtonProps.className && attachButtonProps.className,
-          )}
-          style={{
-            width: 42,
-            height: 42,
-            ...attachButtonProps.style,
-          }}
-        >
-          <Icon
-            name="attach"
           />
-        </div>
-      )}
-    </div>
-    )}
-    {children || (
-    <TextareaAutoSize
-      {...inputProps}
-      className={classNames(
-        'u-widthFull u-paddingVerticalExtraSmall u-border u-borderTransparent u-textPlaceholder',
-        inputProps.className && inputProps.className,
-      )}
-      style={{
-        resize: 'none',
-        ...inputProps.style,
-      }}
-    />
-    )}
-    {!disabledSendButton && (
-      tooltipSendButton ? (
-        <Overlay.Trigger
-          placement="top-end"
-          overlay={props => (
-            <Tooltip id="tooltip-sendButton" {...props}>
-              {typeof (tooltipSendButton) === 'function'
-                ? tooltipSendButton()
-                : tooltipSendButton}
-            </Tooltip>
-          )}
-        >
-          <div
-            {...sendButtonProps}
-            className={classNames(
-              'u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-flexShrink0 u-marginLeftTiny',
-              sendButtonActive ? 'hover:u-backgroundPrimary hover:u-textWhite u-textPrimary u-cursorPointer' : 'u-textLight u-cursorNotAllow u-pointerEventsNone',
-              sendButtonProps.className && sendButtonProps.className,
-            )}
-            style={{
-              width: 42,
-              height: 42,
-              ...sendButtonProps.style,
-            }}
-          >
-            {typeof (sendButtonIcon) === 'function'
-              ? sendButtonIcon()
-              : <Icon name={sendButtonIcon} /> }
-          </div>
-        </Overlay.Trigger>
-      ) : (
-        <div
-          {...sendButtonProps}
-          className={classNames(
-            'u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-flexShrink0 u-marginLeftTiny',
-            sendButtonActive ? 'hover:u-backgroundPrimary hover:u-textWhite u-textPrimary u-cursorPointer' : 'u-textLight u-cursorNotAllow u-pointerEventsNone',
-            sendButtonProps.className && sendButtonProps.className,
-          )}
-          style={{
-            width: 42,
-            height: 42,
-            ...sendButtonProps.style,
-          }}
-        >
-          {typeof (sendButtonIcon) === 'function'
-            ? sendButtonIcon()
-            : <Icon name={sendButtonIcon} /> }
-        </div>
-      )
-    )}
-  </Component>
-));
+        )}
+        {!sendButtonConfigs.isDisabled &&
+          (sendButtonConfigs?.tooltip ? (
+            <Overlay.Trigger
+              placement="top-end"
+              delay={{ show: 500, hide: 0 }}
+              overlay={(props) => (
+                <Tooltip id="tooltip-sendButton" {...props}>
+                  {typeof sendButtonConfigs.tooltip === 'function'
+                    ? sendButtonConfigs.tooltip()
+                    : sendButtonConfigs.tooltip}
+                </Tooltip>
+              )}
+            >
+              <div
+                {...sendButtonConfigs}
+                className={classNames(
+                  'u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-flexShrink0 u-marginLeftTiny',
+                  sendButtonConfigs.isActive
+                    ? 'hover:u-backgroundPrimary hover:u-textWhite u-textPrimary u-cursorPointer'
+                    : 'u-textLight u-cursorNotAllow u-pointerEventsNone',
+                  sendButtonConfigs.className && sendButtonConfigs.className,
+                )}
+                style={{
+                  width: 42,
+                  height: 42,
+                  ...sendButtonConfigs.style,
+                }}
+              >
+                {typeof sendButtonConfigs.icon === 'function' ? (
+                  sendButtonConfigs.icon()
+                ) : (
+                  <Icon name={sendButtonConfigs.icon} />
+                )}
+              </div>
+            </Overlay.Trigger>
+          ) : (
+            <div
+              {...sendButtonConfigs}
+              className={classNames(
+                'u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-flexShrink0 u-marginLeftTiny',
+                sendButtonConfigs.isActive
+                  ? 'hover:u-backgroundPrimary hover:u-textWhite u-textPrimary u-cursorPointer'
+                  : 'u-textLight u-cursorNotAllow u-pointerEventsNone',
+                sendButtonConfigs.className && sendButtonConfigs.className,
+              )}
+              style={{
+                width: 42,
+                height: 42,
+                ...sendButtonConfigs.style,
+              }}
+            >
+              {typeof sendButtonConfigs.icon === 'function' ? (
+                sendButtonConfigs.icon()
+              ) : (
+                <Icon name={sendButtonConfigs.icon} />
+              )}
+            </div>
+          ))}
+      </Component>
+    );
+  },
+);
 
 Composer.displayName = 'Composer';
 Composer.defaultProps = defaultProps;
