@@ -104,8 +104,19 @@ dist
 .tern-port
 package.json.backup
 
-# production
+# Public folder
+public
 lib
 es
 dist
+gh-pages-root
+
+
+# Local Env
+.env.local
+
+# Turbo
+.turbo
+
+# Settings Files
 .DS_Store
