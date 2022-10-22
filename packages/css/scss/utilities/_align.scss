@@ -1,0 +1,13 @@
+@each $position in (baseline, top, middle, bottom, sub, super) {
+  .u-align#{capitalize($position)} {
+    vertical-align: $position;
+  }
+}
+
+.u-alignTextTop {
+  vertical-align: text-top;
+}
+
+.u-alignTextBottom {
+  vertical-align: text-bottom;
+}
