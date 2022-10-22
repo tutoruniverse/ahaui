@@ -5,7 +5,7 @@
     "node": true,
     "jquery": true
   },
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "rules": {
     "camelcase": 0,
     "class-methods-use-this": 0,
