@@ -265,7 +265,19 @@ declare module '@ahaui/react' {
     | 'seven'
     | 'eight'
     | 'nine'
-    | 'ten';
+    | 'ten'
+    | 'logOut'
+    | 'wallet'
+    | 'bulb'
+    | 'home'
+    | 'call'
+    | 'launch'
+    | 'binoculars'
+    | 'openExternal'
+    | 'math'
+    | 'magic'
+    | 'pause'
+    | 'hammer';
   export type FuncType = (...args: any[]) => any;
   export type EventHandler = React.EventHandler<React.SyntheticEvent>;
   export interface OptionType {
