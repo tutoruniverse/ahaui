@@ -120,7 +120,7 @@ class PropTable extends React.Component {
     let value = prop.defaultValue && prop.defaultValue.value;
     if (value == null) return null;
     if (getTypeName(prop) === 'elementType') { value = `<${value.replace(/('|")/g, '')}>`; }
-    return <code className="u-textNoWrap">{value}</code>;
+    return <code>{value}</code>;
   }
 
   renderControllableNote(prop, propName) {
