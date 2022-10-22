@@ -45,7 +45,9 @@ function Main({ children, ...props }) {
       </div>
       <div className="u-text100 u-textGray md:u-hidden u-paddingVerticalExtraSmall u-marginTopSmall u-borderTop u-flex u-justifyContentCenter u-alignItemsCenter">
         Powered by&nbsp;
-        <SafeAnchor href="https://www.got-it.ai/">Got It, Inc.</SafeAnchor>
+        <SafeAnchor href="https://www.got-it.co/" target="_blank">
+          Got It, Inc.
+        </SafeAnchor>
         <SafeAnchor
           title="GitHub"
           className="u-marginLeftExtraSmall u-inlineBlock u-lineHeightNone"
