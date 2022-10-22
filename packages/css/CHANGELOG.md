@@ -1,3 +1,19 @@
+## Release 2.1.0 - Unreleased
+### Fixed
+* SCSS:
+  - Form: update disabled style checkbox and radio button
+### Updated
+* CSSUtilities:
+  - Display: support grid
+  - Flex: flexBasis, placeContent, placeSelf, placeItems, justifyItems, justifySelf
+  - Object: object-position
+  - Overflow: isolate, and support responsive
+  - Size: size content and support responsive
+### Added
+* CSSUtilities:
+  - Align: vertical-align property
+  - Grid: basic grid box
+
 ## Release 2.0.5
 
 ### Fixed
