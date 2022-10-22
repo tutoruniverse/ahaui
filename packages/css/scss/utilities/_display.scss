@@ -9,6 +9,14 @@
   display: inline-flex;
 }
 
+.u-grid {
+  display: grid;
+}
+
+.u-gridInline {
+  display: inline-grid;
+}
+
 .u-inline {
   display: inline;
 }
@@ -48,6 +56,14 @@
 
       .#{$infix}\:u-flexInline {
         display: inline-flex;
+      }
+
+      .#{$infix}\:u-grid {
+        display: grid;
+      }
+
+      .#{$infix}\:u-gridInline {
+        display: inline-grid;
       }
 
       .#{$infix}\:u-inline {

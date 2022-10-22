@@ -15,8 +15,16 @@
   flex-direction: column-reverse;
 }
 
+.u-flex1 {
+  flex: 1 1 0%;
+}
+
 .u-flexFill {
   flex: 1 1 auto;
+}
+
+.u-flexNone {
+  flex: none;
 }
 
 .u-flexGrow0 {
@@ -135,6 +143,110 @@
   justify-content: space-around;
 }
 
+.u-justifySelfAuto {
+  justify-self: auto;
+}
+
+.u-justifySelfStart {
+  justify-self: flex-start;
+}
+
+.u-justifySelfEnd {
+  justify-self: flex-end;
+}
+
+.u-justifySelfBetween {
+  justify-self: space-between;
+}
+
+.u-justifySelfCenter {
+  justify-self: center;
+}
+
+.u-justifySelfStretch {
+  justify-self: stretch;
+}
+
+.u-justifyItemsStart {
+  justify-items: flex-start;
+}
+
+.u-justifyItemsEnd {
+  justify-items: flex-end;
+}
+
+.u-justifyItemsCenter {
+  justify-items: center;
+}
+
+.u-justifyItemsStretch {
+  justify-items: stretch;
+}
+
+.u-placeContentCenter {
+  place-content: center;
+}
+
+.u-placeContentStart {
+  place-content: start;
+}
+
+.u-placeContentEnd {
+  place-content: end;
+}
+
+.u-placeContentBetween {
+  place-content: space-between;
+}
+
+.u-placeContentAround {
+  place-content: space-around;
+}
+
+.u-placeContentEvenly {
+  place-content: space-evenly;
+}
+
+.u-placeContentStretch {
+  place-content: stretch;
+}
+
+.u-placeItemsStart {
+  place-items: start;
+}
+
+.u-placeItemsEnd {
+  place-items: end;
+}
+
+.u-placeItemsCenter {
+  place-items: center;
+}
+
+.u-placeItemsStretch {
+  place-items: stretch;
+}
+
+.u-placeSelfAuto {
+  place-self: auto;
+}
+
+.u-placeSelfStart {
+  place-self: start;
+}
+
+.u-placeSelfEnd {
+  place-self: end;
+}
+
+.u-placeSelfCenter {
+  place-self: center;
+}
+
+.u-placeSelfStretch {
+  place-self: stretch;
+}
+
 .u-flexOrderFirst {
   order: -1;
 }
@@ -145,6 +257,14 @@
 
 .u-flexOrderNone {
   order: 0;
+}
+
+.u-flexBasisNone {
+  flex-basis: 0;
+}
+
+.u-flexBasisAuto {
+  flex-basis: auto;
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -168,8 +288,16 @@
         flex-direction: column-reverse;
       }
 
+      .#{$infix}\:u-flex1 {
+        flex: 1 1 0%;
+      }
+
       .#{$infix}\:u-flexFill {
         flex: 1 1 auto;
+      }
+
+      .#{$infix}\:u-flexNone {
+        flex: none;
       }
 
       .#{$infix}\:u-flexGrow0 {
@@ -288,6 +416,110 @@
         justify-content: space-around;
       }
 
+      .#{$infix}\:u-justifySelfAuto {
+        justify-self: auto;
+      }
+
+      .#{$infix}\:u-justifySelfStart {
+        justify-self: flex-start;
+      }
+
+      .#{$infix}\:u-justifySelfEnd {
+        justify-self: flex-end;
+      }
+
+      .#{$infix}\:u-justifySelfBetween {
+        justify-self: space-between;
+      }
+
+      .#{$infix}\:u-justifySelfCenter {
+        justify-self: center;
+      }
+
+      .#{$infix}\:u-justifySelfStretch {
+        justify-self: stretch;
+      }
+
+      .#{$infix}\:u-justifyItemsStart {
+        justify-items: flex-start;
+      }
+
+      .#{$infix}\:u-justifyItemsEnd {
+        justify-items: flex-end;
+      }
+
+      .#{$infix}\:u-justifyItemsCenter {
+        justify-items: center;
+      }
+
+      .#{$infix}\:u-justifyItemsStretch {
+        justify-items: stretch;
+      }
+
+      .#{$infix}\:u-placeContentCenter {
+        place-content: center;
+      }
+
+      .#{$infix}\:u-placeContentStart {
+        place-content: start;
+      }
+
+      .#{$infix}\:u-placeContentEnd {
+        place-content: end;
+      }
+
+      .#{$infix}\:u-placeContentBetween {
+        place-content: space-between;
+      }
+
+      .#{$infix}\:u-placeContentAround {
+        place-content: space-around;
+      }
+
+      .#{$infix}\:u-placeContentEvenly {
+        place-content: space-evenly;
+      }
+
+      .#{$infix}\:u-placeContentStretch {
+        place-content: stretch;
+      }
+
+      .#{$infix}\:u-placeItemsStart {
+        place-items: start;
+      }
+
+      .#{$infix}\:u-placeItemsEnd {
+        place-items: end;
+      }
+
+      .#{$infix}\:u-placeItemsCenter {
+        place-items: center;
+      }
+
+      .#{$infix}\:u-placeItemsStretch {
+        place-items: stretch;
+      }
+
+      .#{$infix}\:u-placeSelfAuto {
+        place-self: auto;
+      }
+
+      .#{$infix}\:u-placeSelfStart {
+        place-self: start;
+      }
+
+      .#{$infix}\:u-placeSelfEnd {
+        place-self: end;
+      }
+
+      .#{$infix}\:u-placeSelfCenter {
+        place-self: center;
+      }
+
+      .#{$infix}\:u-placeSelfStretch {
+        place-self: stretch;
+      }
+
       .#{$infix}\:u-flexOrderFirst {
         order: -1;
       }
@@ -298,6 +530,14 @@
 
       .#{$infix}\:u-flexOrderNone {
         order: 0;
+      }
+
+      .#{$infix}\:u-flexBasisNone {
+        flex-basis: 0;
+      }
+
+      .#{$infix}\:u-flexBasisAuto {
+        flex-basis: auto;
       }
     }
   }
