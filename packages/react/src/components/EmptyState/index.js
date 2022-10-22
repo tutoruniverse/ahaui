@@ -21,37 +21,62 @@ const defaultProps = {
   width: 240,
   alt: 'EmptyState',
 };
-const EmptyState = React.forwardRef(({ className, children, name, src, fileType, alt, height, width, as: Component = 'div', ...props }, ref) => {
-  let nameOri = name;
-  let srcOri = src;
-  if (srcOri) {
-    nameOri = false;
-  } else if (nameOri) {
-    srcOri = Plugins
-      .getPlugins(PluginType.ASSET)
-      .traverseCall('getAsset', 'emptyState', nameOri)
-      .find(asset => !!asset);
-  }
-  return (
-    <Component
-      {...props}
-      ref={ref}
-      className={classNames(
-        'EmptyState',
-        'u-inlineBlock u-textCenter',
-        className && className
-      )}
-    >
-      {srcOri && (
-        <img width={width} height={height} src={srcOri} alt={alt} className="u-maxWidthFull" />
-      )}
-      {children}
-    </Component>
-  );
-});
+const EmptyState = React.forwardRef(
+  (
+    {
+      className,
+      children,
+      name,
+      src,
+      fileType,
+      alt,
+      height,
+      width,
+      as: Component = 'div',
+      ...props
+    },
+    ref,
+  ) => {
+    let nameOri = name;
+    let srcOri = src;
+    if (srcOri) {
+      nameOri = false;
+    } else if (nameOri) {
+      srcOri = Plugins.getPlugins(PluginType.ASSET)
+        .traverseCall('getAsset', 'emptyState', nameOri)
+        .find((asset) => !!asset);
+    }
+    return (
+      <Component
+        {...props}
+        ref={ref}
+        className={classNames(
+          'EmptyState',
+          'u-inlineBlock u-textCenter',
+          className && className,
+        )}
+      >
+        {srcOri && (
+          <img
+            width={width}
+            height={height}
+            src={srcOri}
+            alt={alt}
+            className="u-maxWidthFull"
+          />
+        )}
+        {children}
+      </Component>
+    );
+  },
+);
 
-const Heading = createBlock('EmptyState-heading u-marginTopSmall u-text600 u-fontMedium u-textLight');
-const Description = createBlock('EmptyState-description u-marginBottomSmall u-textLight');
+const Heading = createBlock(
+  'EmptyState-heading u-marginTopSmall u-text600 u-fontMedium u-textLight',
+);
+const Description = createBlock(
+  'EmptyState-description u-marginBottomSmall u-textGray',
+);
 
 EmptyState.Heading = Heading;
 EmptyState.Description = Description;
