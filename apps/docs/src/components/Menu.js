@@ -118,7 +118,7 @@ const Menu = ({ location: { pathname } }) => (
         .split('/')
         .filter((item) => {
           // Check if the path includes the pathPrefix (current version)
-          return (!!item && item !== ahaReactConfig.version)
+          return (!!item && item !== ahaReactConfig.version.split(".")[0]);
         })
         .join('.')
       const [currentPath, setCurrentPath] = useState(useCurrent);
