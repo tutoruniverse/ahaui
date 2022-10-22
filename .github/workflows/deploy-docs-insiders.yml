@@ -23,4 +23,5 @@ jobs:
           GATSBY_ALGOLIA_API_KEY: ${{ secrets.GATSBY_INSIDERS_ALGOLIA_API_KEY }}
           GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_INSIDERS_ALGOLIA_APP_ID }}
           GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_INSIDERS_ALGOLIA_SEARCH_KEY }}
+          GATSBY_APP_ENV: dev
       - run: cd apps/docs && node deploy.js
