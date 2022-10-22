@@ -5,7 +5,7 @@
     className="u-marginBottomNone"
   >
     <BubbleChat.Image
-      src="holder.js/250px120?text=Image"
+      src="holder.js/250x120?text=Image"
     />
   </BubbleChat>
   <BubbleChat
@@ -18,7 +18,7 @@
     className="u-marginBottomNone"
   >
     <BubbleChat.Image
-      src="holder.js/250px120?text=Image"
+      src="holder.js/250x120?text=Image"
     />
 
   </BubbleChat>
