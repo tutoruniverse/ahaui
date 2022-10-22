@@ -18,3 +18,103 @@
 .u-objectNone {
   object-fit: none;
 }
+
+.u-objectBottom {
+  object-position: bottom;
+}
+
+.u-objectCenter {
+  object-position: center;
+}
+
+.u-objectLeft {
+  object-position: left;
+}
+
+.u-objectLeftBottom {
+  object-position: left bottom;
+}
+
+.u-objectLeftTop {
+  object-position: left top;
+}
+
+.u-objectRight {
+  object-position: right;
+}
+
+.u-objectRightBottom {
+  object-position: right bottom;
+}
+
+.u-objectRightTop {
+  object-position: right top;
+}
+
+.u-objectTop {
+  object-position: top;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      .#{$infix}\:u-objectContain {
+        object-fit: contain;
+      }
+
+      .#{$infix}\:u-objectCover {
+        object-fit: cover;
+      }
+
+      .#{$infix}\:u-objectFill {
+        object-fit: fill;
+      }
+
+      .#{$infix}\:u-objectScaleDown {
+        object-fit: scale-down;
+      }
+
+      .#{$infix}\:u-objectNone {
+        object-fit: none;
+      }
+
+      .#{$infix}\:u-objectBottom {
+        object-position: bottom;
+      }
+
+      .#{$infix}\:u-objectCenter {
+        object-position: center;
+      }
+
+      .#{$infix}\:u-objectLeft {
+        object-position: left;
+      }
+
+      .#{$infix}\:u-objectLeftBottom {
+        object-position: left bottom;
+      }
+
+      .#{$infix}\:u-objectLeftTop {
+        object-position: left top;
+      }
+
+      .#{$infix}\:u-objectRight {
+        object-position: right;
+      }
+
+      .#{$infix}\:u-objectRightBottom {
+        object-position: right bottom;
+      }
+
+      .#{$infix}\:u-objectRightTop {
+        object-position: right top;
+      }
+
+      .#{$infix}\:u-objectTop {
+        object-position: top;
+      }
+    }
+  }
+}

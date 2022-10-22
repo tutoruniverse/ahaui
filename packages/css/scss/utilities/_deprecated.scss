@@ -206,3 +206,10 @@
 
   @include deprecated('u-textTruncate5');
 }
+
+.u-minWidth-0 {
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+
+  @include deprecated('u-minWidthNone');
+}
