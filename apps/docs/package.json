@@ -80,7 +80,7 @@
   },
   "type": "commonjs",
   "scripts": {
-    "dev": "gatsby develop",
+    "dev": "gatsby clean && gatsby develop",
     "build": "gatsby build --prefix-paths && node renderRedirectIndex.js",
     "deploy": "yarn build && yarn push-docs",
     "push-docs": "gh-pages -d public --branch main --repo \"https://github.com/gotitinc/aha.github.io.git\"",

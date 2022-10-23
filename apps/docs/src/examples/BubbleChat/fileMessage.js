@@ -1,6 +1,7 @@
 <div style={{ maxWidth: 360 }}>
   <BubbleChat time="14:00">
     <FileAttachment
+      className="u-roundedExtraLarge"
       fileType="spreadsheet"
       fileName="DS-File-name-here-11-12-2019-crazy-designer.xlsx"
       closeButton={false}
@@ -13,6 +14,7 @@
   </BubbleChat>
   <BubbleChat time="14:00">
     <FileAttachment
+      className="u-roundedExtraLarge"
       fileType="image"
       fileName="DS-File-name-here-11-12-2019-crazy-designer.png"
       closeButton={false}
