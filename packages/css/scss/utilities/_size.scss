@@ -353,28 +353,52 @@
   max-width: 100vw;
 }
 
-.u-heightMinContent {
+.u-minHeightMinContent {
   min-height: min-content;
 }
 
-.u-widthMinContent {
+.u-minWidthMinContent {
   min-width: min-content;
 }
 
-.u-heightMinFitContent {
+.u-minHeightMinFitContent {
   min-height: fit-content;
 }
 
-.u-heightMaxContent {
+.u-maxHeightMaxContent {
   max-height: min-content;
 }
 
-.u-widthMaxContent {
-  max-width: min-content;
+.u-maxWidthMaxContent {
+  max-width: max-content;
 }
 
-.u-heightMaxFitContent {
+.u-maxHeightMaxFitContent {
   max-height: fit-content;
+}
+
+.u-widthFitContent {
+  width: fit-content;
+}
+
+.u-heightFitContent {
+  height: fit-content;
+}
+
+.u-widthMinContent {
+  width: min-content;
+}
+
+.u-heightMinContent {
+  height: min-content;
+}
+
+.u-widthMaxContent {
+  width: max-content;
+}
+
+.u-heightMaxContent {
+  height: max-content;
 }
 
 // 1. Loop through the $breakpoints to get breakpoint's name,

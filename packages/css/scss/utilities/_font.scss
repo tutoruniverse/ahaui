@@ -124,7 +124,9 @@
 .u-textPreWrap {
   white-space: pre-wrap;
 }
-
+.u-textPreNormal {
+  white-space: normal;
+}
 .u-textLineThrough,
 .hover\:u-textLineThrough:hover {
   text-decoration: line-through;
