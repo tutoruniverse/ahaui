@@ -15,7 +15,7 @@ const BubbleChatImage = React.forwardRef(({ className, ...props }, ref) => {
         className && className
       )}
     >
-      <img {...props} className="u-roundedMedium u-border u-maxWidthFull" alt="" />
+      <img {...props} className="u-roundedExtraLarge u-border u-maxWidthFull" alt="" />
     </div>
   );
 });

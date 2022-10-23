@@ -13,6 +13,8 @@ const propTypes = {
   isTyping: PropTypes.bool,
   /** The text message */
   text: PropTypes.any,
+  /** The image message */
+  image: PropTypes.any,
   /** The BubbleChat visual type */
   type: PropTypes.oneOf(['inbound', 'outbound', 'system']),
   /** The BubbleChat visual style */
@@ -43,7 +45,10 @@ const propTypes = {
   disabledOption: PropTypes.bool,
   /** Callback fired when click to the text content */
   onClickText: PropTypes.func,
+  /** The className of the text */
   textClassName: PropTypes.string,
+  /** The className of the image */
+  imageClassName: PropTypes.string,
   /** Render actionBar after text content  */
   actionBar: PropTypes.any,
   /**  */
@@ -87,6 +92,7 @@ const BubbleChat = React.forwardRef(
       className,
       isTyping,
       text,
+      image,
       type,
       variant,
       time,
@@ -100,6 +106,7 @@ const BubbleChat = React.forwardRef(
       actionBar,
       actionBarClassName,
       textClassName,
+      imageClassName,
       ...props
     },
     ref,
@@ -135,12 +142,9 @@ const BubbleChat = React.forwardRef(
     const renderTyping = () => (
       <div
         className={classNames(
-          'u-overflowHidden',
+          'u-overflowHidden u-widthFitContent',
           type && typeRadiusClassNames[type],
         )}
-        style={{
-          width: 'fit-content',
-        }}
       >
         <div
           className={classNames(
@@ -151,10 +155,7 @@ const BubbleChat = React.forwardRef(
             variantOri && variantClassNames[variantOri],
           )}
         >
-          <div
-            className="BubbleChat-typingContext u-positionRelative u-fontSizeNone u-widthLarge"
-            style={{ height: 10 }}
-          />
+          <div className="BubbleChat-typingContext u-positionRelative u-fontSizeNone u-widthLarge u-heightSmall" />
         </div>
       </div>
     );
@@ -229,6 +230,41 @@ const BubbleChat = React.forwardRef(
       </div>
     );
 
+    const renderText = () => (
+      <div
+        className={classNames(
+          'BubbleChat-text',
+          'u-paddingVerticalExtraSmall u-paddingHorizontalSmall u-textPreLine',
+          variantOri && image && variantClassNames[variantOri],
+          (variantOri === 'primary' ||
+            variantOri === 'dark' ||
+            variantOri === 'transparentDark') &&
+            textClassName
+            ? textClassName
+            : variantTextClassNames[variantOri],
+        )}
+        onClick={onClickText}
+      >
+        {text}
+      </div>
+    );
+
+    const renderImage = () => (
+      <div
+        className={classNames(
+          'BubbleChat-image u-lineHeightNone u-overflowHidden',
+          type === 'inbound' && 'u-textRight',
+          imageClassName && imageClassName,
+        )}
+      >
+        {typeof image === 'function' ? (
+          image()
+        ) : (
+          <img src={image} className="u-maxWidthFull" alt="" />
+        )}
+      </div>
+    );
+
     return (
       <Context.Provider value={context}>
         <div
@@ -245,7 +281,7 @@ const BubbleChat = React.forwardRef(
         >
           <div
             className={classNames(
-              'BubbleChat-container u-grid',
+              'BubbleChat-container u-grid u-maxWidthMaxContent',
               type === 'inbound' && 'u-justifyContentEnd u-marginLeftAuto',
             )}
             style={{
@@ -258,8 +294,7 @@ const BubbleChat = React.forwardRef(
 
             <div
               className={classNames(
-                'BubbleChat-context',
-                'u-flex u-flexColumn',
+                'BubbleChat-context u-overflowHidden u-flex u-flexColumn',
                 children && 'u-maxWidthFull',
                 type === 'inbound' && !avatar && 'u-marginLeftMedium',
                 type === 'inbound' && !children && 'u-alignItemsEnd',
@@ -272,27 +307,17 @@ const BubbleChat = React.forwardRef(
                     {children || (
                       <div
                         className={classNames(
-                          'u-overflowHidden u-flexInline u-flexColumn',
-                          type && typeRadiusClassNames[type],
+                          'u-overflowAuto u-maxWidthFull u-flexInline u-flexColumn',
+                          type &&
+                            ((image && text) || (text && !image)) &&
+                            typeRadiusClassNames[type],
+                          type && !image && typeThemeClassNames[type],
+                          variantOri && !image && variantClassNames[variantOri],
+                          image && !text && 'u-roundedExtraLarge',
                         )}
                       >
-                        <div
-                          className={classNames(
-                            'BubbleChat-text',
-                            'u-paddingVerticalExtraSmall u-paddingHorizontalSmall u-textPreLine',
-                            type && typeThemeClassNames[type],
-                            (variantOri === 'primary' ||
-                              variantOri === 'dark' ||
-                              variantOri === 'transparentDark') &&
-                              textClassName
-                              ? textClassName
-                              : variantTextClassNames[variantOri],
-                            variantOri && variantClassNames[variantOri],
-                          )}
-                          onClick={onClickText}
-                        >
-                          {text}
-                        </div>
+                        {image && renderImage()}
+                        {text && renderText()}
                         {options && renderOptions()}
                       </div>
                     )}
