@@ -9,16 +9,24 @@ import ReactMD from "react-markdown";
 
 ## CHANGELOG React
 
-<ReactMD
-  source={props.data.allFile.nodes[0].childrenMarkdownRemark[0].rawMarkdownBody}
-/>
-<hr/>
+<div className="ReleaseNotes">
+  <ReactMD
+    source={
+      props.data.allFile.nodes[0].childrenMarkdownRemark[0].rawMarkdownBody
+    }
+  />
+</div>
+<hr />
 
 ## CHANGELOG CSS
 
-<ReactMD
-  source={props.data.allFile.nodes[1].childrenMarkdownRemark[0].rawMarkdownBody}
-/>
+<div className="ReleaseNotes">
+  <ReactMD
+    source={
+      props.data.allFile.nodes[1].childrenMarkdownRemark[0].rawMarkdownBody
+    }
+  />
+</div>
 
 export const pageQuery = graphql`
   query ChangeLog {

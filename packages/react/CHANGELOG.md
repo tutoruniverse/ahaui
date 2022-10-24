@@ -1,7 +1,7 @@
-## Release 2.1.0 - Unreleased
+## Release 2.1.0
 
 ### Fixed
-* BubbleChat: Use bottom alignment for `avatar`, update chat time text color to satisfy contrast ratio, fix position `actionBar`
+* BubbleChat: Use bottom alignment for `avatar`, update chat time text color to satisfy contrast ratio
 * BubbleChat.Image: Set `lineHeight` to `0` to make image in the same baseline with avatar
 * Dropdown.Container: Correct extra props that are passed to internal `div`, so incompatible props (such as `popperConfig`) are excluded
 * Composer: Allow passing `className` and `style` to `attachButtonProps`, `inputProps`, and `sendButtonProps`, addd delay on tooltip of Composer

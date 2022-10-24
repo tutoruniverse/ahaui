@@ -1,4 +1,4 @@
-## Release 2.1.0 - Unreleased
+## Release 2.1.0
 ### Fixed
 * SCSS:
   - Form: update disabled style checkbox and radio button
