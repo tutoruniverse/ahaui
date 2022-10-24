@@ -150,3 +150,16 @@
     }
   }
 }
+
+.ReleaseNotes {
+  h2 {
+    @each $pro, $proval in map-get(map-deep-get($fonts, "typography"), "h3") {
+      #{$pro}: $proval;
+    }
+  }
+  h3 {
+    @each $pro, $proval in map-get(map-deep-get($fonts, "typography"), "h4") {
+      #{$pro}: $proval;
+    }
+  }
+}

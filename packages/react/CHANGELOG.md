@@ -1,4 +1,4 @@
-## Release 2.1.0 - Unreleased
+## Release 2.1.0
 
 ### Fixed
 * BubbleChat: Use bottom alignment for `avatar`, update chat time text color to satisfy contrast ratio, fix position `actionBar`
