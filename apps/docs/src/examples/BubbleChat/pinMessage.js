@@ -10,7 +10,6 @@
     )}
     text="Welcome"
     time="16:23"
-    actionBar={<Icon name="volumeHigh" className="u-marginBottomSmall" />}
-    actionBarClassName="u-positionVerticalCenter u-marginTopNone"
+    actionBar={<Icon name="pin" size="extraSmall" className="u-rotate90" />}
   />
 </div>;

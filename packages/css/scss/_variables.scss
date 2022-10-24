@@ -210,7 +210,7 @@ $color-palette: (
   neutral600: #344563,
   neutral700: #253858,
   neutral800: #172b4d,
-  neutral900: #091d42,
+  neutral900: #091e42,
   white: #ffffff,
   black: #000000,
   facebook: #3b5998,
@@ -357,6 +357,7 @@ $colors-render: (
   border: (
     default: map-get($color-palette, "neutral40"),
     custom: 'var(--borderColor)',
+    dark: map-get($color-palette, "neutral800"),
     gray: map-get($color-palette, "neutral80"),
     light: map-get($color-palette, "neutral70"),
     ultraLight: map-get($color-palette, "neutral30"),
@@ -378,6 +379,7 @@ $colors-render: (
     negativeLight: var(--colorNegativeLight),
     negativeLighter: var(--colorNegativeLighter),
     white: map-get($color-palette, white),
+    black: map-get($color-palette, black),
     transparent: transparent
   ),
   disabled: (

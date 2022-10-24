@@ -21,6 +21,30 @@ const propTypes = {
   sendButtonProps: PropTypes.object,
   /** Set it will disabled `inputProps` */
   children: PropTypes.any,
+  /** Disable the Attach button to render
+   * @deprecated
+   */
+  disabledAttachButton: PropTypes.bool,
+  /** Custom tooltip of the attach button
+   * @deprecated
+   */
+  tooltipAttachButton: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Manually set the visual state of the attach button to :active
+   * @deprecated
+   */
+  sendButtonActive: PropTypes.bool,
+  /** Disable the Send button to render
+   * @deprecated
+   */
+  disabledSendButton: PropTypes.bool,
+  /** Custom tooltip of the send button
+   * @deprecated
+   */
+  tooltipSendButton: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Custom sendButton Icon
+   * @deprecated
+   */
+  sendButtonIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 const defaultProps = {
   inputProps: {},
@@ -45,6 +69,13 @@ const Composer = React.forwardRef(
       inputProps,
       attachButtonProps,
       sendButtonProps,
+      // deprecated
+      disabledAttachButton,
+      tooltipAttachButton,
+      sendButtonActive,
+      disabledSendButton,
+      tooltipSendButton,
+      sendButtonIcon,
       as: Component = 'div',
       ...props
     },
@@ -52,15 +83,16 @@ const Composer = React.forwardRef(
   ) => {
     const attachButtonConfigs = {
       icon: defaultProps.attachButtonProps.icon,
-      tooltip: defaultProps.attachButtonProps.tooltip,
-      isDisabled: defaultProps.attachButtonProps.isDisabled,
+      tooltip: defaultProps.attachButtonProps.tooltip || tooltipAttachButton,
+      isDisabled:
+        defaultProps.attachButtonProps.isDisabled || disabledAttachButton,
       ...attachButtonProps,
     };
     const sendButtonConfigs = {
-      icon: defaultProps.sendButtonProps.icon,
-      tooltip: defaultProps.sendButtonProps.tooltip,
-      isDisabled: defaultProps.sendButtonProps.isDisabled,
-      isActive: defaultProps.sendButtonProps.isActive,
+      icon: defaultProps.sendButtonProps.icon || sendButtonIcon,
+      tooltip: defaultProps.sendButtonProps.tooltip || tooltipSendButton,
+      isDisabled: defaultProps.sendButtonProps.isDisabled || disabledSendButton,
+      isActive: defaultProps.sendButtonProps.isActive || sendButtonActive,
       ...sendButtonProps,
     };
     return (

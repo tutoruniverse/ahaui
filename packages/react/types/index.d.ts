@@ -374,9 +374,13 @@ declare module '@ahaui/react' {
       | 'light'
       | 'primary'
       | 'primaryLight'
+      | 'accent'
+      | 'accentLight'
       | 'dark'
       | 'transparentDark'
-      | 'transparentLight';
+      | 'transparentLight'
+      | 'whiteBorderLight'
+      | 'whiteBorderDark';
     avatar?: string | FuncType;
     time?: string | FuncType;
     options?: OptionType[];

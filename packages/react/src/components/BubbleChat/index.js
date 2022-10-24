@@ -22,9 +22,13 @@ const propTypes = {
     'light',
     'primary',
     'primaryLight',
+    'accent',
+    'accentLight',
     'dark',
     'transparentDark',
     'transparentLight',
+    'whiteBorderLight',
+    'whiteBorderDark',
   ]),
   /** The avatar to display. The name can get from Component `Avatar` or custom it by your sefl */
   avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
@@ -68,10 +72,14 @@ const variantTextClassNames = {
 const variantClassNames = {
   primary: 'u-backgroundPrimary',
   primaryLight: 'u-backgroundPrimaryLight',
+  accent: 'u-backgroundAccent',
+  accentLight: 'u-backgroundAccentLight',
   light: 'u-backgroundLightest',
   dark: 'u-backgroundSemiDark',
   transparentDark: 'u-backgroundTransparent',
   transparentLight: 'u-backgroundTransparent',
+  whiteBorderLight: 'u-backgroundWhite u-border',
+  whiteBorderDark: 'u-backgroundWhite u-border u-borderDark',
 };
 
 const typeThemeClassNames = {

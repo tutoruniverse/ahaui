@@ -13,6 +13,7 @@ import systemMessageBubbleChat from 'src/examples/BubbleChat/systemMessage';
 import imageMessageBubbleChat from 'src/examples/BubbleChat/imageMessage';
 import speechMessageBubbleChat from 'src/examples/BubbleChat/speechMessage';
 import htmlMessageBubbleChat from 'src/examples/BubbleChat/htmlMessage';
+import pinMessageBubbleChat from 'src/examples/BubbleChat/pinMessage';
 
 # Bubble Chat
 
@@ -47,6 +48,10 @@ The component is used to represent the real-time and archived messages of three 
 ### Image Message
 
 <CodeView codeText={imageMessageBubbleChat} />
+
+### Pin Message
+
+<CodeView codeText={pinMessageBubbleChat} />
 
 ### Speech Message
 
@@ -114,6 +119,28 @@ System messages use the system’s primary-light color, left-aligned and have pr
   />
 </div>`} />
 
+**Accent**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="accent"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`} />
+
+**AccentLight**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="accentLight"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`} />
+
 **Dark**
 <CodeView codeText={`<div style={{ maxWidth: 360 }}>
   <BubbleChat
@@ -140,6 +167,28 @@ System messages use the system’s primary-light color, left-aligned and have pr
 <CodeView codeText={`<div style={{ maxWidth: 360 }}>
   <BubbleChat
     variant="transparentLight"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`} />
+
+**WhiteBorderDark**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="whiteBorderDark"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`} />
+
+**WhiteBorderLight**
+<CodeView codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="whiteBorderLight"
     type="outbound"
     avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
     text="Welcome to Aha Design System"

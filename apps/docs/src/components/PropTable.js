@@ -1,22 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import capitalize from 'lodash/capitalize';
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import capitalize from "lodash/capitalize";
 
 function getDoclet(doclets = [], tag) {
-  const doclet = doclets.find(d => d.tag === tag);
+  const doclet = doclets.find((d) => d.tag === tag);
   return doclet && doclet.value;
 }
 
 function cleanDocletValue(str) {
-  return str
-    .trim()
-    .replace(/^\{/, '')
-    .replace(/\}$/, '');
+  return str.trim().replace(/^\{/, "").replace(/\}$/, "");
 }
 function getDisplayTypeName(typeName) {
-  if (typeName === 'func') return 'function';
-  if (typeName === 'bool') return 'boolean';
+  if (typeName === "func") return "function";
+  if (typeName === "bool") return "boolean";
 
   return typeName;
 }
@@ -25,8 +22,8 @@ function getTypeName(prop) {
   const type = prop.type || {};
   const name = getDisplayTypeName(type.name);
 
-  if (name === 'custom') {
-    const dType = getDoclet(prop.doclets, 'type');
+  if (name === "custom") {
+    const dType = getDoclet(prop.doclets, "type");
     return cleanDocletValue((dType && dType.value) || type.raw);
   }
   return name;
@@ -40,12 +37,12 @@ class PropTable extends React.Component {
   getType(prop) {
     const type = prop.type || {};
     const name = getDisplayTypeName(type.name);
-    const docletType = getDoclet(prop.doclets, 'type');
+    const docletType = getDoclet(prop.doclets, "type");
 
     switch (name) {
-      case 'object':
+      case "object":
         return name;
-      case 'union':
+      case "union":
         return type.value.reduce((current, val, i, list) => {
           let item = this.getType({ type: val });
           if (React.isValidElement(item)) {
@@ -53,22 +50,22 @@ class PropTable extends React.Component {
           }
           current = current.concat(item);
 
-          return i === list.length - 1 ? current : current.concat(' | ');
+          return i === list.length - 1 ? current : current.concat(" | ");
         }, []);
-      case 'array': {
+      case "array": {
         const child = this.getType({ type: type.value });
 
         return (
           <span>
-            {'array<'}
+            {"array<"}
             {child}
-            {'>'}
+            {">"}
           </span>
         );
       }
-      case 'enum':
+      case "enum":
         return this.renderEnum(type);
-      case 'custom':
+      case "custom":
         return cleanDocletValue(docletType || type.raw);
       default:
         return name;
@@ -76,23 +73,31 @@ class PropTable extends React.Component {
   }
 
   renderRows(propsData) {
-    return propsData.filter(
-      prop => prop.type && !prop.doclets.private && !prop.doclets.ignore,
-    )
+    return propsData
+      .filter(
+        (prop) => prop.type && !prop.doclets.private && !prop.doclets.ignore
+      )
       .map((propData) => {
         const { name, description, doclets } = propData;
-        const alias = getDoclet(doclets, 'alias');
-        const privateProp = getDoclet(doclets, 'private');
-        const ignoreProp = getDoclet(doclets, 'ignore');
-        const deprecated = getDoclet(doclets, 'deprecated');
+        const alias = getDoclet(doclets, "alias");
+        const privateProp = getDoclet(doclets, "private");
+        const ignoreProp = getDoclet(doclets, "ignore");
+        const deprecated = getDoclet(doclets, "deprecated");
         const descHtml = description && description.childMarkdownRemark.html;
         if (privateProp || ignoreProp) return null;
         return (
-          <tr key={name}>
+          <tr key={name} style={{
+            backgroundColor: deprecated ? 'var(--colorYellow50)' : 'transparent'
+          }}>
             <td>
-              {alias || name}
-              {' '}
-              {this.renderRequiredBadge(propData)}
+              {alias || name} {this.renderRequiredBadge(propData)}
+              {!!deprecated && (
+                <div className="u-marginBottomTiny">
+                  <span className="u-textNegative u-text100 u-paddingHorizontalTiny">
+                    deprecated
+                  </span>
+                </div>
+              )}
             </td>
             <td>
               <div>{this.getType(propData)}</div>
@@ -101,15 +106,11 @@ class PropTable extends React.Component {
             <td>{this.renderDefaultValue(propData)}</td>
 
             <td>
-              {!!deprecated && (
-                <div className="u-marginBottomTiny">
-                  <strong className="u-textNegative">
-                    {`Deprecated: ${deprecated} `}
-                  </strong>
-                </div>
-              )}
               {this.renderControllableNote(propData, name)}
-              <div className="PropDescription" dangerouslySetInnerHTML={{ __html: descHtml }} />
+              <div
+                className="PropDescription"
+                dangerouslySetInnerHTML={{ __html: descHtml }}
+              />
             </td>
           </tr>
         );
@@ -119,13 +120,15 @@ class PropTable extends React.Component {
   renderDefaultValue(prop) {
     let value = prop.defaultValue && prop.defaultValue.value;
     if (value == null) return null;
-    if (getTypeName(prop) === 'elementType') { value = `<${value.replace(/('|")/g, '')}>`; }
+    if (getTypeName(prop) === "elementType") {
+      value = `<${value.replace(/('|")/g, "")}>`;
+    }
     return <code>{value}</code>;
   }
 
   renderControllableNote(prop, propName) {
-    const controllable = getDoclet(prop.doclets, 'controllable');
-    const isHandler = getDisplayTypeName(prop.type.name) === 'function';
+    const controllable = getDoclet(prop.doclets, "controllable");
+    const isHandler = getDisplayTypeName(prop.type.name) === "function";
 
     if (!controllable) {
       return false;
@@ -133,17 +136,12 @@ class PropTable extends React.Component {
 
     const text = isHandler ? (
       <span>
-        controls
-        {' '}
-        <code>{controllable}</code>
+        controls <code>{controllable}</code>
       </span>
     ) : (
       <span>
-          controlled by:
-        {' '}
-        <code className="u-textNoWrap">{controllable}</code>
-          , initial prop:
-        {' '}
+        controlled by: <code className="u-textNoWrap">{controllable}</code>,
+        initial prop:{" "}
         <code className="u-textNoWrap">{`default${capitalize(propName)}`}</code>
       </span>
     );
@@ -178,7 +176,11 @@ class PropTable extends React.Component {
       return null;
     }
 
-    return <span className="u-textNegative u-text100 u-paddingHorizontalTiny">required</span>;
+    return (
+      <span className="u-textNegative u-text100 u-paddingHorizontalTiny">
+        required
+      </span>
+    );
   }
 
   render() {
@@ -199,9 +201,9 @@ class PropTable extends React.Component {
           <thead>
             <tr>
               <th>Name</th>
-              <th style={{ maxWidth: '35%', width: 300 }}>Type</th>
-              <th style={{ maxWidth: '30%' }}>Default</th>
-              <th style={{ minWidth: '35%' }}>Description</th>
+              <th style={{ maxWidth: "35%", width: 300 }}>Type</th>
+              <th style={{ maxWidth: "30%" }}>Default</th>
+              <th style={{ minWidth: "35%" }}>Description</th>
             </tr>
           </thead>
           <tbody>{this.renderRows(propsData)}</tbody>
