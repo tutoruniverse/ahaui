@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import capitalize from "lodash/capitalize";
 
 function getDoclet(doclets = [], tag) {
@@ -41,7 +42,7 @@ class PropTable extends React.Component {
 
     switch (name) {
       case "object":
-        return name;
+        return <span className="token object">{name}</span>;
       case "union":
         return type.value.reduce((current, val, i, list) => {
           let item = this.getType({ type: val });
@@ -68,7 +69,7 @@ class PropTable extends React.Component {
       case "custom":
         return cleanDocletValue(docletType || type.raw);
       default:
-        return name;
+        return <span className={`token ${name}`}>{name}</span>;
     }
   }
 
@@ -86,9 +87,14 @@ class PropTable extends React.Component {
         const descHtml = description && description.childMarkdownRemark.html;
         if (privateProp || ignoreProp) return null;
         return (
-          <tr key={name} style={{
-            backgroundColor: deprecated ? 'var(--colorYellow50)' : 'transparent'
-          }}>
+          <tr
+            key={name}
+            style={{
+              backgroundColor: deprecated
+                ? "var(--colorYellow50)"
+                : "transparent",
+            }}
+          >
             <td>
               {alias || name} {this.renderRequiredBadge(propData)}
               {!!deprecated && (
@@ -100,10 +106,12 @@ class PropTable extends React.Component {
               )}
             </td>
             <td>
-              <div>{this.getType(propData)}</div>
+              <div className="PrismModule isTransparent">{this.getType(propData)}</div>
             </td>
 
-            <td>{this.renderDefaultValue(propData)}</td>
+            <td className="DefaultValue">
+              {this.renderDefaultValue(propData)}
+            </td>
 
             <td>
               {this.renderControllableNote(propData, name)}
@@ -123,7 +131,8 @@ class PropTable extends React.Component {
     if (getTypeName(prop) === "elementType") {
       value = `<${value.replace(/('|")/g, "")}>`;
     }
-    return <code>{value}</code>;
+    // return <code>{value}</code>
+    return <SyntaxHighlighter language="javascript">{value}</SyntaxHighlighter>;
   }
 
   renderControllableNote(prop, propName) {
@@ -165,7 +174,17 @@ class PropTable extends React.Component {
         renderedEnumValues.push(<span key={`${i}c`}> | </span>);
       }
 
-      renderedEnumValues.push(<code key={i}>{value}</code>);
+      renderedEnumValues.push(
+        <code
+          style={{
+            color: "rgb(102, 153, 0)",
+            backgroundColor: "transparent",
+          }}
+          key={i}
+        >
+          {value}
+        </code>
+      );
     });
 
     return <span>{renderedEnumValues}</span>;
@@ -197,7 +216,7 @@ class PropTable extends React.Component {
 
     return (
       <div className="u-overflowAuto u-marginBottomLarge">
-        <table className="Table Table--bordered Table--striped u-fontNormal u-textDark u-marginTopSmall u-backgroundWhite">
+        <table className="PropTable Table Table--bordered Table--striped u-fontNormal u-textDark u-marginTopSmall u-backgroundWhite">
           <thead>
             <tr>
               <th>Name</th>

@@ -1,4 +1,4 @@
-@import './theme';
+@import "./theme";
 
 $char: #d8dee9;
 $comment: #999999;
@@ -16,14 +16,16 @@ $method: #6699cc;
 $operator: #fc929e;
 
 .PrismModule {
-  display: block;
-  color: $white;
-  background-color: $dark;
-  font-family: map-deep-get($fonts,'monospace') !important;
-  font-size: 14px;
-  line-height: 20px;
-  white-space: pre-wrap;
-  word-break: break-word;
+  &:not(.isTransparent) {
+    display: block;
+    color: $white;
+    background-color: $dark;
+    font-family: map-deep-get($fonts, "monospace") !important;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
 
   & :global .token {
     &.attr-name {
@@ -51,7 +53,8 @@ $operator: #fc929e;
       color: $boolean;
     }
 
-    &.tag {
+    &.tag,
+    &.arrayOf {
       color: $tag;
     }
 
@@ -70,7 +73,8 @@ $operator: #fc929e;
       color: $char;
     }
 
-    &.function {
+    &.function,
+    &.node {
       color: $function;
     }
 
