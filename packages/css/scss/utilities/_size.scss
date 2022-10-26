@@ -352,29 +352,56 @@
 .u-screenMaxWidthFull {
   max-width: 100vw;
 }
-
+// min-height
 .u-minHeightMinContent {
   min-height: min-content;
 }
 
+.u-minHeightMaxContent {
+  min-height: max-content;
+}
+
+.u-minHeightFitContent {
+  min-height: fit-content;
+}
+
+// max-height
+.u-maxHeightFitContent {
+  max-height: fit-content;
+}
+
+.u-maxHeightMinContent {
+  max-height: min-content;
+}
+
+.u-maxHeightMaxContent {
+  max-height: max-content;
+}
+
+// min-width
 .u-minWidthMinContent {
   min-width: min-content;
 }
 
-.u-minHeightMinFitContent {
-  min-height: fit-content;
+.u-minWidthMaxContent {
+  min-width: max-content;
 }
 
-.u-maxHeightMaxContent {
-  max-height: min-content;
+.u-minWidthFitContent {
+  min-width: fit-content;
+}
+
+// max-width
+.u-maxWidthMinContent {
+  max-width: min-content;
 }
 
 .u-maxWidthMaxContent {
   max-width: max-content;
 }
 
-.u-maxHeightMaxFitContent {
-  max-height: fit-content;
+.u-maxWidthFitContent {
+  max-width: fit-content;
 }
 
 .u-widthFitContent {
