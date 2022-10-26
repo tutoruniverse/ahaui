@@ -51,13 +51,14 @@ const defaultProps = {
   attachButtonProps: {
     icon: 'attach',
     tooltip: null,
+    shouldRender: true,
     isDisabled: false,
   },
   sendButtonProps: {
     icon: 'send',
     tooltip: null,
-    isDisabled: false,
-    isActive: false,
+    shouldRender: true,
+    isDisabled: true,
   },
 };
 
@@ -84,17 +85,37 @@ const Composer = React.forwardRef(
     const attachButtonConfigs = {
       icon: defaultProps.attachButtonProps.icon,
       tooltip: defaultProps.attachButtonProps.tooltip || tooltipAttachButton,
-      isDisabled:
-        defaultProps.attachButtonProps.isDisabled || disabledAttachButton,
+      ...defaultProps.attachButtonProps,
       ...attachButtonProps,
     };
     const sendButtonConfigs = {
       icon: defaultProps.sendButtonProps.icon || sendButtonIcon,
       tooltip: defaultProps.sendButtonProps.tooltip || tooltipSendButton,
-      isDisabled: defaultProps.sendButtonProps.isDisabled || disabledSendButton,
-      isActive: defaultProps.sendButtonProps.isActive || sendButtonActive,
+      ...defaultProps.sendButtonProps,
       ...sendButtonProps,
     };
+
+    const shouldRenderAttachButton = React.useMemo(() => {
+      if (disabledAttachButton !== undefined) {
+        return !disabledAttachButton;
+      }
+      return attachButtonConfigs.shouldRender;
+    }, [disabledSendButton, attachButtonConfigs]);
+
+    const shouldRenderSendButton = React.useMemo(() => {
+      if (disabledSendButton !== undefined) {
+        return !disabledSendButton;
+      }
+      return sendButtonConfigs.shouldRender;
+    }, [disabledSendButton, sendButtonConfigs]);
+
+    const shouldDisabledSendButton = React.useMemo(() => {
+      if (sendButtonActive !== undefined) {
+        return !sendButtonActive;
+      }
+      return sendButtonConfigs.isDisabled;
+    }, [sendButtonActive, sendButtonConfigs]);
+
     return (
       <Component
         ref={ref}
@@ -105,7 +126,7 @@ const Composer = React.forwardRef(
           className && className,
         )}
       >
-        {!attachButtonConfigs?.isDisabled && (
+        {shouldRenderAttachButton && (
           <div className="u-flexShrink0 u-marginRightTiny">
             {attachButtonConfigs?.tooltip ? (
               <Overlay.Trigger
@@ -122,7 +143,10 @@ const Composer = React.forwardRef(
                 <div
                   {...attachButtonConfigs}
                   className={classNames(
-                    'hover:u-backgroundPrimary hover:u-textWhite u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-cursorPointer',
+                    'u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter',
+                    attachButtonConfigs.isDisabled
+                      ? 'u-textLight u-cursorNotAllow u-pointerEventsNone'
+                      : 'hover:u-backgroundPrimary hover:u-textWhite u-cursorPointer',
                     attachButtonConfigs.className &&
                       attachButtonConfigs.className,
                   )}
@@ -143,7 +167,10 @@ const Composer = React.forwardRef(
               <div
                 {...attachButtonConfigs}
                 className={classNames(
-                  'hover:u-backgroundPrimary hover:u-textWhite u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-cursorPointer',
+                  'u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter',
+                  attachButtonConfigs.isDisabled
+                    ? 'u-textLight u-cursorNotAllow u-pointerEventsNone'
+                    : 'hover:u-backgroundPrimary hover:u-textWhite u-cursorPointer',
                   attachButtonConfigs.className &&
                     attachButtonConfigs.className,
                 )}
@@ -175,7 +202,7 @@ const Composer = React.forwardRef(
             }}
           />
         )}
-        {!sendButtonConfigs.isDisabled &&
+        {shouldRenderSendButton &&
           (sendButtonConfigs?.tooltip ? (
             <Overlay.Trigger
               placement="top-end"
@@ -192,9 +219,9 @@ const Composer = React.forwardRef(
                 {...sendButtonConfigs}
                 className={classNames(
                   'u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-flexShrink0 u-marginLeftTiny',
-                  sendButtonConfigs.isActive
-                    ? 'hover:u-backgroundPrimary hover:u-textWhite u-textPrimary u-cursorPointer'
-                    : 'u-textLight u-cursorNotAllow u-pointerEventsNone',
+                  shouldDisabledSendButton
+                    ? 'u-textLight u-cursorNotAllow u-pointerEventsNone'
+                    : 'hover:u-backgroundPrimary hover:u-textWhite u-textPrimary u-cursorPointer',
                   sendButtonConfigs.className && sendButtonConfigs.className,
                 )}
                 style={{
@@ -215,9 +242,9 @@ const Composer = React.forwardRef(
               {...sendButtonConfigs}
               className={classNames(
                 'u-roundedMedium u-flex u-alignItemsCenter u-justifyContentCenter u-flexShrink0 u-marginLeftTiny',
-                sendButtonConfigs.isActive
-                  ? 'hover:u-backgroundPrimary hover:u-textWhite u-textPrimary u-cursorPointer'
-                  : 'u-textLight u-cursorNotAllow u-pointerEventsNone',
+                shouldDisabledSendButton
+                  ? 'u-textLight u-cursorNotAllow u-pointerEventsNone'
+                  : 'hover:u-backgroundPrimary hover:u-textWhite u-textPrimary u-cursorPointer',
                 sendButtonConfigs.className && sendButtonConfigs.className,
               )}
               style={{

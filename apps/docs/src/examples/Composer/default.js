@@ -7,7 +7,7 @@
           tooltip: "Upload a file",
         }}
         sendButtonProps={{
-          isActive: value !== "",
+          isDisabled: value === "",
         }}
         value={value}
         onChange={(e) => setValue(e.target.value)}

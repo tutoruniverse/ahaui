@@ -13,8 +13,8 @@
               <span className="u-text200">Update</span>
             </div>
           ),
-          isActive: value !== "",
         }}
+        sendButtonActive={value !== ''}
         inputProps={{
           className: "u-webkitScrollbar",
           placeholder: "Write your message...",
