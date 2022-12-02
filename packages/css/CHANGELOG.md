@@ -1,3 +1,9 @@
+## Release 2.1.2
+### Fixed
+* SCSS:
+  - Missing import utilities in index
+  - Wrong color of Neutral900
+
 ## Release 2.1.0
 ### Fixed
 * SCSS:

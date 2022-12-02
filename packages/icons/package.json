@@ -1,6 +1,6 @@
 {
   "name": "@ahaui/icons",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
