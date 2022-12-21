@@ -381,14 +381,14 @@ $colors-render: (
     transparent: transparent
   ),
   disabled: (
-    color: map-get($color-palette, "neutral80"),
+    color: map-get($color-palette, "neutral200"),
     background: map-get($color-palette, "neutral30"),
     border: map-get($color-palette, "neutral30")
   ),
   linkHref: (
     color: var(--colorPrimary),
-    hoverColor: var(--colorPrimary400)
-  )
+    hoverColor: var(--colorprimaryDark),
+  ),
 ) !default;
 
 // I-04. Fonts
