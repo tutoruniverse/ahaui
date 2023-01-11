@@ -42,7 +42,7 @@
     "gatsby-source-filesystem": "2.11.1",
     "gatsby-plugin-root-import": "2.0.8",
     "gatsby-transformer-react-docgen": "^5.7.0",
-    "gatsby-transformer-remark": "^2.6.42",
+    "gatsby-transformer-remark": "^5.25.1",
     "gh-pages": "^3.2.3",
     "holderjs": "^2.9.6",
     "import-sort-cli": "^6.0.0",
