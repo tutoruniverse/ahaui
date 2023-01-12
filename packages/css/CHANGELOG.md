@@ -1,3 +1,11 @@
+## Release 2.1.6 ( Preview )
+
+### Fixed
+
+- SCSS
+  - Text: correct line-height of text. `u-text100 wrong line-height`
+  - Form: separate `disabled` and `readonly` styles
+
 ## Release 2.1.5
 
 ### Fixed
