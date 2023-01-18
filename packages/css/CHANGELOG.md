@@ -5,6 +5,7 @@
 - SCSS
   - Text: correct line-height of text. `u-text100 wrong line-height`
   - Form: separate `disabled` and `readonly` styles
+  - Form.Check: mark and circle styles
 
 ## Release 2.1.5
 
