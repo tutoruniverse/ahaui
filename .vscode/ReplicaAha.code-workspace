@@ -1,6 +1,10 @@
 {
 	"folders": [
 		{
+			"name": "✨ root",
+			"path": ".."
+		},
+		{
 			"name": "♫ aha-css",
 			"path": "../packages/aha-css"
 		},
