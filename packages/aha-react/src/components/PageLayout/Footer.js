@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import Context from './Context';
 
-
 export const PageLayoutFooter = React.forwardRef(({ className, children, ...props }, ref) => {
   const { footerProps } = useContext(Context);
   const mergeProps = {
@@ -16,7 +15,7 @@ export const PageLayoutFooter = React.forwardRef(({ className, children, ...prop
       className={classNames(
         'PageLayout-footer',
         className && className,
-        footerProps.className && footerProps.className
+        footerProps.className && footerProps.className,
       )}
     >
 

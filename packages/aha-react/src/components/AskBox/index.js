@@ -15,7 +15,7 @@ const AskBox = React.forwardRef(({ className, ...props }, ref) => (
     {...props}
     className={classNames(
       'AskBox',
-      className && className
+      className && className,
     )}
   />
 ));

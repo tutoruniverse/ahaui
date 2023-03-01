@@ -1,9 +1,8 @@
-
 import React from 'react';
 import classNames from 'classnames';
 import camelize from 'dom-helpers/camelize';
 
-const pascalCase = str => str[0].toUpperCase() + camelize(str).slice(1);
+const pascalCase = (str) => str[0].toUpperCase() + camelize(str).slice(1);
 
 function createBlock(
   prefix,

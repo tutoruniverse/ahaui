@@ -36,7 +36,6 @@ const defaultProps = {
   textClassName: '',
 };
 
-
 const variantsTextClassName = {
   primary: 'u-textWhite hover:u-textWhite',
   primary_subtle: 'u-textPrimary hover:u-textPrimary',
@@ -70,7 +69,7 @@ const Tag = React.forwardRef(({ className, textClassName, variant, as: Component
       'u-flexInline u-alignItemsCenter u-textCenter u-textNoWrap u-roundedMedium u-text200 hover:u-textDecorationNone',
       variant && variantsClassName[variant],
       ((variant === 'primary' || variant === 'accent' || variant === 'primary_subtle' || variant === 'accent_subtle') && textClassName) ? textClassName : variantsTextClassName[variant],
-      className && className
+      className && className,
     )}
   />
 ));

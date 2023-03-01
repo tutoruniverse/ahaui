@@ -11,7 +11,7 @@ const defaultProps = {
 
 export const Title = React.forwardRef(({ className, children, ...props }, ref) => {
   const { variant, type } = useContext(Context);
-  const variantOri = messagesVariants.find(item => item.type === type && item.id === variant);
+  const variantOri = messagesVariants.find((item) => item.type === type && item.id === variant);
   return (
     <div
       ref={ref}
@@ -20,7 +20,7 @@ export const Title = React.forwardRef(({ className, children, ...props }, ref) =
         'Message-title',
         'u-fontMedium u-marginBottomExtraSmall',
         className && className,
-        variantOri.textHeadingClassName ? variantOri.textHeadingClassName : variantOri.textClassName
+        variantOri.textHeadingClassName ? variantOri.textHeadingClassName : variantOri.textClassName,
       )}
     >
       {children}

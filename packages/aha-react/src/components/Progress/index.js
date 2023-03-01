@@ -73,14 +73,14 @@ const Progress = React.forwardRef(({ className, labelClassName, border, striped,
       striped && 'Progress--striped',
       animated && 'Progress--animated',
       border ? `u-border ${variantsClassName.borderColor[variant]}` : 'u-backgroundUltraLight',
-      className && className
+      className && className,
     )}
   >
     <div
       className={classNames(
         'Progress-bar',
         'u-heightFull u-positionRelative u-easeInOut u-duration300 u-transitionAll',
-        variant && variantsClassName.backgroundColor[variant]
+        variant && variantsClassName.backgroundColor[variant],
       )}
       style={{ width: `${now}%` }}
     >
@@ -88,7 +88,7 @@ const Progress = React.forwardRef(({ className, labelClassName, border, striped,
         <div className={classNames(
           'u-positionAbsolute u-positionCenter',
           labelClassName && labelClassName,
-          variant && variantsClassName.textColor[variant]
+          variant && variantsClassName.textColor[variant],
         )}
         >
           {label}

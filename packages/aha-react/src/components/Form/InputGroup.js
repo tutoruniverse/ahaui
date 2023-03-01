@@ -25,7 +25,7 @@ const InputGroup = React.forwardRef(({ className, as: Component = 'div', ...prop
         'FormInputGroup',
         'u-flex u-positionRelative u-flexWrap u-alignItemsStretch',
         sizeControl && `FormInputGroup--${sizeControl}`,
-        className && className
+        className && className,
       )}
     />
   );

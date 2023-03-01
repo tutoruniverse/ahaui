@@ -116,7 +116,7 @@ const BubbleChat = React.forwardRef(({ className, isTyping, text, type, variant,
         className={classNames(
           'BubbleChat-time',
           'u-text100 u-textLight u-marginTopTiny',
-          (type === 'inbound' && children) && 'u-textRight'
+          (type === 'inbound' && children) && 'u-textRight',
         )}
         style={{
           ...(type === 'inbound' ? { justifySelf: 'flex-end' } : {}),
@@ -133,7 +133,7 @@ const BubbleChat = React.forwardRef(({ className, isTyping, text, type, variant,
     <div
       className={classNames(
         'u-overflowHidden',
-        type && typeRadiusClassNames[type]
+        type && typeRadiusClassNames[type],
       )}
       style={{
         width: 'fit-content',
@@ -163,8 +163,7 @@ const BubbleChat = React.forwardRef(({ className, isTyping, text, type, variant,
     >
       {typeof (avatar) === 'function'
         ? avatar()
-        : <Avatar name={avatar} size="small" />
-      }
+        : <Avatar name={avatar} size="small" />}
     </div>
   );
 
@@ -177,7 +176,7 @@ const BubbleChat = React.forwardRef(({ className, isTyping, text, type, variant,
           'BubbleChat',
           'u-marginBottomSmall',
           (type !== 'inbound') ? 'u-marginRightExtraLarge' : 'u-marginLeftExtraLarge',
-          className && className
+          className && className,
         )}
       >
         <div
@@ -199,61 +198,60 @@ const BubbleChat = React.forwardRef(({ className, isTyping, text, type, variant,
             'u-flex u-flexColumn',
             children && 'u-maxWidthFull',
             (type === 'inbound' && !avatar) && 'u-marginLeftMedium',
-            (type === 'inbound' && !children) && 'u-alignItemsEnd'
+            (type === 'inbound' && !children) && 'u-alignItemsEnd',
           )}
           >
-            <React.Fragment>
-              {isTyping && renderTyping()}
-              {!isTyping && (
-                <React.Fragment>
-                  {children || (
-                    <div className="u-positionRelative">
-                      {actionBar && (
-                        <div className={classNames(
-                          'u-positionAbsolute u-positionTop u-marginTopTiny u-marginHorizontalExtraSmall',
-                          type === 'inbound' ? 'u-positionRight-100' : 'u-positionLeft-100',
-                          actionBarClassName && actionBarClassName,
-                        )}
-                        >
-                          {actionBar}
-                        </div>
-                      )}
-                      <div className={classNames(
-                        'u-overflowHidden u-flexInline u-flexColumn',
-                        type && typeRadiusClassNames[type]
-                      )}
-                      >
-                        <div
-                          className={classNames(
-                            'BubbleChat-text',
-                            'u-paddingVerticalExtraSmall u-paddingHorizontalSmall u-textPreLine',
-                            type && typeThemeClassNames[type],
-                            ((variantOri === 'primary' || variantOri === 'dark' || variantOri === 'transparentDark') && textClassName) ? textClassName : variantTextClassNames[variantOri],
-                            variantOri && variantClassNames[variantOri],
+            {isTyping && renderTyping()}
+            {!isTyping && (
+            <>
+              {children || (
+              <div className="u-positionRelative">
+                {actionBar && (
+                <div className={classNames(
+                  'u-positionAbsolute u-positionTop u-marginTopTiny u-marginHorizontalExtraSmall',
+                  type === 'inbound' ? 'u-positionRight-100' : 'u-positionLeft-100',
+                  actionBarClassName && actionBarClassName,
+                )}
+                >
+                  {actionBar}
+                </div>
+                )}
+                <div className={classNames(
+                  'u-overflowHidden u-flexInline u-flexColumn',
+                  type && typeRadiusClassNames[type],
+                )}
+                >
+                  <div
+                    className={classNames(
+                      'BubbleChat-text',
+                      'u-paddingVerticalExtraSmall u-paddingHorizontalSmall u-textPreLine',
+                      type && typeThemeClassNames[type],
+                      ((variantOri === 'primary' || variantOri === 'dark' || variantOri === 'transparentDark') && textClassName) ? textClassName : variantTextClassNames[variantOri],
+                      variantOri && variantClassNames[variantOri],
 
-                          )}
-                          onClick={onClickText}
-                        >
-                          {text}
-                        </div>
-                        {options && (
-                          <div className="u-flex u-flexColumn u-border u-borderUltraLight u-roundedBottomExtraLarge u-text200 u-overflowHidden">
-                            {options.map((option, idx) => {
-                              let cn;
-                              let handleClick;
+                    )}
+                    onClick={onClickText}
+                  >
+                    {text}
+                  </div>
+                  {options && (
+                  <div className="u-flex u-flexColumn u-border u-borderUltraLight u-roundedBottomExtraLarge u-text200 u-overflowHidden">
+                    {options.map((option, idx) => {
+                      let cn;
+                      let handleClick;
 
-                              if (option.id === currentOption) {
-                                cn = `u-backgroundPrimary ${textClassName || 'u-textWhite'} ${disabledOption ? 'u-cursorNotAllow' : ''}`;
-                                handleClick = null;
-                              } else if (disabledOption) {
-                                cn = 'u-backgroundLighter u-textGray u-cursorNotAllow';
-                                handleClick = null;
-                              } else {
-                                cn = 'u-backgroundWhite hover:u-backgroundLightest u-textPrimary u-cursorPointer';
-                                handleClick = () => onSelectOption(option.id);
-                              }
+                      if (option.id === currentOption) {
+                        cn = `u-backgroundPrimary ${textClassName || 'u-textWhite'} ${disabledOption ? 'u-cursorNotAllow' : ''}`;
+                        handleClick = null;
+                      } else if (disabledOption) {
+                        cn = 'u-backgroundLighter u-textGray u-cursorNotAllow';
+                        handleClick = null;
+                      } else {
+                        cn = 'u-backgroundWhite hover:u-backgroundLightest u-textPrimary u-cursorPointer';
+                        handleClick = () => onSelectOption(option.id);
+                      }
 
-                              return (
+                      return (
                                 <button
                                   key={option.id}
                                   type="button"
@@ -267,16 +265,15 @@ const BubbleChat = React.forwardRef(({ className, isTyping, text, type, variant,
                                 >
                                   {option.name}
                                 </button>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                      );
+                    })}
+                  </div>
                   )}
-                </React.Fragment>
+                </div>
+              </div>
               )}
-            </React.Fragment>
+            </>
+            )}
           </div>
 
           {((type !== 'outbound' && type !== 'system') && avatar) && renderAvatar('inbound')}

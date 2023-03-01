@@ -29,7 +29,7 @@ const Carousel = React.forwardRef(({ className, dotInside, settings, ...props },
     className={classNames(
       'Carousel u-marginBottomMedium',
       dotInside && 'Carousel--dotsInside',
-      className && className
+      className && className,
     )}
   />
 ));

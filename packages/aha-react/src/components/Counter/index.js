@@ -79,7 +79,7 @@ const Counter = React.forwardRef(({ className, children, iconLeft, label, number
     className={classNames(
       'Counter',
       'u-flex u-alignItemsCenter u-lineHeightReset',
-      className && className
+      className && className,
     )}
   >
     {iconLeft && (
@@ -90,12 +90,11 @@ const Counter = React.forwardRef(({ className, children, iconLeft, label, number
             <Icon
               name={iconLeft}
               className={classNames(
-                variant ? variantsClassName[variant].icon : 'u-textGray'
+                variant ? variantsClassName[variant].icon : 'u-textGray',
               )}
               size="medium"
             />
-          )
-        }
+          )}
       </span>
     )}
 
@@ -105,7 +104,7 @@ const Counter = React.forwardRef(({ className, children, iconLeft, label, number
         : (
           <span className={classNames(
             'u-text500',
-            variant ? variantsClassName[variant].text : 'u-textDark'
+            variant ? variantsClassName[variant].text : 'u-textDark',
           )}
           >
             {label}
@@ -120,19 +119,17 @@ const Counter = React.forwardRef(({ className, children, iconLeft, label, number
           : (
             <span className={classNames(
               'u-text600 u-fontMedium',
-              variant ? variantsClassName[variant].text : 'u-textDark'
+              variant ? variantsClassName[variant].text : 'u-textDark',
             )}
             >
               {number}
             </span>
-          )
-        }
+          )}
       </span>
     )}
     {children}
   </Component>
 ));
-
 
 Counter.displayName = 'Counter';
 Counter.defaultProps = defaultProps;

@@ -13,11 +13,11 @@ const propTypes = {
   current: PropTypes.string,
   /** Callback fired when the menu item is clicked. */
   onSelect: PropTypes.func,
-  /** 
+  /**
    * Enable collapsing its sub menus when an menu item is selected
    * @default false
    *  */
-  autoCollapse: PropTypes.bool
+  autoCollapse: PropTypes.bool,
 };
 
 const TopMenu = React.forwardRef(({ className, children, current, onSelect, autoCollapse, ...props }, ref) => {
@@ -32,7 +32,7 @@ const TopMenu = React.forwardRef(({ className, children, current, onSelect, auto
         index,
         path: path.toString(),
         autoCollapse,
-      })
+      }),
     );
   });
   return (
@@ -46,14 +46,14 @@ const TopMenu = React.forwardRef(({ className, children, current, onSelect, auto
         className={classNames(
           'TopMenu',
           'u-backgroundWhite',
-          className && className
+          className && className,
         )}
       >
         <div
           ref={ref}
           {...props}
           className={classNames(
-            'TopMenu-list'
+            'TopMenu-list',
           )}
         >
           {modifiedChildren}

@@ -44,7 +44,7 @@ const PageLayout = React.forwardRef(({ children, className, headerProps, bodyPro
         className={classNames(
           'PageLayout',
           'u-screenHeightFull u-flex u-flexColumn u-overflowHidden',
-          className && className
+          className && className,
         )}
       >
         {children}

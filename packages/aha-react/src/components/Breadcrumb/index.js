@@ -36,7 +36,7 @@ const Breadcrumb = React.forwardRef(({ className, schema, children, ...props }, 
         schema,
         isLast: index === numChildren - 1,
         position: index + 1,
-      })
+      }),
     );
   });
   return (
@@ -46,7 +46,7 @@ const Breadcrumb = React.forwardRef(({ className, schema, children, ...props }, 
       {...schemasList}
       className={classNames(
         'Breadcrumb',
-        'u-marginNone u-paddingNone u-text200'
+        'u-marginNone u-paddingNone u-text200',
       )}
     >
       {modifiedChildren}

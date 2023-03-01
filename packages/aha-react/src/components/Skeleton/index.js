@@ -32,7 +32,6 @@ const defaultProps = {
   duration: 2000,
 };
 
-
 const Skeleton = React.forwardRef(({ variant, width, height, duration, as: Component = 'div', ...props }, ref) => {
   const heightStyle = {
     width: width && width,
@@ -50,7 +49,7 @@ const Skeleton = React.forwardRef(({ variant, width, height, duration, as: Compo
       className={classNames(
         'Skeleton',
         variant && variantClass[variant],
-        'u-flex u-positionRelative u-pointerEventsNone u-shadowNone u-backgroundLighter u-overflowHidden'
+        'u-flex u-positionRelative u-pointerEventsNone u-shadowNone u-backgroundLighter u-overflowHidden',
       )}
     />
   );

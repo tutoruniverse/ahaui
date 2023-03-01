@@ -5,7 +5,6 @@ import Form from 'components/Form';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
 
-
 const propTypes = {
   /** Callback fired when the Search Button is clicking */
   onClickButton: PropTypes.func,
@@ -31,7 +30,7 @@ const SearchBox = React.forwardRef(({ className, sizeControl, onClickButton, but
     sizeControl={sizeControl}
     className={classNames(
       'SearchBox',
-      className && className
+      className && className,
     )}
   >
     <Form.InputGroup>

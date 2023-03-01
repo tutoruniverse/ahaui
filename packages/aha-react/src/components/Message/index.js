@@ -69,7 +69,7 @@ const Message = React.forwardRef((uncontrolledProps, ref) => {
     transition: Transition,
     ...props } = useUncontrolled(uncontrolledProps, controllables);
   const [dismissButtonHover, setDismissButtonHover] = useState(false);
-  const variantOri = messagesVariants.find(item => item.type === type && item.id === variant);
+  const variantOri = messagesVariants.find((item) => item.type === type && item.id === variant);
   const context = useMemo(() => ({ variant, type }), [variant, type]);
   const handleClose = useEventCallback((e) => {
     if (disabled) {
@@ -88,20 +88,20 @@ const Message = React.forwardRef((uncontrolledProps, ref) => {
         (type !== 'system') && 'u-roundedMedium u-border',
         variantOri.className,
         variantOri.textClassName,
-        className && className
+        className && className,
       )}
     >
       {children}
       {dismissible && (
         <div
-          onMouseEnter={() => setDismissButtonHover(dismissButtonHover => !dismissButtonHover)}
-          onMouseLeave={() => setDismissButtonHover(dismissButtonHover => !dismissButtonHover)}
+          onMouseEnter={() => setDismissButtonHover((dismissButtonHover) => !dismissButtonHover)}
+          onMouseLeave={() => setDismissButtonHover((dismissButtonHover) => !dismissButtonHover)}
           onClick={handleClose}
           className={classNames(
             'Message-button u-marginRightSmall u-marginTopSmall',
             (!disabled && dismissButtonHover) ? 'u-opacityReset' : 'u-opacityHalf',
             disabled && 'u-cursorDefault',
-            variantOri.textClassName
+            variantOri.textClassName,
           )}
           data-testid="message-close"
           role="button"

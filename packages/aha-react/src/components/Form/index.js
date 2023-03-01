@@ -8,7 +8,6 @@ import Group from './Group';
 import InputGroup from './InputGroup';
 import Select from './Select';
 
-
 const Form = React.forwardRef((props, ref) => (
   <form
     ref={ref}
