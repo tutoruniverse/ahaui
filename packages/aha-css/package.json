@@ -1,0 +1,36 @@
+{
+  "name": "@ahaui-replica/css",
+  "version": "2.1.0",
+  "description": "Aha Design System - CSS",
+  "style": "dist/index.min.css",
+  "sass": "scss/index.scss",
+  "files": [
+    "dist/*.{css,map}",
+    "scss/**/*.scss",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "npm run clean && npm run compile && npm run prefix && npm run minify",
+    "clean": "del dist/*",
+    "compile": "node-sass --output-style compact --precision 6 scss/ -o dist/",
+    "prefix": "postcss --config config/postcss.config.js --replace \"dist/*.css\" \"!dist/*.min.css\"",
+    "minify": "npm run minify-index && npm run minify-utilities",
+    "minify-index": "cleancss --level 1 --format breakWith=lf  --output dist/index.min.css dist/index.css",
+    "minify-utilities": "cleancss --level 1 --format breakWith=lf  --output dist/utilities.min.css dist/utilities.css",
+    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd",
+    "postinstall": "npm run build"
+  },
+  "author": "Got It, Inc.",
+  "homepage": "https://github.com/gotitinc/ahaui/blob/main/packages/css#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotitinc/ahaui.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

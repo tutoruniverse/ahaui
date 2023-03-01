@@ -1,0 +1,7 @@
+/* _flip.scss: */
+@each $key, $value in map-get($transform, "flip") {
+  .u-flip#{capitalize($key)},
+  .hover\:u-flip#{capitalize($key)}:hover {
+    transform: scale(#{$value});
+  }
+}

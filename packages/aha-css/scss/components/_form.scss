@@ -1,0 +1,491 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.FormCheck {
+  $this: &;
+
+  @each $pro, $proval in map-deep-get($forms, 'check', 'base') {
+    #{$pro}: $proval;
+  }
+
+  &-label {
+    position: relative;
+    display: block;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      height: 1rem;
+      left: -1.5rem;
+      position: absolute;
+      top: 4px;
+      width: 1rem;
+    }
+
+    &::before {
+      border-style: solid;
+      border-width: 1px;
+      pointer-events: none;
+      user-select: none;
+
+      @each $pro, $proval in map-deep-get($forms, 'check', 'labelBefore') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+
+  &-input {
+    z-index: -1;
+
+    &:checked ~ #{$this}-label::before {
+      @each $pro, $proval in map-deep-get($forms, 'check', 'labelBeforeSelect') {
+        #{$pro}: $proval;
+      }
+    }
+
+    &:focus ~  #{$this}-label::before {
+      @each $pro, $proval in map-deep-get($forms, 'focus') {
+        #{$pro}: $proval;
+      }
+    }
+
+    &:disabled ~ #{$this}-label::before {
+      @each $pro, $proval in map-deep-get($forms, 'check', 'labelBeforeDisable') {
+        #{$pro}: $proval;
+      }
+    }
+
+    &[type='checkbox'] {
+      ~ #{$this}-label::before {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'box', 'labelBefore') {
+          #{$pro}: $proval;
+        }
+      }
+
+      &:checked ~ #{$this}-label::after {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'box', 'labelCheckedAfterSelect') {
+          #{$pro}: $proval;
+        }
+      }
+
+      &:indeterminate ~ #{$this}-label::after {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'box', 'labelIndeterminateAfterSelect') {
+          #{$pro}: $proval;
+        }
+      }
+    }
+
+    &[type='radio'] {
+      ~ #{$this}-label::before {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'radio', 'labelBefore') {
+          #{$pro}: $proval;
+        }
+      }
+
+      &:checked ~ #{$this}-label::after {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'radio', 'labelAfterSelect') {
+          #{$pro}: $proval;
+        }
+      }
+    }
+  }
+
+  &--withoutLabel {
+    height: 1rem;
+    margin-top: -0.25rem;
+    padding-left: 1rem;
+
+    #{$this}-input {
+      left: 0;
+    }
+
+    #{$this}-label {
+      &::before,
+      &::after {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  &--button {
+    padding-left: 0;
+    #{$this}-input {
+      &:checked ~ #{$this}-label {
+        background-color: #e7ecfc;
+        border-color: map-deep-get($forms, 'check', 'labelBeforeSelect', 'background-color');
+        color: map-deep-get($forms, 'check', 'labelBeforeSelect', 'background-color');
+      }
+    }
+    #{$this}-label {
+      display: block;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+
+      background-color: map-deep-get($forms, 'check', 'labelBefore', 'background-color');
+      border: 1px solid map-deep-get($forms, 'input', 'base', 'border-color');
+
+      @each $pro, $proval in map-deep-get($forms, 'sizes', 'base') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+
+  &--small {
+    #{$this}-label {
+      font-size: map-deep-get($forms, 'sizes', 'small', 'font-size');
+    }
+    &#{$this}--button #{$this}-label {
+      @each $pro, $proval in map-deep-get($forms, 'sizes', 'small') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+
+  &--large {
+    &#{$this}--button #{$this}-label {
+      @each $pro, $proval in map-deep-get($forms, 'sizes', 'large') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+}
+
+.FormInput {
+  border-style: solid;
+  transition: all 0.15s ease-in-out;
+
+  @each $pro, $proval in map-deep-get($forms, 'sizes', 'base') {
+    #{$pro}: $proval;
+  }
+
+  @each $pro, $proval in map-deep-get($forms, 'input', 'base') {
+    #{$pro}: $proval;
+  }
+
+  @each $pro, $proval in map-deep-get($forms, 'input', 'medium') {
+    #{$pro}: $proval;
+  }
+
+  &::placeholder {
+    @each $pro, $proval in map-deep-get($forms, 'placeholder') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &:focus,
+  &.is-focus {
+    @each $pro, $proval in map-deep-get($forms, 'focus') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &:disabled {
+    @each $pro, $proval in map-deep-get($forms, 'disabled') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &[readonly] {
+    @each $pro, $proval in map-deep-get($forms, 'readonly') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &--small {
+    @each $pro, $proval in map-deep-get($forms, 'sizes', 'small') {
+      #{$pro}: $proval;
+    }
+
+    @each $pro, $proval in map-deep-get($forms, 'input', 'small') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &--large {
+    @each $pro, $proval in map-deep-get($forms, 'sizes', 'large') {
+      #{$pro}: $proval;
+    }
+
+    @each $pro, $proval in map-deep-get($forms, 'input', 'large') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &.is-borderNone {
+    border: none;
+  }
+
+  &.is-backgroundReset:not([readonly]),
+  &.is-backgroundReset:not(:disabled) {
+    background: transparent;
+  }
+}
+
+.FormInput--file {
+  .FormInput-input {
+    z-index: 2;
+  }
+
+  .FormInput-label {
+    &::before,
+    &::after {
+      position: absolute;
+      top: 0;
+      z-index: 3;
+    }
+
+    z-index: 1;
+
+    &::before {
+      left: 0;
+      content: attr(data-placeholder);
+    }
+
+    &::after {
+      align-items: center;
+      background-color: map-deep-get($forms, 'input', 'base', 'border-color');
+      border-left: 1px solid map-deep-get($forms, 'input', 'base', 'border-color');
+      border-radius: 0 map-deep-get($forms, 'sizes', 'base', 'border-radius') map-deep-get($forms, 'sizes', 'base', 'border-radius') 0;
+      bottom: -1px;
+      content: attr(data-browse);
+      display: flex;
+      padding: 0 1rem;
+      right: 0;
+    }
+  }
+
+  &.is-selected {
+    .FormInput-label::before {
+      content: none;
+    }
+  }
+}
+
+.FormLabel {
+  &::after {
+    color: map-deep-get($colors-render, 'text', 'light');
+    content: attr(optional);
+    margin-left: 0.25rem;
+  }
+
+  &[required]::after {
+    color: var(--colorNegative);
+    content: '*';
+  }
+}
+
+@include form-feedback('valid', var(--colorPositive), var(--colorFocusPositive));
+@include form-feedback('invalid', var(--colorNegative), var(--colorFocusNegative));
+@include form-feedback('warning', var(--colorWarningDark), var(--colorFocusWarning), false);
+
+select.FormInput {
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
+  &:focus::-ms-value {
+    background-color: map-deep-get($forms, 'input', 'base', 'background');
+    color: map-deep-get($colors-render, 'text', 'dark');
+  }
+
+  &[size],
+  &[multiple] {
+    height: auto;
+  }
+}
+
+textarea.FormInput {
+  min-height: map-deep-get($forms, 'input', 'base', 'height');
+  height: auto;
+  overflow: auto;
+  resize: vertical;
+}
+
+.FormInputGroup {
+  $this: &;
+
+  &-text {
+    border-color: map-deep-get($colors-render, "border", "default");
+    border-style: solid;
+
+    @each $pro, $proval in map-deep-get($forms, 'sizes', 'base') {
+      #{$pro}: $proval;
+    }
+
+    @each $pro, $proval in map-deep-get($forms, 'inputGroup', 'text') {
+      #{$pro}: $proval;
+    }
+
+    + #{$this}-text {
+      margin-left: -1px;
+    }
+  }
+
+  &-append,
+  &-prepend {
+    > .Button {
+      line-height: 1;
+    }
+
+    .Button {
+      position: relative;
+      z-index: 2;
+
+      &:focus {
+        z-index: 3;
+      }
+    }
+  }
+
+  &-append {
+    margin-left: -1px;
+
+    #{$this}-text,
+    .Button {
+      &:not(:last-child) {
+        @include border-right-radius(0);
+      }
+    }
+
+    > .Button,
+    > #{$this}-text {
+      @include border-left-radius(0);
+    }
+
+    .Button + .Button {
+      margin-left: -1px;
+    }
+  }
+
+  &-prepend {
+    margin-right: -1px;
+
+    #{$this}-text,
+    .Button {
+      &:not(:first-child) {
+        @include border-left-radius(0);
+      }
+    }
+
+    > .Button,
+    > #{$this}-text {
+      @include border-right-radius(0);
+    }
+
+    .Button + .Button {
+      margin-left: -1px;
+    }
+  }
+
+  > .FormInput,
+  .TagInput {
+    flex: 1 1 auto;
+    margin-bottom: 0;
+    position: relative;
+    width: 1%;
+
+    &:not(:first-child) {
+      @include border-left-radius(0);
+    }
+
+    &:not(:last-child) {
+      @include border-right-radius(0);
+    }
+
+    + .FormInput,
+    +.TagInput {
+      margin-left: -1px;
+    }
+
+    &:focus,
+    &.is-focus {
+      z-index: 3;
+    }
+  }
+
+  > .TimePicker,
+  .DateRangePicker,
+  .DatePicker {
+    flex: 1 1 auto;
+    margin-bottom: 0;
+    position: relative;
+    width: 1%;
+
+    &:not(:first-child) {
+      .react-daterange-picker__wrapper,
+      .react-date-picker__wrapper,
+      .react-time-picker__wrapper {
+        @include border-left-radius(0);
+      }
+    }
+
+    &:not(:last-child) {
+      .react-daterange-picker__wrapper,
+      .react-date-picker__wrapper,
+      .react-time-picker__wrapper {
+        @include border-right-radius(0);
+      }
+    }
+
+    + .TimePicker,
+    .DateRangePicker,
+    .DatePicker {
+      margin-left: -1px;
+    }
+  }
+
+  &--small {
+    #{$this}-text {
+      @each $pro, $proval in map-deep-get($forms, 'sizes', 'small') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+
+  &--large {
+    #{$this}-text {
+      @each $pro, $proval in map-deep-get($forms, 'sizes', 'large') {
+        #{$pro}: $proval;
+      }
+    }
+  }
+}
+
+.FormInput--select {
+  padding: 0;
+
+  .FormInput-select {
+    padding: map-deep-get($forms, 'sizes', 'base', 'padding');
+    padding-right: 2rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  &.FormInput--small .FormInput-select {
+    padding: map-deep-get($forms, 'sizes', 'small', 'padding');
+    padding-right: 1.55rem;
+  }
+
+  &.FormInput--large .FormInput-select {
+    padding-top: map-deep-get($forms, 'sizes', 'large', 'padding-top');
+    padding-bottom: map-deep-get($forms, 'sizes', 'large', 'padding-bottom');
+  }
+
+  &.is-multiple {
+    height: auto;
+  }
+
+  &.is-disabled {
+    @each $pro, $proval in map-deep-get($forms, 'disabled') {
+      #{$pro}: $proval;
+    }
+  }
+}

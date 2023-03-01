@@ -1,0 +1,6 @@
+/* _iterationCount.scss */
+@each $key, $value in map-get($transition, "iteration") {
+  .u-iterationCount#{capitalize($key)} {
+    animation-iteration-count: #{$value};
+  }
+}

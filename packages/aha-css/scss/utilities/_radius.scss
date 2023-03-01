@@ -1,0 +1,60 @@
+@each $width, $value in map-deep-get($borders, 'radius') {
+  @if ($width == 'small' or  $width == 'medium' or $width == 'large' or $width == 'extraLarge') {
+    .u-rounded#{capitalize($width)} {
+      @include border-radius(var(--radius#{capitalize($width)}));
+    }
+    .u-roundedTop#{capitalize($width)} {
+      @include border-top-radius(var(--radius#{capitalize($width)}));
+    }
+
+    .u-roundedBottom#{capitalize($width)} {
+      @include border-bottom-radius(var(--radius#{capitalize($width)}));
+    }
+
+    .u-roundedLeft#{capitalize($width)} {
+      @include border-left-radius(var(--radius#{capitalize($width)}));
+    }
+
+    .u-roundedRight#{capitalize($width)} {
+      @include border-right-radius(var(--radius#{capitalize($width)}));
+    }
+  }
+
+  @else {
+    .u-rounded#{capitalize($width)} {
+      @include border-radius(#{$value});
+    }
+
+    .u-roundedTop#{capitalize($width)} {
+      @include border-top-radius(#{$value});
+    }
+
+    .u-roundedBottom#{capitalize($width)} {
+      @include border-bottom-radius(#{$value});
+    }
+
+    .u-roundedLeft#{capitalize($width)} {
+      @include border-left-radius(#{$value});
+    }
+
+    .u-roundedRight#{capitalize($width)} {
+      @include border-right-radius(#{$value});
+    }
+  }
+}
+
+.u-roundedBottomLeftNone {
+  border-bottom-left-radius: 0;
+}
+
+.u-roundedBottomRightNone {
+  border-bottom-right-radius: 0;
+}
+
+.u-roundedTopLeftNone {
+  border-top-left-radius: 0;
+}
+
+.u-roundedTopRightNone {
+  border-top-right-radius: 0;
+}

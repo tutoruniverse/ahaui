@@ -1,0 +1,6 @@
+/* _duration.scss: */
+@each $key, $value in map-get($transition, "duration") {
+  .u-duration#{capitalize($key)} {
+    transition-duration: #{$value};
+  }
+}

@@ -1,0 +1,14 @@
+/* _skew.scss: */
+@each $key, $value in map-get($transform, "skewX") {
+  .u-skew#{capitalize($key)},
+  .hover\:u-skew#{capitalize($key)}:hover {
+    transform: skewX(#{$value});
+  }
+}
+
+@each $key, $value in map-get($transform, "skewY") {
+  .u-skew#{capitalize($key)},
+  .hover\:u-skew#{capitalize($key)}:hover {
+    transform: skewY(#{$value});
+  }
+}

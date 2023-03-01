@@ -1,0 +1,4 @@
+/config
+/scripts
+**/*.d.ts
+*.spec.js

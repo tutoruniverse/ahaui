@@ -1,0 +1,7 @@
+/* _scale.scss: */
+@each $key, $value in map-get($transform, "scale") {
+  .u-scale#{capitalize($key)},
+  .hover\:u-scale#{capitalize($key)}:hover {
+    transform: scale(#{$value});
+  }
+}

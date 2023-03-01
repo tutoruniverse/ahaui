@@ -1,0 +1,37 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.Grid {
+  $this: &;
+  $_gutter: map-get($grid-gutter-width, 'medium');
+  $_guttersmall: map-get($grid-gutter-width, 'small');
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$_gutter / 2;
+  margin-right: -$_gutter / 2;
+
+  > [class*='u-'][class*='-size'] {
+    padding-left: $_gutter / 2;
+    padding-right: $_gutter / 2;
+  }
+
+  &--smallGutter {
+    margin-left: -$_guttersmall / 2;
+    margin-right: -$_guttersmall / 2;
+
+    > [class*='u-'][class*='-size'] {
+      padding-left: $_guttersmall / 2;
+      padding-right: $_guttersmall / 2;
+    }
+  }
+
+  &--withoutGutter {
+    margin-left: 0;
+    margin-right: 0;
+
+    > [class*='u-'][class*='-size'] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

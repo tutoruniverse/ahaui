@@ -1,0 +1,46 @@
+.Toggle {
+  $this: &;
+
+  border-radius: 12px;
+  height: 24px;
+  // margin-right: 3rem;
+  transition: background-color 0.25s;
+  width: 48px;
+
+  > #{$this}-handle {
+    border-radius: 50%;
+    height: 16px;
+    left: 4px;
+    top: 4px;
+    transition: left 0.25s;
+    width: 16px;
+  }
+
+  &.checked {
+    > #{$this}-handle {
+      left: 28px;
+    }
+
+    &[disabled],
+    &.is-disabled {
+      background-color: var(--colorPrimaryLight);
+    }
+  }
+
+  &:focus,
+  &.is-focus {
+    @each $pro, $proval in map-deep-get($forms, 'focus') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &[disabled]:not(.checked),
+  &.is-disabled:not(.checked) {
+    @each $pro, $proval in map-deep-get($forms, 'disabled') {
+      #{$pro}: $proval;
+    }
+    > #{$this}-handle {
+      background-color: map-deep-get($colors-render, 'background', 'lighter');
+    }
+  }
+}

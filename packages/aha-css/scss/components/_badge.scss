@@ -1,0 +1,5 @@
+.Badge {
+  @each $pro, $proval in map-get($badges, 'base') {
+    #{$pro}: $proval;
+  }
+}

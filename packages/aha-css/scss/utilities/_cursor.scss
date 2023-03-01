@@ -1,0 +1,62 @@
+// Utilities for common `cursor` values
+
+.u-cursorDefault {
+  cursor: default;
+}
+
+.u-cursorPointer {
+  cursor: pointer;
+}
+
+.u-cursorMove {
+  cursor: move;
+}
+
+.u-cursorNotAllow {
+  cursor: not-allowed;
+}
+
+.u-cursorProgress {
+  cursor: progress;
+}
+
+.u-cursorHelp {
+  cursor: help;
+}
+
+.u-cursorGrab {
+  cursor: grab;
+}
+
+.u-cursorGrabbing {
+  cursor: grabbing;
+}
+
+.u-cursorZoomIn {
+  cursor: zoom-in;
+}
+
+.u-cursorZoomOut {
+  cursor: zoom-out;
+}
+
+.u-cursorColResize {
+  cursor: col-resize;
+}
+
+.u-cursorRowResize {
+  cursor: row-resize;
+}
+
+.u-cursorEwResize {
+  cursor: ew-resize;
+}
+
+.u-cursorNsResize {
+  cursor: ns-resize;
+}
+
+// disabled link's event:
+.u-pointerEventsNone {
+  pointer-events: none;
+}

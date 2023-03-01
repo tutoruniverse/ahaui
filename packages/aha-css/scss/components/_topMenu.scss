@@ -1,0 +1,10 @@
+.TopMenu-item,
+.TopMenu-subMenu {
+  .TopMenu-itemBefore {
+    top: -2px;
+  }
+
+  .TopMenu-itemAfter {
+    bottom: -2px;
+  }
+}

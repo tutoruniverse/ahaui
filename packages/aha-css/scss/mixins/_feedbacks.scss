@@ -1,0 +1,62 @@
+@mixin form-input-state($state, $color, $focus) {
+  border-color: $color;
+
+  &:focus {
+    border-color: $color;
+    box-shadow: 0 0 0 4px $focus;
+  }
+  ~ .#{$state}-feedback {
+    display: block;
+  }
+
+  .FormInput-label::after {
+    border-left: 1px solid $color;
+  }
+}
+
+@mixin form-feedback($state, $color, $focus, $hasPseudo: true) {
+  .#{$state}-feedback {
+    color: $color;
+
+    &:not(.is-visible) {
+      display: none;
+    }
+  }
+
+  .FormInput,
+  .FormInput--file {
+    @if $hasPseudo {
+      .was-validated &:#{$state},
+      &.is-#{$state} {
+        @include form-input-state($state, $color, $focus);
+      }
+    } @else {
+      &.is-#{$state} {
+        @include form-input-state($state, $color, $focus);
+      }
+    }
+  }
+
+  .FormCheck {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .#{$state}-feedback {
+        display: block;
+      }
+
+      .FormCheck-input:checked ~ .FormCheck-label::before {
+        background-color: $color;
+        box-shadow: 0 0 0 4px $focus;
+      }
+
+      .FormCheck-label::before {
+        border-color: $color;
+
+        &:focus {
+          border-color: $color;
+          box-shadow: 0 0 0 4px $focus;
+        }
+      }
+    }
+  }
+}

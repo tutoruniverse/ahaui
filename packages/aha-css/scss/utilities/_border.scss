@@ -1,0 +1,143 @@
+//
+// Utilities for common `border` values
+// Remove breakpoint
+.u-border {
+  border: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+}
+
+.u-borderTop {
+  border-top: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+}
+
+.u-borderRight {
+  border-right: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+}
+
+.u-borderBottom {
+  border-bottom: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+}
+
+.u-borderLeft {
+  border-left: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+}
+
+$border-breakpoints: $grid-breakpoints;
+
+@each $breakpoint in map-keys($border-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $border-breakpoints);
+
+    @if $infix != '' {
+      .#{$infix}\:u-border {
+        border: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+      }
+
+      .#{$infix}\:u-borderTop {
+        border-top: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+      }
+
+      .#{$infix}\:u-borderRight {
+        border-right: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+      }
+
+      .#{$infix}\:u-borderBottom {
+        border-bottom: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+      }
+
+      .#{$infix}\:u-borderLeft {
+        border-left: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
+      }
+    }
+  }
+}
+
+//Border Width
+@each $width, $value in map-deep-get($borders, 'width') {
+  @if $width != 'tiny' {
+    .u-border#{capitalize($width)} {
+      border-width: $value;
+    }
+  }
+}
+
+.u-borderTopNone {
+  border-top-width: 0;
+}
+
+.u-borderRightNone {
+  border-right-width: 0;
+}
+
+.u-borderBottomNone {
+  border-bottom-width: 0;
+}
+
+.u-borderLeftNone {
+  border-left-width: 0;
+}
+
+.u-borderNone {
+  border-width: 0;
+}
+
+@each $breakpoint in map-keys($border-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $border-breakpoints);
+
+    @if $infix != '' {
+      .#{$infix}\:u-borderTopNone {
+        border-top-width: 0;
+      }
+
+      .#{$infix}\:u-borderRightNone {
+        border-right-width: 0;
+      }
+
+      .#{$infix}\:u-borderBottomNone {
+        border-bottom-width: 0;
+      }
+
+      .#{$infix}\:u-borderLeftNone {
+        border-left-width: 0;
+      }
+
+      .#{$infix}\:u-borderNone {
+        border-width: 0;
+      }
+    }
+  }
+}
+
+@each $color, $value in map-deep-get($colors-render, 'border') {
+  @if $color != 'default' {
+    .u-border#{capitalize($color)} {
+      border-color: #{$value};
+    }
+    .hover\:u-border#{capitalize($color)}:hover {
+      @media (hover: hover) {
+        border-color: #{$value};
+      }
+    }
+
+    .u-borderTop#{capitalize($color)} {
+      border-top-color: #{$value};
+    }
+
+    .u-borderBottom#{capitalize($color)} {
+      border-top-color: #{$value};
+    }
+    .u-borderRight#{capitalize($color)} {
+      border-top-color: #{$value};
+    }
+    .u-borderLeft#{capitalize($color)} {
+      border-top-color: #{$value};
+    }
+  }
+}
+
+//Border Style
+@each $style in (dashed, dotted, double) {
+  .u-border#{capitalize($style)} {
+    border-style: $style;
+  }
+}

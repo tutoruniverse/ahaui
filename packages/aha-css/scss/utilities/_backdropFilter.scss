@@ -1,0 +1,29 @@
+/*
+==================================================
+BACKDROP FILTER
+==================================================
+*/
+
+/* Blur: */
+@each $key, $value in map-deep-get($backdrop-filter, 'blur') {
+  .u-backdropBlur#{capitalize($key)} {
+    backdrop-filter: blur($value);
+  }
+  .hover\:u-backdropBlur#{capitalize($key)}:hover {
+    @media (hover: hover) {
+      backdrop-filter: blur($value);
+    }
+  }
+}
+
+/* Grayscale: */
+@each $key, $value in map-deep-get($backdrop-filter, 'grayscale') {
+  .u-backdropGrayscale#{capitalize($key)} {
+    backdrop-filter: grayscale($value);
+  }
+  .hover\:u-backdropGrayscale#{capitalize($key)}:hover {
+    @media (hover: hover) {
+      backdrop-filter: grayscale($value);
+    }
+  }
+}

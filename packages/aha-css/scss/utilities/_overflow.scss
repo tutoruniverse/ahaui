@@ -1,0 +1,24 @@
+@each $prop in (auto, hidden, scroll, overlay, visible, unset) {
+  .u-overflow#{capitalize($prop)} {
+    overflow: $prop;
+  }
+}
+
+@each $prop in (auto, hidden, scroll, visible) {
+  .u-overflowVertical#{capitalize($prop)} {
+    overflow-y: $prop;
+  }
+
+  .u-overflowHorizontal#{capitalize($prop)} {
+    overflow-x: $prop;
+  }
+}
+
+.u-srOnly {
+  @include sr-only;
+}
+
+.u-srOnlyFocusable {
+  @include sr-only;
+  @include sr-only-focusable;
+}

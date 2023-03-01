@@ -1,0 +1,62 @@
+/* stylelint-disable scss/selector-no-union-class-name */
+
+.Tag {
+  @each $pro, $proval in map-get($tags, 'base') {
+    #{$pro}: $proval;
+  }
+
+  &-close {
+    color: inherit;
+    line-height: 0;
+
+    &::before {
+      content: '×';
+      color: inherit;
+      font-size: 140%;
+    }
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &--small {
+    @each $pro, $proval in map-get($tags, 'small') {
+      #{$pro}: $proval;
+    }
+  }
+}
+
+.TagInput {
+  &.is-focus {
+    @each $pro, $proval in map-deep-get($forms, "focus") {
+      #{$pro}: $proval;
+    }
+  }
+
+  input::placeholder {
+    @each $pro, $proval in map-deep-get($forms, 'placeholder') {
+      #{$pro}: $proval;
+    }
+  }
+
+  &--small {
+    @each $pro, $proval in map-deep-get($forms, "sizes", "small") {
+      #{$pro}: $proval;
+    }
+
+    @each $pro, $proval in map-deep-get($forms, "input", "small") {
+      #{$pro}: $proval;
+    }
+  }
+
+  &--large {
+    @each $pro, $proval in map-deep-get($forms, "sizes", "large") {
+      #{$pro}: $proval;
+    }
+
+    @each $pro, $proval in map-deep-get($forms, "input", "large") {
+      #{$pro}: $proval;
+    }
+  }
+}

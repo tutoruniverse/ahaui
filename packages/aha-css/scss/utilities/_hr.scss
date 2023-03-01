@@ -1,0 +1,7 @@
+hr {
+  border-color: map-deep-get($colors-render, 'border', 'default');
+  border-width: 0 0 1px;
+  height: 0;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}

@@ -1,0 +1,990 @@
+/* stylelint-disable color-hex-case, value-keyword-case, color-hex-length */
+// I. CONFIGS AND UTILITIES:
+// I-01. Configs
+// I-02. Breakpoints
+// I-03. Colors
+// I-04. Fonts
+// I-05. Spacing
+// I-06. Borders
+// I-07. Shadows
+// I-08. Z-indexs
+// I-09. Opacity
+// I-10. Background
+// I-11. Backdrop Filter
+// I-12. Filter
+
+// COMPONENTS:
+// II-01. Badges
+// II-03. Tags
+// II-03. Icons
+// II-04. Medias
+// II-05. Avatars
+// II-06. Form
+// II-07. Modal
+// II-08. Tooltips
+
+// --end./
+
+// CONFIGS AND UTILITIES:
+// --------------------------------------------------
+$token: () !default;
+
+// I-01. Configs
+// --------------------------------------------------
+$configs: (
+  rounded: true
+) !default;
+
+// I-02. Breakpoints
+// --------------------------------------------------
+// Breakpoints:
+$grid-breakpoints: (
+  xs: 0,
+  //mobile
+    sm: 576px,
+  //mobile
+    md: 768px,
+  //tablet
+    lg: 992px,
+  //tablet
+    xl: 1200px,
+  //desktop
+    xxl: 1520px //monitor or large screens
+) !default;
+
+@include assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include assert-starts-at-zero($grid-breakpoints);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1152px
+) !default;
+
+@include assert-ascending($container-max-widths, "$container-max-widths");
+
+$grid-gutter-width: (
+  small: 16px,
+  medium: 32px
+) !default;
+
+// I-03. Colors
+// --------------------------------------------------
+$color-palette: (
+  brown500: #24140F,
+  brown400: #361F17,
+  brown300: #47291F,
+  brown200: #6B3D2E,
+  brown100: #BA755E,
+  brown75: #C99482,
+  brown50: #E0C2B8,
+  red500: #960012,
+  red400: #b50016,
+  red300: #d0021b,
+  red200: #dc172f,
+  red100: #ef6e7e,
+  red75: #f6bcc3,
+  red50: #ffd2d8,
+  orange500: #a64500,
+  orange400: #d55800,
+  orange300: #ed6200,
+  orange200: #f08032,
+  orange100: #f4ae7e,
+  orange75: #fbdfcc,
+  orange50: #fff1e8,
+  deepOrange500: #802000,
+  deepOrange400: #B32C00,
+  deepOrange300: #E63900,
+  deepOrange200: #FF531A,
+  deepOrange100: #FF8C66,
+  deepOrange75: #FFB299,
+  deepOrange50: #FFD9CC,
+  yellow500: #d37300,
+  yellow400: #ff991f,
+  yellow300: #ffab00,
+  yellow200: #ffc400,
+  yellow100: #ffe380,
+  yellow75: #fff0b3,
+  yellow50: #fdf4d0,
+  lime500: #51570F,
+  lime400: #798217,
+  lime300: #A2AD1F,
+  lime200: #CFDD3C,
+  lime100: #DAE467,
+  lime75: #E4EC93,
+  lime50: #EFF4BE,
+  green500: #017a3a,
+  green400: #019044,
+  green300: #22a861,
+  green200: #38c67b,
+  green100: #74dfa7,
+  green75: #aceccb,
+  green50: #d7f9e7,
+  lightGreen500: #33570F,
+  lightGreen400: #4D8217,
+  lightGreen300: #66AD1F,
+  lightGreen200: #8CDD3C,
+  lightGreen100: #A6E467,
+  lightGreen75: #BFEC93,
+  lightGreen50: #D9F4BE,
+  teal500: #2C8C86,
+  teal400: #38B2AB,
+  teal300: #54C9C2,
+  teal200: #7BD5D0,
+  teal100: #9EE0DC,
+  teal75: #C5EDEA,
+  teal50: #ECF9F8,
+  cyan500: #0D6D8C,
+  cyan400: #1191BB,
+  cyan300: #1AB7EA,
+  cyan200: #5BCCF0,
+  cyan100: #8ADAF4,
+  cyan75: #D0F0FB,
+  cyan50: #E8F8FD,
+  blue500: #21388b,
+  blue400: #2c4ab8,
+  blue300: #375de7,
+  blue200: #5e7ceb,
+  blue100: #8fa7ff,
+  blue75: #d7defa,
+  blue50: #e7ecfc,
+  lightBlue500: #125AA1,
+  lightBlue400: #1774CF,
+  lightBlue300: #308DE8,
+  lightBlue200: #5EA7ED,
+  lightBlue100: #8CC0F2,
+  lightBlue75: #BAD9F7,
+  lightBlue50: #D1E6FA,
+  indigo500: #291A7F,
+  indigo400:#3622AA,
+  indigo300:#4229CC,
+  indigo200:#8F80E5,
+  indigo100:#B4AAEE,
+  indigo75:#DAD5F6,
+  indigo50:#ECEAFB,
+  lightIndigo500: #33344A,
+  lightIndigo400:#464775,
+  lightIndigo300:#6264A7,
+  lightIndigo200:#8B8CC7,
+  lightIndigo100:#BDBDE6,
+  lightIndigo75:#E2E2F6,
+  lightIndigo50:#F4F4FC,
+  purple500: #750D8C,
+  purple400: #9C11BB,
+  purple300: #AE29CC,
+  purple200: #D55BF0,
+  purple100: #E18AF4,
+  purple75: #F3D0FB,
+  purple50: #F9E8FD,
+  pink500: #8A0F4D,
+  pink400: #B81466,
+  pink300: #E61980,
+  pink200: #EB4799,
+  pink100: #F075B3,
+  pink75: #F5A3CC,
+  pink50: #FAD1E6,
+  neutral10: #fafbfc,
+  neutral20: #f4f5f7,
+  neutral30: #ebecf0,
+  neutral40: #dfe1e6,
+  neutral50: #c1c7d0,
+  neutral60: #b3bac5,
+  neutral70: #a5adba,
+  neutral80: #97a0af,
+  neutral90: #8993a4,
+  neutral100: #7a869a,
+  neutral200: #6b778c,
+  neutral300: #5e6c84,
+  neutral400: #505f79,
+  neutral500: #42526e,
+  neutral600: #344563,
+  neutral700: #253858,
+  neutral800: #172b4d,
+  neutral900: #091d42,
+  white: #ffffff,
+  black: #000000,
+  facebook: #3b5998,
+  twitter: #1da1f2,
+  youtube: #ff0000,
+  linkedIn: #007bb5,
+  google: #4285f4,
+  vimeo: #1ab7ea
+) !default;
+
+$colors: (
+  primaryLighter: map-get($color-palette, "blue50"),
+  primaryLight: map-get($color-palette, "blue75"),
+  primary: map-get($color-palette, "blue300"),
+  focusPrimary: map-get($color-palette, "blue300") + '33',
+  primaryDark: map-get($color-palette, "blue400"),
+  primaryDarker: map-get($color-palette, "blue500"),
+  accentLighter: map-get($color-palette, "orange50"),
+  accentLight: map-get($color-palette, "orange75"),
+  accent: map-get($color-palette, "orange300"),
+  focusAccent: map-get($color-palette, "orange300") + '33',
+  accentDark: map-get($color-palette, "orange400"),
+  accentDarker: map-get($color-palette, "orange500"),
+  negativeLighter: map-get($color-palette, "red50"),
+  negativeLight: map-get($color-palette, "red75"),
+  negative: map-get($color-palette, "red300"),
+  focusNegative: map-get($color-palette, "red300") + '33',
+  negativeDark: map-get($color-palette, "red400"),
+  negativeDarker: map-get($color-palette, "red500"),
+  warningLighter: map-get($color-palette, "yellow50"),
+  warningLight: map-get($color-palette, "yellow75"),
+  warning100: map-get($color-palette, "yellow100"),
+  warning: map-get($color-palette, "yellow200"),
+  focusWarning: map-get($color-palette, "yellow200") + '33',
+  warning300: map-get($color-palette, "yellow300"),
+  warningDark: map-get($color-palette, "yellow400"),
+  positiveLighter: map-get($color-palette, "green50"),
+  positiveLight: map-get($color-palette, "green75"),
+  positive: map-get($color-palette, "green300"),
+  focusPositive: map-get($color-palette, "green300") + '33',
+  positiveDark: map-get($color-palette, "green400"),
+  positiveDarker: map-get($color-palette, "green500"),
+  informationLighter: map-get($color-palette, "blue50"),
+  informationLight: map-get($color-palette, "blue75"),
+  information: map-get($color-palette, "blue300"),
+  focusInformation: map-get($color-palette, "blue300") + '33',
+  informationDark: map-get($color-palette, "blue400"),
+  informationDarker: map-get($color-palette, "blue500"),
+) !default;
+
+$colors-render: (
+  text: (
+    dark: map-get($color-palette, "neutral800"),
+    gray: map-get($color-palette, "neutral200"),
+    light: map-get($color-palette, "neutral80"),
+    nearlyLight: map-get($color-palette, "neutral60"),
+    white: map-get($color-palette, white),
+    primaryDarker: var(--colorPrimaryDarker),
+    primaryDark: var(--colorPrimaryDark),
+    primary: var(--colorPrimary),
+    accentDarker: var(--colorAccentDarker),
+    accentDark: var(--colorAccentDark),
+    accent: var(--colorAccent),
+    positiveDarker: var(--colorPositiveDarker),
+    positiveDark: var(--colorPositiveDark),
+    positive: var(--colorPositive),
+    informationDarker: var(--colorInformationDarker),
+    informationDark: var(--colorInformationDark),
+    information: var(--colorInformation),
+    warningDarker: var(--colorWarningDarker),
+    warningDark: var(--colorWarningDark),
+    warning: var(--colorWarning),
+    negativeDarker: var(--colorNegativeDarker),
+    negativeDark: var(--colorNegativeDark),
+    negative: var(--colorNegative),
+    facebook: map-get($colors, "facebook"),
+    twitter: map-get($colors, "twitter"),
+    youtube: map-get($colors, "youtube"),
+    linkedIn: map-get($colors, "linkedIn"),
+    google: map-get($colors, "google"),
+    vimeo: map-get($colors, "vimeo")
+  ),
+  background: (
+    black: map-get($color-palette, black),
+    darker: map-get($color-palette, "neutral900"),
+    dark: map-get($color-palette, "neutral800"),
+    nearlyDark: map-get($color-palette, "neutral700"),
+    semiDark: map-get($color-palette, "neutral600"),
+    darkestGray: map-get($color-palette, "neutral500"),
+    darkerGray: map-get($color-palette, "neutral400"),
+    darkGray: map-get($color-palette, "neutral300"),
+    gray: map-get($color-palette, "neutral200"),
+    lightGray: map-get($color-palette, "neutral100"),
+    semiGray: map-get($color-palette, "neutral90"),
+    light: map-get($color-palette, "neutral80"),
+    lightAlt: map-get($color-palette, "neutral70"),
+    nearlyLight: map-get($color-palette, "neutral60"),
+    semiLight: map-get($color-palette, "neutral50"),
+    lighter: map-get($color-palette, "neutral40"),
+    ultraLight: map-get($color-palette, "neutral30"),
+    lightest: map-get($color-palette, "neutral20"),
+    opaline: map-get($color-palette, "neutral10"),
+    white: map-get($color-palette, white),
+    primaryDarker: var(--colorPrimaryDarker),
+    primaryDark: var(--colorPrimaryDark),
+    primary: var(--colorPrimary),
+    primaryLight: var(--colorPrimaryLight),
+    primaryLighter: var(--colorPrimaryLighter),
+    accentDarker: var(--colorAccentDarker),
+    accentDark: var(--colorAccentDark),
+    accent: var(--colorAccent),
+    accentLight: var(--colorAccentLight),
+    accentLighter: var(--colorAccentLighter),
+    informationDarker: var(--colorInformationDarker),
+    informationDark: var(--colorInformationDark),
+    information: var(--colorInformation),
+    informationLight: var(--colorInformationLight),
+    informationLighter: var(--colorInformationLighter),
+    positiveDarker: var(--colorPositiveDarker),
+    positiveDark: var(--colorPositiveDark),
+    positive: var(--colorPositive),
+    positiveLight: var(--colorPositiveLight),
+    positiveLighter: var(--colorPositiveLighter),
+    warningDarker: var(--colorWarningDark),
+    warningDark: var(--colorWarningDark),
+    warning: var(--colorWarning),
+    warningLight: var(--colorWarningLight),
+    warningLighter: var(--colorWarningLighter),
+    negativeDarker: var(--colorNegativeDarker),
+    negativeDark: var(--colorNegativeDark),
+    negative: var(--colorNegative),
+    negativeLight: var(--colorNegativeLight),
+    negativeLighter: var(--colorNegativeLighter),
+    facebook: map-get($colors, "facebook"),
+    twitter: map-get($colors, "twitter"),
+    youtube: map-get($colors, "youtube"),
+    linkedIn: map-get($colors, "linkedIn"),
+    google: map-get($colors, "google"),
+    vimeo: map-get($colors, "vimeo"),
+    transparent: transparent,
+  ),
+  border: (
+    default: map-get($color-palette, "neutral40"),
+    gray: map-get($color-palette, "neutral80"),
+    light: map-get($color-palette, "neutral70"),
+    ultraLight: map-get($color-palette, "neutral30"),
+    lightest: map-get($color-palette, "neutral20"),
+    primary: var(--colorPrimary),
+    primaryLight: var(--colorPrimaryLight),
+    primaryLighter: var(--colorPrimaryLighter),
+    accent: var(--colorAccent),
+    accentLight: var(--colorAccentLight),
+    accentLighter: var(--colorAccentLighter),
+    information: var(--colorInformation),
+    positive: var(--colorPositive),
+    positiveLight: var(--colorPositiveLight),
+    positiveLighter: var(--colorPositiveLighter),
+    warning: var(--colorWarning),
+    warningLight: var(--colorWarningLight),
+    warningLighter: var(--colorWarningLighter),
+    negative: var(--colorNegative),
+    negativeLight: var(--colorNegativeLight),
+    negativeLighter: var(--colorNegativeLighter),
+    white: map-get($color-palette, white),
+    transparent: transparent
+  ),
+  disabled: (
+    color: map-get($color-palette, "neutral80"),
+    background: map-get($color-palette, "neutral30"),
+    border: map-get($color-palette, "neutral30")
+  ),
+  linkHref: (
+    color: var(--colorPrimary),
+    hoverColor: var(--colorPrimary400)
+  )
+) !default;
+
+// I-04. Fonts
+// --------------------------------------------------
+$fonts: (
+  family: (
+    base: "Roboto,'Helvetica Neue',Helvetica,Arial,sans-serif",
+    monospace: "SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace",
+  ),
+  smoothing: (
+    webkit: 'antialiased',
+    moz: 'grayscale',
+  ),
+  weights: (
+    regular: 400,
+    medium: 500,
+    bold: 700
+  ),
+  lineHeights: (
+    medium: 1.5,
+    small: 1.2,
+    reset: 1,
+    none: 0
+  ),
+  sizes: (
+    text0: (
+      font-size: 0,
+      line-height: 0,
+    ),
+    text100: (
+      font-size: 12px,
+      line-height: 1.67
+    ),
+    text200: (
+      font-size: 14px,
+      line-height: 1.43
+    ),
+    text300: (
+      font-size: 16px,
+      line-height: 1.5,
+    ),
+    text400: (
+      font-size: 18px,
+      font-weight: 400,
+      line-height: 1.56
+    ),
+    text500: (
+      font-size: 20px,
+      line-height: 1.4
+    ),
+    text600: (
+      font-size: 24px,
+      line-height: 1.3
+    ),
+    text700: (
+      font-size: 28px,
+      line-height: 1.29
+    ),
+    text800: (
+      font-size: 32px,
+      line-height: 1.25
+    ),
+    text900: (
+      font-size: 36px,
+      line-height: 1.22
+    ),
+    text1000: (
+      font-size: 40px,
+      line-height: 1.3
+    ),
+    text1100: (
+      font-size: 44px,
+      line-height: 1.18
+    ),
+    text1200: (
+      font-size: 52px,
+      line-height: 1.23
+    ),
+  )
+) !default;
+
+$fonts: map-extend(
+  (
+    typography: (
+      p: (
+        font-size: #{map-deep-get($fonts, "sizes", "text300", "font-size")},
+        font-weight: var(--fontRegular),
+        line-height: #{map-deep-get($fonts, "sizes", "text300", "line-height")}
+      ),
+      h1: (
+        font-size: #{map-deep-get($fonts, "sizes", "text900", "font-size")},
+        font-weight: var(--fontMedium),
+        line-height: #{map-deep-get($fonts, "sizes", "text900", "line-height")}
+      ),
+      h2: (
+        font-size: #{map-deep-get($fonts, "sizes", "text700", "font-size")},
+        font-weight:  var(--fontMedium),
+        line-height: #{map-deep-get($fonts, "sizes", "text700", "line-height")}
+      ),
+      h3: (
+        font-size: #{map-deep-get($fonts, "sizes", "text600", "font-size")},
+        font-weight: var(--fontMedium),
+        line-height: #{map-deep-get($fonts, "sizes", "text600", "line-height")}
+      ),
+      h4: (
+        font-size: #{map-deep-get($fonts, "sizes", "text500", "font-size")},
+        font-weight: var(--fontMedium),
+        line-height: #{map-deep-get($fonts, "sizes", "text500", "line-height")}
+      ),
+      h5: (
+        font-size: #{map-deep-get($fonts, "sizes", "text400", "font-size")},
+        font-weight: var(--fontMedium),
+        line-height: #{map-deep-get($fonts, "sizes", "text400", "line-height")}
+      ),
+      h6: (
+        font-size: #{map-deep-get($fonts, "sizes", "text300", "font-size")},
+        font-weight: var(--fontMedium),
+        line-height: #{map-deep-get($fonts, "sizes", "text300", "line-height")}
+      )
+    )
+  ),
+  $fonts
+);
+
+// I-05. Spacing
+// --------------------------------------------------
+$spacers: (
+  miniscule: 1px,
+  extraTiny: 2px,
+  tiny: 4px,
+  extraSmall: 8px,
+  small: 16px,
+  medium: 24px,
+  large: 32px,
+  extraLarge: 64px,
+  extraLargePlus: 96px,
+  huge: 128px,
+  none: 0,
+  auto: auto
+) !default;
+
+// I-06. Borders
+// --------------------------------------------------
+$borders: (
+  width: (
+    tiny: 1px,
+    small: 2px,
+    medium: 4px,
+    large: 8px
+  ),
+  radius: (
+    small: 2px,
+    medium: 4px,
+    large: 8px,
+    extraLarge: 16px,
+    infinity: 1024px,
+    circle: 50%,
+    none: 0
+  )
+) !default;
+
+// I-07. Shadows
+// --------------------------------------------------
+$shadows: (
+  default: (
+    color: rgba(0, 0, 0, 0.16)
+  ),
+  small: (
+    x: 0,
+    y: 2px,
+    blur: 4px
+  ),
+  medium: (
+    x: 0,
+    y: 4px,
+    blur: 8px
+  ),
+  large: (
+    x: 0,
+    y: 8px,
+    blur: 16px
+  ),
+  extraLarge: (
+    x: 0,
+    y: 12px,
+    blur: 24px
+  )
+) !default;
+
+// I-08. Z-indexs
+// --------------------------------------------------
+$zindexs: (
+  negative: -1,
+  positive: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  tooltip: 99,
+  dropdownContainer: 1000,
+  modalBackDrop: 1049,
+  modal: 1050,
+  toast: 9999,
+  reset: 0
+) !default;
+
+// I-09. Opacity
+// --------------------------------------------------
+$opacity: (
+  none: 0,
+  10: 0.1,
+  25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  80: 0.8,
+  reset: 1
+) !default;
+
+// I-10. Background
+// ---------
+$backgrounds: (
+  attachment: (
+    local: local,
+    scroll: scroll,
+    fixed: fixed
+  ),
+  size: (
+    auto: auto,
+    cover: cover,
+    contain: contain
+  ),
+  repeat: (
+    repeat: repeat,
+    repeatHorizontal: repeat-x,
+    repeatVertical: repeat-y,
+    repeatNone: no-repeat
+  ),
+  position: (
+    top: top,
+    bottom: bottom,
+    center: center,
+    left: left,
+    leftBottom: left bottom,
+    leftTop: left top,
+    right: right,
+    rightBottom: right bottom,
+    rightTop: right bottom
+  )
+) !default;
+
+// I-11. Backdrop Filter
+$backdrop-filter: (
+  blur: (
+    small: 0.25rem,
+    medium: 0.5rem,
+    large: 1rem,
+    none: 0,
+  ),
+  grayscale: (
+    '': 1,
+    none: 0,
+  )
+) !default;
+
+// I-12. Filter
+$filter: (
+  grayscale: (
+    '': 1,
+    none: 0,
+  )
+) !default;
+
+$letter-spacing: (
+  extraSmall: -0.05em,
+  small: -0.025em,
+  medium: 0,
+  large: 0.025em,
+  extraLarge: 0.05em,
+  extraLargePlus: 0.1em
+) !default;
+
+$transform: (
+  scale: (
+    0: 0,
+    50: 0.5,
+    75: 0.75,
+    90: 0.9,
+    100: 1,
+    110: 1.1,
+    125: 1.25,
+    150: 1.5
+  ),
+  rotate: (
+    0: 0deg,
+    45: 45deg,
+    90: 90deg,
+    135: 135deg,
+    180: 180deg,
+    225: 225deg,
+    270: 270deg,
+    315: 315deg
+  ),
+  flip: (
+    horizontal: '-1, 1',
+    vertical: "1, -1"
+  ),
+  skewX: (
+    horizontal0: 0,
+    horizontal3: 3deg,
+    horizontal6: 6deg,
+    horizontal9: 9deg,
+    horizontal12: 12deg
+  ),
+  skewY: (
+    vertical0: 0,
+    vertical3: 3deg,
+    vertical6: 6deg,
+    vertical9: 9deg,
+    vertical12: 12deg
+  )
+) !default;
+
+$transition: (
+  delay: (
+    75: 75ms,
+    100: 100ms,
+    150: 150ms,
+    200: 200ms,
+    300: 300ms,
+    500: 500ms,
+    700: 700ms,
+    1000: 1000ms
+  ),
+  duration: (
+    75: 75ms,
+    100: 100ms,
+    150: 150ms,
+    200: 200ms,
+    300: 300ms,
+    500: 500ms,
+    700: 700ms,
+    1000: 1000ms
+  ),
+  speed: (
+    slower: 8000ms,
+    slow: 2000ms,
+    normal: 1500ms,
+    fast: 800ms,
+    faster: 500ms,
+    fastest: 300ms
+  ),
+  ease: (
+    linear: linear,
+    in: cubic-bezier(0.4, 0, 1, 1),
+    out: cubic-bezier(0, 0, 0.2, 1),
+    inOut: cubic-bezier(0.4, 0, 0.2, 1)
+  ),
+  property: (
+    none: none,
+    all: all,
+    basic: 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
+    colors: 'background-color, border-color, color, fill, stroke',
+    opacity: opacity,
+    shadow: box-shadow,
+    transform: transform
+  ),
+  iteration: (
+    1: 1,
+    2: 2,
+    3: 3,
+    infinite: infinite
+  )
+) !default;
+
+// COMPONENTS:
+// --------------------------------------------------
+
+// II-01. Badges
+// --------------------------------------------------
+
+$badges: (
+  base: (
+    padding: 0 0.5em
+  )
+) !default;
+
+// II-02. Tags
+// --------------------------------------------------
+$tags: (
+  base: (
+    padding: 0 0.5rem
+  ),
+  small: (
+    padding: 0 0.25rem
+  )
+) !default;
+
+// II-03. Icons
+// --------------------------------------------------
+$icons: (
+  sizes: (
+    extraSmall: 16px,
+    small: 24px,
+    medium: 32px,
+    large: 48px,
+    extraLarge: 64px,
+    extraLargePlus: 96px,
+    huge: 128px
+  )
+) !default;
+
+// II-04. Images
+// --------------------------------------------------
+$media: (
+  ratio: (
+    1by1: (
+      w: 1,
+      h: 1
+    ),
+    4by3: (
+      w: 4,
+      h: 3
+    ),
+    16by9: (
+      w: 16,
+      h: 9
+    ),
+    21by9: (
+      w: 21,
+      h: 9
+    )
+  )
+) !default;
+
+// II-05. Avatars
+// --------------------------------------------------
+$avatars: (
+  sizes: (
+    extraSmall: 16px,
+    small: 24px,
+    medium: 32px,
+    large: 48px,
+    extraLarge: 64px,
+    extraLargePlus: 96px,
+    huge: 128px
+  )
+) !default;
+
+// II-06. Form
+// --------------------------------------------------
+$forms: (
+  focus: (
+    box-shadow: 0 0 0 4px var(--colorFocusPrimary)
+  ),
+  placeholder: (
+    color: map-deep-get($color-palette, "neutral60")
+  ),
+  disabled: (
+    background-color: map-deep-get($colors-render, "disabled", "background"),
+    color: map-deep-get($colors-render, "disabled", "color"),
+    opacity: 1
+  ),
+  readonly: (
+    background-color: map-get($color-palette, "neutral10"),
+    color: map-deep-get($colors-render, "disabled", "color"),
+    opacity: 1
+  ),
+  sizes: (
+    base: (
+      padding: calc(0.375rem - 1px) 1rem,
+      line-height: 1.5rem,
+      border-radius: var(--radiusMedium)
+    ),
+    small: (
+      padding: calc(0.125rem - 1px) 0.75rem,
+    ),
+    large: (
+      padding-top: calc(0.75rem - 1px),
+      padding-bottom: calc(0.75rem - 1px)
+    ),
+    hasIcon: (
+      base: (
+        padding-left: calc(0.375rem - 1px),
+        padding-right: calc(0.375rem - 1px)
+      ),
+      small: (
+        padding-left: calc(0.125rem - 1px),
+        padding-right: calc(0.125rem - 1px)
+      ),
+      large: (
+        padding-left: calc(0.75rem - 1px),
+        padding-right: calc(0.75rem - 1px)
+      )
+    )
+  ),
+  button: (
+    disabled: (
+      border-color: map-deep-get($colors-render, "disabled", "border")
+    )
+  ),
+  check: (
+    base: (
+      padding-left: 1.5rem
+    ),
+    labelBefore: (
+      background-color: map-get($colors, white),
+      border-color: map-get($color-palette, "neutral50")
+    ),
+    labelBeforeSelect: (
+      background-color: var(--colorPrimary)
+    ),
+    labelBeforeDisable: (
+      background-color: map-deep-get($color-palette, "neutral40")
+    ),
+    box: (
+      labelBefore: (
+        border-radius: var(--radiusMedium)
+      ),
+      labelCheckedAfterSelect: (
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' rx='4' fill='%23375DE7'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.277 4.93633L12.4052 4.05822C12.3705 4.01941 12.316 4 12.2665 4C12.212 4 12.1625 4.01941 12.1278 4.05822L6.08457 10.0206L3.88524 7.86659C3.84561 7.82777 3.79608 7.80837 3.74654 7.80837C3.69701 7.80837 3.64747 7.82777 3.60784 7.86659L2.72613 8.73014C2.64687 8.80776 2.64687 8.92905 2.72613 9.00667L5.50006 11.7235C5.67839 11.8981 5.89634 12 6.07962 12C6.34215 12 6.57001 11.8108 6.65422 11.7332H6.65917L13.2819 5.21286C13.3513 5.13038 13.3513 5.0091 13.277 4.93633Z' fill='white'/%3E%3C/svg%3E"),
+        background-repeat: no-repeat
+      ),
+      labelIndeterminateAfterSelect: (
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' rx='4' fill='%23375DE7'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.277 4.93633L12.4052 4.05822C12.3705 4.01941 12.316 4 12.2665 4C12.212 4 12.1625 4.01941 12.1278 4.05822L6.08457 10.0206L3.88524 7.86659C3.84561 7.82777 3.79608 7.80837 3.74654 7.80837C3.69701 7.80837 3.64747 7.82777 3.60784 7.86659L2.72613 8.73014C2.64687 8.80776 2.64687 8.92905 2.72613 9.00667L5.50006 11.7235C5.67839 11.8981 5.89634 12 6.07962 12C6.34215 12 6.57001 11.8108 6.65422 11.7332H6.65917L13.2819 5.21286C13.3513 5.13038 13.3513 5.0091 13.277 4.93633Z' fill='%23375DE7'/%3E%3Crect x='4' y='7' width='8' height='2' rx='1' fill='white'/%3E%3C/svg%3E"),
+        background-repeat: no-repeat
+      )
+    ),
+    radio: (
+      labelBefore: (
+        border-radius: map-deep-get($borders, "radius", "circle")
+      ),
+      labelAfterSelect: (
+        background-image: url("data:image/svg+xml,%3Csvg height='16' viewBox='0 0 16 16' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' fill='%23fff' fill-rule='evenodd' r='3'/%3E%3C/svg%3E")
+      )
+    )
+  ),
+  input: (
+    base: (
+      height: calc(0.375rem * 2 + 1.5rem),
+      border-width: 1px,
+      border-color: map-deep-get($colors-render, "border", "default"),
+      background: #fff
+    ),
+    small: (
+      height: calc(0.125rem * 2 + 1.5rem)
+    ),
+    large: (
+      height: calc(0.75rem * 2 + 1.5rem)
+    )
+  ),
+  inputGroup: (
+    text: (
+      border-width: 1px,
+      border-color: map-deep-get($colors-render, "border", "lighter")
+    )
+  )
+) !default;
+
+// II-07. Modal
+// --------------------------------------------------
+$modals: (
+  header: (
+    border-top-left-radius: var(--radiusLarge),
+    border-top-right-radius: var(--radiusLarge)
+  ),
+  noHeader: (
+    border-top-left-radius: var(--radiusLarge),
+    border-top-right-radius: var(--radiusLarge)
+  ),
+  noFooter: (
+    border-bottom-left-radius: var(--radiusLarge),
+    border-bottom-right-radius: var(--radiusLarge)
+  ),
+  footer: (
+    border-bottom-left-radius: var(--radiusLarge),
+    border-bottom-right-radius: var(--radiusLarge)
+  ),
+  sizes: (
+    small: 360px,
+    medium: 600px,
+    large: 800px,
+    extraLarge: 100%
+  )
+) !default;
+
+// II-08. Tooltips
+// --------------------------------------------------
+$tooltips: (
+  base: (
+    background-color: rgba(0, 0, 0, 0.75),
+    color: #fff
+  )
+) !default;
+
+// II-09. Carousel
+// --------------------------------------------------
+$carousel: (
+  base: (
+    icon: (
+      size: 16px,
+      view_box: 24
+    )
+  )
+) !default;
+
+//WebkitScroll
+$webkit-scrollbar: (
+  bg: rgba(0, 0, 0, 0.15),
+  white: rgba(255, 255, 255, 0.15),
+  width: 5px,
+) !default;

@@ -1,0 +1,39 @@
+/* _float.scss */
+@each $breakpoint, $breakpointValue in $grid-breakpoints {
+  $infix: "";
+
+  @if $breakpoint != "xs" {
+    $infix: $breakpoint + \:;
+  }
+
+  @include media-breakpoint-up($breakpoint) {
+    .#{$infix}u-floatLeft {
+      float: left;
+    }
+    .#{$infix}u-floatRight {
+      float: right;
+    }
+    .#{$infix}u-floatNone {
+      float: none;
+    }
+
+    .#{$infix}u-clearLeft {
+      clear: left;
+    }
+    .#{$infix}u-clearRight {
+      clear: right;
+    }
+    .#{$infix}u-clearBoth {
+      clear: both;
+    }
+    .#{$infix}u-clearNone {
+      clear: none;
+    }
+  }
+}
+
+.u-clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}

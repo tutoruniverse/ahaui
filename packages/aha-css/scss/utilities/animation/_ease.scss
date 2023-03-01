@@ -1,0 +1,10 @@
+/* _ease.scss: */
+@each $key, $value in map-get($transition, "ease") {
+  .u-ease#{capitalize($key)} {
+    transition-timing-function: #{$value};
+  }
+
+  .u-animatedEase#{capitalize($key)} {
+    animation-timing-function: #{$value};
+  }
+}
