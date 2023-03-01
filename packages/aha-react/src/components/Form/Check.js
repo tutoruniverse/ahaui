@@ -76,7 +76,7 @@ const Check = React.forwardRef(({ className, sizeInput, type, id, label, inline,
         isInvalid && 'is-invalid',
         !label && 'FormCheck--withoutLabel',
         type === 'checkbox_button' && 'FormCheck--button',
-        className && className
+        className && className,
       )}
     >
       <input
@@ -91,14 +91,13 @@ const Check = React.forwardRef(({ className, sizeInput, type, id, label, inline,
         className={classNames(
           'FormCheck-label u-marginBottomNone',
           disabledOri ? 'u-cursorNotAllow u-pointerEventsNone u-textLight' : 'u-cursorPointer',
-          sizeInputSet === "small" && "u-paddingVerticalExtraTiny"
+          sizeInputSet === 'small' && 'u-paddingVerticalExtraTiny',
         )}
         htmlFor={idSet}
       >
         {typeof (label) === 'function'
           ? label()
-          : label
-        }
+          : label}
 
       </label>
     </Component>

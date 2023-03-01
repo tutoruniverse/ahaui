@@ -22,13 +22,13 @@ export default function createSliderWithTooltip(Component) {
     };
 
     handleTooltipVisibleChange = (index, visible) => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         visibles: {
           ...prevState.visibles,
           [index]: visible,
         },
       }));
-    }
+    };
 
     handleWithTooltip = ({ value, dragging, index, disabled, ...restProps }) => {
       const {
@@ -73,7 +73,7 @@ export default function createSliderWithTooltip(Component) {
           />
         </Tooltip>
       );
-    }
+    };
 
     render() {
       return <Component {...this.props} handle={this.handleWithTooltip} />;

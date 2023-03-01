@@ -202,7 +202,6 @@ const styles = {
   },
 };
 
-
 const Icon = React.forwardRef(({ className, path, size, name, ...props }, ref) => {
   const pathOri = path;
   let nameOri = name;
@@ -218,7 +217,7 @@ const Icon = React.forwardRef(({ className, path, size, name, ...props }, ref) =
       height={`${sizes[size]}px`}
       className={classNames(
         'u-inlineBlock',
-        className && className
+        className && className,
       )}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +231,6 @@ const Icon = React.forwardRef(({ className, path, size, name, ...props }, ref) =
     </svg>
   );
 });
-
 
 Icon.displayName = 'Icon';
 Icon.defaultProps = defaultProps;

@@ -47,7 +47,7 @@ const ProblemInfo = React.forwardRef(({ topicLabel, topicName, descriptionLabel,
       {...props}
       className={classNames(
         'ProblemInfo',
-        'u-roundedLarge u-marginBottomSmall u-text200 u-textGray u-overflowHidden u-border u-borderUltraLight'
+        'u-roundedLarge u-marginBottomSmall u-text200 u-textGray u-overflowHidden u-border u-borderUltraLight',
       )}
     >
       <div className="u-backgroundOpaline u-paddingExtraSmall">
@@ -65,7 +65,7 @@ const ProblemInfo = React.forwardRef(({ topicLabel, topicName, descriptionLabel,
                     <div className="u-positionRelative u-roundedCircle u-overflowHidden u-flex u-alignItemsCenter u-justifyContentCenter" style={{ width: 32, height: 32 }}>
                       <div className={classNames(
                         'u-positionAbsolute u-positionFull u-opacityHalf',
-                        isImgHover ? 'u-backgroundDark' : ' u-backgroundBlack'
+                        isImgHover ? 'u-backgroundDark' : ' u-backgroundBlack',
                       )}
                       />
                       <Icon name="search" className="u-textWhite u-lineHeightNone u-positionRelative" />
@@ -75,8 +75,7 @@ const ProblemInfo = React.forwardRef(({ topicLabel, topicName, descriptionLabel,
                 </div>
               ) : (
                 <Media as="img" src={src} aspectRatio="classic" className="u-roundedMedium" />
-              )
-            }
+              )}
           </div>
           {topicName && (
             <div className="u-sizeFull sm:u-size3of4">
@@ -95,8 +94,7 @@ const ProblemInfo = React.forwardRef(({ topicLabel, topicName, descriptionLabel,
             <div className="u-paddingBottomExtraSmall">
               {typeof (descriptionValue) === 'function'
                 ? descriptionValue()
-                : descriptionValue
-              }
+                : descriptionValue}
             </div>
           </div>
         )}
@@ -108,8 +106,7 @@ const ProblemInfo = React.forwardRef(({ topicLabel, topicName, descriptionLabel,
             <div className="u-paddingBottomExtraSmall">
               {typeof (additionalValue) === 'function'
                 ? additionalValue()
-                : additionalValue
-              }
+                : additionalValue}
             </div>
           </div>
         )}
@@ -118,17 +115,14 @@ const ProblemInfo = React.forwardRef(({ topicLabel, topicName, descriptionLabel,
         <div className="u-borderTop u-borderUltraLight u-text100 u-flex u-justifyContentCenter u-paddingTiny u-backgroundOpaline hover:u-backgroundLightest u-cursorPointer">
           {typeof (action) === 'function'
             ? action()
-            : action
-          }
+            : action}
         </div>
       )}
     </div>
   );
 });
 
-
 const Note = createBlock('QuestionDescription-note u-textCenter u-text200 u-textGray u-paddingTopSmall');
-
 
 ProblemInfo.Note = Note;
 ProblemInfo.displayName = 'ProblemInfo';

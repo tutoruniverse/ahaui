@@ -72,7 +72,7 @@ function useRootClose(
     const root = window.document.querySelector('#root') || document;
 
     if (!root) {
-      return
+      return;
     }
 
     // Use capture for this listener so it fires before React's listener, to
@@ -92,14 +92,14 @@ function useRootClose(
     if ('ontouchstart' in root) {
       mobileSafariHackListeners = [].slice
         .call(root.children)
-        .map(el => listen(el, 'mousemove', noop));
+        .map((el) => listen(el, 'mousemove', noop));
     }
 
     return () => {
       removeMouseCaptureListener();
       removeMouseListener();
       removeKeyupListener();
-      mobileSafariHackListeners.forEach(remove => remove());
+      mobileSafariHackListeners.forEach((remove) => remove());
     };
   }, [
     ref,

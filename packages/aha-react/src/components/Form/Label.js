@@ -50,8 +50,9 @@ const Label = React.forwardRef(({ className, sizeLabel, required, htmlFor, as: C
           'FormLabel',
           'u-block u-marginBottomTiny',
           className && className,
-          sizeLabelSet && labelSizes[sizeLabelSet]
-        )}
+          sizeLabelSet && labelSizes[sizeLabelSet],
+        )
+}
       htmlFor={htmlForSet}
       {...props}
     />

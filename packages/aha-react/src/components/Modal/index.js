@@ -44,7 +44,6 @@ const defaultProps = {
   transition: Fade,
 };
 
-
 const Modal = React.forwardRef(({ children, size, show, onHide, relative, centered, transition: Transition, ...props }, ref) => {
   const modalContainerId = 'aha-design-system-react-modal-backdrop';
   const [modalContainer, setModalContainer] = useState();
@@ -83,13 +82,13 @@ const Modal = React.forwardRef(({ children, size, show, onHide, relative, center
         !relative && 'u-positionFixed u-positionTop u-positionLeft u-positionBottom u-positionRight',
         (show && !relative) && 'u-zIndexModal',
         relative && 'Modal--relative u-positionRelative',
-        size && `Modal--${size}`
+        size && `Modal--${size}`,
       )}
     >
       <div className={classNames(
         'Modal-dialog u-positionRelative',
         !relative && 'u-marginExtraSmall md:u-marginVerticalMedium md:u-marginHorizontalAuto',
-        size === 'extraLarge' && 'md:u-paddingHorizontalSmall'
+        size === 'extraLarge' && 'md:u-paddingHorizontalSmall',
       )}
       >
         <div className={classNames(
@@ -124,7 +123,7 @@ const Modal = React.forwardRef(({ children, size, show, onHide, relative, center
       >
         <div className={classNames(
           'Modal-backDrop u-positionFixed u-positionFull u-backgroundBlack',
-          show && 'u-zIndexModalBackDrop'
+          show && 'u-zIndexModalBackDrop',
         )}
         />
       </Transition>
@@ -138,7 +137,6 @@ const Modal = React.forwardRef(({ children, size, show, onHide, relative, center
     </ModalContext.Provider>
   ), modalContainer);
 });
-
 
 const Title = createBlock('Modal-title u-text600 u-fontMedium u-textCenter');
 const Body = createBlock('Modal-body u-paddingHorizontalMedium u-backgroundWhite u-paddingTopSmall u-paddingBottomMedium');

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import warning from 'warning';
 import OverlayBase from './Base';
 
-const normalizeDelay = delay => ((delay && typeof delay === 'object') ? delay : { show: delay, hide: delay });
+const normalizeDelay = (delay) => ((delay && typeof delay === 'object') ? delay : { show: delay, hide: delay });
 const triggerType = PropTypes.oneOf(['click', 'hover', 'focus']);
 const propTypes = {
   children: PropTypes.element.isRequired,
@@ -121,8 +121,8 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
       handler(e);
     }
   };
-  const handleMouseOver = e => handleMouseOverOut(handleShow, e, 'fromElement');
-  const handleMouseOut = e => handleMouseOverOut(handleHide, e, 'toElement');
+  const handleMouseOver = (e) => handleMouseOverOut(handleShow, e, 'fromElement');
+  const handleMouseOut = (e) => handleMouseOverOut(handleHide, e, 'toElement');
   const triggerProps = {};
   const overlayProps = {};
 
@@ -151,7 +151,6 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
     }
   }
 
-
   return (
     <>
       {cloneElement(child, { ref: triggerRef, ...triggerProps })}
@@ -167,7 +166,7 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
         onHide={handleHide}
         target={targetRef ? targetRef.current : triggerRef.current}
       >
-        {props => overlay({ ...props, ...overlayProps })}
+        {(props) => overlay({ ...props, ...overlayProps })}
       </OverlayBase>
     </>
   );

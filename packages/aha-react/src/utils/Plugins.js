@@ -35,7 +35,7 @@ class Plugins {
     if (!type) {
       return this.plugins;
     }
-    return this.plugins.filter(plugin => plugin.type === type);
+    return this.plugins.filter((plugin) => plugin.type === type);
   }
 }
 

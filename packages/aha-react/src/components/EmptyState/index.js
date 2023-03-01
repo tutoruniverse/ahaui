@@ -30,7 +30,7 @@ const EmptyState = React.forwardRef(({ className, children, name, src, fileType,
     srcOri = Plugins
       .getPlugins(PluginType.ASSET)
       .traverseCall('getAsset', 'emptyState', nameOri)
-      .find(asset => !!asset);
+      .find((asset) => !!asset);
   }
   return (
     <Component
@@ -39,7 +39,7 @@ const EmptyState = React.forwardRef(({ className, children, name, src, fileType,
       className={classNames(
         'EmptyState',
         'u-inlineBlock u-textCenter',
-        className && className
+        className && className,
       )}
     >
       {srcOri && (

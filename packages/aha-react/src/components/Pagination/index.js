@@ -9,7 +9,6 @@ const propTypes = {
   sizeControl: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
-
 const defaultProps = {
   sizeControl: 'small',
 };
@@ -29,7 +28,7 @@ const Pagination = React.forwardRef(({ className, sizeControl, as: Component = '
       />
     </Context.Provider>
   );
-}
+},
 );
 
 Pagination.Prev = Prev;

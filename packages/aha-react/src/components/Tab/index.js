@@ -44,7 +44,7 @@ const Tab = React.forwardRef(({ className, variant = 'primary', children, curren
         direction,
         visual,
         path: path.toString(),
-      })
+      }),
     );
   });
   return (
@@ -64,7 +64,7 @@ const Tab = React.forwardRef(({ className, variant = 'primary', children, curren
           'u-flex u-positionRelative u-text200 u-fontMedium',
           fullWidth && 'u-justifyContentBetween',
           direction === 'vertical' && 'u-flexColumn',
-          className && className
+          className && className,
         )}
       >
         {modifiedChildren}

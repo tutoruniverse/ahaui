@@ -29,7 +29,7 @@ const propTypes = {
   ]),
   /** Highlight the submenu if current path matches one of the items inside this list **/
   hightLightWhitelist: PropTypes.array,
-  /** 
+  /**
    * Enable collapsing the sub-menu when its item is selected
    * @default false
    * */
@@ -69,12 +69,11 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
 
     if (child.props.separated) {
       modifiedChildPath = childPath.toString();
-    } else if (childPath.startsWith('#')){
-      modifiedChildPath = `${path}${childPath.toString()}`
+    } else if (childPath.startsWith('#')) {
+      modifiedChildPath = `${path}${childPath.toString()}`;
     } else {
-      modifiedChildPath = `${path}.${childPath.toString()}`
+      modifiedChildPath = `${path}.${childPath.toString()}`;
     }
-
 
     return React.cloneElement(
       child, ({
@@ -82,7 +81,7 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
         level: level + 1,
         path: modifiedChildPath,
         onCloseSubMenu: autoCollapse && (() => setOpen(false)),
-      })
+      }),
     );
   });
   const sizeMenu = size || sideBarContextValue.size;
@@ -150,8 +149,7 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
             <span className="u-marginLeftExtraSmall">
               {typeof (badge) === 'function'
                 ? badge()
-                : <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>
-              }
+                : <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>}
             </span>
           )}
           <div className="u-marginLeftExtraSmall">

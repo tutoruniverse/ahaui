@@ -35,29 +35,29 @@ const Item = React.forwardRef(({ className, children, noHref, position, schema, 
       ref={ref}
       className={classNames(
         'Breadcrumb-item',
-        'u-inlineBlock'
+        'u-inlineBlock',
       )}
     >
       {schema ? (
-        <React.Fragment>
+        <>
           <SafeAnchor
             {...props}
             className={classNames(
               !isLast && 'u-textGray',
-              (!isLast && !noHref) && 'hover:u-textLink'
+              (!isLast && !noHref) && 'hover:u-textLink',
             )}
             itemProp="item"
           >
             <span itemProp="name">{children}</span>
           </SafeAnchor>
           <meta itemProp="position" content={position} />
-        </React.Fragment>
+        </>
       ) : (
         <Component
           {...props}
           className={classNames(
             !isLast && 'u-textGray',
-            (!isLast && !noHref) && 'hover:u-textLink'
+            (!isLast && !noHref) && 'hover:u-textLink',
           )}
         >
           {children}

@@ -84,14 +84,14 @@ const Collapse = React.forwardRef(({ className, eventKey, timeout, children, dim
     return `${elem[scroll]}px`;
   };
   // eslint-disable-next-line no-param-reassign
-  const handleEnter = createChainedFunction(elem => elem.style[getDimension()] = 0);
+  const handleEnter = createChainedFunction((elem) => elem.style[getDimension()] = 0);
   const handleEntering = createChainedFunction((elem) => {
     const dimension = getDimension();
     // eslint-disable-next-line no-param-reassign
     elem.style[dimension] = getScrollDimensionValue(elem, dimension);
   });
   // eslint-disable-next-line no-param-reassign
-  const handleEntered = createChainedFunction(elem => elem.style[getDimension()] = null);
+  const handleEntered = createChainedFunction((elem) => elem.style[getDimension()] = null);
   const handleExit = createChainedFunction((elem) => {
     const dimension = getDimension();
     // eslint-disable-next-line no-param-reassign
@@ -102,7 +102,7 @@ const Collapse = React.forwardRef(({ className, eventKey, timeout, children, dim
     triggerBrowserReflow(elem);
   });
   // eslint-disable-next-line no-param-reassign
-  const handleExiting = createChainedFunction(elem => elem.style[getDimension()] = null);
+  const handleExiting = createChainedFunction((elem) => elem.style[getDimension()] = null);
   return (
     <Transition
       ref={ref}
@@ -122,8 +122,7 @@ const Collapse = React.forwardRef(({ className, eventKey, timeout, children, dim
           children.props.className,
           collapseStyles[state],
         ),
-      })
-      }
+      })}
     </Transition>
   );
 });

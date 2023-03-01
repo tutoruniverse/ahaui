@@ -23,9 +23,9 @@ export const PageItem = React.forwardRef(({ className, active, safeItem, disable
     variant = 'default';
   }
   const Component = active || disabled || safeItem ? 'span' : SafeAnchor;
-  let background = undefined;
+  let background;
   if (active) {
-    background ='rgba(231, 236, 252, 1)';
+    background = 'rgba(231, 236, 252, 1)';
   } else if (disabled) {
     background = 'white';
   }
@@ -36,7 +36,7 @@ export const PageItem = React.forwardRef(({ className, active, safeItem, disable
         'Pagination-item',
         active ? 'is-active' : undefined,
         'u-inlineBlock u-marginHorizontalTiny u-marginBottomExtraSmall',
-        className && className
+        className && className,
       )}
     >
       <Component ref={ref} {...props} className="u-block hover:u-textDecorationNone">

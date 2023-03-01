@@ -8,7 +8,7 @@ const Calendar = React.forwardRef(({ className, ...props }, ref) => (
     {...props}
     className={classNames(
       'Calendar',
-      className && className
+      className && className,
     )}
   />
 ));

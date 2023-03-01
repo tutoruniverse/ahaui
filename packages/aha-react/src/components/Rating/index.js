@@ -81,7 +81,6 @@ const defaultProps = {
   size: 'medium',
 };
 
-
 const Rating = React.forwardRef(({ className, readOnly, icon, emptyIcon, value: valueProp2 = null, disabled, max, size, name, onChange, onChangeActive, onMouseLeave, onMouseMove, getLabelText, precision, as: Component = 'span', ...props }, ref) => {
   const valueProp = roundValueToPrecision(valueProp2, precision);
   const rootRef = useRef();
@@ -116,7 +115,7 @@ const Rating = React.forwardRef(({ className, readOnly, icon, emptyIcon, value: 
     const percent = (event.clientX - left) / (width * max);
     let newHover = roundValueToPrecision(max * percent + precision / 2, precision);
     newHover = clamp(newHover, precision, max);
-    setState(prev => (prev.hover === newHover && prev.focus === newHover
+    setState((prev) => (prev.hover === newHover && prev.focus === newHover
       ? prev
       : {
         hover: newHover,
@@ -149,7 +148,7 @@ const Rating = React.forwardRef(({ className, readOnly, icon, emptyIcon, value: 
     }
 
     const newFocus = parseFloat(event.target.value);
-    setState(prev => ({
+    setState((prev) => ({
       hover: prev.hover,
       focus: newFocus,
     }));
@@ -169,7 +168,7 @@ const Rating = React.forwardRef(({ className, readOnly, icon, emptyIcon, value: 
     }
 
     const newFocus = -1;
-    setState(prev => ({
+    setState((prev) => ({
       hover: prev.hover,
       focus: newFocus,
     }));
@@ -186,7 +185,7 @@ const Rating = React.forwardRef(({ className, readOnly, icon, emptyIcon, value: 
         className={classNames(
           !state.filled && 'u-textLight',
           state.hover && 'is-focus',
-          (state.filled || state.active) && 'u-textWarning'
+          (state.filled || state.active) && 'u-textWarning',
         )}
         size={size}
       />

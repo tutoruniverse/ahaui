@@ -32,7 +32,7 @@ const AccordionToggle = React.forwardRef(({ className, eventKey, onClick, childr
     className: classNames(
       'Accordion-toggle',
       disabled ? ' u-pointerEventsNone u-cursorNotAllow' : 'u-cursorPointer',
-      className && className
+      className && className,
     ),
     onClick: !disabled ? onAccordionClick : null,
     ...props,

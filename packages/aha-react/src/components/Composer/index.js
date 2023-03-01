@@ -69,7 +69,7 @@ const Composer = React.forwardRef(({ className, children, sendButtonIcon, iconLe
       {tooltipAttachButton ? (
         <Overlay.Trigger
           placement="top-start"
-          overlay={props => (
+          overlay={(props) => (
             <Tooltip id="tooltip-attachButton" {...props}>
               {typeof (tooltipAttachButton) === 'function'
                 ? tooltipAttachButton()
@@ -120,7 +120,7 @@ const Composer = React.forwardRef(({ className, children, sendButtonIcon, iconLe
       className={classNames(
         'u-widthFull u-paddingVerticalExtraSmall u-border u-borderTransparent u-textPlaceholder',
         inputProps.className && inputProps.className,
-        inputProps.disabled && 'u-backgroundNeutral30'
+        inputProps.disabled && 'u-backgroundNeutral30',
       )}
       style={{
         resize: 'none',
@@ -132,7 +132,7 @@ const Composer = React.forwardRef(({ className, children, sendButtonIcon, iconLe
       tooltipSendButton ? (
         <Overlay.Trigger
           placement="top-end"
-          overlay={props => (
+          overlay={(props) => (
             <Tooltip id="tooltip-sendButton" {...props}>
               {typeof (tooltipSendButton) === 'function'
                 ? tooltipSendButton()

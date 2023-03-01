@@ -52,7 +52,7 @@ const Avatar = React.forwardRef(({ className, size, name, src, alt, height, widt
     srcOri = Plugins
       .getPlugins(PluginType.ASSET)
       .traverseCall('getAsset', 'avatar', nameOri)
-      .find(asset => !!asset);
+      .find((asset) => !!asset);
   }
   const heightStyle = {
     width: width && width,
@@ -71,7 +71,7 @@ const Avatar = React.forwardRef(({ className, size, name, src, alt, height, widt
         'Avatar u-positionRelative u-block u-paddingNone u-overflowHidden',
         size && `Avatar--${size}`,
         text && 'u-roundedCircle',
-        className && className
+        className && className,
       )}
     >
       {srcOri && (
@@ -83,7 +83,6 @@ const Avatar = React.forwardRef(({ className, size, name, src, alt, height, widt
     </Component>
   );
 });
-
 
 Avatar.displayName = 'Avatar';
 Avatar.defaultProps = defaultProps;

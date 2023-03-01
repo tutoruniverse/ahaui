@@ -59,7 +59,7 @@ const Separator = React.forwardRef(({ className, label, lineType, variant, as: C
     'Separator-line u-border u-sizeFill',
     'u-border u-borderRightNone u-borderBottomNone u-borderLeftNone',
     variant && variantsClassName[variant].line,
-    lineType === 'dashed' && 'u-borderDashed'
+    lineType === 'dashed' && 'u-borderDashed',
   );
   return (
     <Component
@@ -73,7 +73,7 @@ const Separator = React.forwardRef(({ className, label, lineType, variant, as: C
     >
       <div className={lineClass} />
       {label && (
-      <React.Fragment>
+      <>
         <div className={classNames(
           'Separator-label',
           'u-flexShrink0 u-paddingHorizontalExtraSmall u-fontMedium',
@@ -83,7 +83,7 @@ const Separator = React.forwardRef(({ className, label, lineType, variant, as: C
           {label}
         </div>
         <div className={lineClass} />
-      </React.Fragment>
+      </>
       )}
     </Component>
   );

@@ -56,7 +56,7 @@ const TopBanner = React.forwardRef((uncontrolledProps, ref) => {
       className={classNames(
         'TopBanner',
         'u-positionRelative u-overflowHidden u-flex u-cursorPointer u-alignItemsCenter u-paddingVerticalTiny',
-        className && className
+        className && className,
       )}
     >
       {bgImage && (
@@ -70,8 +70,8 @@ const TopBanner = React.forwardRef((uncontrolledProps, ref) => {
       {dismissible && (
       <div
         className="TopBanner-button u-marginHorizontalSmall"
-        onMouseEnter={() => setDismissButtonHover(dismissButtonHover => !dismissButtonHover)}
-        onMouseLeave={() => setDismissButtonHover(dismissButtonHover => !dismissButtonHover)}
+        onMouseEnter={() => setDismissButtonHover((dismissButtonHover) => !dismissButtonHover)}
+        onMouseLeave={() => setDismissButtonHover((dismissButtonHover) => !dismissButtonHover)}
         onClick={handleClose}
       >
         <Icon

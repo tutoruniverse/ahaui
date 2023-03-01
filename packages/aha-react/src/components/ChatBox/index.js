@@ -16,7 +16,7 @@ const ChatBox = React.forwardRef(({ className, ...props }, ref) => (
     className={classNames(
       'ChatBox',
       'u-flex u-flexColumn u-positionRelative u-flexGrow1',
-      className && className
+      className && className,
     )}
   />
 ));
@@ -27,13 +27,13 @@ const List = React.forwardRef(({ className, children, innerClassName, ...props }
     {...props}
     className={classNames(
       'ChatBox-list u-positionRelative u-flexGrow1 u-flexShrink1',
-      className && className
+      className && className,
     )}
   >
     <div
       className={classNames(
         'ChatBox-listInner u-overflowVerticalAuto u-paddingExtraSmall u-positionAbsolute u-positionFull u-webkitScrollbar',
-        innerClassName && innerClassName
+        innerClassName && innerClassName,
       )}
     >
       {children}
@@ -48,7 +48,7 @@ const Notice = React.forwardRef(({ className, children, ...props }, ref) => (
     {...props}
     className={classNames(
       'ChatBox-notice u-positionAbsolute u-widthFull u-positionBottom-100 u-marginBottomSmall',
-      className && className
+      className && className,
     )}
   >
     <div className="u-flex u-justifyContentCenter">

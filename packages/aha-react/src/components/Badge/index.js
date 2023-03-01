@@ -35,7 +35,6 @@ const defaultProps = {
   variant: 'default',
 };
 
-
 const variantsTextClassName = {
   primary: 'u-textWhite hover:u-textWhite',
   primary_subtle: 'u-textPrimary hover:u-textPrimary',
@@ -66,7 +65,7 @@ const Badge = React.forwardRef(({ className, textClassName, variant, as: Compone
       'u-inlineBlock u-textCenter u-text200 u-fontMedium u-textNoWrap u-roundedInfinity hover:u-textDecorationNone',
       variant && variantsClassName[variant],
       ((variant === 'primary' || variant === 'primary_subtle') && textClassName) ? textClassName : variantsTextClassName[variant],
-      className && className
+      className && className,
     )}
   />
 ));

@@ -42,7 +42,7 @@ const Group = React.forwardRef(({ className, controlId, sizeControl, disabledCon
       />
     </Context.Provider>
   );
-}
+},
 );
 Group.displayName = 'FormGroup';
 Group.propTypes = propTypes;

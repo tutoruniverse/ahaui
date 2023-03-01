@@ -5,7 +5,6 @@ import useEventCallback from '@restart/hooks/useEventCallback';
 import Icon from 'components/Icon';
 import ModalContext from './Context';
 
-
 const propTypes = {
   /** Specify whether the Component should contain a close button */
   closeButton: PropTypes.bool,
@@ -36,8 +35,8 @@ const Header = React.forwardRef(({ className, children, closeButton, onHide, ...
         <button
           type="button"
           className="Modal-close u-positionAbsolute u-backgroundTransparent u-borderNone u-cursorPointer u-paddingTiny u-lineHeightReset"
-          onMouseEnter={() => setCloseHover(closeHover => !closeHover)}
-          onMouseLeave={() => setCloseHover(closeHover => !closeHover)}
+          onMouseEnter={() => setCloseHover((closeHover) => !closeHover)}
+          onMouseLeave={() => setCloseHover((closeHover) => !closeHover)}
           onClick={handleClick}
           data-testid="modal-close-button"
           aria-label="Close modal"

@@ -116,8 +116,8 @@ const FileAttachment = React.forwardRef((uncontrolledProps, ref) => {
           type="button"
           className="FileAttachment-remove u-positionAbsolute u-backgroundTransparent u-borderNone u-cursorPointer u-paddingTiny u-lineHeightReset u-positionTop u-positionRight"
           title="Remove this file"
-          onMouseEnter={() => setDismissButtonHover(dismissButtonHover => !dismissButtonHover)}
-          onMouseLeave={() => setDismissButtonHover(dismissButtonHover => !dismissButtonHover)}
+          onMouseEnter={() => setDismissButtonHover((dismissButtonHover) => !dismissButtonHover)}
+          onMouseLeave={() => setDismissButtonHover((dismissButtonHover) => !dismissButtonHover)}
           onClick={handleClose}
         >
           <Icon
@@ -152,14 +152,13 @@ const FileAttachment = React.forwardRef((uncontrolledProps, ref) => {
           {actionLeft && (
             <div className={classNames(
               'u-sizeFill',
-              actionRight && 'u-borderRight u-borderUltraLight'
+              actionRight && 'u-borderRight u-borderUltraLight',
             )}
             >
               <div className="u-flex u-justifyContentCenter hover:u-backgroundLightest u-cursorPointer">
                 {typeof (actionLeft) === 'function'
                   ? actionLeft()
-                  : actionLeft
-                }
+                  : actionLeft}
               </div>
             </div>
           )}
@@ -168,8 +167,7 @@ const FileAttachment = React.forwardRef((uncontrolledProps, ref) => {
               <div className="u-flex u-justifyContentCenter hover:u-backgroundLightest u-cursorPointer">
                 {typeof (actionRight) === 'function'
                   ? actionRight()
-                  : actionRight
-                }
+                  : actionRight}
               </div>
             </div>
           )}
@@ -183,7 +181,7 @@ const FileAttachment = React.forwardRef((uncontrolledProps, ref) => {
       {fileAttachment}
     </Transition>
   );
-}
+},
 );
 
 FileAttachment.displayName = 'FileAttachment';
