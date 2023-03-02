@@ -63,6 +63,7 @@ const Message = React.forwardRef((uncontrolledProps, ref) => {
     type,
     children,
     dismissible,
+    disabled, // to disable close button
     onClose,
     show,
     transition: Transition,
@@ -71,6 +72,9 @@ const Message = React.forwardRef((uncontrolledProps, ref) => {
   const variantOri = messagesVariants.find(item => item.type === type && item.id === variant);
   const context = useMemo(() => ({ variant, type }), [variant, type]);
   const handleClose = useEventCallback((e) => {
+    if (disabled) {
+      return;
+    }
     onClose(false, e);
   });
   const alert = (
@@ -95,12 +99,17 @@ const Message = React.forwardRef((uncontrolledProps, ref) => {
           onClick={handleClose}
           className={classNames(
             'Message-button u-marginRightSmall u-marginTopSmall',
-            dismissButtonHover ? 'u-opacityReset' : 'u-opacityHalf',
+            (!disabled && dismissButtonHover) ? 'u-opacityReset' : 'u-opacityHalf',
+            disabled && 'u-cursorDefault',
             variantOri.textClassName
           )}
           data-testid="message-close"
           role="button"
+          aria-disabled={disabled}
           aria-label="dismiss alert"
+          style={{
+            height: 'fit-content',
+          }}
         >
           <Icon name="close" size="tiny" />
         </div>

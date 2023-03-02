@@ -1,24 +1,24 @@
 .Toggle {
   $this: &;
 
-  border-radius: 0.75rem;
-  height: 1.5rem;
+  border-radius: 12px;
+  height: 24px;
   // margin-right: 3rem;
   transition: background-color 0.25s;
-  width: 3rem;
+  width: 48px;
 
   > #{$this}-handle {
     border-radius: 50%;
-    height: 1rem;
-    left: 0.225rem;
-    top: 0.225rem;
+    height: 16px;
+    left: 4px;
+    top: 4px;
     transition: left 0.25s;
-    width: 1rem;
+    width: 16px;
   }
 
   &.checked {
     > #{$this}-handle {
-      left: 1.725rem;
+      left: 28px;
     }
 
     &[disabled],

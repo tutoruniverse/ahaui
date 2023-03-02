@@ -1,5 +1,5 @@
 {
-  "name": "@ahaui/css",
+  "name": "@ahaui-replica/css",
   "version": "2.1.0",
   "description": "Aha Design System - CSS",
   "style": "dist/index.min.css",
@@ -12,15 +12,16 @@
     "LICENSE"
   ],
   "scripts": {
-    "prepublishOnly": "yarn build",
-    "build": "yarn clean && yarn compile && yarn prefix && yarn minify",
-    "clean": "yarn del dist/*",
-    "compile": "node-sass --importer ../../node_modules/node-sass-import --output-style compact --precision 6 scss/ -o dist/",
+    "prepublishOnly": "npm run build",
+    "build": "npm run clean && npm run compile && npm run prefix && npm run minify",
+    "clean": "del dist/*",
+    "compile": "node-sass --output-style compact --precision 6 scss/ -o dist/",
     "prefix": "postcss --config config/postcss.config.js --replace \"dist/*.css\" \"!dist/*.min.css\"",
-    "minify": "yarn minify-index && yarn minify-utilities",
+    "minify": "npm run minify-index && npm run minify-utilities",
     "minify-index": "cleancss --level 1 --format breakWith=lf  --output dist/index.min.css dist/index.css",
     "minify-utilities": "cleancss --level 1 --format breakWith=lf  --output dist/utilities.min.css dist/utilities.css",
-    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd"
+    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd",
+    "postinstall": "npm run build"
   },
   "author": "Got It, Inc.",
   "homepage": "https://github.com/gotitinc/ahaui/blob/main/packages/css#readme",
@@ -31,20 +32,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "autoprefixer": "9.6.1",
-    "clean-css-cli": "4.3.0",
-    "clean-package": "^1.0.1",
-    "del-cli": "3.0.1",
-    "node-sass": "^4.14",
-    "node-sass-import": "2.0.1",
-    "postcss-cli": "6.1.2",
-    "stylelint": "^13.8.0",
-    "stylelint-config-recommended-scss": "^4.2.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.18.0"
-  },
-  "dependencies": {}
+  }
 }

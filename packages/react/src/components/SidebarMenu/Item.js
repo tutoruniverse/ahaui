@@ -26,11 +26,15 @@ const propTypes = {
     'small',
     'medium',
   ]),
+  /** If this value is true, child's path is not nested in parent's path **/
+  separated: PropTypes.bool,
+  /** The function that collapses its parent's sub-menu. It would be run whenever this item is selected by the user.*/
+  onCloseSubMenu: PropTypes.func,
 };
 const defaultProps = {
 };
 
-const Item = React.forwardRef(({ className, disabled, eventKey, children, badge, icon, isSubItem, level, path, size, ...props }, ref) => {
+const Item = React.forwardRef(({ className, disabled, eventKey, children, badge, icon, isSubItem, level, path, size, onCloseSubMenu, ...props }, ref) => {
   let active;
 
   const sideBarContextValue = useContext(SidebarContext);
@@ -45,6 +49,7 @@ const Item = React.forwardRef(({ className, disabled, eventKey, children, badge,
     e.stopPropagation();
     e.preventDefault();
     sideBarContextValue.onSelect(path);
+    onCloseSubMenu?.();
   };
   const sizeMenu = size || sideBarContextValue.size;
   return (
@@ -52,13 +57,13 @@ const Item = React.forwardRef(({ className, disabled, eventKey, children, badge,
       onClick={disabled ? null : onClick}
       className={classNames(
         className && className,
-        'SidebarMenu-item u-flex u-paddingHorizontalExtraSmall u-positionRelative  u-paddingVerticalTiny md:u-paddingVerticalExtraSmall',
+        'SidebarMenu-item u-flex u-paddingHorizontalExtraSmall u-positionRelative',
         active && 'is-active  u-backgroundLightest',
         disabled ? 'is-disabled u-cursorNotAllow u-pointerEventsNone' : 'hover:u-backgroundLightest',
         icon && 'u-alignItemsTop',
         isSubItem && 'u-paddingLeftLarge',
-        sizeMenu === 'medium' && 'lg:u-paddingVerticalSmall',
-        sizeMenu === 'small' && 'u-text200',
+        sizeMenu === 'medium' && 'u-paddingVerticalSmall',
+        sizeMenu === 'small' && 'u-text200 u-paddingVerticalExtraSmall',
       )}
       style={{
         paddingLeft: level > 2 && level * 16,

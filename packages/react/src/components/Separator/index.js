@@ -34,7 +34,7 @@ const variantsClassName = {
   },
   lighter: {
     label: 'u-textLight hover:u-textLight',
-    line: '',
+    line: 'u-borderUltraLight',
   },
   primary: {
     label: 'u-textPrimary hover:u-textPrimary',

@@ -18,16 +18,23 @@ const defaultProps = {
 };
 
 export const PageItem = React.forwardRef(({ className, active, safeItem, disabled, children, displayName, ...props }, ref) => {
-  let variant = active ? 'primary' : 'secondary';
+  let variant = active ? 'primary_outline' : 'secondary';
   if (safeItem) {
     variant = 'default';
   }
   const Component = active || disabled || safeItem ? 'span' : SafeAnchor;
+  let background = undefined;
+  if (active) {
+    background ='rgba(231, 236, 252, 1)';
+  } else if (disabled) {
+    background = 'white';
+  }
+
   return (
     <li
       className={classNames(
         'Pagination-item',
-        active && 'is-active',
+        active ? 'is-active' : undefined,
         'u-inlineBlock u-marginHorizontalTiny u-marginBottomExtraSmall',
         className && className
       )}
@@ -35,10 +42,16 @@ export const PageItem = React.forwardRef(({ className, active, safeItem, disable
       <Component ref={ref} {...props} className="u-block hover:u-textDecorationNone">
         <Button
           as="div"
-          className="u-fontMedium"
-          disabled={disabled}
           variant={variant}
+          className={classNames(
+            'Pagination-item u-borderNone',
+          )}
+          disabled={disabled}
           onlyIcon={safeItem || displayName}
+          style={{
+            background,
+            color: disabled ? 'rgba(193, 199, 208, 1)' : undefined,
+          }}
         >
           {children}
         </Button>
@@ -66,6 +79,6 @@ function createButton(name, defaultValue, safeItem, className) {
     }
   };
 }
-export const Prev = createButton('Prev', <Button.Icon><Icon className="u-textLight" name="arrowBack" size="extraSmall" /></Button.Icon>, false, 'Pagination-prev');
+export const Prev = createButton('Prev', <Button.Icon><Icon className="u-textDark900" name="arrowBack" size="extraSmall" /></Button.Icon>, false, 'Pagination-prev');
 export const Ellipsis = createButton('Ellipsis', <Button.Icon><Icon name="more" className="u-textLight" size="extraSmall" /></Button.Icon>, true);
-export const Next = createButton('Next', <Button.Icon><Icon name="arrowForward" className="u-textLight" size="extraSmall" /></Button.Icon>, false, 'Pagination-next');
+export const Next = createButton('Next', <Button.Icon><Icon name="arrowForward" className="u-textDark900" size="extraSmall" /></Button.Icon>, false, 'Pagination-next');

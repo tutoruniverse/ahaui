@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import TabContext from './Context';
@@ -23,11 +23,31 @@ const Item = React.forwardRef(({ className, disabled, eventKey, index, fullWidth
   if (path === context.current) {
     active = true;
   }
+
   const onClick = (e) => {
     e.stopPropagation();
     e.preventDefault();
     context.onSelect(path);
   };
+
+  const textActiveColor = useMemo(() => {
+    switch (context.variant) {
+      case 'dark':
+        return 'u-textNeutral800'
+      default:
+        return 'u-textPrimary'
+    }
+  },[])
+
+  const itemAfterColor = useMemo(() => {
+    switch (context.variant) {
+      case 'dark':
+        return 'u-backgroundNeutral800'
+      default:
+        return 'u-backgroundPrimary'
+    }
+  },[])
+
   return (
     <div
       onClick={disabled ? null : onClick}
@@ -45,7 +65,8 @@ const Item = React.forwardRef(({ className, disabled, eventKey, index, fullWidth
       {active && (
         <div className={classNames(
           'Tab-itemAfter u-zIndex2',
-          'u-positionAbsolute u-backgroundPrimary',
+          'u-positionAbsolute',
+          itemAfterColor,
           visual === 'filled' ? ' u-positionTop' : 'u-positionBottom',
           direction !== 'vertical' ? 'u-heightExtraTiny u-widthFull' : 'u-widthExtraTiny u-heightFull',
         )}
@@ -56,7 +77,7 @@ const Item = React.forwardRef(({ className, disabled, eventKey, index, fullWidth
         {...props}
         className={classNames(
           'u-flexGrow1 u-paddingVerticalTiny md:u-paddingVerticalExtraSmall hover:u-textDecorationNone',
-          active ? 'u-textPrimary' : !disabled && 'u-textGray hover:u-textPrimary',
+          active ? textActiveColor : !disabled && `u-textGray hover:${textActiveColor}`,
           (visual === 'filled' && active) && 'u-backgroundWhite',
           (visual === 'filled' && !active) && 'u-backgroundLightest',
           (visual === 'filled' && (direction !== 'vertical')) && 'u-paddingHorizontalSmall',

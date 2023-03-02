@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import TagsInput from 'react-tagsinput';
 import Tag from 'components/Tag';
 import Context from 'components/Form/Context';
+import TagsInput from './TagInputLib';
 
 
 const propTypes = {

@@ -5,40 +5,17 @@
   text-align: left;
   width: 100%;
 
-  th,
   td {
     padding: 0.75rem;
     vertical-align: top;
-    position: relative;
-
-    &::after {
-      content: '';
-      height: 1px;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: map-deep-get($colors-render, 'background', 'lighter');
-    }
+    border-top: 1px solid map-deep-get($colors-render, 'background', 'lighter');
   }
 
-  thead {
-    th {
-      background-color: white;
-      vertical-align: bottom;
-
-      &::before {
-        content: '';
-        height: 2px;
-        display: block;
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-        background-color: map-deep-get($colors-render, 'background', 'lighter');
-      }
-    }
+  th {
+    padding: 0.75rem;
+    vertical-align: bottom;
+    border-bottom: 1px solid map-deep-get($colors-render, 'background', 'lighter');
+    background-color: white;
   }
 }
 
@@ -65,12 +42,13 @@
 
 // Bordered:
 .Table--bordered {
-  border-width: 0 1px 1px 0;
+  border-width: 1px;
   border-color: map-deep-get($colors-render, 'border', 'default');
+  border-radius: 4px;
   border-style: solid;
 
-  th,
-  td {
+  th:not(:first-child),
+  td:not(:first-child){
     border-left: 1px solid map-deep-get($colors-render, 'border', 'default');
   }
 }

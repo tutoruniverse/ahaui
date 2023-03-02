@@ -31,7 +31,7 @@ const defaultProps = {
   direction: 'horizontal',
   visual: 'default',
 };
-const Tab = React.forwardRef(({ className, children, current, fullWidth, onSelect, direction, visual, ...props }, ref) => {
+const Tab = React.forwardRef(({ className, variant = 'primary', children, current, fullWidth, onSelect, direction, visual, ...props }, ref) => {
   const modifiedChildren = React.Children.map(children, (child, index) => {
     if (!child) {
       return null;
@@ -52,6 +52,7 @@ const Tab = React.forwardRef(({ className, children, current, fullWidth, onSelec
       value={{
         current,
         onSelect,
+        variant,
       }}
     >
       <div

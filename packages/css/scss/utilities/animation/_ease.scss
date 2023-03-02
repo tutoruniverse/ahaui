@@ -3,4 +3,8 @@
   .u-ease#{capitalize($key)} {
     transition-timing-function: #{$value};
   }
+
+  .u-animatedEase#{capitalize($key)} {
+    animation-timing-function: #{$value};
+  }
 }
