@@ -18,12 +18,17 @@ const propTypes = {
   current: PropTypes.string,
   /** Callback fired when the menu item is clicked. */
   onSelect: PropTypes.func,
+  /** 
+   * Enable collapsing its sub menus when an menu item is selected
+   * @default false
+   * */
+  autoCollapse: PropTypes.bool,
 };
 
 const defaultProps = {
-  size: 'medium',
+  size: 'medium'
 };
-const SidebarMenu = React.forwardRef(({ className, children, current, onSelect, size, ...props }, ref) => {
+const SidebarMenu = React.forwardRef(({ className, children, current, onSelect, size, autoCollapse, ...props }, ref) => {
   const modifiedChildren = React.Children.map(children, (child, index) => {
     if (!child) {
       return null;
@@ -33,6 +38,7 @@ const SidebarMenu = React.forwardRef(({ className, children, current, onSelect, 
       child, ({
         level: 1,
         path: path.toString(),
+        autoCollapse,
       })
     );
   });
@@ -41,7 +47,7 @@ const SidebarMenu = React.forwardRef(({ className, children, current, onSelect, 
       value={{
         current,
         onSelect,
-        size,
+        size
       }}
     >
       <div

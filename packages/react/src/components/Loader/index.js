@@ -7,7 +7,7 @@ const propTypes = {
    * Loader size variants
    * @default 'medium'
    * */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['extraSmall', 'small', 'medium', 'large']),
   /** Set the duration of the animation skeleton */
   duration: PropTypes.number,
 };
@@ -17,6 +17,7 @@ const defaultProps = {
 };
 
 const sizes = {
+  extraSmall: 12,
   small: 16,
   medium: 32,
   large: 64,
@@ -35,7 +36,7 @@ const Loader = React.forwardRef(({ className, size, duration, ...props }, ref) =
       className={classNames(
         'Loader',
         'u-roundedInfinity u-border u-borderTopPrimary u-inlineBlock u-spin',
-        size === 'small' ? 'u-borderSmall' : 'u-borderMedium',
+        (size === 'small' || size === 'extraSmall') ? 'u-borderSmall' : 'u-borderMedium',
         className && className
       )}
       style={styles}

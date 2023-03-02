@@ -42,7 +42,7 @@ export { default as Slider } from './components/Slider';
 export { default as Tab } from './components/Tab';
 export { default as Tag } from './components/Tag';
 export { default as TagInput } from './components/TagInput';
-export { toast, default as ToastContainer } from './components/Toast';
+export { toast, DEFAULT_TOAST_CONTAINER_ID, default as ToastContainer } from './components/Toast';
 export { default as Toggle } from './components/Toggle';
 export { default as Tooltip } from './components/Tooltip';
 export { default as TopBanner } from './components/TopBanner';

@@ -1,4 +1,17 @@
+// TODO: Migrate from @import to @use
+// https://sass-lang.com/documentation/at-rules/import
+
 @import "base/info";
+
+// THIRTY LIBRARY, AHA CSS SUPPORT NEXTJS
+// https://nextjs.org/docs/messages/css-npm
+// --------------------------------------------------
+@use "react-calendar/dist/Calendar.css";
+@use "react-date-picker/dist/DatePicker.css";
+@use "@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css";
+@use "react-clock/dist/Clock.css";
+@use "react-time-picker/dist/TimePicker.css";
+
 // FUNCTIONS, MIXINS & VARIABLES
 // --------------------------------------------------
 @import "functions";

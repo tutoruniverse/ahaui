@@ -63,7 +63,13 @@
       }
 
       &:checked ~ #{$this}-label::after {
-        @each $pro, $proval in map-deep-get($forms, 'check', 'box', 'labelAfterSelect') {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'box', 'labelCheckedAfterSelect') {
+          #{$pro}: $proval;
+        }
+      }
+
+      &:indeterminate ~ #{$this}-label::after {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'box', 'labelIndeterminateAfterSelect') {
           #{$pro}: $proval;
         }
       }
@@ -274,6 +280,7 @@
 
 @include form-feedback('valid', var(--colorPositive), var(--colorFocusPositive));
 @include form-feedback('invalid', var(--colorNegative), var(--colorFocusNegative));
+@include form-feedback('warning', var(--colorWarningDark), var(--colorFocusWarning), false);
 
 select.FormInput {
   &::-ms-expand {

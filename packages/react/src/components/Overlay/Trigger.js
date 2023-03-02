@@ -67,9 +67,10 @@ const defaultProps = {
   popperConfig: {},
   trigger: ['hover', 'focus'],
   hoverOverlay: false,
+  targetRef: null,
 };
 
-const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultShow, popperConfig, hoverOverlay,
+const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultShow, popperConfig, hoverOverlay, targetRef,
   ...props }, ref) => {
   const triggerRef = useRef(ref);
   const [show, setShow] = useState(!!defaultShow);
@@ -150,6 +151,7 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
     }
   }
 
+
   return (
     <>
       {cloneElement(child, { ref: triggerRef, ...triggerProps })}
@@ -163,7 +165,7 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
         }}
         show={show}
         onHide={handleHide}
-        target={triggerRef.current}
+        target={targetRef ? targetRef.current : triggerRef.current}
       >
         {props => overlay({ ...props, ...overlayProps })}
       </OverlayBase>

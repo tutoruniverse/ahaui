@@ -23,35 +23,62 @@ const propTypes = {
     PropTypes.string,
     PropTypes.func,
   ]),
+  /** Highlight the submenu if current path matches one of the items inside this list **/
+  hightLightWhitelist: PropTypes.array,
+  /** 
+   * Enable collapsing the sub menu when its item is selected
+   * @default false
+   *  */
+  autoCollapse: PropTypes.bool,
 };
 const defaultProps = {
 };
 
-const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title, disabled, children, badge, icon, path, index, ...props }, ref) => {
+const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title, disabled, children, badge, icon, path, index, hightLightWhitelist, autoCollapse, ...props }, ref) => {
   let active;
   const context = useContext(TopMenuContext);
 
   if (context.current !== '' && context.current.startsWith(path)) {
     active = true;
   }
+
+  if (hightLightWhitelist?.includes(context.current)) {
+    active = true;
+  }
+
   const [open, setOpen] = useState(false);
 
   const onClick = () => {
     setOpen(!open);
   };
-  const modifiedChildren = React.Children.map(children, (child, index) => {
+  const modifyChildren = (children) => React.Children.map(children, (child, index) => {
     if (!child) {
       return null;
     }
-    const pathIndex = child.props.eventKey || index;
+
+    const childPath = child.props.eventKey || index.toString();
+
+    let modifiedChildPath = '';
+
+    if (child.props.separated) {
+      modifiedChildPath = childPath.toString();
+    } else if (childPath.startsWith('#')){
+      modifiedChildPath = `${path}${childPath.toString()}`
+    } else {
+      modifiedChildPath = `${path}.${childPath.toString()}`
+    }
+
     return React.cloneElement(
       child, ({
         isSubItem: true,
         level: level + 1,
-        path: `${path}.${pathIndex.toString()}`,
+        path: modifiedChildPath,
+        onCloseSubMenu: autoCollapse && (() => setOpen(false))
       })
     );
   });
+
+  const modifiedChildren = modifyChildren(children);
   const menuProps = {
     ...props,
     show: open,

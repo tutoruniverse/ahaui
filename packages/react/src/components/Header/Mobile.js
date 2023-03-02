@@ -60,7 +60,7 @@ const HeaderMobile = React.forwardRef((uncontrolledProps, ref) => {
           className && className,
         )}
       >
-        <div className="u-widthFull u-maxWidthFull u-marginVerticalAuto">
+        <div className="Container u-widthFull u-maxWidthFull u-marginVerticalAuto">
           <div className="HeaderMobile-inner u-flex u-flexColumn u-widthFull u-positionRelative">
             {children}
           </div>
@@ -78,24 +78,24 @@ const HeaderContext = React.forwardRef(({ className, children, classNameToggle, 
       ref={ref}
       {...props}
       className={classNames(
-        'HeaderMobile-context u-flex u-alignItemsCenter u-widthFull u-paddingRightSmall',
+        'HeaderMobile-context u-flex u-alignItemsCenter u-widthFull',
         className && className,
       )}
     >
+      {children}
       {hasDropContext && (
       <div
         ref={setToggle}
         onClick={toggle}
         role="button"
         className={classNames(
-          'HeaderMobile-toggleButton u-marginRightSmall u-paddingVerticalExtraSmall u-paddingHorizontalSmall',
+          'HeaderMobile-toggleButton u-marginLeftSmall u-paddingVerticalExtraSmall u-paddingHorizontalSmall',
           classNameToggle && classNameToggle
         )}
       >
         <Icon name={showMenu ? 'close' : 'menu'} size="medium" />
       </div>
       )}
-      {children}
     </div>
   );
 });

@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import DatePickerBase from 'react-date-picker';
+import DatePickerBase from 'react-date-picker/dist/entry.nostyle';
+// import "react-date-picker/dist/DatePicker.css";
+// import "react-calendar/dist/Calendar.css";
 import Context from 'components/Form/Context';
 import Icon from 'components/Icon';
 import DatePickerBaseV2 from 'components/Calender/v2/DatePicker/DatePicker';

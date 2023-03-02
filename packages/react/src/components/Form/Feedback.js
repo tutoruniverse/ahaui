@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const propTypes = {
   /** Specify whether the feedback is for valid or invalid fields */
-  type: PropTypes.oneOf(['valid', 'invalid']),
+  type: PropTypes.oneOf(['valid', 'invalid', 'warning']),
   /**
    * Set Form.Feedback visible
    */

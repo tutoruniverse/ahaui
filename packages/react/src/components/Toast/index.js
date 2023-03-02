@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { ToastContainer as ToastContainerBase, toast as toastBase } from 'react-toastify';
 import Icon from 'components/Icon';
 
+export const DEFAULT_TOAST_CONTAINER_ID = 'DEFAULT_TOAST_CONTAINER_ID';
+
 const propTypes = {
   /**
    * One of top-right, top-center, top-left, bottom-right, bottom-center, bottom-left
@@ -39,15 +41,19 @@ const defaultProps = {
 
 const ToastContainer = React.forwardRef(({ position, dismissible, autoDismiss, ...props }, ref) => (
   <ToastContainerBase
+    containerId={DEFAULT_TOAST_CONTAINER_ID}
+    enableMultiContainer={false}
     ref={ref}
-    {...props}
     autoClose={autoDismiss}
     position={position}
     closeOnClick
     pauseOnHover
     newestOnTop
     bodyClassName="u-text200"
-    closeButton={dismissible ? ({ closeToast }) => <Icon onClick={closeToast} name="close" size="tiny" className="Toastify__close-button u-flexShrink0" /> : false}
+    closeButton={dismissible ? ({ closeToast }) => <Icon onClick={closeToast} name="close" size="extraSmall" className="Toastify__close-button u-flexShrink0" /> : false}
+    theme="colored"
+    icon={false}
+    {...props}
   />
 ));
 export const toast = toastBase;

@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"name": "♫ aha-css",
+			"path": "../packages/aha-css"
+		},
+		{
+			"name": "♫ aha-react",
+			"path": "../packages/aha-react"
+		}
+	],
+	"settings": {
+		"emmet.includeLanguages": {
+			"javascript": "javascriptreact"
+		},
+		"editor.tabSize": 2,
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true,
+		"files.trimFinalNewlines": true,
+		"editor.wordWrap": "on",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"eslint.nodeEnv": "development",
+		"typescript.tsdk": "../node_modules/typescript/lib"
+	}
+}
