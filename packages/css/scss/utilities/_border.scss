@@ -21,7 +21,7 @@
   border-left: map-deep-get($borders, 'width', 'tiny') solid #{map-deep-get($colors-render, 'border', 'default')};
 }
 
-$border-breakpoints: map-remove($grid-breakpoints, 'sm', 'lg', 'xxl');
+$border-breakpoints: $grid-breakpoints;
 
 @each $breakpoint in map-keys($border-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
