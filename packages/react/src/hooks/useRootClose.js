@@ -69,23 +69,29 @@ function useRootClose(
   useEffect(() => {
     if (disabled || ref == null) return undefined;
 
+    const root = window.document.querySelector('#root') || document;
+
+    if (!root) {
+      return
+    }
+
     // Use capture for this listener so it fires before React's listener, to
     // avoid false positives in the contains() check below if the target DOM
     // element is removed in the React mouse callback.
     const removeMouseCaptureListener = listen(
-      document,
+      root,
       clickTrigger,
       handleMouseCapture,
       true,
     );
 
-    const removeMouseListener = listen(document, clickTrigger, handleMouse);
-    const removeKeyupListener = listen(document, 'keyup', handleKeyUp);
+    const removeMouseListener = listen(root, clickTrigger, handleMouse);
+    const removeKeyupListener = listen(root, 'keyup', handleKeyUp);
 
     let mobileSafariHackListeners = [];
-    if ('ontouchstart' in document.documentElement) {
+    if ('ontouchstart' in root) {
       mobileSafariHackListeners = [].slice
-        .call(document.body.children)
+        .call(root.children)
         .map(el => listen(el, 'mousemove', noop));
     }
 

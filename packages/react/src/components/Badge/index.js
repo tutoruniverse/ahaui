@@ -41,7 +41,7 @@ const variantsTextClassName = {
 };
 
 const variantsClassName = {
-  default: 'u-texDark hover:u-texDark u-backgroundUltraLight',
+  default: 'u-textDark hover:u-textDark u-backgroundUltraLight',
   white: 'u-textDark hover:u-textDark u-backgroundWhite',
   black: 'u-textWhite hover:u-textWhite u-backgroundBlack',
   primary: 'u-backgroundPrimary',

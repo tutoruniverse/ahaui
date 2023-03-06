@@ -52,6 +52,12 @@ const propTypes = {
    * @default false
    * */
   isInvalid: PropTypes.bool,
+  /**
+   * Add "warning" styles to the control and accompanying label
+   * @default false
+   * */
+  isWarning: PropTypes.bool,
+
   /** Remove border all state */
   isBorderNone: PropTypes.bool,
 
@@ -68,7 +74,7 @@ const propTypes = {
 
 const defaultProps = {
 };
-const Input = React.forwardRef(({ className, sizeInput, required, id, type, disabled, isValid, isInvalid, isBorderNone, isBackgroundReset, as: Component = 'input', ...props }, ref) => {
+const Input = React.forwardRef(({ className, sizeInput, required, id, type, disabled, isValid, isInvalid, isWarning, isBorderNone, isBackgroundReset, as: Component = 'input', ...props }, ref) => {
   const { controlId, sizeControl, requiredControl, disabledControl } = useContext(Context);
   warning(
     controlId == null || !id,
@@ -89,6 +95,7 @@ const Input = React.forwardRef(({ className, sizeInput, required, id, type, disa
         isBorderNone && 'is-borderNone',
         isBackgroundReset && 'is-backgroundReset',
         isInvalid && 'is-invalid',
+        isWarning && 'is-warning',
       )}
       disabled={disabledOri}
       required={requiredSet}

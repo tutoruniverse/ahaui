@@ -4,7 +4,7 @@
 // TypeScript Version: 2.8
 
 declare module '@ahaui/react' {
-  import React from 'react';
+  import React, { HTMLAttributeAnchorTarget, HTMLAttributeReferrerPolicy, HTMLProps } from 'react';
   import { TextareaAutosizeProps } from 'react-textarea-autosize';
   import { ReactNodeLike } from 'prop-types';
   import { CalendarProps as ReactCalendarProps } from 'react-calendar';
@@ -300,7 +300,7 @@ declare module '@ahaui/react' {
   ): EventHandler;
 
   export interface AccordionProps extends HTMLBaseProps {
-    activeKey: string;
+    activeKey?: string;
   }
   export const Accordion: RefForwardingComponent<'div', AccordionProps> & {
     Toggle: RefForwardingComponent<'div', AccordionToggleProps>;
@@ -316,6 +316,20 @@ declare module '@ahaui/react' {
     Note: RefForwardingComponent<'div', HTMLBaseProps>;
   };
 
+  export interface CustomAvatarProps extends ImageBaseProps {
+    as?: React.ElementType;
+    src: string;
+    size:
+      | 'extraSmall'
+      | 'small'
+      | 'medium'
+      | 'large'
+      | 'extraLarge'
+      | 'extraLargePlus'
+      | 'huge';
+    text?: string;
+  }
+
   export interface AvatarProps extends ImageBaseProps {
     as?: React.ElementType;
     name?: string;
@@ -330,7 +344,7 @@ declare module '@ahaui/react' {
     text?: string;
   }
 
-  export const Avatar: React.FC<AvatarProps>;
+  export const Avatar: React.FC<AvatarProps | CustomAvatarProps>;
 
   export interface BadgeProps extends HTMLBaseProps {
     variant?:
@@ -418,9 +432,14 @@ declare module '@ahaui/react' {
     nonUppercase?: boolean;
     onlyIcon?: boolean;
     textClassName?: string;
+    // TODO: Should define separated type for buttons
+    href?: string;
+    target?: HTMLAttributeAnchorTarget;
   }
   export const Button: React.FC<ButtonProps> & {
     Icon: React.FC<HTMLBaseProps>;
+    // TODO: is this work?
+    // Icon: React.FC<HTMLBaseProps> & React.ComponentPropsWithRef;
     Label: React.FC<HTMLBaseProps>;
     Group: typeof ButtonGroup;
   };
@@ -513,6 +532,7 @@ declare module '@ahaui/react' {
   };
 
   export interface CollapseProps extends HTMLBaseProps {
+    // in: boolean;
     eventKey?: string;
     timeout?: number;
     dimension?: 'height' | 'width' | FuncType;
@@ -525,6 +545,7 @@ declare module '@ahaui/react' {
 
   export interface ComposerInputProps extends TextareaAutosizeProps {
     className?: string;
+    // ref: React.Ref<any>;
   }
   export interface ComposerProps extends HTMLBaseProps {
     inputProps?: ComposerInputProps;
@@ -640,6 +661,7 @@ declare module '@ahaui/react' {
   export interface FormBaseProps {
     isValid?: boolean;
     isInvalid?: boolean;
+    isWarning?: boolean;
     sizeInput?: InputSize;
     placeholder?: string;
     disabled?: boolean;
@@ -653,7 +675,7 @@ declare module '@ahaui/react' {
     inline?: boolean;
   }
   export interface FormFeedbackProps extends HTMLBaseProps {
-    type: 'valid' | 'invalid';
+    type: 'valid' | 'invalid' | 'warning';
     visible?: boolean;
   }
   export interface FormFileProps extends FormBaseProps, InputBaseProps {
@@ -698,7 +720,10 @@ declare module '@ahaui/react' {
     Group: React.FC<FormGroupProps>;
     Input: React.FC<FormInputProps>;
     Label: React.FC<FormLabelProps>;
-    InputGroup: React.FC<HTMLBaseProps>;
+    InputGroup: React.FC<HTMLBaseProps> & {
+      Append: React.FC<HTMLBaseProps>;
+      Text: React.FC<HTMLBaseProps>;
+    };
     Select: React.FC<FormSelectProps>;
   };
   export interface HeaderProps extends BasicWithAsProps {
@@ -719,7 +744,7 @@ declare module '@ahaui/react' {
     show?: boolean;
     showMenu?: boolean;
     hasDropContext?: boolean;
-    onToggle?: () => void;
+    onToggle?: (show: boolean) => void;
   }
   export const HeaderMobile: React.FC<HeaderMobileProps> & {
     Main: React.FC<HTMLBaseProps>;
@@ -729,7 +754,8 @@ declare module '@ahaui/react' {
     DropContext: React.FC<HTMLBaseProps>;
   };
 
-  export interface IconProps extends HTMLBaseProps {
+  export interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {
+  // export interface IconProps extends React.HTMLAttributes<HTMLElement> {
     name?: IconType;
     size?:
       | 'tiny'
@@ -742,23 +768,26 @@ declare module '@ahaui/react' {
       | 'huge';
 
     path?: string;
-    style?: React.CSSProperties;
   }
   export const Icon: React.FC<IconProps>;
 
   export interface LoaderProps extends HTMLBaseProps {
-    size?: InputSize;
+    size?: InputSize | 'extraSmall';
     duration?: number;
   }
   export const Loader: React.FC<LoaderProps>;
 
   export interface LogoProps extends ImageBaseProps {
     name?: string;
+    as?: React.ElementType;
   }
   export const Logo: React.FC<LogoProps>;
 
   export interface MediaProps extends MediaBaseProps {
     aspectRatio?: 'square' | 'classic' | 'wide' | 'cinema';
+    ref: React.Ref<any>;
+    as?: string;
+    allow?: string;
   }
   export const Media: React.FC<MediaProps>;
 
@@ -766,6 +795,7 @@ declare module '@ahaui/react' {
     type?: 'form' | 'system';
     variant?: 'information' | 'positive' | 'warning' | 'negative';
     dismissible?: boolean;
+    disabled?: boolean;
     show?: boolean;
     onClose?: () => void;
   }
@@ -818,24 +848,12 @@ declare module '@ahaui/react' {
     Item: React.FC<MultiStepsItemProps>;
   };
 
-  interface OverlayHTMLBaseProps extends HTMLBaseProps {
-    children: React.ReactNode;
+  interface OverlayProps extends HTMLBaseProps {
     popperConfig?: PopperOptions;
     placement?: PopperPlacement;
     rootClose?: boolean;
     rootCloseEvent?: string;
     rootCloseDisabled?: boolean;
-  }
-  export type OverlayTriggerEvent = 'click' | 'hover' | 'focus';
-  export interface OverlayTriggerProps extends OverlayHTMLBaseProps {
-    trigger?: OverlayTriggerEvent | OverlayTriggerEvent[];
-    delay?: number | { show: number; hide: number };
-    hoverOverlay?: boolean;
-    defaultShow?: boolean;
-    overlay: FuncType | React.ReactNode;
-  }
-
-  export interface OverlayProps extends OverlayHTMLBaseProps {
     show?: boolean;
     target?: React.RefObject<HTMLElement>;
     container?: HTMLElement;
@@ -843,6 +861,16 @@ declare module '@ahaui/react' {
     containerPadding?: number;
     onHide?: () => void;
   }
+  export type OverlayTriggerEvent = 'click' | 'hover' | 'focus';
+  export interface OverlayTriggerProps extends OverlayProps {
+    trigger?: OverlayTriggerEvent | OverlayTriggerEvent[];
+    delay?: number | { show: number; hide: number };
+    hoverOverlay?: boolean;
+    defaultShow?: boolean;
+    overlay: FuncType | React.ReactNode;
+    targetRef?: React.RefObject<HTMLElement>;
+  }
+
   export const Overlay: React.FC<OverlayProps> & {
     Trigger: React.FC<OverlayTriggerProps>;
   };
@@ -919,6 +947,7 @@ declare module '@ahaui/react' {
     disabled?: boolean;
     role?: string;
     tabIndex?: number | string;
+    target?: string;
   }
   export const SafeAnchor: React.FC<SafeAnchorProps>;
 
@@ -956,15 +985,20 @@ declare module '@ahaui/react' {
     icon?: IconType;
     badge?: string | FuncType;
     size?: 'small' | 'medium';
+    separated?: boolean;
+    onCloseSubMenu?: () => void;
   }
 
   export interface SidebarMenuSubMenuProps extends SidebarMenuItemProps {
     title: string;
+    hightLightWhitelist?: string[];
+    autoCollapse?: boolean;
   }
   export interface SidebarMenuProps extends BasicWithAsProps {
     size?: 'small' | 'medium';
     current?: string;
     onSelect?: (eventKey: string) => void;
+    autoCollapse?: boolean;
   }
 
   export const SidebarMenu: React.FC<SidebarMenuProps> & {
@@ -1053,6 +1087,7 @@ declare module '@ahaui/react' {
     fullWidth?: boolean;
     direction?: 'horizontal' | 'vertical';
     onSelect?: (eventKey: string) => void;
+    variant?: 'dark' | 'primary';
     visual?: 'default' | 'filled';
   }
   export const Tab: React.FC<TabProps> & {
@@ -1103,6 +1138,7 @@ declare module '@ahaui/react' {
   }
   export const ToastContainer: React.FC<ToastContainerProps>;
   export const toast: typeof toastBase;
+  export const DEFAULT_TOAST_CONTAINER_ID: string;
 
   export interface ToggleProps extends HTMLBaseProps {
     checked?: boolean;
@@ -1138,13 +1174,18 @@ declare module '@ahaui/react' {
     eventKey?: string;
     disabled?: boolean;
     badge?: string | FuncType;
+    separated?: boolean;
+    onCloseSubMenu?: () => void;
   }
   export interface TopMenuSubMenuProps extends TopMenuItemProps {
     title: string;
+    hightLightWhitelist?: string[];
+    autoCollapse?: boolean;
   }
   export interface TopMenuProps extends BasicWithAsProps {
     current?: string;
     onSelect?: (eventKey: string) => void;
+    autoCollapse?: boolean;
   }
   export const TopMenu: React.FC<TopMenuProps> & {
     Item: React.FC<TopMenuItemProps>;
