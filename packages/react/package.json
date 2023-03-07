@@ -1,6 +1,6 @@
 {
-  "name": "@ahaui/react",
-  "version": "2.1.5",
+  "name": "@ahaui/react3",
+  "version": "3.0.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "types/index.d.ts",
