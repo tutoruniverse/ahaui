@@ -1,4 +1,4 @@
-import { AssetPlugin } from '@ahaui/react';
+import { AssetPlugin } from '@ahaui/react3';
 import { requireAllSVGs } from './utils/svg';
 
 const Icons = [

@@ -33,8 +33,8 @@ exports.onCreateWebpackConfig = function onCreateWebpackConfig({
       alias: {
         react: path.resolve(__dirname, "../../node_modules/react"),
         "react-dom": path.resolve(__dirname, "../../node_modules/react-dom"),
-        "@ahaui/react": path.resolve(__dirname, "../../packages/react/src/"),
-        "@ahaui/css": path.resolve(__dirname, "../../packages/css/"),
+        "@ahaui/react3": path.resolve(__dirname, "../../packages/react/src/"),
+        "@ahaui/css3": path.resolve(__dirname, "../../packages/css/"),
         src: path.resolve(__dirname, "./src"),
       },
     },

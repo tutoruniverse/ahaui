@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import copy from "copy-text-to-clipboard";
-import { Tooltip, Overlay, Icon } from "@ahaui/react";
+import { Tooltip, Overlay, Icon } from "@ahaui/react3";
 
 const COPY_IMPORT_TEXT = "Copy import code";
 const COPIED_IMPORT_TEXT = "Copied!";
@@ -8,7 +8,7 @@ const COPIED_IMPORT_TEXT = "Copied!";
 const CopyImport = ({ name }) => {
   const [text, setText] = useState(COPY_IMPORT_TEXT);
   const textToCopy = useMemo(
-    () => `import { ${name} } from '@ahaui/react'`,
+    () => `import { ${name} } from '@ahaui/react3'`,
     [name]
   );
 
@@ -49,7 +49,7 @@ export default ({ name }) => (
       {`{ ${name} }`}
       &nbsp;
       <span className="u-textPurple300">from</span>
-      &nbsp; '@ahaui/react'
+      &nbsp; '@ahaui/react3'
     </code>
     <CopyImport name={name} />
   </>

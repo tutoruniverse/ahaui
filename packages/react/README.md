@@ -17,9 +17,9 @@
 </p>
 
 ## Status
-![npm](https://img.shields.io/npm/dt/@ahaui/react)
-![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/react?label=Size)
-[![npm version](https://img.shields.io/npm/v/@ahaui/react)](https://www.npmjs.com/package/@ahaui/react)
+![npm](https://img.shields.io/npm/dt/@ahaui/react3)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/react3?label=Size)
+[![npm version](https://img.shields.io/npm/v/@ahaui/react3)](https://www.npmjs.com/package/@ahaui/react3)
 
 
 
@@ -27,22 +27,22 @@
 
 ### Installation
 
-You have to install both `@ahaui/react` and `@ahaui/css`
+You have to install both `@ahaui/react3` and `@ahaui/css3`
 
 ```sh
 # With npm
-npm install @ahaui/react @ahaui/css
+npm install @ahaui/react3 @ahaui/css3
 
 # Or with yarn
-yarn add @ahaui/react @ahaui/css
+yarn add @ahaui/react3 @ahaui/css3
 ```
 
 ### Usage
 
 ```jsx
-import '@ahaui/css/dist/index.min.css';
+import '@ahaui/css3/dist/index.min.css';
 import React from 'react';
-import { Button } from '@ahaui/react';
+import { Button } from '@ahaui/react3';
 
 function Example() {
     const onButtonClick = () => {
@@ -64,7 +64,7 @@ You can customize specific Aha React Components via plugins!
 For now, to provide your custom assets to [Logo](./src/components/Logo/index.js), [Avatar](./src/components/Avatar/index.js), [EmptyState](./src/components/Logo/index.js), you can use [AssetPlugin](./src/plugins/AssetPlugin.js).
 
 ```jsx
-import { AssetPlugin, Plugins, Logo } from '@ahaui/react';
+import { AssetPlugin, Plugins, Logo } from '@ahaui/react3';
 
 const LogoAssetsPlugin = new AssetPlugin({
     prefix: 'logo',

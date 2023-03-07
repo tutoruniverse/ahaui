@@ -26,7 +26,7 @@ module.exports = {
         config: {
           resolve: {
             alias: {
-              '@ahaui/react': path.resolve(__dirname, '../../packages/react/src'),
+              '@ahaui/react3': path.resolve(__dirname, '../../packages/react/src'),
             },
           },
         },

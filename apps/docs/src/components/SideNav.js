@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Collapse, Logo, SafeAnchor, Icon, createBlock } from "@ahaui/react";
+import { Collapse, Logo, SafeAnchor, Icon, createBlock } from "@ahaui/react3";
 import { Link } from "gatsby";
 import Menu from "./Menu";
 import AlgoliaSearch from "./AlgoliaSearch";

@@ -11,7 +11,7 @@ import {
 } from 'react-instantsearch-dom';
 import { Link } from 'gatsby';
 import algoliasearch from 'algoliasearch/lite';
-import { Form,createBlock } from '@ahaui/react';
+import { Form,createBlock } from '@ahaui/react3';
 
 
 const Root = createBlock('InstantSearchRoot u-positionRelative');
@@ -82,7 +82,7 @@ const Input = connectSearchBox(({ refine, indexContextValue, currentRefinement, 
       {...rest}
       />
   </Form>
-));  
+));
 const Results = connectStateResults(
   ({ searching, searchState: state, searchResults: res }) => (searching && 'Searching...')
     || (res && res.nbHits === 0 && `No results for '${state.query}'`),

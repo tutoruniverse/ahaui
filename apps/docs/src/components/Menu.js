@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StaticQuery, graphql, navigate } from 'gatsby';
 import { startCase, sortBy } from 'lodash';
-import { SidebarMenu } from '@ahaui/react';
+import { SidebarMenu } from '@ahaui/react3';
 import ahaReactConfig from '../../config';
 
 const flatten = arr => arr.map(({ node: { frontmatter, description, parent, subTitle, ...rest } }) => {

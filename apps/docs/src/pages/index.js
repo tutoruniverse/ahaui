@@ -1,4 +1,4 @@
-import { Button } from "@ahaui/react";
+import { Button } from "@ahaui/react3";
 import React from "react";
 import ReactMD from "react-markdown";
 import { Link } from "gatsby";
@@ -40,11 +40,11 @@ export default withLayout(
                   <Link to="/release-notes/" className="hover:u-textDecorationNone">
                     {process.env.GATSBY_APP_ENV === "dev" ? (
                       <ReactMD
-                        source={`![npm (scoped with tag)](https://img.shields.io/npm/v/@ahaui/react/insiders?color=%23ED6200&label=React&style=flat-square) ![npm (scoped with tag)](https://img.shields.io/npm/v/@ahaui/css/insiders?color=%23ED6200&label=CSS&style=flat-square)`}
+                        source={`![npm (scoped with tag)](https://img.shields.io/npm/v/@ahaui/react3/insiders?color=%23ED6200&label=React&style=flat-square) ![npm (scoped with tag)](https://img.shields.io/npm/v/@ahaui/css3/insiders?color=%23ED6200&label=CSS&style=flat-square)`}
                       />
                     ) : (
                       <ReactMD
-                        source={`![npm](https://img.shields.io/npm/v/@ahaui/css?label=CSS&color=%23375DE7&style=flat-square) ![npm](https://img.shields.io/npm/v/@ahaui/react?label=React&color=%23375DE7&style=flat-square)`}
+                        source={`![npm](https://img.shields.io/npm/v/@ahaui/css3?label=CSS&color=%23375DE7&style=flat-square) ![npm](https://img.shields.io/npm/v/@ahaui/react3?label=React&color=%23375DE7&style=flat-square)`}
                       />
                     )}
                   </Link>
