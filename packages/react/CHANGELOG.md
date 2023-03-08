@@ -1,8 +1,9 @@
-## Release 2.1.6 ( Preview )
+## Release 2.1.6
 
 ### Fixed
 
 - SidebarMenu: `SidebarMenu.SubMenu` `disable` state style
+- Remove Type definitions in `package.json`
 
 ## Release 2.1.0
 
