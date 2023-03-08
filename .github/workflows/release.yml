@@ -1,4 +1,4 @@
-name: Release React
+name: Release
 
 on:
   workflow_dispatch:
