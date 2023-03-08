@@ -1,4 +1,2 @@
-/config
-/scripts
 **/*.d.ts
-*.spec.js
+**/*.spec.js

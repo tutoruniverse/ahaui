@@ -1,16 +1,56 @@
-@each $prop in (auto, hidden, scroll, overlay, visible, unset) {
+@each $prop in (auto, hidden, clip, scroll, overlay, visible, unset) {
   .u-overflow#{capitalize($prop)} {
     overflow: $prop;
   }
 }
 
-@each $prop in (auto, hidden, scroll, visible) {
+@each $prop in (auto, hidden, scroll, visible, clip) {
   .u-overflowVertical#{capitalize($prop)} {
     overflow-y: $prop;
   }
 
   .u-overflowHorizontal#{capitalize($prop)} {
     overflow-x: $prop;
+  }
+}
+
+.u-isolate {
+  isolation: isolate;
+}
+
+.u-isolateAuto {
+  isolation: auto;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      @each $prop in (auto, hidden, clip, scroll, overlay, visible, unset) {
+        .#{$infix}\:u-overflow#{capitalize($prop)} {
+          overflow: $prop;
+        }
+      }
+
+      @each $prop in (auto, hidden, scroll, visible, clip) {
+        .#{$infix}\:u-overflowVertical#{capitalize($prop)} {
+          overflow-y: $prop;
+        }
+
+        .#{$infix}\:u-overflowHorizontal#{capitalize($prop)} {
+          overflow-x: $prop;
+        }
+      }
+
+      .#{$infix}\:u-isolate {
+        isolation: isolate;
+      }
+
+      .#{$infix}\:u-isolateAuto {
+        isolation: auto;
+      }
+    }
   }
 }
 

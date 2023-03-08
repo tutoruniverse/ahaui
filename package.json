@@ -1,17 +1,26 @@
 {
   "name": "ahaui",
-  "version": "2.0.3",
+  "version": "2.1.6",
   "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=./packages/react --filter=./packages/css --parallel",
+    "build:css": "turbo run build  --filter=./packages/css",
+    "build:icons": "turbo run build  --filter=./packages/icons",
+    "build:react": "turbo run build  --filter=./packages/react",
+    "build:docs": "turbo run build --filter=./apps/docs",
     "dev": "turbo run dev --parallel",
+    "dev:docs": "turbo run dev --filter=./apps/docs",
+    "dev:css": "turbo run dev  --filter=./packages/css",
+    "dev:icons": "turbo run dev  --filter=./packages/icons",
+    "dev:react": "turbo run dev  --filter=./packages/react",
     "lint": "turbo run lint",
     "deploy": "turbo run deploy",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "version": "turbo changeset version"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
@@ -34,6 +43,7 @@
     "babel-runtime": "^6.26.0",
     "eslint": "5.12.0",
     "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "8.5.0",
     "eslint-config-react-app": "4.0.0",
     "eslint-loader": "2.1.1",
     "eslint-plugin-flowtype": "^2.2.0",

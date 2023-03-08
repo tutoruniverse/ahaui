@@ -1,3 +1,51 @@
+## Release 2.1.6 ( Preview )
+
+### Fixed
+
+- SCSS
+  - Text: correct line-height of text. `u-text100 wrong line-height`
+  - Form: separate `disabled` and `readonly` styles
+  - Form.Check: mark and circle styles
+
+## Release 2.1.5
+
+### Fixed
+
+- SCSS:
+  - Form: update disabled style input
+- Root:
+  - Fix color of Href in hover state
+
+## Release 2.1.2
+
+### Fixed
+
+- SCSS:
+  - Missing import utilities in index
+  - Wrong color of Neutral900
+
+## Release 2.1.0
+
+### Fixed
+
+- SCSS:
+  - Form: update disabled style checkbox and radio button
+
+### Updated
+
+- CSSUtilities:
+  - Display: support grid
+  - Flex: flexBasis, placeContent, placeSelf, placeItems, justifyItems, justifySelf
+  - Object: object-position
+  - Overflow: isolate, and support responsive
+  - Size: size content and support responsive
+
+### Added
+
+- CSSUtilities:
+  - Align: vertical-align property
+  - Grid: basic grid box
+
 ## Release 2.0.5
 
 ### Fixed

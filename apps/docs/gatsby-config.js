@@ -79,6 +79,13 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: path.resolve(__dirname, "../../packages/css/CHANGELOG.md"),
+        name: "CHANGELOG",
+      },
+    },
+    {
       resolve: "gatsby-transformer-react-docgen",
       options: {
         resolver: require("./resolveHocComponents"),

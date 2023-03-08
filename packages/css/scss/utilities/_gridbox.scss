@@ -1,0 +1,251 @@
+@for $i from 1 through 12 {
+  .u-gridColumns#{$i} {
+    grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+  }
+}
+
+.u-gridColumnAuto {
+  grid-column: auto;
+}
+
+.u-gridColumnFull {
+  grid-column: 1 / -1;
+}
+
+@for $i from 1 through 12 {
+  .u-gridColumn#{$i} {
+    grid-column: span #{$i} / span #{$i};
+  }
+}
+
+.u-gridColumnStartAuto {
+  grid-column-start: auto;
+}
+
+.u-gridColumnEndAuto {
+  grid-column-end: auto;
+}
+
+@for $i from 1 through 13 {
+  .u-gridColumnStar#{$i} {
+    grid-column: span #{$i};
+  }
+
+  .u-gridColumnEnd#{$i} {
+    grid-column: span #{$i};
+  }
+}
+
+@for $i from 1 through 6 {
+  .u-gridRows#{$i} {
+    grid-template-rows: repeat(#{$i}, minmax(0, 1fr));
+  }
+
+  .u-gridRow#{$i} {
+    grid-row: span #{$i} / span #{$i};
+  }
+}
+
+.u-gridRowAuto {
+  grid-row: auto;
+}
+
+.u-gridRowFull {
+  grid-row: 1 / -1;
+}
+
+.u-gridRowStartAuto {
+  grid-row-start: auto;
+}
+
+.u-gridRowEndAuto {
+  grid-row-end: auto;
+}
+
+@for $i from 1 through 13 {
+  .u-gridRowStar#{$i} {
+    grid-row: span #{$i};
+  }
+
+  .u-gridRowEnd#{$i} {
+    grid-row: span #{$i};
+  }
+}
+
+.u-gridFlowRow {
+  grid-auto-flow: row;
+}
+
+.u-gridFlowColumn {
+  grid-auto-flow: column;
+}
+
+.u-gridFlowRowDense {
+  grid-auto-flow: row dense;
+}
+
+.u-gridFlowColumnDense {
+  grid-auto-flow: column dense;
+}
+
+.u-gridAutoColumnsAuto {
+  grid-auto-columns: auto;
+}
+
+.u-gridAutoColumnsMin {
+  grid-auto-columns: min-content;
+}
+
+.u-gridAutoColumnsMax {
+  grid-auto-columns: max-content;
+}
+
+.u-gridAutoColumnsFr {
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+.u-gridAutoRowsAuto {
+  grid-auto-rows: auto;
+}
+
+.u-gridAutoRowsMin {
+  grid-auto-rows: min-content;
+}
+
+.u-gridAutoRowsMax {
+  grid-auto-rows: max-content;
+}
+
+.u-gridAutoRowsFr {
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      @for $i from 1 through 12 {
+        .#{$infix}\:u-gridColumns#{$i} {
+          grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+        }
+      }
+
+      .#{$infix}\:u-gridColumnAuto {
+        grid-column: auto;
+      }
+
+      .#{$infix}\:u-gridColumnFull {
+        grid-column: 1 / -1;
+      }
+
+      @for $i from 1 through 12 {
+        .#{$infix}\:u-gridColumn#{$i} {
+          grid-column: span #{$i} / span #{$i};
+        }
+      }
+
+      .#{$infix}\:u-gridColumnStartAuto {
+        grid-column-start: auto;
+      }
+
+      .#{$infix}\:u-gridColumnEndAuto {
+        grid-column-end: auto;
+      }
+
+      @for $i from 1 through 13 {
+        .#{$infix}\:u-gridColumnStar#{$i} {
+          grid-column: span #{$i};
+        }
+
+        .#{$infix}\:u-gridColumnEnd#{$i} {
+          grid-column: span #{$i};
+        }
+      }
+
+      @for $i from 1 through 6 {
+        .#{$infix}\:u-gridRows#{$i} {
+          grid-template-rows: repeat(#{$i}, minmax(0, 1fr));
+        }
+
+        .#{$infix}\:u-gridRow#{$i} {
+          grid-row: span #{$i} / span #{$i};
+        }
+      }
+
+      .#{$infix}\:u-gridRowAuto {
+        grid-row: auto;
+      }
+
+      .#{$infix}\:u-gridRowFull {
+        grid-row: 1 / -1;
+      }
+
+      .#{$infix}\:u-gridRowStartAuto {
+        grid-row-start: auto;
+      }
+
+      .#{$infix}\:u-gridRowEndAuto {
+        grid-row-end: auto;
+      }
+
+      @for $i from 1 through 13 {
+        .#{$infix}\:u-gridRowStar#{$i} {
+          grid-row: span #{$i};
+        }
+
+        .#{$infix}\:u-gridRowEnd#{$i} {
+          grid-row: span #{$i};
+        }
+      }
+
+      .#{$infix}\:u-gridFlowRow {
+        grid-auto-flow: row;
+      }
+
+      .#{$infix}\:u-gridFlowColumn {
+        grid-auto-flow: column;
+      }
+
+      .#{$infix}\:u-gridFlowRowDense {
+        grid-auto-flow: row dense;
+      }
+
+      .#{$infix}\:u-gridFlowColumnDense {
+        grid-auto-flow: column dense;
+      }
+
+      .#{$infix}\:u-gridAutoColumnsAuto {
+        grid-auto-columns: auto;
+      }
+
+      .#{$infix}\:u-gridAutoColumnsMin {
+        grid-auto-columns: min-content;
+      }
+
+      .#{$infix}\:u-gridAutoColumnsMax {
+        grid-auto-columns: max-content;
+      }
+
+      .#{$infix}\:u-gridAutoColumnsFr {
+        grid-auto-columns: minmax(0, 1fr);
+      }
+
+      .#{$infix}\:u-gridAutoRowsAuto {
+        grid-auto-rows: auto;
+      }
+
+      .#{$infix}\:u-gridAutoRowsMin {
+        grid-auto-rows: min-content;
+      }
+
+      .#{$infix}\:u-gridAutoRowsMax {
+        grid-auto-rows: max-content;
+      }
+
+      .#{$infix}\:u-gridAutoRowsFr {
+        grid-auto-rows: minmax(0, 1fr);
+      }
+    }
+  }
+}

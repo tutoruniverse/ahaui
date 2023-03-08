@@ -121,7 +121,7 @@ const propTypes = {
     'contact',
     'people',
     'mic',
-    'calendar',,
+    'calendar',
     'micOff',
     'videoCamOff',
     'camera',
@@ -160,6 +160,18 @@ const propTypes = {
     'eight',
     'nine',
     'ten',
+    'logOut',
+    'wallet',
+    'bulb',
+    'home',
+    'call',
+    'launch',
+    'binoculars',
+    'openExternal',
+    'math',
+    'magic',
+    'pause',
+    'hammer',
   ]),
   /** Icon size variants */
   size: PropTypes.oneOf([
@@ -202,37 +214,31 @@ const styles = {
   },
 };
 
-
-const Icon = React.forwardRef(({ className, path, size, name, ...props }, ref) => {
-  const pathOri = path;
-  let nameOri = name;
-  if (pathOri) {
-    nameOri = false;
-  }
-  return (
-    <svg
-      ref={ref}
-      {...props}
-      style={{ ...styles.svg, ...props.style }}
-      width={`${sizes[size]}px`}
-      height={`${sizes[size]}px`}
-      className={classNames(
-        'u-inlineBlock',
-        className && className
-      )}
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path
-        style={styles.path}
-        d={nameOri ? icons[name] : pathOri}
-      />
-    </svg>
-  );
-});
-
+const Icon = React.forwardRef(
+  ({ className, path, size, name, ...props }, ref) => {
+    const pathOri = path;
+    let nameOri = name;
+    if (pathOri) {
+      nameOri = false;
+    }
+    return (
+      <svg
+        ref={ref}
+        {...props}
+        style={{ ...styles.svg, ...props.style }}
+        width={`${sizes[size]}px`}
+        height={`${sizes[size]}px`}
+        className={classNames('u-inlineBlock', className && className)}
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path style={styles.path} d={nameOri ? icons[name] : pathOri} />
+      </svg>
+    );
+  },
+);
 
 Icon.displayName = 'Icon';
 Icon.defaultProps = defaultProps;

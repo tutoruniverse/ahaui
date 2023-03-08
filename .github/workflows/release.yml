@@ -1,4 +1,4 @@
-name: Release CSS
+name: Release
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
 
       - name: Use cached node_modules
         id: cache
@@ -35,8 +35,17 @@ jobs:
         env:
           CI: true
 
-      - name: Publish
-        run: cd packages/css && yarn build && npm publish
+      - name: Build packages
+        run: yarn build
+
+      - name: Publish React package
+        run: cd packages/react && npm publish
+        env:
+          CI: true
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish CSS package
+        run: cd packages/css && npm publish
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

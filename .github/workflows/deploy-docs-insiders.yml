@@ -18,7 +18,8 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - run: yarn install
-      - run: yarn build
+      - run: yarn build:css
+      - run: yarn build:docs
         env:
           GATSBY_ALGOLIA_API_KEY: ${{ secrets.GATSBY_INSIDERS_ALGOLIA_API_KEY }}
           GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_INSIDERS_ALGOLIA_APP_ID }}

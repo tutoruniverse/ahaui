@@ -1,13 +1,11 @@
 {
   "name": "@ahaui/react",
-  "version": "2.1.0",
+  "version": "2.1.6",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "types": "types/index.d.ts",
   "files": [
     "es/*.{js,map}",
     "lib/*.{js,map}",
-    "types/*.{d.ts}",
     "CHANGELOG.md"
   ],
   "scripts": {
@@ -41,7 +39,8 @@
     "react-toastify": "7.0.4",
     "react-transition-group": "4.0.0",
     "uncontrollable": "7.1.1",
-    "warning": "4.0.3"
+    "warning": "4.0.3",
+    "lodash.once": "4.1.1"
   },
   "peerDependencies": {
     "react": "^16.9.0 || 17.x",

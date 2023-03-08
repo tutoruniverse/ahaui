@@ -317,7 +317,7 @@
 // ==========================================================
 // Width and Height:
 // ==========================================================
-.u-minWidth-0 {
+.u-minWidthNone {
   min-width: 0; // for using with the .u-textTruncate (text overflow) by adding to the flex child element.
 }
 
@@ -341,8 +341,40 @@
   min-height: 100vh;
 }
 
+.u-screenMaxHeightFull {
+  max-height: 100vh;
+}
+
 .u-screenWidthFull {
   min-width: 100vw;
+}
+
+.u-screenMaxWidthFull {
+  max-width: 100vw;
+}
+
+.u-heightMinContent {
+  min-height: min-content;
+}
+
+.u-widthMinContent {
+  min-width: min-content;
+}
+
+.u-heightMinFitContent {
+  min-height: fit-content;
+}
+
+.u-heightMaxContent {
+  max-height: min-content;
+}
+
+.u-widthMaxContent {
+  max-width: min-content;
+}
+
+.u-heightMaxFitContent {
+  max-height: fit-content;
 }
 
 // 1. Loop through the $breakpoints to get breakpoint's name,
@@ -380,6 +412,42 @@
 
     .#{$infix}u-heightAuto {
       height: auto;
+    }
+  }
+}
+
+@each $size, $length in $gap-width {
+  .u-gap#{capitalize($size)} {
+    gap: $length;
+  }
+
+  .u-gapColumn#{capitalize($size)} {
+    column-gap: $length;
+  }
+
+  .u-gapRow#{capitalize($size)} {
+    row-gap: $length;
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if $infix != '' {
+      @each $size, $length in $spacers {
+        .#{$infix}\:u-gap#{capitalize($size)} {
+          gap: $length;
+        }
+
+        .#{$infix}\:u-gapColumn#{capitalize($size)} {
+          column-gap: $length;
+        }
+
+        .#{$infix}\:u-gapRow#{capitalize($size)} {
+          row-gap: $length;
+        }
+      }
     }
   }
 }

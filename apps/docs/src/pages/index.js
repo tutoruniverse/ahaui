@@ -1,7 +1,8 @@
 import { Button } from "@ahaui/react";
+import React from "react";
+import ReactMD from "react-markdown";
 import { Link } from "gatsby";
 import withLayout from "../withLayout";
-import ReactMD from "react-markdown";
 
 export default withLayout(
   class HomePage extends React.Component {

@@ -7,7 +7,7 @@
 <h3 align="center">Aha Design System</h3>
 
 ## Status
-
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B21939%2Fgit%40github.com%3Agotitinc%2Fahaui.git.svg?type=shield)](https://app.fossa.com/reports/98bff506-3107-4c8b-8562-e0adb52cc90c)
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fahaui.github.io&label=Documentation)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/gotitinc/ahaui/CodeQL?label=CodeQL)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/gotitinc/ahaui/Lint?label=Lint)
