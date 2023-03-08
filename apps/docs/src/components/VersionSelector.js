@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown, Button, Icon, Loader } from "@ahaui/react3";
+import { Dropdown, Button, Icon, Loader } from "@ahaui/react";
 import classNames from "classnames";
 import ahaReactConfig from "../../config";
 

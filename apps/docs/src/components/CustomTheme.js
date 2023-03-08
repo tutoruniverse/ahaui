@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import { Icon, Dropdown, Button, Loader, Form } from '@ahaui/react3';
+import { Icon, Dropdown, Button, Loader, Form } from '@ahaui/react';
 import copy from 'copy-to-clipboard';
 
 import ColorPicker from './ColorPicker';

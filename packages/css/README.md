@@ -17,10 +17,10 @@
 </p>
 
 ## Status
-![npm](https://img.shields.io/npm/dt/@ahaui/css3)
-[![](https://data.jsdelivr.com/v1/package/npm/@ahaui/css3/badge)](https://www.jsdelivr.com/package/npm/@ahaui/css3)
-![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css3?label=Size)
-[![npm version](https://img.shields.io/npm/v/@ahaui/css3)](https://www.npmjs.com/package/@ahaui/css3)
+![npm](https://img.shields.io/npm/dt/@ahaui/css)
+[![](https://data.jsdelivr.com/v1/package/npm/@ahaui/css/badge)](https://www.jsdelivr.com/package/npm/@ahaui/css)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@ahaui/css?label=Size)
+[![npm version](https://img.shields.io/npm/v/@ahaui/css)](https://www.npmjs.com/package/@ahaui/css)
 
 
 ## Quick start
@@ -30,7 +30,7 @@
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@ahaui/css3/dist/index.min.css"
+  href="https://cdn.jsdelivr.net/npm/@ahaui/css/dist/index.min.css"
 />
 ```
 
@@ -38,20 +38,20 @@
 
 ```sh
 # With npm
-npm install @ahaui/css3
+npm install @ahaui/css
 
 # Or with yarn
-yarn add @ahaui/css3
+yarn add @ahaui/css
 ```
 
 ```js
 /* In JS file */
-import "@ahaui/css3/index.min.css";
+import "@ahaui/css/index.min.css";
 ```
 
 ```css
 /* Or in CSS file */
-@import "@ahaui/css3/index.min.css";
+@import "@ahaui/css/index.min.css";
 ```
 
 ## Customization
@@ -59,7 +59,7 @@ import "@ahaui/css3/index.min.css";
 After importing the Aha CSS file, you can override following CSS variables to make your custom theme:
 
 ```css
-@import "@ahaui/css3/index.min.css";
+@import "@ahaui/css/index.min.css";
 
 :root {
   --colorPrimary: #ff43ab;
@@ -125,7 +125,7 @@ Full customizable variables:
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
 ```text
-@ahaui/css3/
+@ahaui/css/
 └── dist/
     ├── index.css
     ├── index.css.map

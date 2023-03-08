@@ -21,7 +21,7 @@ import {
   LivePreview,
   LiveProvider,
 } from 'react-live';
-import * as AhaReact from '@ahaui/react3';
+import * as AhaReact from '@ahaui/react';
 import PlaceholderImage from './PlaceholderImage';
 
 const scope = {
@@ -195,7 +195,7 @@ function CodeView({ codeText, exampleClassName, showCode = true, transparentBack
     .replace(/>;$/, '>');
   const [openCode, setOpenCode] = useState(show);
   return (
-    <StyledContainer
+    <StyledContainer 
       className={classNames(
         horizontal && 'u-flex'
       )}
@@ -208,8 +208,8 @@ function CodeView({ codeText, exampleClassName, showCode = true, transparentBack
       >
         <div className="u-positionRelative u-border u-borderUltraLight">
           <Preview
-            transparentBackground={transparentBackground}
-            showCode={showCode}
+            transparentBackground={transparentBackground} 
+            showCode={showCode} 
             className={exampleClassName} horizontal show />
           {showCode && !show && (
             <AhaReact.Overlay.Trigger
@@ -242,7 +242,7 @@ function CodeView({ codeText, exampleClassName, showCode = true, transparentBack
             <div>
               <Editor className={classNames(
                 horizontal && 'u-flexGrow1 u-flex'
-              )}
+              )} 
               liveEditorClassName={classNames(
                 horizontal && 'u-flexGrow1'
               )}/>

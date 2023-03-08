@@ -1,9 +1,9 @@
-// Type definitions for @ahaui/react3 v2.1.0
+// Type definitions for @ahaui/react v2.1.0
 // Project: https://github.com/gotitinc/ahaui
 // Definitions by: KyleTV <https://github.com/tinhvqbk>
 // TypeScript Version: 2.8
 
-declare module '@ahaui/react3' {
+declare module '@ahaui/react' {
   import React, { HTMLAttributeAnchorTarget, HTMLAttributeReferrerPolicy, HTMLProps } from 'react';
   import { TextareaAutosizeProps } from 'react-textarea-autosize';
   import { ReactNodeLike } from 'prop-types';

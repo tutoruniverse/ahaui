@@ -35,11 +35,11 @@ yarn add @ahaui/icons
 
 ### Usage
 
-With `@ahaui/react3`
+With `@ahaui/react`
 
 ```jsx
 import React from 'react';
-import { Plugins, Icon } from '@ahaui/react3';
+import { Plugins, Icon } from '@ahaui/react';
 import { createIconAssetsPlugin } from '@ahaui/icons';
 
 const IconAssetsPlugin = createIconAssetsPlugin();

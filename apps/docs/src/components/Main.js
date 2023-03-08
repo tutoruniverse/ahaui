@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Icon, SafeAnchor } from "@ahaui/react3";
+import { Icon, SafeAnchor } from "@ahaui/react";
 import SideNav from "./SideNav";
 import Toc, { TocProvider } from "./Toc";
 import ahaReactConfig from "../../config";

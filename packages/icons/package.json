@@ -19,7 +19,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@ahaui/react3": "*"
+    "@ahaui/react": "*"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"

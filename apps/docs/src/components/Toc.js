@@ -1,5 +1,5 @@
 import React from "react";
-import { createBlock } from '@ahaui/react3';
+import { createBlock } from '@ahaui/react';
 
 export const TocContext = React.createContext();
 

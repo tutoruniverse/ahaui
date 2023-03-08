@@ -12,11 +12,11 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/gotitinc/ahaui/CodeQL?label=CodeQL)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/gotitinc/ahaui/Lint?label=Lint)
 
-![npm](https://img.shields.io/npm/v/@ahaui/css3?label=CSS)
-![npm](https://img.shields.io/npm/dt/@ahaui/css3?label=CSS%20Download)
+![npm](https://img.shields.io/npm/v/@ahaui/css?label=CSS)
+![npm](https://img.shields.io/npm/dt/@ahaui/css?label=CSS%20Download)
 
-![npm](https://img.shields.io/npm/v/@ahaui/react3?label=React)
-![npm](https://img.shields.io/npm/dt/@ahaui/react3?label=React%20Download)
+![npm](https://img.shields.io/npm/v/@ahaui/react?label=React)
+![npm](https://img.shields.io/npm/dt/@ahaui/react?label=React%20Download)
 
 ![npm](https://img.shields.io/npm/v/@ahaui/icons?label=Icon)
 ![npm](https://img.shields.io/npm/dt/@ahaui/icons?label=Icon%20Download)
@@ -26,14 +26,14 @@
 
 ## Installation
 
-You have to install both `@ahaui/react3` and `@ahaui/css3`
+You have to install both `@ahaui/react` and `@ahaui/css`
 
 ```sh
 # With npm
-npm install @ahaui/react3 @ahaui/css3
+npm install @ahaui/react @ahaui/css
 
 # Or with yarn
-yarn add @ahaui/react3 @ahaui/css3
+yarn add @ahaui/react @ahaui/css
 ```
 
 ## License
