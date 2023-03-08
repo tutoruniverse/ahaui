@@ -1,13 +1,13 @@
 {
   "name": "ahaui",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=./packages/react --filter=./packages/css --parallel",
     "build:css": "turbo run build  --filter=./packages/css",
     "build:icons": "turbo run build  --filter=./packages/icons",
     "build:react": "turbo run build  --filter=./packages/react",

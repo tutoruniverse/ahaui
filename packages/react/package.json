@@ -1,13 +1,11 @@
 {
   "name": "@ahaui/react",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "types": "types/index.d.ts",
   "files": [
     "es/*.{js,map}",
     "lib/*.{js,map}",
-    "types/*.{d.ts}",
     "CHANGELOG.md"
   ],
   "scripts": {
