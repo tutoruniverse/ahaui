@@ -56,7 +56,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [".js", ".ts", ".jsx", ".tsx"]
       }
     ],
     "react/jsx-no-bind": 0,
