@@ -25,7 +25,7 @@ const propTypes = {
   ]),
   /** Highlight the submenu if current path matches one of the items inside this list **/
   hightLightWhitelist: PropTypes.array,
-  /** 
+  /**
    * Enable collapsing the sub menu when its item is selected
    * @default false
    *  */
@@ -62,10 +62,10 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
 
     if (child.props.separated) {
       modifiedChildPath = childPath.toString();
-    } else if (childPath.startsWith('#')){
-      modifiedChildPath = `${path}${childPath.toString()}`
+    } else if (childPath.startsWith('#')) {
+      modifiedChildPath = `${path}${childPath.toString()}`;
     } else {
-      modifiedChildPath = `${path}.${childPath.toString()}`
+      modifiedChildPath = `${path}.${childPath.toString()}`;
     }
 
     return React.cloneElement(
@@ -73,8 +73,8 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
         isSubItem: true,
         level: level + 1,
         path: modifiedChildPath,
-        onCloseSubMenu: autoCollapse && (() => setOpen(false))
-      })
+        onCloseSubMenu: autoCollapse && (() => setOpen(false)),
+      }),
     );
   });
 
@@ -104,11 +104,11 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
         )}
       >
         <span className={classNames(
-          isSubItem && 'u-flex'
+          isSubItem && 'u-flex',
         )}
         >
           <span className={classNames(
-            isSubItem && 'u-flexGrow1'
+            isSubItem && 'u-flexGrow1',
           )}
           >
             {title}
@@ -117,8 +117,7 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
             <span className="u-marginLeftExtraSmall">
               {typeof (badge) === 'function'
                 ? badge()
-                : <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>
-              }
+                : <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>}
             </span>
           )}
           <Icon name={isSubItem ? 'arrowForward' : 'arrowDown'} size="tiny" className="u-marginLeftExtraSmall SidebarMenu-iconAppend u-flexShrink0" style={{ marginTop: isSubItem && 6 }} />
@@ -126,7 +125,7 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
       </Dropdown.Toggle>
       <Dropdown.Container className={classNames(
         'u-paddingVerticalTiny',
-        isSubItem && 'u-marginLeftTiny'
+        isSubItem && 'u-marginLeftTiny',
       )}
       >
         {modifiedChildren}

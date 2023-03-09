@@ -1,4 +1,3 @@
-
 function createChainedFunction(...funcs) {
   return funcs
     .filter(f => f != null)

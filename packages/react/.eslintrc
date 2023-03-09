@@ -22,6 +22,7 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "arrow-parens": 0,
     "camelcase": 0,
     "class-methods-use-this": 0,
     "comma-dangle": ["error", "always-multiline"],
@@ -84,6 +85,6 @@
     "@typescript-eslint/no-use-before-define": "error",
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-explicit-any": 0,
-    "indent": ["error", 2]
+    "react/no-unstable-nested-components": 0
   }
 }

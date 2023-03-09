@@ -37,7 +37,7 @@ const Accordion = React.forwardRef(({ className, as: Component = 'div', ...props
           {...controlledProps}
           className={classNames(
             'Accordion',
-            className && className
+            className && className,
           )}
         />
       </SelectableContext.Provider>

@@ -72,7 +72,7 @@ function useRootClose(
     const root = window.document.querySelector('#root') || document;
 
     if (!root) {
-      return
+      return;
     }
 
     // Use capture for this listener so it fires before React's listener, to

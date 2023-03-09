@@ -151,7 +151,6 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
     }
   }
 
-
   return (
     <>
       {cloneElement(child, { ref: triggerRef, ...triggerProps })}

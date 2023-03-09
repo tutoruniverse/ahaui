@@ -7,7 +7,7 @@ const Inside = React.forwardRef(({ children, ...props }, ref) => (
       ref={ref}
       {...props}
       className={classNames(
-        'Modal-backDrop u-positionAbsolute u-positionFull u-backgroundBlack u-zIndex2'
+        'Modal-backDrop u-positionAbsolute u-positionFull u-backgroundBlack u-zIndex2',
       )}
     />
     {children}

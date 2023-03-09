@@ -31,7 +31,7 @@ const Slider = React.forwardRef(({ vertical, variant, ...props }, ref) => (
     className={classNames(
       'u-positionRelative',
       vertical ? 'u-heightFull u-paddingHorizontalTiny' : 'u-widthFull u-paddingVerticalTiny u-marginBottomLarge',
-      variant && `Slider--${variant}`
+      variant && `Slider--${variant}`,
     )}
   />
 ));

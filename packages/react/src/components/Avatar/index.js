@@ -71,7 +71,7 @@ const Avatar = React.forwardRef(({ className, size, name, src, alt, height, widt
         'Avatar u-positionRelative u-block u-paddingNone u-overflowHidden',
         size && `Avatar--${size}`,
         text && 'u-roundedCircle',
-        className && className
+        className && className,
       )}
     >
       {srcOri && (
@@ -83,7 +83,6 @@ const Avatar = React.forwardRef(({ className, size, name, src, alt, height, widt
     </Component>
   );
 });
-
 
 Avatar.displayName = 'Avatar';
 Avatar.defaultProps = defaultProps;

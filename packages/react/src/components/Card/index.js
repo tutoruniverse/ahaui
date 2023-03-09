@@ -63,7 +63,7 @@ const CardBody = React.forwardRef(({ className, as: Component = 'div', ...props 
       className={classNames(
         'Card-body',
         size && sizesClassName[size].content,
-        className && className
+        className && className,
       )}
     />
   );
@@ -77,7 +77,7 @@ const CardHeader = React.forwardRef(({ className, as: Component = 'div', ...prop
       className={classNames(
         'Card-header u-borderBottom u-flex u-justifyContentBetween',
         size && sizesClassName[size].content,
-        className && className
+        className && className,
       )}
     />
   );
@@ -91,12 +91,11 @@ const CardTitle = React.forwardRef(({ className, as: Component = 'div', ...props
       className={classNames(
         'Card-title u-fontMedium',
         size && sizesClassName[size].title,
-        className && className
+        className && className,
       )}
     />
   );
 });
-
 
 Card.displayName = 'Card';
 Card.propTypes = propTypes;

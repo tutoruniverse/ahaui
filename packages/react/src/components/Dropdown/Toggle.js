@@ -30,7 +30,7 @@ const Toggle = React.forwardRef(({ className, children, disabled, ...props }, re
     className: classNames(
       'Dropdown-toggle',
       disabled ? ' u-pointerEventsNone u-cursorNotAllow' : 'u-cursorPointer',
-      className && className
+      className && className,
     ),
     onClick: !disabled ? toggle : null,
     ref,

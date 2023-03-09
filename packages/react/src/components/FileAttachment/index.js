@@ -152,14 +152,13 @@ const FileAttachment = React.forwardRef((uncontrolledProps, ref) => {
           {actionLeft && (
             <div className={classNames(
               'u-sizeFill',
-              actionRight && 'u-borderRight u-borderUltraLight'
+              actionRight && 'u-borderRight u-borderUltraLight',
             )}
             >
               <div className="u-flex u-justifyContentCenter hover:u-backgroundLightest u-cursorPointer">
                 {typeof (actionLeft) === 'function'
                   ? actionLeft()
-                  : actionLeft
-                }
+                  : actionLeft}
               </div>
             </div>
           )}
@@ -168,8 +167,7 @@ const FileAttachment = React.forwardRef((uncontrolledProps, ref) => {
               <div className="u-flex u-justifyContentCenter hover:u-backgroundLightest u-cursorPointer">
                 {typeof (actionRight) === 'function'
                   ? actionRight()
-                  : actionRight
-                }
+                  : actionRight}
               </div>
             </div>
           )}
@@ -183,7 +181,7 @@ const FileAttachment = React.forwardRef((uncontrolledProps, ref) => {
       {fileAttachment}
     </Transition>
   );
-}
+},
 );
 
 FileAttachment.displayName = 'FileAttachment';

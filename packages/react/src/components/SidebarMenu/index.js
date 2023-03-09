@@ -39,7 +39,7 @@ const SidebarMenu = React.forwardRef(({ className, children, current, onSelect, 
         level: 1,
         path: path.toString(),
         autoCollapse,
-      })
+      }),
     );
   });
   return (
@@ -54,14 +54,14 @@ const SidebarMenu = React.forwardRef(({ className, children, current, onSelect, 
         className={classNames(
           'SidebarMenu',
           'u-backgroundWhite u-paddingVerticalExtraSmall',
-          className && className
+          className && className,
         )}
       >
         <div
           ref={ref}
           {...props}
           className={classNames(
-            'SidebarMenu-list'
+            'SidebarMenu-list',
           )}
         >
           {modifiedChildren}

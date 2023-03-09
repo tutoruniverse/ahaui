@@ -5,7 +5,6 @@ import Tag from 'components/Tag';
 import Context from 'components/Form/Context';
 import TagsInput from './TagInputLib';
 
-
 const propTypes = {
   /** The visual style of the tag */
   variant: PropTypes.oneOf([
@@ -58,7 +57,7 @@ const TagInput = React.forwardRef(({ className, variant, value, size, onChange, 
       className: classNames(
         'u-backgroundTransparent u-borderNone',
         (sizeOri === 'small') ? 'u-text100' : 'u-text200',
-        inputProps.className && inputProps.className
+        inputProps.className && inputProps.className,
       ),
     },
   };
@@ -70,7 +69,7 @@ const TagInput = React.forwardRef(({ className, variant, value, size, onChange, 
         'TagInput',
         sizeOri && `TagInput--${sizeOri}`,
         'u-backgroundWhite u-flexGrow1 u-roundedMedium u-border u-paddingVerticalTiny u-paddingHorizontalExtraSmall u-sizeFill',
-        className && className
+        className && className,
       )}
       value={value}
       onChange={onChange}
@@ -81,7 +80,6 @@ const TagInput = React.forwardRef(({ className, variant, value, size, onChange, 
     />
   );
 });
-
 
 TagInput.displayName = 'TagInput';
 TagInput.defaultProps = defaultProps;

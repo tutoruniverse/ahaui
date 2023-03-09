@@ -120,7 +120,7 @@ const Composer = React.forwardRef(({ className, children, sendButtonIcon, iconLe
       className={classNames(
         'u-widthFull u-paddingVerticalExtraSmall u-border u-borderTransparent u-textPlaceholder',
         inputProps.className && inputProps.className,
-        inputProps.disabled && 'u-backgroundNeutral30'
+        inputProps.disabled && 'u-backgroundNeutral30',
       )}
       style={{
         resize: 'none',

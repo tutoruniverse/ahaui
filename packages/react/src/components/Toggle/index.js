@@ -30,7 +30,7 @@ const Toggle = React.forwardRef(({ className, checked, disabled, nonLabel, textL
   <div
     className={classNames(
       'u-flexInline u-alignItemsCenter',
-      className && className
+      className && className,
     )}
     {...props}
     ref={ref}
@@ -49,14 +49,14 @@ const Toggle = React.forwardRef(({ className, checked, disabled, nonLabel, textL
     >
       <div className={classNames(
         'Toggle-handle',
-        'u-positionAbsolute u-backgroundWhite'
+        'u-positionAbsolute u-backgroundWhite',
       )}
       />
     </Component>
     {!nonLabel && (
       <div className={classNames(
         'u-marginLeftExtraSmall',
-        disabled && 'u-textLight'
+        disabled && 'u-textLight',
       )}
       >
         {checked ? textLabelOn : textLabelOff}

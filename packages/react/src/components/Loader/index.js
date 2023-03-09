@@ -37,7 +37,7 @@ const Loader = React.forwardRef(({ className, size, duration, ...props }, ref) =
         'Loader',
         'u-roundedInfinity u-border u-borderTopPrimary u-inlineBlock u-spin',
         (size === 'small' || size === 'extraSmall') ? 'u-borderSmall' : 'u-borderMedium',
-        className && className
+        className && className,
       )}
       style={styles}
     />

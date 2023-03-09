@@ -40,7 +40,7 @@ const SessionType = React.forwardRef(({ className, label, leftLabel, variant, as
       'SessionType',
       'u-roundedMedium u-paddingExtraSmall u-flex u-alignItemsCenter u-justifyContentBetween u-cursorPointer',
       variant && variantsClassName[variant],
-      className && className
+      className && className,
     )}
   >
     <div className="u-flexShrink0 u-flex u-alignItemsCenter">
@@ -49,8 +49,7 @@ const SessionType = React.forwardRef(({ className, label, leftLabel, variant, as
       <span className="u-text300 u-fontMedium u-marginHorizontalExtraSmall">
         {typeof (label) === 'function'
           ? label()
-          : label
-            }
+          : label}
       </span>
       )}
     </div>

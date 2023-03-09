@@ -57,7 +57,7 @@ const MultiSteps = React.forwardRef(({ className, current, currentLabel, childre
         currentLabel,
         direction,
         variant,
-      })
+      }),
     );
   });
   return (
@@ -68,7 +68,7 @@ const MultiSteps = React.forwardRef(({ className, current, currentLabel, childre
         'MultiSteps',
         'u-flex u-text200 u-fontMedium',
         direction === 'vertical' && 'u-flexColumn MultiSteps--vertical',
-        className && className
+        className && className,
       )}
     >
       {modifiedChildren}

@@ -70,7 +70,7 @@ const File = React.forwardRef(({ className, sizeInput, id, fileName, placeholder
         isInvalid && 'is-invalid',
         isBorderNone && 'is-borderNone',
         isBackgroundReset && 'is-backgroundReset',
-        className && className
+        className && className,
       )}
     >
       <input

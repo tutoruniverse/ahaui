@@ -17,12 +17,12 @@ const DateRangePicker = React.forwardRef(({ className, noClearIcon, size, ...pro
         'DateRangePicker',
         sizeOri && `DateRangePicker--${sizeOri}`,
         sizeOri === 'small' && 'u-text200',
-        className && className
+        className && className,
       )}
       clearIcon={noClearIcon ? null : <Icon name="close" size={(sizeOri === 'small') ? 'extraSmall' : 'small'} />}
       calendarIcon={<Icon name="calendar" size={(sizeOri === 'small') ? 'extraSmall' : 'small'} />}
       calendarClassName={classNames(
-        'Calendar u-marginTopExtraSmall'
+        'Calendar u-marginTopExtraSmall',
       )}
     />
   );

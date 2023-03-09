@@ -38,7 +38,7 @@ const Media = React.forwardRef(({ className, aspectRatio, width, height, style, 
         'Media',
         'u-positionRelative u-block u-paddingNone u-overflowHidden',
         aspectRatio && aspectRatios[aspectRatio],
-        className && className
+        className && className,
       )}
       style={mergeStyle}
     >
@@ -46,7 +46,7 @@ const Media = React.forwardRef(({ className, aspectRatio, width, height, style, 
         {...props}
         ref={ref}
         className={classNames(
-          'Media-item'
+          'Media-item',
         )}
       />
     </div>

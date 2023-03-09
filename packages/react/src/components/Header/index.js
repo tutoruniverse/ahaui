@@ -22,7 +22,7 @@ const Header = React.forwardRef(({ className, innerClassName, fullWidth, show, c
       className={classNames(
         'Header',
         'u-backgroundWhite u-paddingVerticalSmall',
-        className && className
+        className && className,
       )}
     >
       <div className={classNames(
@@ -32,7 +32,7 @@ const Header = React.forwardRef(({ className, innerClassName, fullWidth, show, c
       >
         <div className={classNames(
           'Header-inner u-flex u-widthFull u-alignItemsCenter u-positionRelative',
-          innerClassName && innerClassName
+          innerClassName && innerClassName,
         )}
         >
           {children}

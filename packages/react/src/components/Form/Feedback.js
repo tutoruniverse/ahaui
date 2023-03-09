@@ -29,7 +29,7 @@ const Feedback = React.forwardRef(({ className, type, visible, as: Component = '
       'u-marginTopTiny u-widthFull u-text100',
       className && className,
       type && `${type}-feedback`,
-      visible && 'is-visible'
+      visible && 'is-visible',
     )}
   />
 ));

@@ -33,20 +33,20 @@ const Item = React.forwardRef(({ className, disabled, eventKey, index, fullWidth
   const textActiveColor = useMemo(() => {
     switch (context.variant) {
       case 'dark':
-        return 'u-textNeutral800'
+        return 'u-textNeutral800';
       default:
-        return 'u-textPrimary'
+        return 'u-textPrimary';
     }
-  },[])
+  }, []);
 
   const itemAfterColor = useMemo(() => {
     switch (context.variant) {
       case 'dark':
-        return 'u-backgroundNeutral800'
+        return 'u-backgroundNeutral800';
       default:
-        return 'u-backgroundPrimary'
+        return 'u-backgroundPrimary';
     }
-  },[])
+  }, []);
 
   return (
     <div
@@ -59,7 +59,7 @@ const Item = React.forwardRef(({ className, disabled, eventKey, index, fullWidth
         (index > 0 && visual === 'filled' && (direction === 'vertical')) && 'u-borderTop',
         active && 'is-active',
         disabled ? 'is-disabled u-cursorNotAllow' : 'u-cursorPointer',
-        className && className
+        className && className,
       )}
     >
       {active && (
@@ -83,7 +83,7 @@ const Item = React.forwardRef(({ className, disabled, eventKey, index, fullWidth
           (visual === 'filled' && (direction !== 'vertical')) && 'u-paddingHorizontalSmall',
           direction === 'vertical' && 'u-paddingHorizontalSmall',
           fullWidth && 'u-textCenter',
-          disabled && 'u-textLight'
+          disabled && 'u-textLight',
         )}
       >
         {children}

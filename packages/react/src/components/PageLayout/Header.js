@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import Context from './Context';
 
-
 export const PageLayoutHeader = React.forwardRef(({ className, children, ...props }, ref) => {
   const { headerProps } = useContext(Context);
   const mergeProps = {
@@ -16,7 +15,7 @@ export const PageLayoutHeader = React.forwardRef(({ className, children, ...prop
       className={classNames(
         'PageLayout-header',
         className && className,
-        headerProps.className && headerProps.className
+        headerProps.className && headerProps.className,
       )}
     >
       {children}

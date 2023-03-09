@@ -56,7 +56,7 @@ const TopBanner = React.forwardRef((uncontrolledProps, ref) => {
       className={classNames(
         'TopBanner',
         'u-positionRelative u-overflowHidden u-flex u-cursorPointer u-alignItemsCenter u-paddingVerticalTiny',
-        className && className
+        className && className,
       )}
     >
       {bgImage && (

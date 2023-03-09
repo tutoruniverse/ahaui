@@ -19,7 +19,7 @@ const DatePicker = React.forwardRef(({ className, noClearIcon, size, version, ca
         'DatePicker',
         sizeOri && `DatePicker--${sizeOri}`,
         sizeOri === 'small' && 'u-text200',
-        className && className
+        className && className,
       )}
       clearIcon={noClearIcon ? null : <Icon name="close" size={(sizeOri === 'small') ? 'extraSmall' : 'small'} />}
       calendarIcon={<Icon name="calendar" size={(sizeOri === 'small') ? 'extraSmall' : 'small'} />}
