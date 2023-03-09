@@ -126,3 +126,6 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 package.json.backup
+
+# Ingore test coverage
+/jest-coverage

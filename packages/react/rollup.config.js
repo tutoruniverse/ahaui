@@ -59,14 +59,14 @@ export default {
         '@babel/plugin-syntax-class-properties',
         '@babel/plugin-syntax-optional-chaining',
       ],
-      extensions: ['.js', '.jsx', '.tsx', '.ts'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
     }),
     commonjs({
       include: 'node_modules/**',
     }),
     includePaths({
       paths: ['src'],
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
     }),
     typescript({ tsconfig: './tsconfig.json' }),
     terser(),

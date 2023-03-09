@@ -15,7 +15,8 @@
     "prepublishOnly": "yarn build",
     "dev": "rollup -c -w",
     "format": "eslint --ext js src --fix",
-    "lint": "eslint --ext js src"
+    "lint": "eslint --ext js src",
+    "test": "node ../../node_modules/.bin/jest --watch"
   },
   "publishConfig": {
     "access": "public"
