@@ -1,6 +1,7 @@
 // Rollup plugins
 import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import alias from '@rollup/plugin-alias';
@@ -58,6 +59,7 @@ export default {
         '@babel/plugin-syntax-class-properties',
         '@babel/plugin-syntax-optional-chaining',
       ],
+      extensions: ['.js', '.jsx', '.tsx', '.ts'],
     }),
     commonjs({
       include: 'node_modules/**',
@@ -66,6 +68,7 @@ export default {
       paths: ['src'],
       extensions: ['.js', '.jsx'],
     }),
+    typescript({ tsconfig: './tsconfig.json' }),
     terser(),
   ],
 };
