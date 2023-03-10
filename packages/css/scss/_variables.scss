@@ -745,7 +745,8 @@ $transition: (
     slow: 2000ms,
     normal: 1500ms,
     fast: 800ms,
-    faster: 500ms
+    faster: 500ms,
+    fastest: 300ms
   ),
   ease: (
     linear: linear,
@@ -916,6 +917,21 @@ $forms: (
       labelBefore: (
         border-radius: var(--radiusMedium)
       ),
+      labelCheckedAfterSelect: (
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' rx='4' fill='%23375DE7'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.277 4.93633L12.4052 4.05822C12.3705 4.01941 12.316 4 12.2665 4C12.212 4 12.1625 4.01941 12.1278 4.05822L6.08457 10.0206L3.88524 7.86659C3.84561 7.82777 3.79608 7.80837 3.74654 7.80837C3.69701 7.80837 3.64747 7.82777 3.60784 7.86659L2.72613 8.73014C2.64687 8.80776 2.64687 8.92905 2.72613 9.00667L5.50006 11.7235C5.67839 11.8981 5.89634 12 6.07962 12C6.34215 12 6.57001 11.8108 6.65422 11.7332H6.65917L13.2819 5.21286C13.3513 5.13038 13.3513 5.0091 13.277 4.93633Z' fill='white'/%3E%3C/svg%3E"),
+        background-repeat: no-repeat
+      ),
+      labelIndeterminateAfterSelect: (
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' rx='4' fill='%23375DE7'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.277 4.93633L12.4052 4.05822C12.3705 4.01941 12.316 4 12.2665 4C12.212 4 12.1625 4.01941 12.1278 4.05822L6.08457 10.0206L3.88524 7.86659C3.84561 7.82777 3.79608 7.80837 3.74654 7.80837C3.69701 7.80837 3.64747 7.82777 3.60784 7.86659L2.72613 8.73014C2.64687 8.80776 2.64687 8.92905 2.72613 9.00667L5.50006 11.7235C5.67839 11.8981 5.89634 12 6.07962 12C6.34215 12 6.57001 11.8108 6.65422 11.7332H6.65917L13.2819 5.21286C13.3513 5.13038 13.3513 5.0091 13.277 4.93633Z' fill='%23375DE7'/%3E%3Crect x='4' y='7' width='8' height='2' rx='1' fill='white'/%3E%3C/svg%3E"),
+        background-repeat: no-repeat
+      ),
+      // TODO
+      labelCheckedAfterSelectDisabled: (
+        background-image: url("data:image/svg+xml,%3Csvg height='16' viewBox='0 0 16 16' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6.564 0-3.59 3.612-1.538-1.55-1.436 1.448 2.974 2.99 5.026-5.057z' fill='%2397A0AF' fill-rule='evenodd' transform='translate(4 4.75)'/%3E%3C/svg%3E")
+      ),
+      // TODO
+      labelIndeterminateAfterSelectDisabled: (
+        background-image: url("data:image/svg+xml,%3Csvg height='16' viewBox='0 0 16 16' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6.564 0-3.59 3.612-1.538-1.55-1.436 1.448 2.974 2.99 5.026-5.057z' fill='%2397A0AF' fill-rule='evenodd' transform='translate(4 4.75)'/%3E%3C/svg%3E")
       labelAfterSelect: (
         background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.277 4.93633L12.4052 4.05822C12.3705 4.01941 12.316 4 12.2665 4C12.212 4 12.1624 4.01941 12.1278 4.05822L6.08456 10.0206L3.88522 7.86659C3.84559 7.82777 3.79606 7.80837 3.74653 7.80837C3.69699 7.80837 3.64746 7.82777 3.60783 7.86659L2.72611 8.73014C2.64686 8.80776 2.64686 8.92905 2.72611 9.00667L5.50005 11.7235C5.67837 11.8981 5.89633 12 6.0796 12C6.34214 12 6.57 11.8108 6.6542 11.7332H6.65916L13.2819 5.21286C13.3513 5.13038 13.3513 5.0091 13.277 4.93633Z' fill='white'/%3E%3C/svg%3E")
       ),

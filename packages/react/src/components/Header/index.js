@@ -44,7 +44,7 @@ const Header = React.forwardRef(({ className, innerClassName, fullWidth, show, c
 
 const Brand = createBlock('Header-brand u-lineHeightReset u-fontSizeNone u-flexShrink0 u-marginRightSmall lg:u-marginRightMedium xl:u-marginRightLarge');
 const Main = createBlock('Header-main u-flexGrow1 u-flex u-alignItemsCenter');
-const Left = createBlock('Header-left u-flex');
+const Left = createBlock('Header-left u-flex u-alignItemsCenter');
 const Right = createBlock('Header-right u-flex u-alignItemsCenter u-marginLeftAuto');
 const AbsoluteCenter = createBlock('Header-center u-flex u-positionAbsolute u-positionCenter');
 

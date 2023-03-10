@@ -18,11 +18,15 @@ const propTypes = {
     PropTypes.string,
     PropTypes.func,
   ]),
+  /** If this value is true, child's path is not nested in parent's path **/
+  separated: PropTypes.bool,
+  /** The function that collapses its parent's sub menu. It would be run whenever this item is selected by the user.*/
+  onCloseSubMenu: PropTypes.func,
 };
 const defaultProps = {
 };
 
-const Item = React.forwardRef(({ className, disabled, eventKey, children, badge, isSubItem, level, index, path, ...props }, ref) => {
+const Item = React.forwardRef(({ className, disabled, eventKey, children, badge, isSubItem, level, index, path, onCloseSubMenu, ...props }, ref) => {
   let active;
 
   const context = useContext(TopMenuContext);
@@ -34,9 +38,8 @@ const Item = React.forwardRef(({ className, disabled, eventKey, children, badge,
   const Component = active || disabled ? 'span' : SafeAnchor;
 
   const onClick = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
     context.onSelect(path);
+    onCloseSubMenu?.();
   };
   return (
     <div

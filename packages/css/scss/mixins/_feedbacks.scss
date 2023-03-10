@@ -1,4 +1,20 @@
-@mixin form-feedback($state, $color, $focus) {
+@mixin form-input-state($state, $color, $focus) {
+  border-color: $color;
+
+  &:focus {
+    border-color: $color;
+    box-shadow: 0 0 0 4px $focus;
+  }
+  ~ .#{$state}-feedback {
+    display: block;
+  }
+
+  .FormInput-label::after {
+    border-left: 1px solid $color;
+  }
+}
+
+@mixin form-feedback($state, $color, $focus, $hasPseudo: true) {
   .#{$state}-feedback {
     color: $color;
 
@@ -9,20 +25,14 @@
 
   .FormInput,
   .FormInput--file {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      border-color: $color;
-
-      &:focus {
-        border-color: $color;
-        box-shadow: 0 0 0 4px $focus;
+    @if $hasPseudo {
+      .was-validated &:#{$state},
+      &.is-#{$state} {
+        @include form-input-state($state, $color, $focus);
       }
-      ~ .#{$state}-feedback {
-        display: block;
-      }
-
-      .FormInput-label::after {
-        border-left: 1px solid $color;
+    } @else {
+      &.is-#{$state} {
+        @include form-input-state($state, $color, $focus);
       }
     }
   }

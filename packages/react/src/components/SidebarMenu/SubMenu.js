@@ -27,17 +27,29 @@ const propTypes = {
     'small',
     'medium',
   ]),
+  /** Highlight the submenu if current path matches one of the items inside this list **/
+  hightLightWhitelist: PropTypes.array,
+  /** 
+   * Enable collapsing the sub-menu when its item is selected
+   * @default false
+   * */
+  autoCollapse: PropTypes.bool,
 };
 const defaultProps = {
 };
 
-const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title, disabled, children, badge, icon, path, size, ...props }, ref) => {
+const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title, disabled, children, badge, icon, path, size, hightLightWhitelist, autoCollapse, ...props }, ref) => {
   let active;
   const sideBarContextValue = useContext(SidebarContext);
 
   if (sideBarContextValue.current !== '' && sideBarContextValue.current.startsWith(path)) {
     active = true;
   }
+
+  if (hightLightWhitelist?.includes(sideBarContextValue.current)) {
+    active = true;
+  }
+
   const [open, setOpen] = useState(active);
 
   const onClick = (e) => {
@@ -50,12 +62,26 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
     if (!child) {
       return null;
     }
-    const pathIndex = child.props.eventKey || index;
+
+    const childPath = child.props.eventKey || index.toString();
+
+    let modifiedChildPath = '';
+
+    if (child.props.separated) {
+      modifiedChildPath = childPath.toString();
+    } else if (childPath.startsWith('#')){
+      modifiedChildPath = `${path}${childPath.toString()}`
+    } else {
+      modifiedChildPath = `${path}.${childPath.toString()}`
+    }
+
+
     return React.cloneElement(
       child, ({
         isSubItem: true,
         level: level + 1,
-        path: `${path}.${pathIndex.toString()}`,
+        path: modifiedChildPath,
+        onCloseSubMenu: autoCollapse && (() => setOpen(false)),
       })
     );
   });
@@ -81,11 +107,12 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
       <div
         onClick={disabled ? null : onClick}
         className={classNames(
-          'u-flex u-paddingHorizontalExtraSmall u-positionRelative u-paddingVerticalTiny md:u-paddingVerticalExtraSmall ',
+          'u-flex u-paddingHorizontalExtraSmall u-positionRelative',
           disabled ? 'is-disabled u-cursorNotAllow' : 'hover:u-backgroundLightest',
           icon && 'u-alignItemsTop',
           (isSubItem && level <= 2) && 'u-paddingLeftLarge',
-          sizeMenu === 'medium' && 'lg:u-paddingVerticalSmall',
+          sizeMenu === 'medium' && 'u-paddingVerticalSmall',
+          sizeMenu === 'small' && 'u-paddingVerticalExtraSmall',
         )}
         style={{
           paddingLeft: level >= 3 && level * 16,

@@ -6,23 +6,24 @@ import babel from '@rollup/plugin-babel';
 import alias from '@rollup/plugin-alias';
 import includePaths from 'rollup-plugin-includepaths';
 import { terser } from 'rollup-plugin-terser';
+import external from 'rollup-plugin-node-externals';
 import pkg from './package.json';
 
-const external = [
-  ...Object.keys(pkg.dependencies || {}),
-  ...Object.keys(pkg.peerDependencies || {}),
-  'lodash.once',
-  'add-dom-event-listener',
-  'babel-runtime/helpers/extends',
-  'babel-runtime/helpers/inherits',
-  'babel-runtime/helpers/classCallCheck',
-  'babel-runtime/helpers/createClass',
-  'babel-runtime/helpers/possibleConstructorReturn',
-  'babel-runtime/helpers/typeof',
-  'component-classes',
-  'babel-runtime/helpers/defineProperty',
-  'babel-runtime/helpers/objectWithoutProperties',
-];
+// const external = [
+//   ...Object.keys(pkg.dependencies || {}),
+//   ...Object.keys(pkg.peerDependencies || {}),
+//   'lodash.once',
+//   'add-dom-event-listener',
+//   'babel-runtime/helpers/extends',
+//   'babel-runtime/helpers/inherits',
+//   'babel-runtime/helpers/classCallCheck',
+//   'babel-runtime/helpers/createClass',
+//   'babel-runtime/helpers/possibleConstructorReturn',
+//   'babel-runtime/helpers/typeof',
+//   'component-classes',
+//   'babel-runtime/helpers/defineProperty',
+//   'babel-runtime/helpers/objectWithoutProperties',
+// ];
 
 export default {
   input: 'src/index.js',
@@ -36,7 +37,6 @@ export default {
       format: 'es',
     },
   ],
-  external,
   plugins: [
     alias({
       entries: [
@@ -46,6 +46,7 @@ export default {
         },
       ],
     }),
+    external(),
     resolve(),
     babel({
       babelHelpers: 'runtime',
