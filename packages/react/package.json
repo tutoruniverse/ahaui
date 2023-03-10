@@ -16,7 +16,8 @@
     "dev": "rollup -c -w",
     "format": "eslint --ext js src --fix",
     "lint": "eslint --ext js src",
-    "test": "node ./node_modules/.bin/jest --watch",
+    "test": "node ./node_modules/.bin/jest",
+    "test:watch": "node ./node_modules/.bin/jest --watch",
     "test:cov": "node ./node_modules/.bin/jest --watchAll=false --coverage --silent",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

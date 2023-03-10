@@ -28,7 +28,6 @@ describe('components/Card', () => {
     expect(cardHeaderRef.current).toBeTruthy();
     expect(CardBodyRef.current).toBeTruthy();
 
-
     // Check if it renders correctly
     expect(cardRef.current).toHaveClass('Card');
     expect(cardTitleRef.current).toHaveClass('Card-title');

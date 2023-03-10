@@ -40,4 +40,4 @@ jobs:
         with:
           name: artifact
           path:
-            packages/*/jest-report.html
+            packages/react/jest-coverage/lcov-report/index.html
