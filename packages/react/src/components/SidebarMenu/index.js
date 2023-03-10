@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import createBlock from 'utils/createBlock';
@@ -42,13 +42,16 @@ const SidebarMenu = React.forwardRef(({ className, children, current, onSelect, 
       }),
     );
   });
+
+  const contextValue = useMemo(() => ({
+    current,
+    onSelect,
+    size,
+  }), [current, onSelect, size]);
+
   return (
     <SidebarContext.Provider
-      value={{
-        current,
-        onSelect,
-        size,
-      }}
+      value={contextValue}
     >
       <div
         className={classNames(

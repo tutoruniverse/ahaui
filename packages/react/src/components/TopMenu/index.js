@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Item from './Item';
@@ -35,12 +35,15 @@ const TopMenu = React.forwardRef(({ className, children, current, onSelect, auto
       }),
     );
   });
+
+  const contextValue = useMemo(() => ({
+    current,
+    onSelect,
+  }), [current, onSelect]);
+
   return (
     <TopMenuContext.Provider
-      value={{
-        current,
-        onSelect,
-      }}
+      value={contextValue}
     >
       <div
         className={classNames(

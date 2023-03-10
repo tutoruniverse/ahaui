@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -69,9 +69,11 @@ const Modal = React.forwardRef(({ children, size, show, onHide, relative, center
   }, [relative]);
 
   const renderBackDrop = show && !relative;
-  const modalContext = {
+
+  const modalContext = useMemo(() => ({
     onHide: () => onHide(),
-  };
+  }), [onHide]);
+
   const modal = (
     <div
       ref={ref}

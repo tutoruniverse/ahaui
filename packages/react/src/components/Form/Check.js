@@ -65,7 +65,6 @@ const Check = React.forwardRef(({ className, sizeInput, type, id, label, inline,
   const idSet = id || controlId;
   return (
     <Component
-
       className={classNames(
         'FormCheck',
         'u-positionRelative',

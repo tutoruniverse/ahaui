@@ -77,6 +77,7 @@ const SafeAnchor = React.forwardRef((props, ref) => {
       'aria-disabled': true,
     };
   }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   if (innerRef) mergeRefs = useMergedRefs(ref, innerRef);
   return (
     <Component

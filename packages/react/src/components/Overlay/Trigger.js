@@ -50,7 +50,7 @@ const propTypes = {
   /**
    * @private
    */
-  target: PropTypes.oneOf([null]),
+  targetRef: PropTypes.oneOf([null]),
 
   /**
    * @private
