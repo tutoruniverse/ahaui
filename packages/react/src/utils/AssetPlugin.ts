@@ -1,9 +1,18 @@
 import { PluginType } from 'constants/common';
 
 class AssetPlugin {
+  type: PluginType;
+
+  prefix: string;
+
+  assets: Record<string, string>;
+
   constructor({
     prefix,
     assets,
+  }: {
+    prefix: string;
+    assets: Record<string, string>;
   }) {
     this.type = PluginType.ASSET;
     this.validateAssets(assets);
@@ -11,7 +20,7 @@ class AssetPlugin {
     this.assets = assets;
   }
 
-  validateAssets(assets) {
+  validateAssets(assets: Record<string, string>) {
     if (!assets) {
       throw new Error('Invalid plugin: missing "assets".');
     }
@@ -20,7 +29,7 @@ class AssetPlugin {
     }
   }
 
-  getAsset(...args) {
+  getAsset(...args: any[]) {
     if (args.length === 0) return undefined;
     if (args.length === 1) {
       const assetName = args[0];

@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 
 let hadKeyboardEvent = true;
 let hadFocusVisibleRecently = false;
-let hadFocusVisibleRecentlyTimeout = null;
+let hadFocusVisibleRecentlyTimeout: null | number = null;
 
-const inputTypesWhitelist = {
+const inputTypesWhitelist: Record<string, true> = {
   text: true,
   search: true,
   url: true,
@@ -26,21 +26,16 @@ const inputTypesWhitelist = {
  * Computes whether the given element should automatically trigger the
  * `focus-visible` class being added, i.e. whether it should always match
  * `:focus-visible` when focused.
- * @param {Element} node
+ * @param {HTMLElement} node
  * @return {boolean}
  */
-function focusTriggersKeyboardModality(node) {
-  const { type, tagName } = node;
-
-  if (tagName === 'INPUT' && inputTypesWhitelist[type] && !node.readOnly) {
-    return true;
-  }
-
-  if (tagName === 'TEXTAREA' && !node.readOnly) {
-    return true;
-  }
-
-  if (node.isContentEditable) {
+function focusTriggersKeyboardModality(node: HTMLElement) {
+  const { tagName } = node;
+  if (
+    (tagName === 'INPUT' && inputTypesWhitelist[(node as HTMLInputElement).type] && !(node as HTMLInputElement).readOnly)
+    || (tagName === 'TEXTAREA' && !(node as HTMLTextAreaElement).readOnly)
+    || node.isContentEditable
+  ) {
     return true;
   }
 
@@ -54,7 +49,7 @@ function focusTriggersKeyboardModality(node) {
  * then the modality is keyboard. Otherwise, the modality is not keyboard.
  * @param {KeyboardEvent} event
  */
-function handleKeyDown(event) {
+function handleKeyDown(event: KeyboardEvent) {
   if (event.metaKey || event.altKey || event.ctrlKey) {
     return;
   }
@@ -72,7 +67,7 @@ function handlePointerDown() {
   hadKeyboardEvent = false;
 }
 
-function handleVisibilityChange() {
+function handleVisibilityChange(this: Document) {
   if (this.visibilityState === 'hidden') {
     // If the tab becomes active again, the browser will handle calling focus
     // on the element (Safari actually calls it twice).
@@ -84,7 +79,7 @@ function handleVisibilityChange() {
   }
 }
 
-function prepare(ownerDocument) {
+function prepare(ownerDocument: Document) {
   ownerDocument.addEventListener('keydown', handleKeyDown, true);
   ownerDocument.addEventListener('mousedown', handlePointerDown, true);
   ownerDocument.addEventListener('pointerdown', handlePointerDown, true);
@@ -92,7 +87,7 @@ function prepare(ownerDocument) {
   ownerDocument.addEventListener('visibilitychange', handleVisibilityChange, true);
 }
 
-export function teardown(ownerDocument) {
+export function teardown(ownerDocument: Document) {
   ownerDocument.removeEventListener('keydown', handleKeyDown, true);
   ownerDocument.removeEventListener('mousedown', handlePointerDown, true);
   ownerDocument.removeEventListener('pointerdown', handlePointerDown, true);
@@ -100,10 +95,12 @@ export function teardown(ownerDocument) {
   ownerDocument.removeEventListener('visibilitychange', handleVisibilityChange, true);
 }
 
-function isFocusVisible(event) {
+function isFocusVisible(event: React.FocusEvent) {
   const { target } = event;
   try {
-    return target.matches(':focus-visible');
+    if (target) {
+      return (target as HTMLElement).matches(':focus-visible');
+    }
   } catch (error) {
     // browsers not implementing :focus-visible will throw a SyntaxError
     // we use our own heuristic for those browsers
@@ -113,7 +110,7 @@ function isFocusVisible(event) {
 
   // no need for validFocusTarget check. the user does that by attaching it to
   // focusable events only
-  return hadKeyboardEvent || focusTriggersKeyboardModality(target);
+  return hadKeyboardEvent || focusTriggersKeyboardModality(target as HTMLElement);
 }
 
 /**
@@ -125,14 +122,16 @@ function handleBlurVisible() {
   // If we don't see a visibility change within 100ms, it's probably a
   // regular focus change.
   hadFocusVisibleRecently = true;
-  window.clearTimeout(hadFocusVisibleRecentlyTimeout);
+  if (hadFocusVisibleRecentlyTimeout !== null) {
+    window.clearTimeout(hadFocusVisibleRecentlyTimeout);
+  }
   hadFocusVisibleRecentlyTimeout = window.setTimeout(() => {
     hadFocusVisibleRecently = false;
   }, 100);
 }
 
 export default function useIsFocusVisible() {
-  const ref = React.useCallback((instance) => {
+  const ref = React.useCallback((instance: React.ReactInstance) => {
     // eslint-disable-next-line react/no-find-dom-node
     const node = ReactDOM.findDOMNode(instance);
     if (node != null) {

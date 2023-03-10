@@ -1,13 +1,18 @@
 import { PluginType } from 'constants/common';
+import { EnumToUnion } from 'types/common';
 import AssetPlugin from './AssetPlugin';
 import PluginArray from './PluginArray';
 
+type Plugin = AssetPlugin;
+
 class Plugins {
+  plugins: PluginArray<Plugin>;
+
   constructor() {
-    this.plugins = new PluginArray();
+    this.plugins = new PluginArray<Plugin>();
   }
 
-  validatePlugin(plugin) {
+  validatePlugin(plugin?: Plugin) {
     if (!plugin) {
       throw new Error('Invalid plugin: Can not read plugin.');
     }
@@ -17,7 +22,9 @@ class Plugins {
     switch (plugin.type) {
       case PluginType.ASSET: {
         if (!(plugin instanceof AssetPlugin)) {
-          throw new Error(`Invalid plugin: plugin with type "${PluginType.ASSET}" must be constructed from class AssetPlugin.`);
+          throw new Error(
+            `Invalid plugin: plugin with type "${PluginType.ASSET}" must be constructed from class AssetPlugin.`,
+          );
         }
         break;
       }
@@ -26,16 +33,17 @@ class Plugins {
     }
   }
 
-  loadPlugin(plugin) {
+  loadPlugin(plugin: Plugin) {
     this.validatePlugin(plugin);
     this.plugins.push(plugin);
   }
 
-  getPlugins(type = undefined) {
+  getPlugins(type?: EnumToUnion<PluginType>) {
     if (!type) {
       return this.plugins;
     }
-    return this.plugins.filter(plugin => plugin.type === type);
+
+    return this.plugins.filter((plugin) => plugin.type === type) as PluginArray<Plugin>;
   }
 }
 

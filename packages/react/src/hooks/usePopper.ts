@@ -1,15 +1,38 @@
 //fork react-overlays/src/usePopper.js
-import PopperJS from 'popper.js';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import PopperJS from 'popper.js';
+import type { Placement, Modifiers } from 'popper.js';
+import type { GenericFunction } from 'types/common';
 
-const initialPopperStyles = {
+type PopperStyles = Partial<CSSStyleDeclaration>;
+
+type ArrowStyles = Partial<CSSStyleDeclaration>;
+
+export interface UsePopperOptions {
+  enabled?: boolean;
+  placement?: Placement;
+  positionFixed?: boolean;
+  eventsEnabled?: boolean;
+  modifiers?: Modifiers;
+}
+
+interface PopperState {
+  placement: Placement;
+  scheduleUpdate: GenericFunction;
+  outOfBoundaries: boolean;
+  styles: PopperStyles;
+  arrowStyles: ArrowStyles;
+}
+
+const initialPopperStyles: PopperStyles = {
   position: 'absolute',
   top: '0',
   left: '0',
   opacity: '0',
   pointerEvents: 'none',
 };
-const initialArrowStyles = {};
+
+const initialArrowStyles: ArrowStyles = {};
 
 /**
  * Position an element relative some reference element using Popper.js
@@ -25,17 +48,17 @@ const initialArrowStyles = {};
  */
 
 export default function usePopper(
-  referenceElement,
-  popperElement,
+  referenceElement: HTMLElement | PopperJS.ReferenceObject,
+  popperElement: HTMLElement,
   {
     enabled = true,
     placement = 'bottom',
     positionFixed = false,
     eventsEnabled = true,
     modifiers = {},
-  } = {},
+  }: UsePopperOptions = {},
 ) {
-  const popperInstanceRef = useRef();
+  const popperInstanceRef = useRef<PopperJS | null>(null);
 
   const hasArrow = !!(modifiers.arrow && modifiers.arrow.element);
 
@@ -45,7 +68,7 @@ export default function usePopper(
     }
   }, []);
 
-  const [state, setState] = useState({
+  const [state, setState] = useState<PopperState>({
     placement,
     scheduleUpdate,
     outOfBoundaries: false,
@@ -95,6 +118,8 @@ export default function usePopper(
             setState({
               scheduleUpdate,
               styles: {
+                // TODO: [Leo] will comeback with version migration
+                // @ts-ignore
                 position: data.offsets.popper.position,
                 ...data.styles,
               },
@@ -102,6 +127,7 @@ export default function usePopper(
               outOfBoundaries: data.hide,
               placement: data.placement,
             });
+            return data;
           },
         },
       },

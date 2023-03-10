@@ -29,7 +29,7 @@ export enum VariantColorsEnum {
   lighter = 'lighter',
   gray = 'gray',
   primary = 'primary',
-  primary_subtle = 'primary_subtle',
+  primary_subtle = 'primary_subtle≈',
   information = 'information',
   information_subtle = 'information_subtle',
   accent = 'accent',
@@ -43,6 +43,19 @@ export enum VariantColorsEnum {
 }
 
 export type VariantColors = EnumToUnion<VariantColorsEnum>;
+
+export enum CounterVariantEnum {
+  primary='primary',
+  secondary='secondary',
+  accent='accent',
+  information='information',
+  warning='warning',
+  positive='positive',
+  negative='negative',
+  white='white',
+}
+
+export type CounterVariant = EnumToUnion<CounterVariantEnum>;
 
 export enum DirectionEnum {
   horizontal = 'horizontal',
