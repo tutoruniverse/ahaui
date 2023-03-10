@@ -16,10 +16,10 @@
   },
   "extends": [
     "airbnb",
-    "prettier",
     "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
+    "react-hooks",
     "@typescript-eslint"
   ],
   "rules": {
@@ -86,6 +86,7 @@
     "@typescript-eslint/no-use-before-define": "error",
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-explicit-any": 0,
-    "react/no-unstable-nested-components": 0
+    "react/no-unstable-nested-components": 0,
+    "@typescript-eslint/ban-ts-comment": 0
   }
 }
