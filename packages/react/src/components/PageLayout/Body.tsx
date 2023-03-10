@@ -2,7 +2,17 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import Context from './Context';
 
-export const PageLayoutBody = React.forwardRef(({ className, children, ...props }, ref) => {
+export type BodyProps = React.ComponentPropsWithRef<'div'>;
+type BodyComponent = (props: BodyProps) => React.ReactElement | null;
+
+export const PageLayoutBody: BodyComponent = React.forwardRef((
+  {
+    className,
+    children,
+    ...props
+  }: BodyProps,
+  ref: React.ForwardedRef<HTMLDivElement>,
+) => {
   const { bodyProps } = useContext(Context);
   const mergeProps = {
     ref,
@@ -16,7 +26,7 @@ export const PageLayoutBody = React.forwardRef(({ className, children, ...props 
         'PageLayout-body',
         'u-flex u-flexGrow1',
         className && className,
-        bodyProps.className && bodyProps.className,
+        bodyProps?.className && bodyProps.className,
       )}
     >
       {children}
@@ -24,7 +34,4 @@ export const PageLayoutBody = React.forwardRef(({ className, children, ...props 
   );
 });
 
-PageLayoutBody.displayName = 'PageLayout.Body';
-PageLayoutBody.propTypes = {};
-PageLayoutBody.defaultProps = {};
 export default PageLayoutBody;

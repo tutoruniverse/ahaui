@@ -29,7 +29,7 @@ export enum VariantColorsEnum {
   lighter = 'lighter',
   gray = 'gray',
   primary = 'primary',
-  primary_subtle = 'primary_subtle≈',
+  primary_subtle = 'primary_subtle',
   information = 'information',
   information_subtle = 'information_subtle',
   accent = 'accent',

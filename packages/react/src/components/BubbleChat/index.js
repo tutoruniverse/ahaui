@@ -203,8 +203,7 @@ const BubbleChat = React.forwardRef(({ className, isTyping, text, type, variant,
           >
             {isTyping && renderTyping()}
             {!isTyping && (
-            <>
-              {children || (
+              children || (
               <div className="u-positionRelative">
                 {actionBar && (
                 <div className={classNames(
@@ -252,27 +251,26 @@ const BubbleChat = React.forwardRef(({ className, isTyping, text, type, variant,
                       }
 
                       return (
-                                <button
-                                  key={option.id}
-                                  type="button"
-                                  disabled={disabledOption}
-                                  onClick={handleClick}
-                                  className={classNames(
-                                    'u-paddingExtraSmall u-transitionColors u-easeInOut u-duration150 u-textCenter',
-                                    (idx !== 0) ? 'u-borderTop u-borderBottomNone u-borderLeftNone u-borderRightNone u-borderUltraLight' : 'u-borderNone',
-                                    cn,
-                                  )}
-                                >
-                                  {option.name}
-                                </button>
+                        <button
+                          key={option.id}
+                          type="button"
+                          disabled={disabledOption}
+                          onClick={handleClick}
+                          className={classNames(
+                            'u-paddingExtraSmall u-transitionColors u-easeInOut u-duration150 u-textCenter',
+                            (idx !== 0) ? 'u-borderTop u-borderBottomNone u-borderLeftNone u-borderRightNone u-borderUltraLight' : 'u-borderNone',
+                            cn,
+                          )}
+                        >
+                          {option.name}
+                        </button>
                       );
                     })}
                   </div>
                   )}
                 </div>
               </div>
-              )}
-            </>
+              )
             )}
           </div>
 

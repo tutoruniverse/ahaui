@@ -21,7 +21,7 @@ export { default as Form } from './components/Form';
 export { default as Header } from './components/Header';
 export { default as HeaderMobile } from './components/Header/Mobile';
 export { default as Icon } from './components/Icon';
-export { default as PageLayout } from './components/PageLayout';
+export { default as PageLayout } from './components/PageLayout/index.tsx';
 export { default as Loader } from './components/Loader';
 export { default as Logo } from './components/Logo';
 export { default as Media } from './components/Media';
