@@ -126,8 +126,7 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
             }}
             className={classNames(
               'u-flexShrink0',
-              ((open || active) && !disabled) ? 'u-textDark' : 'u-textDark',
-              disabled && 'u-textLight',
+              disabled ? 'u-textLight': 'u-textDark',
             )}
             size={sizeMenu === 'medium' ? 'small' : 'extraSmall'}
           />
@@ -141,7 +140,8 @@ const SubMenu = React.forwardRef(({ level, eventKey, className, isSubItem, title
           <div className={classNames(
             'u-flexGrow1 u-textWordWrap',
             sizeMenu === 'small' && 'u-text200',
-            (open || active) ? 'u-textDark u-fontMedium' : 'u-textDark',
+            disabled ? 'u-textLight': 'u-textDark',
+            (open || active) && 'u-fontMedium',
           )}
           >
             {title}

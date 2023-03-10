@@ -73,6 +73,12 @@
           #{$pro}: $proval;
         }
       }
+
+      &:checked:disabled ~ #{$this}-label::after {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'box', 'labelAfterSelectDisabled') {
+          #{$pro}: $proval;
+        }
+      }
     }
 
     &[type='radio'] {
@@ -84,6 +90,12 @@
 
       &:checked ~ #{$this}-label::after {
         @each $pro, $proval in map-deep-get($forms, 'check', 'radio', 'labelAfterSelect') {
+          #{$pro}: $proval;
+        }
+      }
+
+      &:checked:disabled ~ #{$this}-label::after {
+        @each $pro, $proval in map-deep-get($forms, 'check', 'radio', 'labelAfterSelectDisabled') {
           #{$pro}: $proval;
         }
       }
