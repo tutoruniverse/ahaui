@@ -16,7 +16,8 @@
     "dev": "rollup -c -w",
     "format": "eslint --ext js src --fix",
     "lint": "eslint --ext js src",
-    "test": "node ./node_modules/.bin/jest --watch"
+    "test": "node ./node_modules/.bin/jest --watch",
+    "test:cov": "node ./node_modules/.bin/jest --watchAll=false --coverage --silent"
   },
   "publishConfig": {
     "access": "public"
