@@ -1,12 +1,10 @@
-name: Lint
+name: PR Test
 
 on:
   push:
   pull_request:
 
 env:
-  CI: true
-  FORCE_COLOR: 2
   NODE: 16.x
 
 jobs:
@@ -33,5 +31,14 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
-      - name: Lint
-        run: yarn lint
+      - name: Run React tests
+        run:
+          cd packages/react
+          yarn run test
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: artifact
+          path:
+            packages/*/jest-report.html
