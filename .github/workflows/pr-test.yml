@@ -8,7 +8,7 @@ env:
   NODE: 16.x
 
 jobs:
-  lint:
+  pr-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,9 +32,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Run React tests
-        run:
-          cd packages/react
-          yarn run test
+        working-directory: ./packages/react
+        run: yarn run test
 
       - uses: actions/upload-artifact@v3
         if: always()
