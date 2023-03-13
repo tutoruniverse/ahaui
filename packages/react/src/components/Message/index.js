@@ -88,7 +88,7 @@ const Message = React.forwardRef((uncontrolledProps, ref) => {
         (type !== 'system') && 'u-roundedMedium u-border',
         variantOri.className,
         variantOri.textClassName,
-        className && className
+        className && className,
       )}
     >
       {children}
@@ -101,7 +101,7 @@ const Message = React.forwardRef((uncontrolledProps, ref) => {
             'Message-button u-marginRightSmall u-marginTopSmall',
             (!disabled && dismissButtonHover) ? 'u-opacityReset' : 'u-opacityHalf',
             disabled && 'u-cursorDefault',
-            variantOri.textClassName
+            variantOri.textClassName,
           )}
           data-testid="message-close"
           role="button"

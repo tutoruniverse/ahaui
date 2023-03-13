@@ -56,14 +56,15 @@ const SafeAnchor = React.forwardRef((props, ref) => {
     }
   };
 
-  let mergeRefs;
   let propsHref;
   let propsTabIndex;
   const {
     as: Component = 'a',
     disabled,
     onKeyDown,
-    innerRef } = props;
+    innerRef,
+  } = props;
+
   if (isTrivialHref(props.href)) {
     propsHref = {
       role: props.role || 'button',
@@ -77,7 +78,9 @@ const SafeAnchor = React.forwardRef((props, ref) => {
       'aria-disabled': true,
     };
   }
-  if (innerRef) mergeRefs = useMergedRefs(ref, innerRef);
+
+  const mergeRefs = useMergedRefs(ref, innerRef || null);
+
   return (
     <Component
       ref={mergeRefs || ref}

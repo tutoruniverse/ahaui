@@ -50,7 +50,7 @@ const propTypes = {
   /**
    * @private
    */
-  target: PropTypes.oneOf([null]),
+  targetRef: PropTypes.oneOf([null]),
 
   /**
    * @private
@@ -150,7 +150,6 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
       overlayProps.onMouseOut = handleMouseOut;
     }
   }
-
 
   return (
     <>

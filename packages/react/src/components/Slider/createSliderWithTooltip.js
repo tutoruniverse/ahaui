@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Tooltip from 'rc-tooltip';
@@ -28,7 +29,7 @@ export default function createSliderWithTooltip(Component) {
           [index]: visible,
         },
       }));
-    }
+    };
 
     handleWithTooltip = ({ value, dragging, index, disabled, ...restProps }) => {
       const {
@@ -73,7 +74,7 @@ export default function createSliderWithTooltip(Component) {
           />
         </Tooltip>
       );
-    }
+    };
 
     render() {
       return <Component {...this.props} handle={this.handleWithTooltip} />;

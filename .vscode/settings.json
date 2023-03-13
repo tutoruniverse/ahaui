@@ -4,6 +4,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "editor.wordWrap": "on",
+  "eslint.nodeEnv": "development",
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },

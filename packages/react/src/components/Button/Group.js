@@ -32,7 +32,7 @@ const Group = React.forwardRef(({ className, sizeControl, disabledControl, as: C
       />
     </Context.Provider>
   );
-}
+},
 );
 Group.displayName = 'ButtonGroup';
 Group.propTypes = propTypes;

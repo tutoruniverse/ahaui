@@ -32,7 +32,7 @@ const DropButton = React.forwardRef(({ className, children, caret, as: Component
       nonUppercase
       className={classNames(
         'Dropdown-button',
-        className && className
+        className && className,
       )}
     >
       {children}
@@ -44,7 +44,7 @@ const DropButton = React.forwardRef(({ className, children, caret, as: Component
         <Icon
           name="arrowDown"
           className={classNames(
-            drop === 'up' && 'u-rotate180'
+            drop === 'up' && 'u-rotate180',
           )}
           size={caret || 'extraSmall'}
         />

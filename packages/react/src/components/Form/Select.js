@@ -78,13 +78,13 @@ const Select = React.forwardRef(({ className, sizeInput, required, multiple, id,
         isBackgroundReset && 'is-backgroundReset',
         isFocus && 'is-focus',
         multiple ? 'is-multiple u-alignItemsStart' : 'u-alignItemsCenter ',
-        className && className
+        className && className,
       )}
     >
       <select
         className={classNames(
           'FormInput-select u-widthFull u-borderNone u-backgroundTransparent u-marginLeftNone u-marginVerticalNone u-cursorPointer',
-          multiple && 'u-webkitScrollbar'
+          multiple && 'u-webkitScrollbar',
         )}
         disabled={disabledOri}
         onFocus={() => setFocus(true)}

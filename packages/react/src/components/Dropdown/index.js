@@ -10,7 +10,6 @@ import Toggle from './Toggle';
 import Container from './Container';
 import DropdownContext from './Context';
 
-
 const propTypes = {
   /**
    * You can use a custom element type for this component.
@@ -123,7 +122,7 @@ const Dropdown = React.forwardRef((uncontrolledProps, ref) => {
         className={classNames(
           'Dropdown',
           'u-positionRelative',
-          className && className
+          className && className,
         )}
       />
     </DropdownContext.Provider>

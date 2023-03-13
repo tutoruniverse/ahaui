@@ -143,13 +143,12 @@ const Rating = React.forwardRef(
         precision,
       );
       newHover = clamp(newHover, precision, max);
-      setState((prev) =>
-        prev.hover === newHover && prev.focus === newHover
-          ? prev
-          : {
-              hover: newHover,
-              focus: newHover,
-            },
+      setState((prev) => (prev.hover === newHover && prev.focus === newHover
+        ? prev
+        : {
+          hover: newHover,
+          focus: newHover,
+        }),
       );
       setFocusVisible(false);
 
@@ -214,8 +213,8 @@ const Rating = React.forwardRef(
           className={classNames(
             !state.filled && 'u-textGray',
             state.hover && 'is-focus',
-            (state.filled || state.active) &&
-              (activeIconClassName || 'u-textWarning'),
+            (state.filled || state.active)
+              && (activeIconClassName || 'u-textWarning'),
           )}
           size={size}
         />

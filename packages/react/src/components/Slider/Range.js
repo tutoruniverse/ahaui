@@ -20,7 +20,7 @@ const Range = React.forwardRef(({ variant, tipFormatter, tipProps, ...props }, r
     prefixCls="Slider"
     className={classNames(
       'u-positionRelative u-widthFull u-paddingVerticalTiny u-marginBottomLarge',
-      variant && `Slider--${variant}`
+      variant && `Slider--${variant}`,
     )}
   />
 ));

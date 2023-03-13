@@ -107,8 +107,7 @@ const Item = React.forwardRef(({ className, disabled, eventKey, children, badge,
           <span className="u-marginLeftExtraSmall">
             {typeof (badge) === 'function'
               ? badge()
-              : <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>
-            }
+              : <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>}
           </span>
         )}
       </Component>

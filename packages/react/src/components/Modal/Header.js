@@ -5,7 +5,6 @@ import useEventCallback from '@restart/hooks/useEventCallback';
 import Icon from 'components/Icon';
 import ModalContext from './Context';
 
-
 const propTypes = {
   /** Specify whether the Component should contain a close button */
   closeButton: PropTypes.bool,

@@ -37,7 +37,7 @@ const Logo = React.forwardRef(({ className, name, src, alt, height, width, as: C
       className={classNames(
         'Logo',
         'u-inlineBlock u-fontSizeNone u-lineHeightNone',
-        className && className
+        className && className,
       )}
     >
       {srcOri && (
@@ -46,7 +46,6 @@ const Logo = React.forwardRef(({ className, name, src, alt, height, width, as: C
     </Component>
   );
 });
-
 
 Logo.displayName = 'Logo';
 Logo.defaultProps = defaultProps;

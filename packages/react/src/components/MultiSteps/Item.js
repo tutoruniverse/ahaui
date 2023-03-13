@@ -94,7 +94,7 @@ const Item = React.forwardRef(({ className, isLast, isCompleted, isActive, disab
       direction !== 'vertical' && ' u-textCenter',
       disabled ? 'u-cursorNotAllow u-pointerEventsNone' : 'u-cursorPointer',
       (isCompleted || isActive) ? variantCSS[variant].textActive : variantCSS[variant].textDefault,
-      className && className
+      className && className,
     )}
   >
     {direction !== 'vertical' && (
@@ -118,7 +118,7 @@ const Item = React.forwardRef(({ className, isLast, isCompleted, isActive, disab
         className={classNames(
           'MultiSteps-dot',
           (isCompleted || isActive) ? variantCSS[variant].dotActive : variantCSS[variant].dotDefault,
-          'u-inlineBlock u-roundedCircle u-positionRelative'
+          'u-inlineBlock u-roundedCircle u-positionRelative',
         )}
       >
         {isCompleted ? (
@@ -133,7 +133,7 @@ const Item = React.forwardRef(({ className, isLast, isCompleted, isActive, disab
           className={classNames(
             'MultiSteps-line',
             isCompleted ? variantCSS[variant].backgroundActive : variantCSS[variant].backgroundDefault,
-            'u-widthFull u-positionAbsolute u-positionTop-50 u-positionLeft-50'
+            'u-widthFull u-positionAbsolute u-positionTop-50 u-positionLeft-50',
           )}
         />
         )
@@ -155,7 +155,7 @@ const Item = React.forwardRef(({ className, isLast, isCompleted, isActive, disab
               className={classNames(
                 'MultiSteps-line',
                 isCompleted ? variantCSS[variant].backgroundActive : variantCSS[variant].backgroundDefault,
-                'u-positionAbsolute'
+                'u-positionAbsolute',
               )}
             />
           )

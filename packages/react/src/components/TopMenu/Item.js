@@ -72,7 +72,7 @@ const Item = React.forwardRef(({ className, disabled, eventKey, children, badge,
         className={classNames(
           'u-positionRelative u-flexInline u-flexGrow1 u-paddingVerticalTiny hover:u-textDecorationNone',
           active ? 'u-textLink' : !disabled && 'u-textDark hover:u-textLink',
-          disabled && 'u-textLight'
+          disabled && 'u-textLight',
         )}
       >
         <div className="u-flexGrow1">
@@ -83,8 +83,7 @@ const Item = React.forwardRef(({ className, disabled, eventKey, children, badge,
         <span className="u-marginLeftExtraSmall">
           {typeof (badge) === 'function'
             ? badge()
-            : <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>
-            }
+            : <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>}
         </span>
         )}
       </Component>

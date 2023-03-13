@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import Context from './Context';
 
-
 const BubbleChatImage = React.forwardRef(({ className, ...props }, ref) => {
   const { type } = useContext(Context);
   return (
@@ -12,7 +11,7 @@ const BubbleChatImage = React.forwardRef(({ className, ...props }, ref) => {
         'BubbleChat-image',
         'u-lineHeightNone',
         (type === 'inbound') && 'u-textRight',
-        className && className
+        className && className,
       )}
     >
       <img {...props} className="u-roundedMedium u-border u-maxWidthFull" alt="" />

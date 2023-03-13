@@ -45,13 +45,12 @@ const Label = React.forwardRef(({ className, sizeLabel, required, htmlFor, as: C
     <Component
       ref={ref}
       required={requiredSet}
-      className={
-        classNames(
-          'FormLabel',
-          'u-block u-marginBottomTiny',
-          className && className,
-          sizeLabelSet && labelSizes[sizeLabelSet]
-        )}
+      className={classNames(
+        'FormLabel',
+        'u-block u-marginBottomTiny',
+        className && className,
+        sizeLabelSet && labelSizes[sizeLabelSet],
+      )}
       htmlFor={htmlForSet}
       {...props}
     />

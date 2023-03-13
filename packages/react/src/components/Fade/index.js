@@ -100,8 +100,7 @@ const Fade = React.forwardRef(({ className, children, ...props }, ref) => {
           children.props.className,
           fadeStyles[status],
         ),
-      })
-      }
+      })}
     </Transition>
   );
 });

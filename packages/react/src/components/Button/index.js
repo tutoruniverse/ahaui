@@ -99,7 +99,7 @@ const Button = React.forwardRef(({ className, variant, textClassName, children, 
         onlyIcon && 'is-onlyIcon',
         sizeOri === 'small' && 'u-text200',
         ((variant === 'primary' || variant === 'accent' || variant === 'accent_outline' || variant === 'primary_outline') && textClassName) ? textClassName : variantsTextClassName[variant],
-        className && className
+        className && className,
       )}
       disabled={(Component === 'button') ? disabled : undefined}
     >

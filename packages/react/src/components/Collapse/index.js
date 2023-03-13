@@ -122,8 +122,7 @@ const Collapse = React.forwardRef(({ className, eventKey, timeout, children, dim
           children.props.className,
           collapseStyles[state],
         ),
-      })
-      }
+      })}
     </Transition>
   );
 });

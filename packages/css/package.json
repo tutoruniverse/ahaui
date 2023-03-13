@@ -19,8 +19,7 @@
     "prefix": "postcss --config config/postcss.config.js --replace \"dist/*.css\" \"!dist/*.min.css\"",
     "minify": "yarn minify-index && yarn minify-utilities",
     "minify-index": "cleancss --level 1 --format breakWith=lf  --output dist/index.min.css dist/index.css",
-    "minify-utilities": "cleancss --level 1 --format breakWith=lf  --output dist/utilities.min.css dist/utilities.css",
-    "lint": "stylelint \"**/*.scss\" --cache --cache-location .cache/.stylelintcache --rd"
+    "minify-utilities": "cleancss --level 1 --format breakWith=lf  --output dist/utilities.min.css dist/utilities.css"
   },
   "author": "Got It, Inc.",
   "homepage": "https://github.com/gotitinc/ahaui/blob/main/packages/css#readme",
