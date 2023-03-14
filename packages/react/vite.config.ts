@@ -2,14 +2,14 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// All dependencies of shared-components should be in `packages/shared-components/package.json`
-// Not in the root `package.json`
 import localPackageJson from './package.json';
 import rootPackageJson from '../../package.json';
 
 const external = [
   ...Object.keys(localPackageJson.dependencies),
+  ...Object.keys(localPackageJson.devDependencies),
   ...Object.keys(rootPackageJson.devDependencies),
+  'rc-tooltip',
 ];
 export default defineConfig({
   plugins: [react()],

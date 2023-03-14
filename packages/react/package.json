@@ -53,6 +53,11 @@
     "warning": "4.0.3",
     "lodash.once": "4.1.1"
   },
+  "devDependencies": {
+    "@types/classnames": "2.2.10",
+    "@types/prop-types": "15.7.3",
+    "@types/rc-slider": "8.6.3"
+  },
   "peerDependencies": {
     "react": "^16.9.0 || 17.x || 18.x",
     "react-dom": "^16.9.0 || 17.x || 18.x"

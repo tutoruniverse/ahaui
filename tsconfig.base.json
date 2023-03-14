@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "paths": {
+      "@ahaui/react": [
+        "packages/react/src/index.ts"
+      ],
+      "@ahaui/icons": [
+        "packages/icons/src/index.ts"
+      ],
+    }
+  }
+}
