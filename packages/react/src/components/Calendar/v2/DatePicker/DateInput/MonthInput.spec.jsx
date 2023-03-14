@@ -1,11 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import DayInput from './DayInput';
+import MonthInput from './MonthInput';
 
-/* eslint-disable comma-dangle */
-
-describe('DayInput', () => {
+describe('MonthInput', () => {
   const defaultProps = {
     className: 'className',
     onChange: () => {},
@@ -13,7 +11,7 @@ describe('DayInput', () => {
 
   it('renders an input', () => {
     const component = mount(
-      <DayInput {...defaultProps} />
+      <MonthInput {...defaultProps} />,
     );
 
     const input = component.find('input');
@@ -23,11 +21,11 @@ describe('DayInput', () => {
 
   it('renders "0" given showLeadingZeros if day is <10', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
         showLeadingZeros
         value={9}
-      />
+      />,
     );
 
     const input = component.find('input');
@@ -38,11 +36,11 @@ describe('DayInput', () => {
 
   it('does not render "0" given showLeadingZeros if day is >=10', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
         showLeadingZeros
         value={10}
-      />
+      />,
     );
 
     const input = component.find('input');
@@ -53,10 +51,10 @@ describe('DayInput', () => {
 
   it('does not render "0" if not given showLeadingZeros', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
         value={9}
-      />
+      />,
     );
 
     const input = component.find('input');
@@ -66,69 +64,69 @@ describe('DayInput', () => {
   });
 
   it('applies given aria-label properly', () => {
-    const dayAriaLabel = 'Day';
+    const monthAriaLabel = 'Month';
 
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
-        ariaLabel={dayAriaLabel}
-      />
+        ariaLabel={monthAriaLabel}
+      />,
     );
 
     const input = component.find('input');
 
-    expect(input.prop('aria-label')).toBe(dayAriaLabel);
+    expect(input.prop('aria-label')).toBe(monthAriaLabel);
   });
 
   it('applies given placeholder properly', () => {
-    const dayPlaceholder = 'dd';
+    const monthPlaceholder = 'mm';
 
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
-        placeholder={dayPlaceholder}
-      />
+        placeholder={monthPlaceholder}
+      />,
     );
 
     const input = component.find('input');
 
-    expect(input.prop('placeholder')).toBe(dayPlaceholder);
+    expect(input.prop('placeholder')).toBe(monthPlaceholder);
   });
 
   it('has proper name defined', () => {
     const component = mount(
-      <DayInput {...defaultProps} />
+      <MonthInput {...defaultProps} />,
     );
 
     const input = component.find('input');
 
-    expect(input.prop('name')).toBe('day');
+    expect(input.prop('name')).toBe('month');
   });
 
   it('has proper className defined', () => {
     const className = 'react-date-picker';
 
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
         className={className}
-      />
+      />,
     );
 
     const input = component.find('input');
 
     expect(input.hasClass('react-date-picker__input')).toBe(true);
-    expect(input.hasClass('react-date-picker__day')).toBe(true);
+    expect(input.hasClass('react-date-picker__month')).toBe(true);
   });
 
   it('displays given value properly', () => {
     const value = 11;
 
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
         value={value}
-      />
+      />,
     );
 
     const input = component.find('input');
@@ -138,7 +136,7 @@ describe('DayInput', () => {
 
   it('does not disable input by default', () => {
     const component = mount(
-      <DayInput {...defaultProps} />
+      <MonthInput {...defaultProps} />,
     );
 
     const input = component.find('input');
@@ -148,10 +146,10 @@ describe('DayInput', () => {
 
   it('disables input given disabled flag', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
         disabled
-      />
+      />,
     );
 
     const input = component.find('input');
@@ -161,7 +159,7 @@ describe('DayInput', () => {
 
   it('is not required input by default', () => {
     const component = mount(
-      <DayInput {...defaultProps} />
+      <MonthInput {...defaultProps} />,
     );
 
     const input = component.find('input');
@@ -171,10 +169,10 @@ describe('DayInput', () => {
 
   it('required input given required flag', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
         required
-      />
+      />,
     );
 
     const input = component.find('input');
@@ -186,19 +184,19 @@ describe('DayInput', () => {
     const itemRef = jest.fn();
 
     mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
         itemRef={itemRef}
-      />
+      />,
     );
 
     expect(itemRef).toHaveBeenCalled();
-    expect(itemRef).toHaveBeenCalledWith(expect.any(HTMLInputElement), 'day');
+    expect(itemRef).toHaveBeenCalledWith(expect.any(HTMLInputElement), 'month');
   });
 
   it('has min = 1 by default', () => {
     const component = mount(
-      <DayInput {...defaultProps} />
+      <MonthInput {...defaultProps} />,
     );
 
     const input = component.find('input');
@@ -206,14 +204,13 @@ describe('DayInput', () => {
     expect(input.prop('min')).toBe(1);
   });
 
-  it('has min = 1 given minDate in a past month', () => {
+  it('has min = 1 given minDate in a past year', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
-        minDate={new Date(2017, 11, 15)}
-        month={1}
+        minDate={new Date(2017, 6, 1)}
         year={2018}
-      />
+      />,
     );
 
     const input = component.find('input');
@@ -221,66 +218,58 @@ describe('DayInput', () => {
     expect(input.prop('min')).toBe(1);
   });
 
-  it('has min = (day in minDate) given minDate in a current month', () => {
+  it('has min = (month in minDate) given minDate in a current year', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
-        minDate={new Date(2018, 0, 15)}
-        month={1}
+        minDate={new Date(2018, 6, 1)}
         year={2018}
-      />
+      />,
     );
 
     const input = component.find('input');
 
-    expect(input.prop('min')).toBe(15);
+    expect(input.prop('min')).toBe(7);
   });
 
-  it('has max = (number of days in current month) by default', () => {
-    const numberOfDaysInJanuary2018 = new Date(2018, 1, 0).getDate();
-
+  it('has max = 12 by default', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
-        month={1}
         year={2018}
-      />
+      />,
     );
 
     const input = component.find('input');
 
-    expect(input.prop('max')).toBe(numberOfDaysInJanuary2018);
+    expect(input.prop('max')).toBe(12);
   });
 
-  it('has max = (number of days in current month) given maxDate in a future month', () => {
-    const numberOfDaysInJanuary2018 = new Date(2018, 1, 0).getDate();
-
+  it('has max = 12 given maxDate in a future year', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
-        maxDate={new Date(2018, 1, 15)}
-        month={1}
+        maxDate={new Date(2019, 6, 1)}
         year={2018}
-      />
+      />,
     );
 
     const input = component.find('input');
 
-    expect(input.prop('max')).toBe(numberOfDaysInJanuary2018);
+    expect(input.prop('max')).toBe(12);
   });
 
-  it('has max = (day in maxDate) given maxDate in a current month', () => {
+  it('has max = (month in maxDate) given maxDate in a current year', () => {
     const component = mount(
-      <DayInput
+      <MonthInput
         {...defaultProps}
-        maxDate={new Date(2018, 0, 15)}
-        month={1}
+        maxDate={new Date(2018, 6, 1)}
         year={2018}
-      />
+      />,
     );
 
     const input = component.find('input');
 
-    expect(input.prop('max')).toBe(15);
+    expect(input.prop('max')).toBe(7);
   });
 });

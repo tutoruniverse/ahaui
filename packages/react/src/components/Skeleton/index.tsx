@@ -36,7 +36,7 @@ const variantClass = {
   [VariantEnum.circle]: 'u-roundedCircle',
 };
 
-const Skeleton: SkeletonComponent = React.forwardRef(<T extends React.ElementType>(
+export const Skeleton: SkeletonComponent = React.forwardRef(<T extends React.ElementType>(
   {
     variant = VariantEnum.text,
     width,
@@ -70,5 +70,6 @@ const Skeleton: SkeletonComponent = React.forwardRef(<T extends React.ElementTyp
     />
   );
 });
+
 
 export default Skeleton;

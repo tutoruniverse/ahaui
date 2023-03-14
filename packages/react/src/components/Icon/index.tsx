@@ -164,7 +164,7 @@ export enum IconNameEnum {
   nine = 'nine',
 }
 
-export type IconName = EnumToUnion<IconNameEnum>;
+type IconName = EnumToUnion<IconNameEnum>;
 
 type PropTypes = {
   /** The icon visual name

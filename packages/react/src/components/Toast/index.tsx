@@ -50,7 +50,7 @@ export interface ToastProps extends React.RefAttributes<HTMLDivElement> {
 
 type ToastComponent = (props: ToastProps) => React.ReactElement | null;
 
-const ToastContainer: ToastComponent = React.forwardRef((
+export const ToastContainer: ToastComponent = React.forwardRef((
   {
     position = PositionEnum.TOP_RIGHT,
     dismissible = true,

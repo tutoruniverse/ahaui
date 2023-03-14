@@ -3,9 +3,8 @@ import classNames from 'classnames';
 import Context from './Context';
 
 export type BodyProps = React.ComponentPropsWithRef<'div'>;
-type BodyComponent = (props: BodyProps) => React.ReactElement | null;
 
-export const PageLayoutBody: BodyComponent = React.forwardRef((
+export const PageLayoutBody = React.forwardRef((
   {
     className,
     children,

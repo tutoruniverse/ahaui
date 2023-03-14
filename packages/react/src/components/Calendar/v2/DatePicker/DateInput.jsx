@@ -49,7 +49,7 @@ function getValue(value, index) {
 
   const valueDate = new Date(rawValue);
 
-  if (isNaN(valueDate.getTime())) {
+  if (Number.isNaN(valueDate.getTime())) {
     throw new Error(`Invalid date: ${value}`);
   }
 
@@ -140,6 +140,15 @@ function renderCustomInputs(placeholder, elementFunctions, allowMultipleInstance
 }
 
 export default class DateInput extends PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      year: null,
+      month: null,
+      day: null,
+    };
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     const {
       minDate, maxDate, maxDetail,
@@ -184,12 +193,6 @@ export default class DateInput extends PureComponent {
 
     return nextState;
   }
-
-  state = {
-    year: null,
-    month: null,
-    day: null,
-  };
 
   get formatDate() {
     const { maxDetail } = this.props;
@@ -317,7 +320,7 @@ export default class DateInput extends PureComponent {
   onKeyUp = (event) => {
     const { key, target: input } = event;
 
-    const isNumberKey = !isNaN(parseInt(key, 10));
+    const isNumberKey = !Number.isNaN(parseInt(key, 10));
 
     if (!isNumberKey) {
       return;

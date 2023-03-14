@@ -51,7 +51,7 @@ const itemAfterColor = {
   dark: 'u-backgroundNeutral800',
 };
 
-const Item: ItemComponent = React.forwardRef(
+export const Item: ItemComponent = React.forwardRef(
   <T extends React.ElementType>(
     {
       className,
@@ -77,7 +77,9 @@ const Item: ItemComponent = React.forwardRef(
     const onClick = (e: React.MouseEvent) => {
       e.stopPropagation();
       e.preventDefault();
-      onSelect && onSelect(path);
+      if (onSelect) {
+        onSelect(path);
+      }
     };
 
     const getTextActiveColor = (variant?: VariantForTag) => (variant ? textActiveColor[variant] : 'u-textPrimary');

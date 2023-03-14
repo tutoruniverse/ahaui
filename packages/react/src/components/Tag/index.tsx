@@ -18,6 +18,7 @@ export type VariantClassName = Extract<VariantColors,
   | 'negative'
   | 'negative_subtle'>
 
+
 export type VariantTextClassName = Extract<VariantClassName, 'primary' | 'primary_subtle' | 'accent' | 'accent_subtle'>
 
 export const variantsTextClassName = {
@@ -73,7 +74,7 @@ const getVariantTextClassName = (variant: VariantClassName, textClassName: TextC
 type TagProps<T extends React.ElementType> = PolymorphicComponentPropsWithRef<T, BasicPropTypes>
 type TagComponent = <T extends React.ElementType = 'span'>(props: TagProps<T>) => React.ReactElement | null;
 
-const Tag: TagComponent = React.forwardRef(<T extends React.ElementType>(
+export const Tag: TagComponent = React.forwardRef(<T extends React.ElementType>(
   {
     className,
     textClassName = '',
@@ -96,5 +97,6 @@ const Tag: TagComponent = React.forwardRef(<T extends React.ElementType>(
     />
   );
 });
+
 
 export default Tag;

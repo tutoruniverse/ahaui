@@ -62,7 +62,11 @@ const getTextClassName = (variant: Variant, textClassName?: string | string[]) =
   return undefined;
 };
 
-const Badge = React.forwardRef(
+type BadgeComponent =<T extends React.ElementType = 'div'>(
+  props: BadgeProps<T>
+) => React.ReactElement | null;
+
+export const Badge:BadgeComponent = React.forwardRef(
   <T extends React.ElementType>(
     {
       className,
