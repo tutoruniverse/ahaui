@@ -1,2 +1,4 @@
 **/*.d.ts
 **/*.spec.js
+
+vitest.config.ts

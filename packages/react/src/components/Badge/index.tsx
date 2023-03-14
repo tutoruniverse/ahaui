@@ -2,6 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+export type BadgeVariant =
+  | 'default'
+  | 'white'
+  | 'black'
+  | 'primary'
+  | 'primary_subtle'
+  | 'warning'
+  | 'warning_subtle'
+  | 'positive'
+  | 'positive_subtle'
+  | 'information'
+  | 'information_subtle'
+  | 'negative'
+  | 'negative_subtle';
+
 const propTypes = {
   /** The Badge visual variant */
   variant: PropTypes.oneOf([
@@ -59,28 +74,48 @@ const variantsClassName = {
     'u-textNegative hover:u-textNegative u-backgroundNegativeLighter',
 };
 
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  variant?: BadgeVariant;
+  textClassName?: string;
+  as?: React.ElementType;
+}
+
 const Badge = React.forwardRef(
   (
-    { className, textClassName, variant, as: Component = 'span', ...props },
+    {
+      className,
+      textClassName,
+      variant,
+      as: Component = 'span',
+      ...props
+    }: BadgeProps,
     ref,
-  ) => (
-    <Component
-      {...props}
-      ref={ref}
-      className={classNames(
-        'Badge',
-        'u-inlineBlock u-textCenter u-text200 u-fontMedium u-textNoWrap u-roundedInfinity hover:u-textDecorationNone',
-        variant && variantsClassName[variant],
-        (variant === 'primary' || variant === 'primary_subtle') && textClassName
-          ? textClassName
-          : variantsTextClassName[variant],
-        className && className,
-      )}
-    />
-  ),
+  ) => {
+    const classes = classNames(
+      'Badge',
+      'u-inlineBlock u-textCenter u-text200 u-fontMedium u-textNoWrap u-roundedInfinity hover:u-textDecorationNone',
+      variant && variantsClassName[variant],
+      (variant === 'primary' || variant === 'primary_subtle') && textClassName
+        ? textClassName
+        : variantsTextClassName[variant],
+      className && className,
+    );
+
+    return React.createElement(
+      Component,
+      {
+        ...props,
+        ref,
+        className: classes,
+      },
+      props.children,
+    );
+  },
 );
 
 Badge.displayName = 'Badge';
+// @ts-ignore
 Badge.defaultProps = defaultProps;
+// @ts-ignore
 Badge.propTypes = propTypes;
 export default Badge;

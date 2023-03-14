@@ -1,17 +1,28 @@
 {
   "name": "@ahaui/react",
   "version": "2.1.6",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
-    "es/*.{js,map}",
-    "lib/*.{js,map}",
+    "dist/*.*",
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "types": "tsc --project tsconfig.types.json",
+    "build:c": "rollup -c",
+    "build:vite": "vite build",
+    "build": "pnpm run build:vite && pnpm run types",
+    "dev": "pnpm run build:vite --watch && pnpm run types",
     "prepublishOnly": "yarn build",
-    "dev": "rollup -c -w",
+    "dev:c": "rollup -c -w",
     "format": "eslint --ext js src --fix",
     "lint": "eslint --ext js src"
   },
@@ -43,8 +54,8 @@
     "lodash.once": "4.1.1"
   },
   "peerDependencies": {
-    "react": "^16.9.0 || 17.x",
-    "react-dom": "^16.9.0 || 17.x"
+    "react": "^16.9.0 || 17.x || 18.x",
+    "react-dom": "^16.9.0 || 17.x || 18.x"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"

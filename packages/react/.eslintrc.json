@@ -1,0 +1,38 @@
+{
+  "root": true,
+  "extends": [
+    "prettier",
+    "plugin:react-hooks/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-prettier"
+    // TODO: Will enable this when we have a good way to handle this
+    // "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+    // "project": "./tsconfig.base.json" // This config cause vscode 's eslint server cannot read configuration properly -> disable it
+  },
+  "plugins": ["prettier", "react", "@typescript-eslint"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "quoteProps": "consistent",
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5",
+        "useTabs": false
+      }
+    ],
+    "react/react-in-jsx-scope": "off"
+  }
+}
