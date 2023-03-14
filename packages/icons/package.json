@@ -18,6 +18,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@ahaui/react": "workspace:*"
+  },
+  "devDependencies": {},
   "peerDependencies": {
     "@ahaui/react": "*"
   },

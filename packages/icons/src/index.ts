@@ -17,10 +17,10 @@ export const createIconAssetsPlugin = () => {
     prefix: 'icon',
     assets: Icons.reduce((finalResult, currentItem) => {
       if (
-        currentItem
-        && currentItem.path
-        && currentItem.metadata
-        && currentItem.metadata.name
+        currentItem &&
+        currentItem.path &&
+        currentItem.metadata &&
+        currentItem.metadata.name
       ) {
         return {
           ...finalResult,
