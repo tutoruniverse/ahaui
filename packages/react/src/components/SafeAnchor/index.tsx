@@ -75,7 +75,6 @@ export const SafeAnchor: SafeAnchorComponent = React.forwardRef(
 
     const Component = as || 'a';
 
-
     if (isTrivialHref(props.href)) {
       propsHref = {
         role: props.role || 'button',
@@ -106,6 +105,5 @@ export const SafeAnchor: SafeAnchorComponent = React.forwardRef(
     );
   },
 );
-
 
 export default SafeAnchor;

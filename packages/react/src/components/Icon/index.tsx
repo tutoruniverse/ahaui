@@ -1,5 +1,4 @@
 import React, { ComponentPropsWithRef } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { icons } from 'constants/icons';
 import {
@@ -164,7 +163,7 @@ export enum IconNameEnum {
   nine = 'nine',
 }
 
-type IconName = EnumToUnion<IconNameEnum>;
+export type IconName = EnumToUnion<IconNameEnum>;
 
 type PropTypes = {
   /** The icon visual name
