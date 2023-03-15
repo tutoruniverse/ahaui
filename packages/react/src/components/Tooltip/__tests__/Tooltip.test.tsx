@@ -40,7 +40,7 @@ describe('components/Tooltip', () => {
       expect(arrowRef.current).toHaveClass('Tooltip-arrow');
 
       // "placement" default value is "right"
-      expect(tooltipRef.current).toHaveAttribute('x-placement', 'right');
+      expect(tooltipRef.current).toHaveAttribute('data-test-placement', 'right');
     });
   });
 
@@ -48,7 +48,7 @@ describe('components/Tooltip', () => {
     it.each(Object.values(Placement))('should render with placement = "%s', (placement) => {
       setup({ placement });
 
-      expect(tooltipRef.current).toHaveAttribute('x-placement', placement);
+      expect(tooltipRef.current).toHaveAttribute('data-test-placement', placement);
     });
 
     it.each(['white', 'black'])(
