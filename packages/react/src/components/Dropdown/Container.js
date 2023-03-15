@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { elementType } from 'prop-types-extra';
 import usePopper from 'hooks/usePopper';
 import useRootClose from 'hooks/useRootClose';
+import createPopperConfig from 'utils/createPopperConfig';
 import DropdownContext from './Context';
 
 const propTypes = {
@@ -76,15 +77,14 @@ const Container = React.forwardRef((props, ref) => {
   if (drop === 'up') placement = alignRight ? 'top-end' : 'top-start';
   else if (drop === 'right') placement = alignRight ? 'right-end' : 'right-start';
   else if (drop === 'left') placement = alignRight ? 'left-end' : 'left-start';
-  const popper = usePopper(toggleElement, containerElement, {
+  const popper = usePopper(toggleElement, containerElement, createPopperConfig({
     placement,
     enabled: !!(shouldUsePopper && show),
     eventsEnabled: !!show,
-    modifiers: {
-      flip: { enabled: !!flip },
-      ...popperConfig.modifiers,
-    },
-  });
+    flip,
+    popperConfig,
+  }));
+
   const containerProps = {
     ref: setContainer,
     style: { ...popper.styles, ...additionalStyles },
