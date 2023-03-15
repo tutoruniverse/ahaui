@@ -27,7 +27,7 @@ export type PopperOptions = {
   eventsEnabled?: boolean;
   offset?: Offset;
   placement?: Popper.Placement;
-  popperConfig?: PopperConfig;
+  popperConfig?: Omit<PopperConfig, 'modifiers'> & { modifiers?: Modifiers };
 };
 
 export function toModifierMap(modifiers: Modifiers | undefined) {

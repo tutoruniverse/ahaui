@@ -83,18 +83,16 @@ describe('utils/createPopperConfig', () => {
     enabled: true,
     eventsEnabled: true,
     placement: 'bottom' as Placement,
-    flip: true,
+    flip: false,
     fixed: false,
-    containerPadding: 10,
     arrowElement: null,
-    popperConfig: {},
+    popperConfig: undefined,
   };
 
   it('should return the default Popper config', () => {
     const popperConfig = createPopperConfig(defaultPopperOptions);
 
     expect(popperConfig).toEqual({
-      ...defaultPopperOptions.popperConfig,
       enabled: true,
       placement: 'bottom',
       strategy: undefined,
@@ -103,9 +101,7 @@ describe('utils/createPopperConfig', () => {
           enabled: true,
         },
         preventOverflow: {
-          options: {
-            padding: 10,
-          },
+          options: undefined,
         },
         offset: {
           options: {
@@ -120,10 +116,8 @@ describe('utils/createPopperConfig', () => {
           },
         },
         flip: {
-          enabled: true,
-          options: {
-            padding: 10,
-          },
+          enabled: false,
+          options: undefined,
         },
       }),
     });
@@ -134,40 +128,61 @@ describe('utils/createPopperConfig', () => {
       ...defaultPopperOptions,
       fixed: true,
       containerPadding: 20,
+      offset: [10, 10],
       arrowElement: document.createElement('div'),
+      popperConfig: {
+        modifiers: {
+          arrow: {
+            options: {
+              padding: 10,
+            }
+          },
+          preventOverflow: {
+            enabled: false,
+          },
+          offset: {
+            options: {
+              offset: [20, 20],
+            },
+          },
+          flip: {
+            enabled: false,
+          }
+        },
+      }
     });
 
     expect(popperConfig).toEqual({
-      ...defaultPopperOptions.popperConfig,
       placement: 'bottom',
       enabled: true,
       strategy: 'fixed',
       modifiers: toModifierArray({
-        eventListeners: {
+        arrow: {
           enabled: true,
+          options: {
+            padding: 10,
+            element: document.createElement('div'),
+          },
         },
         preventOverflow: {
+          enabled: false,
           options: {
             padding: 20,
           },
         },
         offset: {
           options: {
-            offset: [0, 10],
-          },
-        },
-        arrow: {
-          enabled: true,
-          options: {
-            padding: 4.8,
-            element: document.createElement('div'),
+            offset: [20, 20],
           },
         },
         flip: {
-          enabled: true,
+          enabled: false,
           options: {
             padding: 20,
           },
+        },
+        eventListeners: {
+          enabled: true,
         },
       }),
     });
