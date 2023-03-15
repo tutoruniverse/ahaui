@@ -5,10 +5,10 @@ import PageLayoutHeader from './Header';
 import PageLayoutBody from './Body';
 import PageLayoutFooter from './Footer';
 
-export type PageLayoutProps = React.ComponentPropsWithRef<'div'> & PageLayoutContextValue;
-type PageLayoutComponent = (props: PageLayoutProps) => React.ReactElement | null;
 
-const PageLayout: PageLayoutComponent = React.forwardRef((
+export type PageLayoutProps = React.ComponentPropsWithRef<'div'> & PageLayoutContextValue;
+
+const PageLayout = React.forwardRef((
   {
     children,
     className,
@@ -44,6 +44,7 @@ const PageLayout: PageLayoutComponent = React.forwardRef((
     </Context.Provider>
   );
 });
+
 
 const CompoundPageLayout = Object.assign(PageLayout, {
   Header: PageLayoutHeader,

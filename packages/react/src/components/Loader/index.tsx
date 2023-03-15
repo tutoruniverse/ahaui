@@ -5,6 +5,7 @@ import { SizeMapping } from 'constants/common';
 
 type LoaderSize = Extract<ComponentSize, ComponentCommonSize | 'extraSmall'>;
 
+
 interface LoaderProps extends React.ComponentPropsWithRef<'div'> {
   /**
    * Loader size variants

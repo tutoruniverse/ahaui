@@ -108,8 +108,6 @@ const Tooltip = forwardRef(
       ref={ref}
       {...props}
       style={styleTooltip}
-      // TODO: Should check this
-      // eslint-disable-next-line react/no-unknown-property
       x-placement={placement}
       className={classNames(
         'Tooltip',

@@ -6,7 +6,7 @@ const isValidFunction = (
 
 function createChainedFunction(
   ...funcs: Array<GenericFunction | null | undefined>
-): ((...args: any[]) => void) | null {
+): ((...args: any[]) => void) {
   return funcs
     .filter(isValidFunction)
     .reduce((acc, f, index) => {

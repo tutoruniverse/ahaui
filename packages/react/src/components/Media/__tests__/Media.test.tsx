@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Media, { aspectRatios, AspectRatioEnum } from '..';
 
 describe('components/Media', () => {
-  const mediaRef = createRef<HTMLDivElement>();
+  const mediaRef = createRef<HTMLEmbedElement>();
 
   const setup = (props = {}) => {
     const { container } = render(<Media {...props} ref={mediaRef} />);

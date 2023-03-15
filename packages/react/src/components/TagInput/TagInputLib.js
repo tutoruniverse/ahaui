@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -32,8 +31,7 @@ function defaultRenderTag (props) {
   return (
     <span key={key} {...other}>
       {getTagDisplayValue(tag)}
-      {!disabled
-        && <a className={classNameRemove} onClick={(e) => onRemove(key)} />}
+      {!disabled && (<a className={classNameRemove} onClick={() => onRemove(key)} />)}
     </span>
   );
 }
@@ -69,7 +67,7 @@ function defaultRenderLayout (tagComponents, inputComponent) {
 }
 
 function defaultPasteSplit (data) {
-  return data.split(' ').map(d => d.trim());
+  return data.split(' ').map((d) => d.trim());
 }
 
 const defaultInputProps = {
@@ -116,7 +114,7 @@ class TagsInput extends React.Component {
     disabled: PropTypes.bool,
     tagDisplayProp: PropTypes.string,
     preventSubmit: PropTypes.bool,
-  };
+  }
 
   static defaultProps = {
     className: 'react-tagsinput',
@@ -138,7 +136,7 @@ class TagsInput extends React.Component {
     disabled: false,
     tagDisplayProp: null,
     preventSubmit: true,
-  };
+  }
 
   _getTagDisplayValue = (tag) => {
     const { tagDisplayProp } = this.props;
@@ -148,7 +146,7 @@ class TagsInput extends React.Component {
     }
 
     return tag;
-  };
+  }
 
   _makeTag = (tag) => {
     const { tagDisplayProp } = this.props;
@@ -160,7 +158,7 @@ class TagsInput extends React.Component {
     }
 
     return tag;
-  };
+  }
 
   _removeTag = (index) => {
     const value = this.props.value.concat([]);
@@ -168,7 +166,7 @@ class TagsInput extends React.Component {
       const changed = value.splice(index, 1);
       this.props.onChange(value, changed, [index]);
     }
-  };
+  }
 
   _clearInput = () => {
     if (this.hasControlledInput()) {
@@ -176,7 +174,7 @@ class TagsInput extends React.Component {
     } else {
       this.setState({ tag: '' });
     }
-  };
+  }
 
   _tag = () => {
     if (this.hasControlledInput()) {
@@ -184,20 +182,20 @@ class TagsInput extends React.Component {
     }
 
     return this.state.tag;
-  };
+  }
 
   _addTags = (tags) => {
     const { onChange, onValidationReject, onlyUnique, maxTags, value } = this.props;
 
     if (onlyUnique) {
       tags = uniq(tags);
-      tags = tags.filter(tag => value.every(currentTag => this._getTagDisplayValue(currentTag) !== this._getTagDisplayValue(tag)),
+      tags = tags.filter((tag) => value.every((currentTag) => this._getTagDisplayValue(currentTag) !== this._getTagDisplayValue(tag)),
       );
     }
 
-    const rejectedTags = tags.filter(tag => !this._validate(this._getTagDisplayValue(tag)));
-    tags = tags.filter(tag => this._validate(this._getTagDisplayValue(tag)));
-    tags = tags.filter(tag => {
+    const rejectedTags = tags.filter((tag) => !this._validate(this._getTagDisplayValue(tag)));
+    tags = tags.filter((tag) => this._validate(this._getTagDisplayValue(tag)));
+    tags = tags.filter((tag) => {
       const tagDisplayValue = this._getTagDisplayValue(tag);
       if (typeof tagDisplayValue.trim === 'function') {
         return tagDisplayValue.trim().length > 0;
@@ -231,13 +229,13 @@ class TagsInput extends React.Component {
 
     this._clearInput();
     return false;
-  };
+  }
 
   _validate = (tag) => {
     const { validate, validationRegex } = this.props;
 
     return validate(tag) && validationRegex.test(tag);
-  };
+  }
 
   _shouldPreventDefaultEventOnAdd = (added, empty, keyCode) => {
     if (added) {
@@ -249,7 +247,7 @@ class TagsInput extends React.Component {
     }
 
     return false;
-  };
+  }
 
   focus = () => {
     if (this.input && typeof this.input.focus === 'function') {
@@ -257,7 +255,7 @@ class TagsInput extends React.Component {
     }
 
     this.handleOnFocus();
-  };
+  }
 
   blur = () => {
     if (this.input && typeof this.input.blur === 'function') {
@@ -265,7 +263,7 @@ class TagsInput extends React.Component {
     }
 
     this.handleOnBlur();
-  };
+  }
 
   accept = () => {
     let tag = this._tag();
@@ -276,13 +274,13 @@ class TagsInput extends React.Component {
     }
 
     return false;
-  };
+  }
 
-  addTag = (tag) => this._addTags([tag]);
+  addTag = (tag) => this._addTags([tag])
 
   clearInput = () => {
     this._clearInput();
-  };
+  }
 
   handlePaste = (e) => {
     const { addOnPaste, pasteSplit } = this.props;
@@ -294,10 +292,10 @@ class TagsInput extends React.Component {
     e.preventDefault();
 
     const data = getClipboardData(e);
-    const tags = pasteSplit(data).map(tag => this._makeTag(tag));
+    const tags = pasteSplit(data).map((tag) => this._makeTag(tag));
 
     this._addTags(tags);
-  };
+  }
 
   handleKeyDown = (e) => {
     if (e.defaultPrevented) {
@@ -323,13 +321,13 @@ class TagsInput extends React.Component {
       e.preventDefault();
       this._removeTag(value.length - 1);
     }
-  };
+  }
 
   handleClick = (e) => {
     if (e.target === this.div) {
       this.focus();
     }
-  };
+  }
 
   handleChange = (e) => {
     const { onChangeInput } = this.props;
@@ -345,7 +343,7 @@ class TagsInput extends React.Component {
     } else {
       this.setState({ tag });
     }
-  };
+  }
 
   handleOnFocus = (e) => {
     const { onFocus } = this.props.inputProps;
@@ -355,7 +353,7 @@ class TagsInput extends React.Component {
     }
 
     this.setState({ isFocused: true });
-  };
+  }
 
   handleOnBlur = (e) => {
     const { onBlur } = this.props.inputProps;
@@ -374,11 +372,11 @@ class TagsInput extends React.Component {
       const tag = this._makeTag(e.target.value);
       this._addTags([tag]);
     }
-  };
+  }
 
   handleRemove = (tag) => {
     this._removeTag(tag);
-  };
+  }
 
   inputProps = () => {
     // eslint-disable-next-line
@@ -394,15 +392,15 @@ class TagsInput extends React.Component {
     }
 
     return props;
-  };
+  }
 
-  inputValue = (props) => props.currentValue || props.inputValue || '';
+  inputValue = (props) => props.currentValue || props.inputValue || ''
 
   hasControlledInput = () => {
     const { inputValue, onChangeInput } = this.props;
 
     return typeof onChangeInput === 'function' && typeof inputValue === 'string';
-  };
+  }
 
   componentDidMount() {
     if (this.hasControlledInput()) {
@@ -474,7 +472,7 @@ class TagsInput extends React.Component {
     }));
 
     const inputComponent = renderInput({
-      ref: r => { this.input = r; },
+      ref: (r) => { this.input = r; },
       value: this._tag(),
       onPaste: this.handlePaste,
       onKeyDown: this.handleKeyDown,
@@ -486,7 +484,7 @@ class TagsInput extends React.Component {
     });
 
     return (
-      <div ref={r => { this.div = r; }} onClick={this.handleClick} className={className}>
+      <div ref={(r) => { this.div = r; }} onClick={this.handleClick} className={className}>
         {renderLayout(tagComponents, inputComponent)}
       </div>
     );

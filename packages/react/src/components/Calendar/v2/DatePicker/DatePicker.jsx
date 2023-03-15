@@ -15,6 +15,11 @@ const outsideActionEvents = ['mousedown', 'focusin', 'touchstart'];
 const allViews = ['century', 'decade', 'year', 'month'];
 
 export default class DatePicker extends PureComponent {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.isOpen !== prevState.isOpenProps) {
       return {
@@ -25,8 +30,6 @@ export default class DatePicker extends PureComponent {
 
     return null;
   }
-
-  state = {};
 
   componentDidMount() {
     this.handleOutsideActionListeners();
