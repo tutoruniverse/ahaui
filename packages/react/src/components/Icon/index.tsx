@@ -1,5 +1,4 @@
 import React, { ComponentPropsWithRef } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { icons } from 'constants/icons';
 import {

@@ -57,6 +57,7 @@ type CardPartsProps<T extends React.ElementType> = PolymorphicComponentPropsWith
 
 type CardPartsComponent = <T extends React.ElementType = 'div'>(props: CardPartsProps<T>) => React.ReactElement | null;
 
+
 const CardHeader: CardPartsComponent = forwardRef(
   <T extends React.ElementType = 'div'>(
     { className, as, ...props }: CardPartsProps<T>,
@@ -170,5 +171,7 @@ const CompoundCard = Object.assign(Card, {
   Title: CardTitle,
   Body: CardBody,
 });
+
+
 
 export default CompoundCard;

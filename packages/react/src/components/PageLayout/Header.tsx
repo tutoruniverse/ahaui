@@ -3,9 +3,8 @@ import classNames from 'classnames';
 import Context from './Context';
 
 export type HeaderProps = React.ComponentPropsWithRef<'div'>;
-type HeaderComponent = (props: HeaderProps) => React.ReactElement | null;
 
-export const PageLayoutHeader: HeaderComponent = React.forwardRef((
+const PageLayoutHeader = React.forwardRef((
   {
     className,
     children,

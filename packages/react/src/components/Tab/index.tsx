@@ -13,29 +13,31 @@ enum VisualEnum {
 
 type Visual = EnumToUnion<VisualEnum>
 
-type PropTypes = {
-  /**
+interface TabProps {
+/**
    * Set current tab item
    * @controllable onSelect
    * */
-  current?: string;
-  /** Callback fired when the tab item is clicked. */
-  onSelect?: (path?: string) => void;
-  /** Set Tabs to full width */
-  fullWidth?: boolean;
-  /**
-   * Define direction of the Tabs
-   * @default 'horizontal'
-   */
-  direction?: Directions;
-  /**
-   * Define visual of the Tabs
-   * @default 'default'
-   */
-  visual?: Visual;
-  /** Set color for text and the line under active item */
-  variant?: VariantForTag;
-} & ComponentPropsWithRef<'div'>;
+current?: string;
+/** Callback fired when the tab item is clicked. */
+onSelect?: (path?: string) => void;
+/** Set Tabs to full width */
+fullWidth?: boolean;
+/**
+ * Define direction of the Tabs
+ * @default 'horizontal'
+ */
+direction?: Directions;
+/**
+ * Define visual of the Tabs
+ * @default 'default'
+ */
+visual?: Visual;
+/** Set color for text and the line under active item */
+variant?: VariantForTag;
+}
+
+type PropTypes = TabProps & Omit<ComponentPropsWithRef<'div'>, keyof TabProps>;
 
 export const TabContext = React.createContext<
   Pick<PropTypes, 'variant' | 'onSelect' | 'current'>

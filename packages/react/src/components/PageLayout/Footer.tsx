@@ -3,9 +3,8 @@ import classNames from 'classnames';
 import Context from './Context';
 
 export type FooterProps = React.ComponentPropsWithRef<'div'>;
-type FooterComponent = (props: FooterProps) => React.ReactElement | null;
 
-export const PageLayoutFooter: FooterComponent = React.forwardRef((
+export const PageLayoutFooter = React.forwardRef((
   {
     className,
     children,

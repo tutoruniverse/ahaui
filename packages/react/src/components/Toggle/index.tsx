@@ -21,7 +21,7 @@ T,
 
 type ToggleComponent = <T extends React.ElementType = 'button'>(props: ToggleProps<T>) => React.ReactElement | null;
 
-const Toggle : ToggleComponent = React.forwardRef(
+export const Toggle : ToggleComponent = React.forwardRef(
   <T extends React.ElementType>(
     { className,
       checked = false,

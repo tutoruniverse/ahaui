@@ -14,14 +14,17 @@ type AspectRatio = EnumToUnion<AspectRatioEnum>;
 type MediaProps<T extends React.ElementType> = PolymorphicComponentPropsWithRef<
 T,
 {
-   /** Set the aspect ration of the embed */
+   /** Set the aspect ration of the embed
+    * @default "wide"
+   */
    aspectRatio?: AspectRatio,
    width?: number,
    height?: number
+   src? :string
 }
 >;
 
-type MediaComponent = <T extends React.ElementType = 'div'>(props: MediaProps<T>) => React.ReactElement | null;
+type MediaComponent = <T extends React.ElementType = 'embed'>(props: MediaProps<T>) => React.ReactElement | null;
 
 export const aspectRatios = {
   [AspectRatioEnum.square]: 'Media--1by1',
@@ -30,10 +33,10 @@ export const aspectRatios = {
   [AspectRatioEnum.cinema]: 'Media--21by9',
 };
 
-const Media : MediaComponent = React.forwardRef(
+export const Media : MediaComponent = React.forwardRef(
   <T extends React.ElementType>(
     { className,
-      aspectRatio = 'wide',
+      aspectRatio = AspectRatioEnum.wide,
       width,
       height,
       style,

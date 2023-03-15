@@ -64,7 +64,7 @@ export const variantsClassName = {
   },
 };
 
-const Separator: SeparatorComponent = React.forwardRef(
+export const Separator: SeparatorComponent = React.forwardRef(
   <T extends React.ElementType>(
     {
       className,
