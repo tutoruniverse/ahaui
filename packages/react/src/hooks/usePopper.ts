@@ -1,27 +1,46 @@
 //fork react-overlays/src/usePopper.js
-import { useCallback, useEffect, useRef, useState } from 'react';
-import PopperJS from 'popper.js';
-import type { Placement, Modifiers } from 'popper.js';
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import type { GenericFunction } from 'types/common';
+import * as Popper from '@popperjs/core';
 
 type PopperStyles = Partial<CSSStyleDeclaration>;
 
 type ArrowStyles = Partial<CSSStyleDeclaration>;
 
-export interface UsePopperOptions {
+type OptionsWithUndefined<
+  T extends Popper.Obj | undefined
+> = T extends Popper.Obj ? T : Popper.Obj;
+
+export type Modifier<
+  Name,
+  Options extends Popper.Obj | undefined
+> = Popper.Modifier<Name, OptionsWithUndefined<Options>>;
+
+export type PopperConfig = Omit<
+  Popper.Options,
+  'modifiers' | 'placement' | 'strategy'
+> & {
   enabled?: boolean;
-  placement?: Placement;
-  positionFixed?: boolean;
-  eventsEnabled?: boolean;
-  modifiers?: Modifiers;
-}
+  placement?: Popper.Options['placement'];
+  strategy?: Popper.Options['strategy'];
+  modifiers?: Popper.Options['modifiers'];
+};
 
 interface PopperState {
-  placement: Placement;
-  scheduleUpdate: GenericFunction;
+  placement: Popper.Placement;
+  update: GenericFunction;
   outOfBoundaries: boolean;
   styles: PopperStyles;
   arrowStyles: ArrowStyles;
+}
+
+export interface UsePopperProps {
+  placement: Popper.Placement;
+  update: () => void;
+  forceUpdate: () => void;
+  attributes: Record<string, Record<string, any>>;
+  styles: Record<string, Partial<CSSStyleDeclaration>>;
+  state?: Popper.State;
 }
 
 const initialPopperStyles: PopperStyles = {
@@ -34,6 +53,7 @@ const initialPopperStyles: PopperStyles = {
 
 const initialArrowStyles: ArrowStyles = {};
 
+
 /**
  * Position an element relative some reference element using Popper.js
  *
@@ -43,112 +63,108 @@ const initialArrowStyles: ArrowStyles = {};
  * @param {Object}      options.modifiers Popper.js modifiers
  * @param {Boolean}     options.enabled toggle the popper functionality on/off
  * @param {String}      options.placement The popper element placement relative to the reference element
- * @param {Boolean}     options.positionFixed use fixed positioning
- * @param {Boolean}     options.eventsEnabled have Popper listen on window resize events to reposition the element
+ * @param {String}     options.strategy use fixed positioning
+ * @param {Function}     options.onFirstUpdate function to be called on the first popper render
  */
-
 export default function usePopper(
-  referenceElement: HTMLElement | PopperJS.ReferenceObject,
+  referenceElement: HTMLElement | Popper.VirtualElement,
   popperElement: HTMLElement,
   {
     enabled = true,
     placement = 'bottom',
-    positionFixed = false,
-    eventsEnabled = true,
-    modifiers = {},
-  }: UsePopperOptions = {},
-) {
-  const popperInstanceRef = useRef<PopperJS | null>(null);
+    strategy = 'absolute',
+    modifiers = [],
+  }: PopperConfig = {},
+): PopperState {
+  const popperInstanceRef = useRef<Popper.Instance | null>(null);
 
-  const hasArrow = !!(modifiers.arrow && modifiers.arrow.element);
-
-  const scheduleUpdate = useCallback(() => {
+  const update = useCallback(() => {
     if (popperInstanceRef.current) {
-      popperInstanceRef.current.scheduleUpdate();
+      popperInstanceRef.current.update();
     }
   }, []);
 
-  const [state, setState] = useState<PopperState>({
+  const [popperState, setPopperState] = useState<PopperState>({
     placement,
-    scheduleUpdate,
+    update,
     outOfBoundaries: false,
     styles: initialPopperStyles,
     arrowStyles: initialArrowStyles,
   });
 
-  // A placement difference in state means popper determined a new placement
+  const updateModifier = useMemo<Modifier<'updateStateModifier', any>>(
+    () => ({
+      name: 'updateStateModifier',
+      enabled: true,
+      phase: 'write',
+      requires: ['computeStyles'],
+      fn: (data: Popper.ModifierArguments<OptionsWithUndefined<Popper.Options>>) => {
+        const { state } = data;
+
+        setPopperState({
+          update,
+          styles: state.styles.popper,
+          arrowStyles: state.styles.arrow,
+          placement: state.placement,
+          outOfBoundaries: state.attributes['data-popper-reference-hidden'] as unknown as boolean,
+        });
+      },
+    }),
+    [update, setPopperState],
+  );
+
+  // A placement difference in popperState means popper determined a new placement
   // apart from the props value. By the time the popper element is rendered with
   // the new position Popper has already measured it, if the place change triggers
   // a size change it will result in a misaligned popper. So we schedule an update to be sure.
   useEffect(() => {
-    scheduleUpdate();
-  }, [state.placement, scheduleUpdate]);
+    update();
+  }, [popperState.placement, update]);
 
   /** Toggle Events */
   useEffect(() => {
-    if (popperInstanceRef.current) {
-      // eslint-disable-next-line no-unused-expressions
-      eventsEnabled
-        ? popperInstanceRef.current.enableEventListeners()
-        : popperInstanceRef.current.disableEventListeners();
-    }
-  }, [eventsEnabled]);
+    if (!popperInstanceRef.current || !enabled) return;
+    popperInstanceRef.current.setOptions({
+      placement,
+      strategy,
+      modifiers: [...modifiers, updateModifier],
+    });
 
+    // intentionally NOT re-running on new modifiers
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [enabled, placement, strategy, updateModifier]);
+
+  /** Initiate Popper */
   useEffect(() => {
     if (!enabled || referenceElement == null || popperElement == null) {
       return undefined;
     }
 
-    const arrow = modifiers.arrow && {
-      ...modifiers.arrow,
-      element: modifiers.arrow.element,
-    };
-
-    popperInstanceRef.current = new PopperJS(referenceElement, popperElement, {
+    popperInstanceRef.current = Popper.createPopper(referenceElement, popperElement, {
       placement,
-      positionFixed,
-      modifiers: {
-        ...modifiers,
-        arrow,
-        applyStyle: { enabled: false },
-        updateStateModifier: {
-          enabled: true,
-          order: 900,
-          fn(data) {
-            setState({
-              scheduleUpdate,
-              styles: {
-                // TODO: [Leo] will comeback with version migration
-                // @ts-ignore
-                position: data.offsets.popper.position,
-                ...data.styles,
-              },
-              arrowStyles: data.arrowStyles,
-              outOfBoundaries: data.hide,
-              placement: data.placement,
-            });
-            return data;
-          },
-        },
-      },
+      strategy,
+      modifiers: [...modifiers, updateModifier],
     });
 
     return () => {
-      if (popperInstanceRef.current !== null) {
+      if (popperInstanceRef.current != null) {
         popperInstanceRef.current.destroy();
         popperInstanceRef.current = null;
+
+        setPopperState((state) => ({
+          ...state,
+          styles: initialPopperStyles,
+        }));
       }
     };
-    // intentionally NOT re-running on new modifiers
+
+    // This is only run once to _create_ the popper
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     enabled,
-    placement,
-    positionFixed,
     referenceElement,
     popperElement,
-    hasArrow,
   ]);
 
-  return state;
+  return popperState;
 }

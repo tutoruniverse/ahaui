@@ -80,7 +80,7 @@ interface TooltipProps extends Omit<HTMLDivProps, 'id' | 'style'> {
    */
   variant?: TooltipVariants;
   /** @private */
-  scheduleUpdate?: () => void;
+  update?: () => void;
   /** @private */
   outOfBoundaries?: boolean;
 }
@@ -97,7 +97,7 @@ const Tooltip = forwardRef(
       children,
       arrowProps,
       className,
-      scheduleUpdate: _,
+      update: _,
       outOfBoundaries: _1,
       ...props
     }: TooltipProps,
@@ -108,7 +108,7 @@ const Tooltip = forwardRef(
       ref={ref}
       {...props}
       style={styleTooltip}
-      x-placement={placement}
+      data-test-placement={placement}
       className={classNames(
         'Tooltip',
         variant && `Tooltip--${variant}`,

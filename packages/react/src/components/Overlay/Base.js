@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import PopperJS from 'popper.js';
+import * as Popper from '@popperjs/core';
 import useCallbackRef from '@restart/hooks/useCallbackRef';
 import useMergedRefs from '@restart/hooks/useMergedRefs';
 import usePopper from 'hooks/usePopper';
 import useRootClose from 'hooks/useRootClose';
 import useWaitForDOMRef from 'hooks/useWaitForDOMRef';
+import createPopperConfig from 'utils/createPopperConfig';
 
 const propTypes = {
   /**
@@ -20,7 +21,7 @@ const propTypes = {
    * Refer to the [placement docs](https://popper.js.org/index.html#placements) for more info
    * @default 'top'
    */
-  placement: PropTypes.oneOf(PopperJS.placements),
+  placement: PropTypes.oneOf(Popper.placements),
 
   /**
    * A DOM Element, Ref to an element, or function that returns either. The `target` element is where
@@ -101,28 +102,16 @@ const OverlayBase = React.forwardRef((props, outerRef) => {
   const container = useWaitForDOMRef(props.container);
   const target = useWaitForDOMRef(props.target);
   const [exited, setExited] = useState(!props.show);
-  const { modifiers = {} } = popperConfig;
-  const { styles, arrowStyles, ...popper } = usePopper(target, rootElement, {
-    ...popperConfig,
+
+  const { styles, arrowStyles, ...popper } = usePopper(target, rootElement, createPopperConfig({
     placement: placement || 'bottom',
-    enableEvents: props.show,
-    modifiers: {
-      ...modifiers,
-      preventOverflow: {
-        padding: containerPadding || 8,
-        ...modifiers.preventOverflow,
-      },
-      arrow: {
-        ...modifiers.arrow,
-        enabled: !!arrowElement,
-        element: arrowElement,
-      },
-      flip: {
-        enabled: !!flip,
-        ...modifiers.preventOverflow,
-      },
-    },
-  });
+    containerPadding: containerPadding || 8,
+    eventsEnabled: !!props.show,
+    arrowElement,
+    flip: !!flip,
+    popperConfig,
+  }));
+
   if (props.show) {
     if (exited) setExited(false);
   } else if (!props.transition && !exited) {

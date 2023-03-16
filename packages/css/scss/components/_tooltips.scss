@@ -9,19 +9,19 @@ $_borderColor: map-deep-get($colors-render, "border", "default");
   transition: 0.2s opacity ease-in-out;
   background-clip: padding-box;
 
-  &[x-placement^="top"] {
+  &[data-popper-placement^="top"] {
     @extend .Tooltip--top;
   }
 
-  &[x-placement^="right"] {
+  &[data-popper-placement^="right"] {
     @extend .Tooltip--right;
   }
 
-  &[x-placement^="bottom"] {
+  &[data-popper-placement^="bottom"] {
     @extend .Tooltip--bottom;
   }
 
-  &[x-placement^="left"] {
+  &[data-popper-placement^="left"] {
     @extend .Tooltip--left;
   }
 }
@@ -29,7 +29,6 @@ $_borderColor: map-deep-get($colors-render, "border", "default");
 .Tooltip-arrow {
   width: $_arrowWidth;
   height: $_arrowHeight;
-  margin: 0 $_borderRadius;
 
   &::before,
   &::after {
@@ -48,17 +47,16 @@ $_borderColor: map-deep-get($colors-render, "border", "default");
 
 .Tooltip--right,
 .Tooltip--left {
-  > .Tooltip-arrow {
+  >.Tooltip-arrow {
     width: $_arrowHeight;
     height: $_arrowWidth;
-    margin: $_borderRadius 0;
   }
 }
 
 .Tooltip--top {
   margin-bottom: $_arrowHeight;
 
-  > .Tooltip-arrow {
+  >.Tooltip-arrow {
     bottom: subtract(-$_arrowHeight, 1px);
 
     &::before,
@@ -79,7 +77,7 @@ $_borderColor: map-deep-get($colors-render, "border", "default");
 .Tooltip--right {
   margin-left: $_arrowHeight;
 
-  > .Tooltip-arrow {
+  >.Tooltip-arrow {
     left: subtract(-$_arrowHeight, 1px);
 
     &::before,
@@ -100,7 +98,7 @@ $_borderColor: map-deep-get($colors-render, "border", "default");
 .Tooltip--bottom {
   margin-top: $_arrowHeight;
 
-  > .Tooltip-arrow {
+  >.Tooltip-arrow {
     top: subtract(-$_arrowHeight, 1px);
 
     &::before,
@@ -121,7 +119,7 @@ $_borderColor: map-deep-get($colors-render, "border", "default");
 .Tooltip--left {
   margin-right: $_arrowHeight;
 
-  > .Tooltip-arrow {
+  >.Tooltip-arrow {
     right: subtract(-$_arrowHeight, 1px);
 
     &::before,
