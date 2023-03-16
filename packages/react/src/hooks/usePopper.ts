@@ -106,7 +106,7 @@ export default function usePopper(
           styles: state.styles.popper,
           arrowStyles: state.styles.arrow,
           placement: state.placement,
-          outOfBoundaries: state.attributes['data-popper-reference-hidden'] as unknown as boolean, // TODO:
+          outOfBoundaries: state.attributes['data-popper-reference-hidden'] as unknown as boolean,
         });
       },
     }),
