@@ -35,4 +35,28 @@ describe('utils/PluginArray.js', () => {
 
     expect(results).toStrictEqual([plugin1.getAsset(...params), plugin2.getAsset(...params)]);
   });
+
+  it('traverseCall method should throw error', () => {
+    const plugins = new PluginArray();
+
+    const plugin1 = new AssetPlugin({
+      prefix: 'plugin1',
+      assets: {
+        test: 'test',
+      },
+    });
+
+    const plugin2 = new AssetPlugin({
+      prefix: 'plugin2',
+      assets: {
+        test: 'test',
+      },
+    });
+
+    const params = ['plugin1', 'test'];
+
+    plugins.push(plugin1, plugin2);
+    expect(() => plugins.traverseCall('getRandom', ...params))
+      .toThrowError('Invalid plugin: One plugin does not have method with name "getRandom".');
+  });
 });
