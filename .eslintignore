@@ -2,4 +2,7 @@
 /scripts
 **/*.d.ts
 **/*.spec.js
-vitest.config.ts
+*.config.ts
+tsconfig.node.json
+tsconfig.json
+tsconfig.types.json

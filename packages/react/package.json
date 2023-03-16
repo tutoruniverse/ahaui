@@ -58,10 +58,6 @@
     "@types/prop-types": "15.7.3",
     "@types/rc-slider": "8.6.3"
   },
-  "peerDependencies": {
-    "react": "^16.9.0 || 17.x || 18.x",
-    "react-dom": "^16.9.0 || 17.x || 18.x"
-  },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
   },

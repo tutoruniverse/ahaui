@@ -9,6 +9,9 @@
       "@ahaui/react": [
         "packages/react/src/index.ts"
       ],
+      "@ahaui/css": [
+        "packages/react/src/index.scss"
+      ],
       "@ahaui/icons": [
         "packages/icons/src/index.ts"
       ],

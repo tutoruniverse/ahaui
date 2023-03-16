@@ -15,7 +15,7 @@
     "prepublishOnly": "yarn build",
     "build": "yarn clean && yarn compile && yarn prefix && yarn minify",
     "clean": "yarn del dist/*",
-    "compile": "node-sass --importer ../../node_modules/node-sass-import --output-style compact --precision 6 scss/ -o dist/",
+    "compile": "node-sass --importer ./node_modules/node-sass-import --output-style compact --precision 6 scss/ -o dist/",
     "prefix": "postcss --config config/postcss.config.js --replace \"dist/*.css\" \"!dist/*.min.css\"",
     "minify": "yarn minify-index && yarn minify-utilities",
     "minify-index": "cleancss --level 1 --format breakWith=lf  --output dist/index.min.css dist/index.css",
