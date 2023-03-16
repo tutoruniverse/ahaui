@@ -1,0 +1,8 @@
+/config
+/scripts
+**/*.d.ts
+**/*.spec.js
+*.config.ts
+tsconfig.node.json
+tsconfig.json
+tsconfig.types.json
