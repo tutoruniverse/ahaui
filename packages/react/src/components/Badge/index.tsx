@@ -2,37 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export type BadgeVariant =
-  | 'default'
-  | 'white'
-  | 'black'
-  | 'primary'
-  | 'primary_subtle'
-  | 'warning'
-  | 'warning_subtle'
-  | 'positive'
-  | 'positive_subtle'
-  | 'information'
-  | 'information_subtle'
-  | 'negative'
-  | 'negative_subtle';
+export enum BadgeVariant {
+  DEFAULT = 'default',
+  WHITE = 'white',
+  BLACK = 'black',
+  PRIMARY = 'primary',
+  PRIMARY_SUBTLE = 'primary_subtle',
+  WARNING = 'warning',
+  WARNING_SUBTLE = 'warning_subtle',
+  POSITIVE = 'positive',
+  POSITIVE_SUBTLE = 'positive_subtle',
+  INFORMATION = 'information',
+  INFORMATION_SUBTLE = 'information_subtle',
+  NEGATIVE = 'negative',
+  NEGATIVE_SUBTLE = 'negative_subtle',
+}
 
 const propTypes = {
   /** The Badge visual variant */
   variant: PropTypes.oneOf([
-    'default',
-    'white',
-    'black',
-    'primary',
-    'primary_subtle',
-    'warning',
-    'warning_subtle',
-    'positive',
-    'positive_subtle',
-    'information',
-    'information_subtle',
-    'negative',
-    'negative_subtle',
+    BadgeVariant.DEFAULT,
+    BadgeVariant.WHITE,
+    BadgeVariant.BLACK,
+    BadgeVariant.PRIMARY,
+    BadgeVariant.PRIMARY_SUBTLE,
+    BadgeVariant.WARNING,
+    BadgeVariant.WARNING_SUBTLE,
+    BadgeVariant.POSITIVE,
+    BadgeVariant.POSITIVE_SUBTLE,
+    BadgeVariant.INFORMATION,
+    BadgeVariant.INFORMATION_SUBTLE,
+    BadgeVariant.NEGATIVE,
+    BadgeVariant.NEGATIVE_SUBTLE,
   ]),
 
   /** Fixed className for text color, just available for variant: `primary`, `primary_subtle`  */
@@ -47,7 +48,7 @@ const propTypes = {
   as: PropTypes.elementType,
 };
 const defaultProps = {
-  variant: 'default',
+  variant: BadgeVariant.DEFAULT,
 };
 
 const variantsTextClassName = {
@@ -75,8 +76,14 @@ const variantsClassName = {
 };
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** The Badge visual variant */
   variant?: BadgeVariant;
+  /** Fixed className for text color, just available for variant: `primary`, `primary_subtle`  */
   textClassName?: string;
+  /**
+   * You can use a custom element type for this component.
+   * @default span
+   */
   as?: React.ElementType;
 }
 
@@ -114,8 +121,6 @@ const Badge = React.forwardRef(
 );
 
 Badge.displayName = 'Badge';
-// @ts-ignore
 Badge.defaultProps = defaultProps;
-// @ts-ignore
-Badge.propTypes = propTypes;
+// Badge.propTypes = propTypes;
 export default Badge;
