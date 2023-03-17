@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Badge, BadgeVariant } from '../../../../packages/react/src/components/Badge';
+import { Badge, BadgeVariant } from '@components/Badge';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
