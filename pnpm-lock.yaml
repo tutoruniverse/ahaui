@@ -49,6 +49,7 @@ importers:
     specifiers:
       '@ahaui/css': workspace:*
       '@ahaui/react': workspace:*
+      '@storybook/addon-a11y': ^6.4.9
       '@storybook/addon-actions': 6.4.9
       '@storybook/addon-backgrounds': 6.4.9
       '@storybook/addon-docs': 6.4.9
@@ -84,6 +85,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
+      '@storybook/addon-a11y': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
       '@storybook/addon-actions': 6.4.9_ayd5rovvta3ij4fhi2rqvqneja
       '@storybook/addon-backgrounds': 6.4.9_ayd5rovvta3ij4fhi2rqvqneja
       '@storybook/addon-docs': 6.4.9_y4l2ppdpdoolpzqury7zlefgde
@@ -2334,6 +2336,37 @@ packages:
 
   /@sinclair/typebox/0.25.24:
     resolution: {integrity: sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==}
+    dev: true
+
+  /@storybook/addon-a11y/6.5.16_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-/e9s34o+TmEhy+Q3/YzbRJ5AJ/Sy0gjZXlvsCrcRpiQLdt5JRbN8s+Lbn/FWxy8U1Tb1wlLYlqjJ+fYi5RrS3A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@storybook/addons': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
+      '@storybook/api': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
+      '@storybook/channels': 6.5.16
+      '@storybook/client-logger': 6.5.16
+      '@storybook/components': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
+      '@storybook/core-events': 6.5.16
+      '@storybook/csf': 0.0.2--canary.4566f4d.1
+      '@storybook/theming': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
+      axe-core: 4.6.3
+      core-js: 3.29.1
+      global: 4.4.0
+      lodash: 4.17.21
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-sizeme: 3.0.2
+      regenerator-runtime: 0.13.11
+      ts-dedent: 2.2.0
+      util-deprecate: 1.0.2
     dev: true
 
   /@storybook/addon-actions/6.4.9_ayd5rovvta3ij4fhi2rqvqneja:
