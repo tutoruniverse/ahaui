@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { RefForwardingComponent, PrefixProps } from 'interfaces/helpers';
 
 export enum BadgeVariant {
   DEFAULT = 'default',
@@ -20,27 +21,10 @@ export enum BadgeVariant {
 
 const propTypes = {
   /** The Badge visual variant */
-  variant: PropTypes.oneOf([
-    BadgeVariant.DEFAULT,
-    BadgeVariant.WHITE,
-    BadgeVariant.BLACK,
-    BadgeVariant.PRIMARY,
-    BadgeVariant.PRIMARY_SUBTLE,
-    BadgeVariant.WARNING,
-    BadgeVariant.WARNING_SUBTLE,
-    BadgeVariant.POSITIVE,
-    BadgeVariant.POSITIVE_SUBTLE,
-    BadgeVariant.INFORMATION,
-    BadgeVariant.INFORMATION_SUBTLE,
-    BadgeVariant.NEGATIVE,
-    BadgeVariant.NEGATIVE_SUBTLE,
-  ]),
+  variant: PropTypes.string,
 
   /** Fixed className for text color, just available for variant: `primary`, `primary_subtle`  */
-  textClassName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
+  textClassName: PropTypes.string,
   /**
    * You can use a custom element type for this component.
    * @default span
@@ -75,52 +59,48 @@ const variantsClassName = {
     'u-textNegative hover:u-textNegative u-backgroundNegativeLighter',
 };
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+interface BadgeProps extends PrefixProps, React.HTMLAttributes<HTMLElement> {
   /** The Badge visual variant */
   variant?: BadgeVariant;
   /** Fixed className for text color, just available for variant: `primary`, `primary_subtle`  */
   textClassName?: string;
-  /**
-   * You can use a custom element type for this component.
-   * @default span
-   */
-  as?: React.ElementType;
 }
 
-const Badge = React.forwardRef(
-  (
-    {
-      className,
-      textClassName,
-      variant,
-      as: Component = 'span',
-      ...props
-    }: BadgeProps,
-    ref,
-  ) => {
-    const classes = classNames(
-      'Badge',
-      'u-inlineBlock u-textCenter u-text200 u-fontMedium u-textNoWrap u-roundedInfinity hover:u-textDecorationNone',
-      variant && variantsClassName[variant],
-      (variant === 'primary' || variant === 'primary_subtle') && textClassName
-        ? textClassName
-        : variantsTextClassName[variant],
-      className && className,
-    );
+/**
+ * A badge contains a status or a numeric value, to indicate a running tally or quantity-based summary.
+ */
 
-    return React.createElement(
-      Component,
+export const Badge: RefForwardingComponent<'span', BadgeProps> =
+  React.forwardRef(
+    (
       {
-        ...props,
-        ref,
-        className: classes,
-      },
-      props.children,
-    );
-  },
-);
+        className,
+        textClassName,
+        variant,
+        as: Component = 'span',
+        ...props
+      }: BadgeProps,
+      ref,
+    ) => {
+      return (
+        <Component
+          {...props}
+          ref={ref}
+          className={classNames(
+            'Badge',
+            'u-inlineBlock u-textCenter u-text200 u-fontMedium u-textNoWrap u-roundedInfinity hover:u-textDecorationNone',
+            variant && variantsClassName[variant],
+            (variant === 'primary' || variant === 'primary_subtle') &&
+              textClassName
+              ? textClassName
+              : variantsTextClassName[variant],
+            className && className,
+          )}
+        />
+      );
+    },
+  );
 
 Badge.displayName = 'Badge';
 Badge.defaultProps = defaultProps;
-// Badge.propTypes = propTypes;
-export default Badge;
+Badge.propTypes = propTypes;

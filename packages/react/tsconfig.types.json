@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.types.json",
   "include": ["src/index.ts", "./global.d.ts"],
   "compilerOptions": {
+    "baseUrl": "src",
     "outDir": "dist",
     "resolveJsonModule": true,
   }

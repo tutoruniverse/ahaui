@@ -2,7 +2,7 @@
 // export { useAccordionToggle } from './components/Accordion/Toggle';
 // export { default as AskBox } from './components/AskBox';
 // export { default as Avatar } from './components/Avatar';
-export { default as Badge, BadgeVariant } from './components/Badge';
+export { Badge, BadgeVariant } from './components/Badge';
 // export { default as Breadcrumb } from './components/Breadcrumb';
 // export { default as BubbleChat } from './components/BubbleChat';
 // export { default as Button } from './components/Button';

@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 import localPackageJson from './package.json';
 import rootPackageJson from '../../package.json';
@@ -9,18 +10,10 @@ const external = [
   ...Object.keys(localPackageJson.dependencies),
   ...Object.keys(localPackageJson.devDependencies),
   ...Object.keys(rootPackageJson.devDependencies),
-  'rc-tooltip',
+  ...Object.keys(rootPackageJson.dependencies),
 ];
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      constants: resolve(__dirname, 'src/constants'),
-      components: resolve(__dirname, 'src/components'),
-      hooks: resolve(__dirname, 'src/hooks'),
-      utils: resolve(__dirname, 'src/utils'),
-    },
-  },
+  plugins: [react(), tsconfigPaths()].filter(Boolean),
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),

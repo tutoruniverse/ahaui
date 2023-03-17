@@ -15,12 +15,8 @@ module.exports = {
     storyStoreV7: true,
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
-      },
-    },
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen',
   },
 };
