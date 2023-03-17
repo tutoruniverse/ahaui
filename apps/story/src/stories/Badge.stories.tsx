@@ -4,7 +4,7 @@ import { Badge, BadgeVariant } from '../../../../packages/react/src/components/B
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Badge',
+  title: 'Data Display/Badge',
   component: Badge,
   argTypes: {
     variant: {
@@ -27,9 +27,9 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
 
-export const Demo = Template.bind({});
+export const Control = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Demo.args = {
+Control.args = {
   variant: BadgeVariant.PRIMARY,
-  children: 'Demo',
+  children: 'Badge',
 };
