@@ -1,15 +1,16 @@
-import React, { ForwardRefRenderFunction, HTMLAttributes } from 'react';
+import React, { ElementType } from 'react';
 import classNames from 'classnames';
 import camelize from 'dom-helpers/camelize';
+import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
 
 const pascalCase = (str: string) =>
   str[0].toUpperCase() + camelize(str).slice(1);
 
-interface BlockProps extends HTMLAttributes<HTMLElement> {
-  as?: React.ElementType;
-}
+export interface BlockProps
+  extends PrefixProps,
+    React.HTMLAttributes<HTMLElement> {}
 
-interface CreateBlockOptions {
+export interface CreateBlockOptions {
   displayName?: string;
   Component?: React.ElementType;
   defaultProps?: BlockProps;
@@ -23,7 +24,7 @@ function createBlock<T extends React.ElementType = 'div'>(
     defaultProps,
   }: CreateBlockOptions = {},
 ) {
-  const Block: ForwardRefRenderFunction<HTMLElement, BlockProps> = (
+  const Block: RefForwardingComponent<ElementType, BlockProps> = (
     { className, as: Tag = Component, ...props },
     ref,
   ) => {
