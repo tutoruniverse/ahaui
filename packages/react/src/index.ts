@@ -5,7 +5,12 @@
 export { Badge, BadgeVariant } from './components/Badge';
 // export { default as Breadcrumb } from './components/Breadcrumb';
 // export { default as BubbleChat } from './components/BubbleChat';
-// export { default as Button } from './components/Button';
+export { Button } from './components/Button';
+export {
+  ButtonSize,
+  ButtonVariant,
+  ButtonWidth,
+} from './components/Button/Enum';
 // export { default as Carousel } from './components/Carousel';
 // export { default as ChatBox } from './components/ChatBox';
 // export { default as Collapse } from './components/Collapse';

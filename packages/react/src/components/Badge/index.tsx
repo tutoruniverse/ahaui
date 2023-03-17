@@ -36,26 +36,28 @@ const defaultProps = {
 };
 
 const variantsTextClassName = {
-  primary: 'u-textWhite hover:u-textWhite',
-  primary_subtle: 'u-textPrimary hover:u-textPrimary',
+  [BadgeVariant.PRIMARY]: 'u-textWhite hover:u-textWhite',
+  [BadgeVariant.PRIMARY_SUBTLE]: 'u-textPrimary hover:u-textPrimary',
 };
 
 const variantsClassName = {
-  default: 'u-texDark hover:u-texDark u-backgroundUltraLight',
-  white: 'u-textDark hover:u-textDark u-backgroundWhite',
-  black: 'u-textWhite hover:u-textWhite u-backgroundBlack',
-  primary: 'u-backgroundPrimary',
-  primary_subtle: 'u-backgroundPrimaryLighter',
-  information: 'u-textWhite hover:u-textWhite u-backgroundInformation',
-  information_subtle:
+  [BadgeVariant.DEFAULT]: 'u-texDark hover:u-texDark u-backgroundUltraLight',
+  [BadgeVariant.WHITE]: 'u-textDark hover:u-textDark u-backgroundWhite',
+  [BadgeVariant.BLACK]: 'u-textWhite hover:u-textWhite u-backgroundBlack',
+  [BadgeVariant.PRIMARY]: 'u-backgroundPrimary',
+  [BadgeVariant.PRIMARY_SUBTLE]: 'u-backgroundPrimaryLighter',
+  [BadgeVariant.INFORMATION]:
+    'u-textWhite hover:u-textWhite u-backgroundInformation',
+  [BadgeVariant.INFORMATION_SUBTLE]:
     'u-textInformation hover:u-textInformation u-backgroundInformationLighter',
-  warning: 'u-textDark hover:u-textDark u-backgroundWarning',
-  warning_subtle: 'u-textDark hover:u-textDark u-backgroundWarningLighter',
-  positive: 'u-textWhite hover:u-textWhite u-backgroundPositive',
-  positive_subtle:
+  [BadgeVariant.WARNING]: 'u-textDark hover:u-textDark u-backgroundWarning',
+  [BadgeVariant.WARNING_SUBTLE]:
+    'u-textDark hover:u-textDark u-backgroundWarningLighter',
+  [BadgeVariant.POSITIVE]: 'u-textWhite hover:u-textWhite u-backgroundPositive',
+  [BadgeVariant.POSITIVE_SUBTLE]:
     'u-textPositive hover:u-textPositive u-backgroundPositiveLighter',
-  negative: 'u-textWhite hover:u-textWhite u-backgroundNegative',
-  negative_subtle:
+  [BadgeVariant.NEGATIVE]: 'u-textWhite hover:u-textWhite u-backgroundNegative',
+  [BadgeVariant.NEGATIVE_SUBTLE]:
     'u-textNegative hover:u-textNegative u-backgroundNegativeLighter',
 };
 
@@ -90,7 +92,8 @@ export const Badge: RefForwardingComponent<'span', BadgeProps> =
             'Badge',
             'u-inlineBlock u-textCenter u-text200 u-fontMedium u-textNoWrap u-roundedInfinity hover:u-textDecorationNone',
             variant && variantsClassName[variant],
-            (variant === 'primary' || variant === 'primary_subtle') &&
+            (variant === BadgeVariant.PRIMARY ||
+              variant === BadgeVariant.PRIMARY_SUBTLE) &&
               textClassName
               ? textClassName
               : variantsTextClassName[variant],

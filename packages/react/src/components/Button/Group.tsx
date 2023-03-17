@@ -24,7 +24,7 @@ export interface ButtonGroupProps
   extends PrefixProps,
     React.HTMLAttributes<HTMLElement> {
   sizeControl?: ButtonSize;
-  disabledControl: boolean;
+  disabledControl?: boolean;
 }
 
 export const Group: RefForwardingComponent<'div', ButtonGroupProps> =

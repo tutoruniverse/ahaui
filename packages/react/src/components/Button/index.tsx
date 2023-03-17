@@ -143,21 +143,21 @@ export const Button: ButtonRefForwardingButtonComponent<'button', ButtonProps> =
           className={classNames(
             'Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-fontMedium',
             variant && variantsClassName[variant],
-            variant !== 'link' && 'hover:u-textDecorationNone',
+            variant !== ButtonVariant.LINK && 'hover:u-textDecorationNone',
             sizeOri && `Button--${sizeOri}`,
             //TODO: need active class
             disabledOri
               ? 'is-disabled u-cursorNotAllow u-pointerEventsNone'
               : 'u-cursorPointer',
-            width === 'min' && 'Button--minWidth',
-            width === 'full' && 'u-widthFull',
-            !nonUppercase && sizeOri !== 'small' && 'u-textUppercase',
+            width === ButtonWidth.MIN && 'Button--minWidth',
+            width === ButtonWidth.FULL && 'u-widthFull',
+            !nonUppercase && sizeOri !== ButtonSize.SMALL && 'u-textUppercase',
             onlyIcon && 'is-onlyIcon',
-            sizeOri === 'small' && 'u-text200',
-            (variant === 'primary' ||
-              variant === 'accent' ||
-              variant === 'accent_outline' ||
-              variant === 'primary_outline') &&
+            sizeOri === ButtonSize.SMALL && 'u-text200',
+            (variant === ButtonVariant.PRIMARY ||
+              variant === ButtonVariant.ACCENT ||
+              variant === ButtonVariant.ACCENT_OUTLINE ||
+              variant === ButtonVariant.PRIMARY_OUTLINE) &&
               textClassName
               ? textClassName
               : variantsTextClassName[variant],
