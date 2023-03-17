@@ -16,7 +16,7 @@ export interface CreateBlockOptions {
   defaultProps?: BlockProps;
 }
 
-function createBlock<T extends React.ElementType = 'div'>(
+export function createBlock<T extends React.ElementType = 'div'>(
   prefix: string,
   {
     displayName = pascalCase(prefix),
@@ -37,5 +37,3 @@ function createBlock<T extends React.ElementType = 'div'>(
 
   return Block as React.ComponentType<BlockProps & { as?: T }>;
 }
-
-export default createBlock;
