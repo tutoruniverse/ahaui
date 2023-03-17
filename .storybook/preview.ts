@@ -1,9 +1,9 @@
-import "@ahaui/css/dist/index.css";
-import "./custom.css";
+import '../packages/css/dist/index.css';
+import './custom.css';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  layout: "centered",
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  layout: 'centered',
   controls: {
     hideNoControlsWarning: true,
     expanded: true,

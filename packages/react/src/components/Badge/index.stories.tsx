@@ -1,11 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Badge, BadgeVariant } from '@components/Badge';
+import { Badge, BadgeVariant } from './index';
+
+const BadgeFn: any = Badge;
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Data Display/Badge',
-  component: Badge,
+  component: BadgeFn,
   argTypes: {
     variant: {
       options: Object.values(BadgeVariant),
@@ -18,14 +20,23 @@ export default {
       control: { type: 'string' },
     },
     textClassName: {
-      options: ['u-textDark', 'u-textWhite', 'u-textWarning', 'u-textPositive', 'u-textNegative', ''],
+      options: [
+        'u-textDark',
+        'u-textWhite',
+        'u-textWarning',
+        'u-textPositive',
+        'u-textNegative',
+        '',
+      ],
       control: { type: 'select' },
     },
   },
-} as ComponentMeta<typeof Badge>;
+} as ComponentMeta<typeof BadgeFn>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
+const Template: ComponentStory<typeof BadgeFn> = (args) => (
+  <BadgeFn {...args} />
+);
 
 export const Control = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

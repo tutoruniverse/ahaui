@@ -3,7 +3,7 @@ const tsconfigPaths = viteTsconfig.default;
 
 const { mergeConfig } = require('vite');
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../packages/**/*.stories.mdx', '../packages/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
@@ -15,7 +15,7 @@ module.exports = {
   core: {
     builder: '@storybook/builder-vite',
   },
-  staticDirs: ['../../../libs/assets'],
+  staticDirs: ['../libs/assets'],
   features: {
     storyStoreV7: true,
   },
@@ -27,6 +27,11 @@ module.exports = {
   async viteFinal(config) {
     return mergeConfig(config, {
       plugins: [tsconfigPaths()],
+      server: {
+        hmr: {
+          overlay: false,
+        },
+      },
     });
   },
 };
