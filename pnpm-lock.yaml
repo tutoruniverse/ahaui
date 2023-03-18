@@ -93,14 +93,6 @@ importers:
       vite: 3.2.5_bbhgkqmop4v24vevyan3j2nitq
       vite-tsconfig-paths: 3.6.0_vite@3.2.5
 
-  apps/story:
-    specifiers:
-      '@ahaui/css': workspace:*
-      '@ahaui/react': workspace:*
-    dependencies:
-      '@ahaui/css': link:../../packages/css
-      '@ahaui/react': link:../../packages/react
-
   packages/css:
     specifiers:
       autoprefixer: 9.6.1

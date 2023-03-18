@@ -13,7 +13,7 @@
     "dev": "rollup -c -w",
     "prepublishOnly": "yarn build",
     "format": "eslint --ext js src --fix",
-    "lint": "eslint --ext js src"
+    "lint:c": "eslint --ext js src"
   },
   "publishConfig": {
     "access": "public"

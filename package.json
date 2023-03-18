@@ -10,7 +10,7 @@
     "build:css": "turbo run build  --filter=@ahaui/css",
     "build:icons": "turbo run build  --filter=@ahaui/icons",
     "build:react": "turbo run build  --filter=@ahaui/react",
-    "dev": "start-storybook -p 6006 --quiet",
+    "dev": "pnpm run build:css && start-storybook -p 6006 --quiet",
     "dev:css": "turbo run dev  --filter=@ahaui/css",
     "dev:icons": "turbo run dev  --filter=@ahaui/icons",
     "dev:react": "turbo run dev  --filter=@ahaui/react",
