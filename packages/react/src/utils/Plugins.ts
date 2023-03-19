@@ -3,11 +3,13 @@ import AssetPlugin from './AssetPlugin';
 import PluginArray from './PluginArray';
 
 class Plugins {
+  plugins: PluginArray | AssetPlugin[];
+
   constructor() {
     this.plugins = new PluginArray();
   }
 
-  validatePlugin(plugin) {
+  validatePlugin(plugin: AssetPlugin) {
     if (!plugin) {
       throw new Error('Invalid plugin: Can not read plugin.');
     }
@@ -17,7 +19,9 @@ class Plugins {
     switch (plugin.type) {
       case PluginType.ASSET: {
         if (!(plugin instanceof AssetPlugin)) {
-          throw new Error(`Invalid plugin: plugin with type "${PluginType.ASSET}" must be constructed from class AssetPlugin.`);
+          throw new Error(
+            `Invalid plugin: plugin with type "${PluginType.ASSET}" must be constructed from class AssetPlugin.`,
+          );
         }
         break;
       }
@@ -26,16 +30,16 @@ class Plugins {
     }
   }
 
-  loadPlugin(plugin) {
+  loadPlugin(plugin: AssetPlugin) {
     this.validatePlugin(plugin);
     this.plugins.push(plugin);
   }
 
-  getPlugins(type = undefined) {
+  getPlugins(type: string | undefined = undefined): PluginArray {
     if (!type) {
-      return this.plugins;
+      return this.plugins as PluginArray;
     }
-    return this.plugins.filter(plugin => plugin.type === type);
+    return this.plugins.filter((plugin) => plugin.type === type) as PluginArray;
   }
 }
 
