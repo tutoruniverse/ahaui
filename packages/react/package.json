@@ -37,6 +37,7 @@
     "classnames": "2.2.6",
     "dom-helpers": "5.1.0",
     "popper.js": "1.15.0",
+    "@popperjs/core": "2.11.6",
     "prop-types": "15.7.2",
     "prop-types-extra": "1.1.0",
     "rc-slider": "8.7.1",
@@ -51,6 +52,8 @@
     "react-transition-group": "4.0.0",
     "uncontrollable": "7.1.1",
     "warning": "4.0.3",
+    "invariant": "2.2.4",
+    "dequal": "2.0.3",
     "lodash.once": "4.1.1"
   },
   "devDependencies": {
@@ -60,10 +63,6 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "all"
   },
   "author": "Got It, Inc.",
   "homepage": "https://github.com/gotitinc/ahaui/blob/main/packages/react#readme",

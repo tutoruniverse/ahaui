@@ -25,6 +25,8 @@ importers:
       '@testing-library/jest-dom': ^5.14.1
       '@types/node': ^18.0.2
       '@types/react': ^17.0.2
+      '@types/react-dom': ^17.0.1
+      '@types/warning': ^3.0.0
       '@typescript-eslint/eslint-plugin': 5.38.0
       '@typescript-eslint/parser': 5.38.0
       '@vitejs/plugin-react': ^2.0.1
@@ -72,6 +74,8 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@types/node': 18.15.3
       '@types/react': 17.0.2
+      '@types/react-dom': 17.0.19
+      '@types/warning': 3.0.0
       '@typescript-eslint/eslint-plugin': 5.38.0_jadwra5ymehsgjea6raz6qlr6m
       '@typescript-eslint/parser': 5.38.0_vgl77cfdswitgr47lm5swmv43m
       '@vitejs/plugin-react': 2.2.0_vite@3.2.5
@@ -129,6 +133,7 @@ importers:
 
   packages/react:
     specifiers:
+      '@popperjs/core': 2.11.6
       '@restart/hooks': 0.3.25
       '@types/classnames': 2.2.10
       '@types/prop-types': 15.7.3
@@ -137,7 +142,9 @@ importers:
       '@wojtekmaj/predict-input-value': 1.0.0
       '@wojtekmaj/react-daterange-picker': 2.5.0
       classnames: 2.2.6
+      dequal: 2.0.3
       dom-helpers: 5.1.0
+      invariant: 2.2.4
       lodash.once: 4.1.1
       popper.js: 1.15.0
       prop-types: 15.7.2
@@ -155,12 +162,15 @@ importers:
       uncontrollable: 7.1.1
       warning: 4.0.3
     dependencies:
+      '@popperjs/core': 2.11.6
       '@restart/hooks': 0.3.25
       '@types/react-tagsinput': 3.19.9
       '@wojtekmaj/predict-input-value': 1.0.0
       '@wojtekmaj/react-daterange-picker': 2.5.0
       classnames: 2.2.6
+      dequal: 2.0.3
       dom-helpers: 5.1.0
+      invariant: 2.2.4
       lodash.once: 4.1.1
       popper.js: 1.15.0
       prop-types: 15.7.2
@@ -2293,7 +2303,6 @@ packages:
 
   /@popperjs/core/2.11.6:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
-    dev: true
 
   /@remix-run/router/1.4.0:
     resolution: {integrity: sha512-BJ9SxXux8zAg991UmT8slpwpsd31K1dHHbD3Ba4VzD+liLQ4WAMSxQp2d2ZPRPfN0jN2NPRowcSSoM7lCaF08Q==}
@@ -5017,11 +5026,10 @@ packages:
       '@types/react': 17.0.2
     dev: false
 
-  /@types/react-dom/18.0.11:
-    resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
+  /@types/react-dom/17.0.19:
+    resolution: {integrity: sha512-PiYG40pnQRdPHnlf7tZnp0aQ6q9tspYr72vD61saO6zFCybLfMqwUCN0va1/P+86DXn18ZWeW30Bk7xlC5eEAQ==}
     dependencies:
       '@types/react': 17.0.2
-    dev: false
 
   /@types/react-syntax-highlighter/11.0.5:
     resolution: {integrity: sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==}
@@ -5083,6 +5091,10 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
+    dev: true
+
+  /@types/warning/3.0.0:
+    resolution: {integrity: sha512-t/Tvs5qR47OLOr+4E9ckN8AmP2Tf16gWq+/qA4iUGS/OOyHVO8wv2vjJuX8SNOUTJyWb+2t7wJm6cXILFnOROA==}
     dev: true
 
   /@types/webpack-env/1.18.0:
@@ -7695,6 +7707,11 @@ packages:
     resolution: {integrity: sha512-g213uqF8fyk40W8SBjm079n3CZB4qSpCrA2ye1fLGzH/4HEgB6tzuW2CbLE7leb4t45/6h44Ud59Su1/ROTfqw==}
     engines: {node: '>= 0.6.0'}
     dev: true
+
+  /dequal/2.0.3:
+    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /des.js/1.0.1:
     resolution: {integrity: sha512-Q0I4pfFrv2VPd34/vfLrFOoRmlYj3OV50i7fskps1jZWK1kApMWWT9G6RRUeYedLcBDIhnSDaUvJMb3AhUlaEA==}
@@ -13797,7 +13814,7 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@types/react': 17.0.2
-      '@types/react-dom': 18.0.11
+      '@types/react-dom': 17.0.19
       detect-element-overflow: 1.3.1
       prop-types: 15.7.2
       tiny-warning: 1.0.3
