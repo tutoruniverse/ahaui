@@ -20,43 +20,25 @@ const defaultProps = {
   disabledControl: false,
 };
 
-export interface ButtonGroupProps
-  extends PrefixProps,
-    React.HTMLAttributes<HTMLElement> {
+export interface ButtonGroupProps extends PrefixProps, React.HTMLAttributes<HTMLElement> {
   sizeControl?: ButtonSize;
   disabledControl?: boolean;
 }
 
-export const Group: RefForwardingComponent<'div', ButtonGroupProps> =
-  React.forwardRef(
-    (
-      {
-        className,
-        sizeControl,
-        disabledControl,
-        as: Component = 'div',
-        ...props
-      }: ButtonGroupProps,
-      ref,
-    ) => {
-      const context = useMemo(
-        () => ({ sizeControl, disabledControl }),
-        [sizeControl, disabledControl],
-      );
-      return (
-        <Context.Provider value={context}>
-          <Component
-            {...props}
-            ref={ref}
-            className={classNames(
-              'ButtonGroup u-positionRelative u-flexInline',
-              className && className,
-            )}
-          />
-        </Context.Provider>
-      );
-    },
-  );
+export const Group: RefForwardingComponent<'div', ButtonGroupProps> = React.forwardRef(
+  ({ className, sizeControl, disabledControl, as: Component = 'div', ...props }: ButtonGroupProps, ref) => {
+    const context = useMemo(() => ({ sizeControl, disabledControl }), [sizeControl, disabledControl]);
+    return (
+      <Context.Provider value={context}>
+        <Component
+          {...props}
+          ref={ref}
+          className={classNames('ButtonGroup u-positionRelative u-flexInline', className && className)}
+        />
+      </Context.Provider>
+    );
+  }
+);
 Group.displayName = 'ButtonGroup';
 Group.propTypes = propTypes;
 Group.defaultProps = defaultProps;
