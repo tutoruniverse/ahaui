@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
-import { createBlock, CreateBlockOptions } from 'utils/createBlock';
+import { createBlock } from 'utils/createBlock';
 import Context from 'components/Form/Context';
 import { ButtonSize, ButtonVariant, ButtonWidth } from './Enum';
 import { Group } from './Group';
@@ -26,7 +26,7 @@ const propTypes = {
    * @default button
    * */
   as: PropTypes.elementType,
-  /** @private */
+  /** @ignore */
   nonUppercase: PropTypes.bool,
   /**
    * Use when the button has only Icon
@@ -50,16 +50,11 @@ const variantsTextClassName = {
 };
 
 const variantsClassName = {
-  [ButtonVariant.PRIMARY]:
-    'u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary',
-  [ButtonVariant.PRIMARY_OUTLINE]:
-    'u-backgroundTransparent hover:u-backgroundPrimaryLighter u-border u-borderPrimary',
-  [ButtonVariant.SECONDARY]:
-    'u-textDark hover:u-textDark u-backgroundWhite hover:u-backgroundLightest u-border',
-  [ButtonVariant.ACCENT]:
-    'u-backgroundAccent hover:u-backgroundAccentDark u-border u-borderAccent',
-  [ButtonVariant.ACCENT_OUTLINE]:
-    'u-backgroundTransparent hover:u-backgroundAccentLighter u-border u-borderAccent',
+  [ButtonVariant.PRIMARY]: 'u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary',
+  [ButtonVariant.PRIMARY_OUTLINE]: 'u-backgroundTransparent hover:u-backgroundPrimaryLighter u-border u-borderPrimary',
+  [ButtonVariant.SECONDARY]: 'u-textDark hover:u-textDark u-backgroundWhite hover:u-backgroundLightest u-border',
+  [ButtonVariant.ACCENT]: 'u-backgroundAccent hover:u-backgroundAccentDark u-border u-borderAccent',
+  [ButtonVariant.ACCENT_OUTLINE]: 'u-backgroundTransparent hover:u-backgroundAccentLighter u-border u-borderAccent',
   [ButtonVariant.POSITIVE]:
     'u-textWhite hover:u-textWhite u-backgroundPositive hover:u-backgroundPositiveDark u-border u-borderPositive',
   [ButtonVariant.POSITIVE_OUTLINE]:
@@ -76,9 +71,7 @@ const variantsClassName = {
     'u-textPrimary hover:u-textPrimaryDark hover:u-textUnderline u-backgroundTransparent u-border u-borderTransparent', //Button--link
 };
 
-export interface ButtonProps
-  extends PrefixProps,
-    React.HTMLAttributes<HTMLElement> {
+export interface ButtonProps extends PrefixProps, React.HTMLAttributes<HTMLElement> {
   /** The Button visual variant */
   variant?: ButtonVariant;
   /** Fixed className for text color, just available for variant: `primary`, `primary_outline`, `accent`, `accent_outline`  */
@@ -92,12 +85,7 @@ export interface ButtonProps
   width?: ButtonWidth;
   /** Manually set the visual state of the button to :disabled */
   disabled?: boolean;
-  /**
-   * You can use a custom element type for this component.
-   * @default button
-   * */
-  as?: React.ElementType;
-  /** @private */
+  /** @ignore */
   nonUppercase?: boolean;
   /**
    * Use when the button has only Icon
@@ -106,75 +94,70 @@ export interface ButtonProps
   onlyIcon?: boolean;
 }
 
-interface ButtonRefForwardingButtonComponent<
-  TInitial extends React.ElementType,
-  P = unknown,
-> extends RefForwardingComponent<TInitial, P> {
-  Icon?: CreateBlockOptions;
-  Label?: CreateBlockOptions;
+interface ButtonRefForwardingButtonComponent<TInitial extends React.ElementType, P = unknown>
+  extends RefForwardingComponent<TInitial, P> {
+  Icon?: typeof Icon;
+  Label?: typeof Label;
   Group?: typeof Group;
 }
 
-export const Button: ButtonRefForwardingButtonComponent<'button', ButtonProps> =
-  React.forwardRef(
-    (
-      {
-        className,
-        variant,
-        textClassName,
-        children,
-        size,
-        disabled,
-        width,
-        nonUppercase,
-        onlyIcon,
-        as: Component = 'button',
-        ...props
-      }: ButtonProps,
-      ref,
-    ) => {
-      const { sizeControl, disabledControl } = useContext(Context);
-      const sizeOri = size || sizeControl;
-      const disabledOri = disabled || disabledControl;
-      return (
-        <Component
-          ref={ref}
-          {...props}
-          className={classNames(
-            'Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-fontMedium',
-            variant && variantsClassName[variant],
-            variant !== ButtonVariant.LINK && 'hover:u-textDecorationNone',
-            sizeOri && `Button--${sizeOri}`,
-            //TODO: need active class
-            disabledOri
-              ? 'is-disabled u-cursorNotAllow u-pointerEventsNone'
-              : 'u-cursorPointer',
-            width === ButtonWidth.MIN && 'Button--minWidth',
-            width === ButtonWidth.FULL && 'u-widthFull',
-            !nonUppercase && sizeOri !== ButtonSize.SMALL && 'u-textUppercase',
-            onlyIcon && 'is-onlyIcon',
-            sizeOri === ButtonSize.SMALL && 'u-text200',
-            (variant === ButtonVariant.PRIMARY ||
-              variant === ButtonVariant.ACCENT ||
-              variant === ButtonVariant.ACCENT_OUTLINE ||
-              variant === ButtonVariant.PRIMARY_OUTLINE) &&
-              textClassName
-              ? textClassName
-              : variantsTextClassName[variant],
-            className && className,
-          )}
-          disabled={Component === 'button' ? disabled : undefined}
-        >
-          {children}
-        </Component>
-      );
-    },
-  );
+export const Button: ButtonRefForwardingButtonComponent<'button', ButtonProps> = React.forwardRef(
+  (
+    {
+      className,
+      variant,
+      textClassName,
+      children,
+      size,
+      disabled,
+      width,
+      nonUppercase,
+      onlyIcon,
+      as: Component = 'button',
+      ...props
+    }: ButtonProps,
+    ref
+  ) => {
+    const { sizeControl, disabledControl } = useContext(Context);
+    const sizeOri = size || sizeControl;
+    const disabledOri = disabled || disabledControl;
+    return (
+      <Component
+        ref={ref}
+        {...props}
+        className={classNames(
+          'Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-fontMedium',
+          variant && variantsClassName[variant],
+          variant !== ButtonVariant.LINK && 'hover:u-textDecorationNone',
+          sizeOri && `Button--${sizeOri}`,
+          //TODO: need active class
+          disabledOri ? 'is-disabled u-cursorNotAllow u-pointerEventsNone' : 'u-cursorPointer',
+          width === ButtonWidth.MIN && 'Button--minWidth',
+          width === ButtonWidth.FULL && 'u-widthFull',
+          !nonUppercase && sizeOri !== ButtonSize.SMALL && 'u-textUppercase',
+          onlyIcon && 'is-onlyIcon',
+          sizeOri === ButtonSize.SMALL && 'u-text200',
+          (variant === ButtonVariant.PRIMARY ||
+            variant === ButtonVariant.ACCENT ||
+            variant === ButtonVariant.ACCENT_OUTLINE ||
+            variant === ButtonVariant.PRIMARY_OUTLINE) &&
+            textClassName
+            ? textClassName
+            : variantsTextClassName[variant],
+          className && className
+        )}
+        disabled={Component === 'button' ? disabled : undefined}
+      >
+        {children}
+      </Component>
+    );
+  }
+);
 
-const Icon: CreateBlockOptions = createBlock('Button-icon u-inlineBlock', {
+const Icon = createBlock('Button-icon u-inlineBlock', {
   Component: 'span',
 });
-const Label: CreateBlockOptions = createBlock('Button-label u-inlineBlock', {
+const Label = createBlock('Button-label u-inlineBlock', {
   Component: 'span',
 });
 
