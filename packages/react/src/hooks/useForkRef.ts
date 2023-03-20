@@ -1,8 +1,10 @@
-//fork react-overlays/src/useForkRef.js
 import React from 'react';
-import setRef from '../utils/setRef';
+import setRef from 'utils/setRef';
 
-export default function useForkRef(refA, refB) {
+export default function useForkRef<T>(
+  refA: React.MutableRefObject<T> | ((instance: T | null) => void) | null | undefined,
+  refB: React.MutableRefObject<T> | ((instance: T | null) => void) | null | undefined
+) {
   /**
    * This will create a new function if the ref props change and are defined.
    * This means react will call the old forkRef with `null` and the new forkRef
@@ -12,7 +14,7 @@ export default function useForkRef(refA, refB) {
     if (refA == null && refB == null) {
       return null;
     }
-    return (refValue) => {
+    return (refValue: T | null) => {
       setRef(refA, refValue);
       setRef(refB, refValue);
     };
