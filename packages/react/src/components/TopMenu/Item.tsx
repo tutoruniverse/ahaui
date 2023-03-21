@@ -19,7 +19,7 @@ const propTypes = {
 };
 const defaultProps = {};
 
-interface ItemProps extends PrefixProps {
+interface ItemProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement> {
   /** A key that associates the TopMenu with it's controlling TopMenu.Item.*/
   eventKey: string;
   /**
@@ -29,7 +29,6 @@ interface ItemProps extends PrefixProps {
   disabled: boolean;
   /** The badge to display. The structure can get from Component Badge  */
   badge: string;
-
   isSubItem?: boolean;
   level?: number;
   index?: number;

@@ -24,7 +24,9 @@ const propTypes = {
 };
 const defaultProps = {};
 
-interface SubMenuProps extends PrefixProps {
+interface SubMenuProps
+  extends PrefixProps,
+    React.HTMLAttributes<HTMLDivElement> {
   /** A key that associates the TopMenu with it's controlling TopMenu.SubMenu.*/
   eventKey: string;
   /** Title */

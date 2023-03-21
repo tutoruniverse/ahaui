@@ -16,7 +16,9 @@ const propTypes = {
   onSelect: PropTypes.func,
 };
 
-interface TopMenuProps extends PrefixProps {
+interface TopMenuProps
+  extends PrefixProps,
+    React.HTMLAttributes<HTMLDivElement> {
   /**
    * Set current menu item
    * @controllable onSelect
