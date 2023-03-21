@@ -1,9 +1,16 @@
 import { PluginType } from 'constants/common';
 
 class AssetPlugin {
+  type: string;
+  prefix: string;
+  assets: Record<string, any>;
+
   constructor({
     prefix,
     assets,
+  }: {
+    prefix: 'avatar' | 'logo' | 'emptyState';
+    assets: Record<string, any>;
   }) {
     this.type = PluginType.ASSET;
     this.validateAssets(assets);
@@ -11,16 +18,21 @@ class AssetPlugin {
     this.assets = assets;
   }
 
-  validateAssets(assets) {
+  validateAssets(assets: Record<string, any>) {
     if (!assets) {
       throw new Error('Invalid plugin: missing "assets".');
     }
     if (typeof assets !== 'object') {
-      throw new Error('Invalid plugin: assets must be an object of key-value pairs: key is the asset name and value is asset url.');
+      throw new Error(
+        'Invalid plugin: assets must be an object of key-value pairs: key is the asset name and value is asset url.',
+      );
     }
   }
 
-  getAsset(...args) {
+  getAsset(): undefined;
+  getAsset(assetName: string): any;
+  getAsset(prefix: string, assetName: string): any;
+  getAsset(...args: string[]) {
     if (args.length === 0) return undefined;
     if (args.length === 1) {
       const assetName = args[0];

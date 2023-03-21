@@ -20,23 +20,14 @@ export default {
       control: { type: 'string' },
     },
     textClassName: {
-      options: [
-        'u-textDark',
-        'u-textWhite',
-        'u-textWarning',
-        'u-textPositive',
-        'u-textNegative',
-        '',
-      ],
+      options: ['u-textDark', 'u-textWhite', 'u-textWarning', 'u-textPositive', 'u-textNegative', ''],
       control: { type: 'select' },
     },
   },
 } as ComponentMeta<typeof BadgeFn>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof BadgeFn> = (args) => (
-  <BadgeFn {...args} />
-);
+const Template: ComponentStory<typeof BadgeFn> = (args) => <BadgeFn {...args} />;
 
 export const Control = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

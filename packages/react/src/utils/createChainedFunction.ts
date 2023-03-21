@@ -1,7 +1,8 @@
+type NullableFunction = ((...args: any[]) => any) | null | undefined;
 
-function createChainedFunction(...funcs) {
+function createChainedFunction(...funcs: NullableFunction[]): NullableFunction {
   return funcs
-    .filter(f => f != null)
+    .filter((f) => f != null)
     .reduce((acc, f) => {
       if (typeof f !== 'function') {
         throw new Error(

@@ -46,19 +46,14 @@ const variantsClassName = {
   [BadgeVariant.BLACK]: 'u-textWhite hover:u-textWhite u-backgroundBlack',
   [BadgeVariant.PRIMARY]: 'u-backgroundPrimary',
   [BadgeVariant.PRIMARY_SUBTLE]: 'u-backgroundPrimaryLighter',
-  [BadgeVariant.INFORMATION]:
-    'u-textWhite hover:u-textWhite u-backgroundInformation',
-  [BadgeVariant.INFORMATION_SUBTLE]:
-    'u-textInformation hover:u-textInformation u-backgroundInformationLighter',
+  [BadgeVariant.INFORMATION]: 'u-textWhite hover:u-textWhite u-backgroundInformation',
+  [BadgeVariant.INFORMATION_SUBTLE]: 'u-textInformation hover:u-textInformation u-backgroundInformationLighter',
   [BadgeVariant.WARNING]: 'u-textDark hover:u-textDark u-backgroundWarning',
-  [BadgeVariant.WARNING_SUBTLE]:
-    'u-textDark hover:u-textDark u-backgroundWarningLighter',
+  [BadgeVariant.WARNING_SUBTLE]: 'u-textDark hover:u-textDark u-backgroundWarningLighter',
   [BadgeVariant.POSITIVE]: 'u-textWhite hover:u-textWhite u-backgroundPositive',
-  [BadgeVariant.POSITIVE_SUBTLE]:
-    'u-textPositive hover:u-textPositive u-backgroundPositiveLighter',
+  [BadgeVariant.POSITIVE_SUBTLE]: 'u-textPositive hover:u-textPositive u-backgroundPositiveLighter',
   [BadgeVariant.NEGATIVE]: 'u-textWhite hover:u-textWhite u-backgroundNegative',
-  [BadgeVariant.NEGATIVE_SUBTLE]:
-    'u-textNegative hover:u-textNegative u-backgroundNegativeLighter',
+  [BadgeVariant.NEGATIVE_SUBTLE]: 'u-textNegative hover:u-textNegative u-backgroundNegativeLighter',
 };
 
 interface BadgeProps extends PrefixProps, React.HTMLAttributes<HTMLElement> {
@@ -72,37 +67,25 @@ interface BadgeProps extends PrefixProps, React.HTMLAttributes<HTMLElement> {
  * A badge contains a status or a numeric value, to indicate a running tally or quantity-based summary.
  */
 
-export const Badge: RefForwardingComponent<'span', BadgeProps> =
-  React.forwardRef(
-    (
-      {
-        className,
-        textClassName,
-        variant,
-        as: Component = 'span',
-        ...props
-      }: BadgeProps,
-      ref,
-    ) => {
-      return (
-        <Component
-          {...props}
-          ref={ref}
-          className={classNames(
-            'Badge',
-            'u-inlineBlock u-textCenter u-text200 u-fontMedium u-textNoWrap u-roundedInfinity hover:u-textDecorationNone',
-            variant && variantsClassName[variant],
-            (variant === BadgeVariant.PRIMARY ||
-              variant === BadgeVariant.PRIMARY_SUBTLE) &&
-              textClassName
-              ? textClassName
-              : variantsTextClassName[variant],
-            className && className,
-          )}
-        />
-      );
-    },
-  );
+export const Badge: RefForwardingComponent<'span', BadgeProps> = React.forwardRef(
+  ({ className, textClassName, variant, as: Component = 'span', ...props }: BadgeProps, ref) => {
+    return (
+      <Component
+        {...props}
+        ref={ref}
+        className={classNames(
+          'Badge',
+          'u-inlineBlock u-textCenter u-text200 u-fontMedium u-textNoWrap u-roundedInfinity hover:u-textDecorationNone',
+          variant && variantsClassName[variant],
+          (variant === BadgeVariant.PRIMARY || variant === BadgeVariant.PRIMARY_SUBTLE) && textClassName
+            ? textClassName
+            : variantsTextClassName[variant],
+          className && className
+        )}
+      />
+    );
+  }
+);
 
 Badge.displayName = 'Badge';
 Badge.defaultProps = defaultProps;

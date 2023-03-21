@@ -1,20 +1,14 @@
-//fork react-overlays/src/useRootClose.js
-import contains from 'dom-helpers/contains';
+import { useEffect } from 'react';
 import listen from 'dom-helpers/listen';
-import { useCallback, useEffect, useRef } from 'react';
-
+import ownerDocument from 'dom-helpers/ownerDocument';
 import useEventCallback from '@restart/hooks/useEventCallback';
-import warning from 'warning';
+import useClickOutside, { ClickOutsideOptions, getRefTarget } from 'hooks/useClickOutside';
 
-const escapeKeyCode = 27;
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
-function isLeftClickEvent(event) {
-  return event.button === 0;
-}
-
-function isModifiedEvent(event) {
-  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+export interface RootCloseOptions extends ClickOutsideOptions {
+  disabled?: boolean;
 }
 
 /**
@@ -23,45 +17,23 @@ function isModifiedEvent(event) {
  * style behavior where your callback is triggered when the user tries to
  * interact with the rest of the document or hits the `esc` key.
  *
- * @param {Ref<HTMLElement>|HTMLElement} ref  The element boundary
+ * @param {Ref<HTMLElement>| HTMLElement} ref  The element boundary
  * @param {function} onRootClose
- * @param {object}  options
- * @param {boolean} options.disabled
- * @param {string}  options.clickTrigger The DOM event name (click, mousedown, etc) to attach listeners on
+ * @param {object=}  options
+ * @param {boolean=} options.disabled
+ * @param {string=}  options.clickTrigger The DOM event name (click, mousedown, etc) to attach listeners on
  */
-function useRootClose(
-  ref,
-  onRootClose,
-  { disabled, clickTrigger = 'click' } = {},
+export function useRootClose(
+  ref: React.RefObject<Element> | Element | null | undefined,
+  onRootClose: (e: Event) => void,
+  { disabled, clickTrigger }: RootCloseOptions = {}
 ) {
-  const preventMouseRootCloseRef = useRef(false);
   const onClose = onRootClose || noop;
 
-  const handleMouseCapture = useCallback(
-    (e) => {
-      const currentTarget = ref && ('current' in ref ? ref.current : ref);
-      warning(
-        !!currentTarget,
-        'RootClose captured a close event but does not have a ref to compare it to. '
-          + 'useRootClose(), should be passed a ref that resolves to a DOM node',
-      );
+  useClickOutside(ref, onClose, { disabled, clickTrigger });
 
-      preventMouseRootCloseRef.current = !currentTarget
-        || isModifiedEvent(e)
-        || !isLeftClickEvent(e)
-        || contains(currentTarget, e.target);
-    },
-    [ref],
-  );
-
-  const handleMouse = useEventCallback((e) => {
-    if (!preventMouseRootCloseRef.current) {
-      onClose(e);
-    }
-  });
-
-  const handleKeyUp = useEventCallback((e) => {
-    if (e.keyCode === escapeKeyCode) {
+  const handleKeyUp = useEventCallback((e: KeyboardEvent) => {
+    if (e.code === 'Escape' || e.keyCode === 27) {
       onClose(e);
     }
   });
@@ -69,40 +41,24 @@ function useRootClose(
   useEffect(() => {
     if (disabled || ref == null) return undefined;
 
-    // Use capture for this listener so it fires before React's listener, to
-    // avoid false positives in the contains() check below if the target DOM
-    // element is removed in the React mouse callback.
-    const removeMouseCaptureListener = listen(
-      document,
-      clickTrigger,
-      handleMouseCapture,
-      true,
-    );
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const doc = ownerDocument(getRefTarget(ref)!);
 
-    const removeMouseListener = listen(document, clickTrigger, handleMouse);
-    const removeKeyupListener = listen(document, 'keyup', handleKeyUp);
+    // Store the current event to avoid triggering handlers immediately
+    // https://github.com/facebook/react/issues/20074
+    let currentEvent = (doc.defaultView || window).event;
 
-    let mobileSafariHackListeners = [];
-    if ('ontouchstart' in document.documentElement) {
-      mobileSafariHackListeners = [].slice
-        .call(document.body.children)
-        .map(el => listen(el, 'mousemove', noop));
-    }
+    const removeKeyupListener = listen(doc as any, 'keyup', (e) => {
+      // skip if this event is the same as the one running when we added the handlers
+      if (e === currentEvent) {
+        currentEvent = undefined;
+        return;
+      }
+      handleKeyUp(e);
+    });
 
     return () => {
-      removeMouseCaptureListener();
-      removeMouseListener();
       removeKeyupListener();
-      mobileSafariHackListeners.forEach(remove => remove());
     };
-  }, [
-    ref,
-    disabled,
-    clickTrigger,
-    handleMouseCapture,
-    handleMouse,
-    handleKeyUp,
-  ]);
+  }, [ref, disabled, handleKeyUp]);
 }
-
-export default useRootClose;

@@ -1,9 +1,14 @@
-// TODO: Make it private only in v5
-export default function setRef(ref, value) {
+type RefObject<T> = { current: T | null };
+
+function setRef<T>(
+  ref: ((instance: T | null) => void) | RefObject<T> | null | undefined,
+  value: T | null,
+) {
   if (typeof ref === 'function') {
     ref(value);
   } else if (ref) {
-    // eslint-disable-next-line no-param-reassign
     ref.current = value;
   }
 }
+
+export default setRef;

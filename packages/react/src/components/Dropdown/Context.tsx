@@ -1,11 +1,15 @@
 import React from 'react';
+import { PopperDirection } from 'hooks/usePopper';
 
-const DropdownContext = React.createContext({
-  containerRef() {},
-  toggleRef() {},
-  onToggle() {},
-  show: null,
-  drop: null,
-});
+export interface DropdownContextInterface {
+  alignRight?: boolean;
+  setContainer: (ref: HTMLElement | null) => void;
+  containerElement: HTMLElement | null;
+  toggleElement: HTMLElement | null;
+  setToggle: (ref: HTMLElement | null) => void;
+  toggle: (nextShow: boolean, event?: React.SyntheticEvent | Event) => void;
+  show?: boolean;
+  drop?: PopperDirection;
+}
 
-export default DropdownContext;
+export const DropdownContext = React.createContext<DropdownContextInterface | null>(null);

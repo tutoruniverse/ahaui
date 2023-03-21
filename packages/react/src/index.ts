@@ -6,11 +6,7 @@ export { Badge, BadgeVariant } from './components/Badge';
 // export { default as Breadcrumb } from './components/Breadcrumb';
 // export { default as BubbleChat } from './components/BubbleChat';
 export { Button } from './components/Button';
-export {
-  ButtonSize,
-  ButtonVariant,
-  ButtonWidth,
-} from './components/Button/Enum';
+export { ButtonSize, ButtonVariant, ButtonWidth } from './components/Button/Enum';
 // export { default as Carousel } from './components/Carousel';
 // export { default as ChatBox } from './components/ChatBox';
 // export { default as Collapse } from './components/Collapse';
@@ -18,14 +14,14 @@ export {
 // export { default as Counter } from './components/Counter';
 // export { default as Card } from './components/Card';
 // export { Calendar, DatePicker, DateRangePicker, TimePicker } from './components/Calender';
-// export { default as Dropdown } from './components/Dropdown';
-// export { useToggle } from './components/Dropdown/Toggle';
+export { Dropdown } from './components/Dropdown';
+export { useToggle } from './components/Dropdown/Toggle';
 // export { default as EmptyState } from './components/EmptyState';
 // export { default as FileAttachment } from './components/FileAttachment';
 // export { default as Form } from './components/Form';
 // export { default as Header } from './components/Header';
 // export { default as HeaderMobile } from './components/Header/Mobile';
-// export { default as Icon } from './components/Icon';
+export { Icon } from './components/Icon';
 // export { default as PageLayout } from './components/PageLayout';
 // export { default as Loader } from './components/Loader';
 // export { default as Logo } from './components/Logo';
@@ -55,6 +51,6 @@ export {
 // export { default as SafeAnchor } from './components/SafeAnchor';
 // export { default as Fade } from './components/Fade';
 // export { default as createBlock } from './utils/createBlock';
-// export { default as useRootClose } from './hooks/useRootClose';
+export { useRootClose } from './hooks/useRootClose';
 // export { default as Plugins } from './utils/Plugins';
 // export { default as AssetPlugin } from './utils/AssetPlugin';

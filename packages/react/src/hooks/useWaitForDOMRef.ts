@@ -1,22 +1,34 @@
-//fork react-overlays/src/utils/useWaitForDOMRef.js
+import { useState, useEffect, RefObject } from 'react';
 import ownerDocument from 'dom-helpers/ownerDocument';
-import { useState, useEffect } from 'react';
 
-const resolveRef = (ref) => {
+type ResolvedRef = HTMLElement | null | undefined;
+
+const resolveRef = (
+  ref: HTMLElement | RefObject<HTMLElement> | (() => HTMLElement),
+) => {
   if (typeof document === 'undefined') return undefined;
   if (ref == null) return ownerDocument().body;
   // eslint-disable-next-line no-param-reassign
   if (typeof ref === 'function') ref = ref();
 
-  // eslint-disable-next-line no-param-reassign
-  if (ref && ref.current) ref = ref.current;
-  if (ref && ref.nodeType) return ref;
+  // Add a type guard to ensure that ref is an HTMLElement
+  if ('nodeType' in ref) {
+    return ref;
+  }
+
+  // Check for a RefObject<HTMLElement>
+  if (ref && 'current' in ref && ref.current && 'nodeType' in ref.current) {
+    return ref.current;
+  }
 
   return null;
 };
 
-export default function useWaitForDOMRef(ref, onResolved) {
-  const [resolvedRef, setRef] = useState(() => resolveRef(ref));
+export default function useWaitForDOMRef<T extends HTMLElement>(
+  ref: RefObject<T> | ((() => T) | T | null | undefined),
+  onResolved?: (ref: T) => void,
+): T {
+  const [resolvedRef, setRef] = useState<ResolvedRef>(() => resolveRef(ref));
 
   if (!resolvedRef) {
     const earlyRef = resolveRef(ref);
@@ -25,7 +37,7 @@ export default function useWaitForDOMRef(ref, onResolved) {
 
   useEffect(() => {
     if (onResolved && resolvedRef) {
-      onResolved(resolvedRef);
+      onResolved(resolvedRef as T);
     }
   }, [onResolved, resolvedRef]);
 
@@ -36,5 +48,5 @@ export default function useWaitForDOMRef(ref, onResolved) {
     }
   }, [ref, resolvedRef]);
 
-  return resolvedRef;
+  return resolvedRef as T;
 }
