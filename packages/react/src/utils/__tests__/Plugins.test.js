@@ -34,10 +34,7 @@ describe('utils/Plugins', () => {
     it('should run loadPlugin', () => {
       const mockInstanceLoadPlugin = jest.spyOn(pluginManagement, 'loadPlugin');
 
-      const mockInstanceValidatePlugin = jest.spyOn(
-        pluginManagement,
-        'loadPlugin',
-      );
+      const mockInstanceValidatePlugin = jest.spyOn(pluginManagement, 'validatePlugin');
 
       pluginManagement.loadPlugin(plugin1);
       pluginManagement.loadPlugin(plugin2);
@@ -69,6 +66,17 @@ describe('utils/Plugins', () => {
 
       const result2 = pluginManagement.getPlugins();
       expect(result2).toStrictEqual(pluginManagement.plugins);
+    });
+
+    it('should valid plugins', () => {
+      expect(() => pluginManagement.loadPlugin())
+        .toThrowError('Invalid plugin: Can not read plugin.');
+
+      expect(() => pluginManagement.loadPlugin(plugin3))
+        .toThrowError('Invalid plugin: missing "type".');
+
+      expect(() => pluginManagement.loadPlugin({ type: PluginType.ASSET }))
+        .toThrowError('Invalid plugin: plugin with type "asset" must be constructed from class AssetPlugin.');
     });
   });
 });
