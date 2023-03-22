@@ -1,4 +1,4 @@
-// export { default as Accordion } from './components/Accordion';
+export { Accordion } from './components/Accordion';
 // export { useAccordionToggle } from './components/Accordion/Toggle';
 // export { default as AskBox } from './components/AskBox';
 // export { default as Avatar } from './components/Avatar';
@@ -9,7 +9,7 @@ export { Button } from './components/Button';
 export { ButtonSize, ButtonVariant, ButtonWidth } from './components/Button/Enum';
 // export { default as Carousel } from './components/Carousel';
 // export { default as ChatBox } from './components/ChatBox';
-// export { default as Collapse } from './components/Collapse';
+export { Collapse } from './components/Collapse';
 // export { default as Composer } from './components/Composer';
 // export { default as Counter } from './components/Counter';
 // export { default as Card } from './components/Card';

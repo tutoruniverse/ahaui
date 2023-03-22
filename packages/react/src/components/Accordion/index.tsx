@@ -2,52 +2,74 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useUncontrolled } from 'uncontrollable';
-import AccordionContext, { SelectableContext } from './Context';
+import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
+import { AccordionContext, AccordionSelectCallback } from './Context';
 import Toggle from './Toggle';
-import Collapse from './Collapse';
+import { Collapse } from './Collapse';
 
 const propTypes = {
+  /** The current active key that corresponds to the currently expanded card */
+  activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+
   /**
-   * The current active key that corresponds to the currently expanded card
+   * Callback fired when the active item changes.
    *
-   * @controllable onSelect
-  */
-  activeKey: PropTypes.string,
-
+   * ```js
+   * (eventKey: string | string[] | null, event: Object) => void
+   * ```
+   *
+   * @controllable activeIndex
+   */
+  onSelect: PropTypes.func,
 };
 
-const defaultProps = {
+const defaultProps = {};
 
-};
+export interface AccordionProps extends PrefixProps, Omit<React.HTMLAttributes<HTMLElement>, 'onSelect'> {
+  activeKey?: string;
+  onSelect?: AccordionSelectCallback;
+}
 
-const Accordion = React.forwardRef(({ className, as: Component = 'div', ...props }, ref) => {
-  const {
-    activeKey,
-    onSelect,
-    ...controlledProps
-  } = useUncontrolled(props, {
-    activeKey: 'onSelect',
-  });
+interface AccordionRefForwardingComponent<TInitial extends React.ElementType, P = unknown>
+  extends RefForwardingComponent<TInitial, P> {
+  Toggle?: typeof Toggle;
+  Collapse?: typeof Collapse;
+}
 
-  return (
-    <AccordionContext.Provider value={activeKey}>
-      <SelectableContext.Provider value={onSelect}>
+export const Accordion: AccordionRefForwardingComponent<'div', AccordionProps> = React.forwardRef(
+  (props: AccordionProps, ref) => {
+    const {
+      className,
+      as: Component = 'div',
+      activeKey,
+      onSelect,
+      ...controlledProps
+    } = useUncontrolled(props, {
+      activeKey: 'onSelect',
+    });
+
+    const contextValue = React.useMemo(
+      () => ({
+        activeEventKey: activeKey,
+        onSelect,
+      }),
+      [activeKey, onSelect]
+    );
+
+    return (
+      <AccordionContext.Provider value={contextValue}>
         <Component
           ref={ref}
           {...controlledProps}
-          className={classNames(
-            'Accordion',
-            className && className
-          )}
+          className={classNames('Accordion', className && className)}
         />
-      </SelectableContext.Provider>
-    </AccordionContext.Provider>
-  );
-});
+      </AccordionContext.Provider>
+    );
+  }
+);
 
 Accordion.displayName = 'Accordion';
 Accordion.defaultProps = defaultProps;
 Accordion.propTypes = propTypes;
 Accordion.Toggle = Toggle;
 Accordion.Collapse = Collapse;
-export default Accordion;

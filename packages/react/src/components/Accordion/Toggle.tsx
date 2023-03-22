@@ -1,44 +1,62 @@
-import React, { useContext, cloneElement } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import AccordionContext, { SelectableContext } from './Context';
+import { AccordionContext, AccordionEventKey } from './Context';
+import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
 
 const propTypes = {
-  /**
-    * A key that corresponds to the collapse component that gets triggered
-    * when this has been clicked.
-    */
-  eventKey: PropTypes.string.isRequired,
+  /** Set a custom element for this component */
+  as: PropTypes.elementType,
 
   /** A callback function for when this component is clicked */
   onClick: PropTypes.func,
 
-  /** Children prop should only contain a single child, and  is enforced as such */
-  children: PropTypes.element.isRequired,
+  /** Disables the toggle from triggering the collapse  */
+  disabled: PropTypes.bool,
 };
-export function useAccordionToggle(eventKey, onClick) {
-  const contextEventKey = useContext(AccordionContext);
-  const onSelect = useContext(SelectableContext);
+
+type EventHandler = React.EventHandler<React.SyntheticEvent>;
+
+export function useAccordionToggle(eventKey: string, onClick?: EventHandler): EventHandler {
+  const { activeEventKey, onSelect } = useContext(AccordionContext);
   return (e) => {
-    const eventKeyPassed = eventKey === contextEventKey ? null : eventKey;
-    onSelect(eventKeyPassed, e);
-    if (onClick) onClick(e);
+    const eventKeyPassed: AccordionEventKey = eventKey === activeEventKey ? null : eventKey;
+
+    onSelect?.(eventKeyPassed, e);
+    onClick?.(e);
   };
 }
 
-const AccordionToggle = React.forwardRef(({ className, eventKey, onClick, children, disabled, ...props }, ref) => {
-  const onAccordionClick = useAccordionToggle(eventKey, onClick);
-  return cloneElement(children, {
-    className: classNames(
-      'Accordion-toggle',
-      disabled ? ' u-pointerEventsNone u-cursorNotAllow' : 'u-cursorPointer',
-      className && className
-    ),
-    onClick: !disabled ? onAccordionClick : null,
-    ...props,
-    ref,
-    children,
-  });
+export interface AccordionToggleProps extends PrefixProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
+  disabled?: boolean;
+  eventKey: string;
+}
+
+const AccordionToggle: RefForwardingComponent<'div', AccordionToggleProps> = React.forwardRef<
+  HTMLButtonElement,
+  AccordionToggleProps
+>(({ className, eventKey, children, disabled, onClick, as: Component = 'div', ...props }, ref) => {
+  const accordionOnClick = useAccordionToggle(eventKey, onClick);
+
+  if (Component === 'button') {
+    props.type = 'button';
+  }
+
+  return (
+    <Component
+      {...props}
+      ref={ref}
+      className={classNames(
+        'Accordion-toggle u-lineHeightNone',
+        Component === 'button' && 'u-borderNone u-paddingNone u-backgroundTransparent',
+        disabled ? ' u-pointerEventsNone u-cursorNotAllow' : 'u-cursorPointer',
+        className && className
+      )}
+      onClick={!disabled ? accordionOnClick : null}
+    >
+      {children}
+    </Component>
+  );
 });
 AccordionToggle.propTypes = propTypes;
 AccordionToggle.defaultProps = {};
