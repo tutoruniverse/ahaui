@@ -1,5 +1,9 @@
 import React from 'react';
 
-const Context = React.createContext({ });
+export interface TopMenuContextInterface {
+  current?: string;
+  onSelect?: (path: string) => void;
+}
+const Context = React.createContext<TopMenuContextInterface>({});
 
 export default Context;
