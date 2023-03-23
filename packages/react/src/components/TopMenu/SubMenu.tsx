@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
-import { Badge } from 'components/Badge';
+import { Icons } from 'constants/icons';
+import { Badge, BadgeVariant } from 'components/Badge';
 import { Dropdown } from 'components/Dropdown';
-import { Icon } from 'components/Icon';
+import { Icon, IconSize } from 'components/Icon';
 import TopMenuContext from './Context';
 
 const propTypes = {
@@ -34,10 +35,8 @@ interface SubMenuProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement>
    * @default false
    * */
   disabled: boolean;
-  /** The icon to display. The name can get from Component Icon */
-  icon: string;
   /** The badge to display. The structure can get from Component Badge  */
-  badge: string;
+  badge: string | (() => React.ReactNode);
   isSubItem?: boolean;
   level?: number;
   index?: number;
@@ -45,23 +44,7 @@ interface SubMenuProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement>
 }
 
 export const SubMenu: RefForwardingComponent<'div', SubMenuProps> = React.forwardRef(
-  (
-    {
-      level,
-      eventKey,
-      className,
-      isSubItem,
-      title,
-      disabled,
-      children,
-      badge,
-      icon,
-      path,
-      index,
-      ...props
-    }: SubMenuProps,
-    ref
-  ) => {
+  ({ level, className, isSubItem, title, disabled, children, badge, path, index, ...props }: SubMenuProps, ref) => {
     let active;
     const context = useContext(TopMenuContext);
 
@@ -73,7 +56,7 @@ export const SubMenu: RefForwardingComponent<'div', SubMenuProps> = React.forwar
     const onClick = () => {
       setOpen(!open);
     };
-    const modifiedChildren = React.Children.map(children, (child, index) => {
+    const modifiedChildren = React.Children.map(children, (child: any, index) => {
       if (!child) {
         return null;
       }
@@ -98,7 +81,8 @@ export const SubMenu: RefForwardingComponent<'div', SubMenuProps> = React.forwar
         className={classNames(
           'TopMenu-subMenu u-alignItemsCenter u-paddingVerticalExtraTiny',
           isSubItem ? 'u-flex' : 'u-flexInline',
-          index > 0 && !isSubItem && 'u-marginLeftSmall lg:u-marginLeftLarge'
+          index > 0 && !isSubItem && 'u-marginLeftSmall lg:u-marginLeftLarge',
+          className && className
         )}
       >
         <Dropdown.Toggle
@@ -115,13 +99,13 @@ export const SubMenu: RefForwardingComponent<'div', SubMenuProps> = React.forwar
                 {typeof badge === 'function' ? (
                   badge()
                 ) : (
-                  <Badge variant={disabled ? 'default' : 'positive'}>{badge}</Badge>
+                  <Badge variant={disabled ? BadgeVariant.DEFAULT : BadgeVariant.POSITIVE}>{badge}</Badge>
                 )}
               </span>
             )}
             <Icon
-              name={isSubItem ? 'arrowForward' : 'arrowDown'}
-              size="tiny"
+              name={isSubItem ? Icons.ARROW_FORWARD : Icons.ARROW_DOWN}
+              size={IconSize.TINY}
               className="u-marginLeftExtraSmall SidebarMenu-iconAppend u-flexShrink0"
               style={{ marginTop: isSubItem && 6 }}
             />

@@ -16,7 +16,7 @@ const propTypes = {
   onSelect: PropTypes.func,
 };
 
-interface TopMenuProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement> {
+interface TopMenuProps extends PrefixProps, Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   /**
    * Set current menu item
    * @controllable onSelect
@@ -31,8 +31,8 @@ interface TopMenuRefForwardingComponent<TInitial extends React.ElementType, P = 
   SubMenu?: typeof SubMenu;
 }
 
-export const TopMenu: TopMenuRefForwardingComponent<'div', TopMenuProps> = React.forwardRef(
-  ({ className, children, current, onSelect, ...props }: TopMenuProps, ref) => {
+export const TopMenu: TopMenuRefForwardingComponent<'div', TopMenuProps> = React.forwardRef<any, TopMenuProps>(
+  ({ className, children, current, onSelect, ...props }, ref) => {
     const modifiedChildren = React.Children.map(children, (child: any, index) => {
       if (!child) {
         return null;
@@ -53,7 +53,7 @@ export const TopMenu: TopMenuRefForwardingComponent<'div', TopMenuProps> = React
       >
         <div className={classNames('TopMenu', 'u-backgroundWhite', className && className)}>
           <div
-            ref={ref as React.RefObject<HTMLDivElement>}
+            ref={ref}
             {...props}
             className={classNames('TopMenu-list')}
           >

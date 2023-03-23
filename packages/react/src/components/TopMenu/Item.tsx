@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
 import SafeAnchor from 'components/SafeAnchor';
-import { Badge } from 'components/Badge';
+import { Badge, BadgeVariant } from 'components/Badge';
 import TopMenuContext from './Context';
 
 const propTypes = {
@@ -19,38 +19,21 @@ const propTypes = {
 };
 const defaultProps = {};
 
-interface ItemProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement> {
-  /** A key that associates the TopMenu with it's controlling TopMenu.Item.*/
-  eventKey: string;
+interface ItemProps extends PrefixProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Manually set the visual state of the TopMenu.Item to disabled
    * @default false
    * */
   disabled: boolean;
   /** The badge to display. The structure can get from Component Badge  */
-  badge: string;
+  badge: string | (() => React.ReactNode);
   isSubItem?: boolean;
-  level?: number;
   index?: number;
   path?: string;
 }
 
-export const Item: RefForwardingComponent<'div', ItemProps> = React.forwardRef(
-  (
-    {
-      className,
-      disabled,
-      eventKey,
-      children,
-      badge,
-      isSubItem,
-      level,
-      index,
-      path,
-      ...props
-    }: ItemProps,
-    ref,
-  ) => {
+export const Item: RefForwardingComponent<'span', ItemProps> = React.forwardRef<any, ItemProps>(
+  ({ className, disabled, children, badge, isSubItem, index, path, ...props }, ref) => {
     let active;
 
     const context = useContext(TopMenuContext);
@@ -73,13 +56,9 @@ export const Item: RefForwardingComponent<'div', ItemProps> = React.forwardRef(
           'TopMenu-item u-positionRelative u-paddingVerticalExtraTiny',
           index > 0 && !isSubItem && 'u-marginLeftLarge',
           active && 'is-active',
-          isSubItem
-            ? 'u-flex hover:u-backgroundLightest u-paddingHorizontalSmall'
-            : 'u-flexInline u-alignItemsCenter',
-          disabled
-            ? 'is-disabled u-cursorNotAllow u-pointerEventsNone'
-            : 'u-cursorPointer',
-          className && className,
+          isSubItem ? 'u-flex hover:u-backgroundLightest u-paddingHorizontalSmall' : 'u-flexInline u-alignItemsCenter',
+          disabled ? 'is-disabled u-cursorNotAllow u-pointerEventsNone' : 'u-cursorPointer',
+          className && className
         )}
       >
         {active && !isSubItem && (
@@ -87,13 +66,13 @@ export const Item: RefForwardingComponent<'div', ItemProps> = React.forwardRef(
             <div
               className={classNames(
                 'TopMenu-itemBefore u-heightExtraTiny u-zIndexPosition',
-                'u-positionAbsolute u-positionLeft u-positionTop u-backgroundTransparent u-widthFull',
+                'u-positionAbsolute u-positionLeft u-positionTop u-backgroundTransparent u-widthFull'
               )}
             />
             <div
               className={classNames(
                 'TopMenu-itemAfter u-heightExtraTiny u-zIndexPosition',
-                'u-positionAbsolute u-positionLeft u-positionBottom u-backgroundPrimary u-widthFull',
+                'u-positionAbsolute u-positionLeft u-positionBottom u-backgroundPrimary u-widthFull'
               )}
             />
           </>
@@ -104,7 +83,7 @@ export const Item: RefForwardingComponent<'div', ItemProps> = React.forwardRef(
           className={classNames(
             'u-positionRelative u-flexInline u-flexGrow1 u-paddingVerticalTiny hover:u-textDecorationNone',
             active ? 'u-textLink' : !disabled && 'u-textDark hover:u-textLink',
-            disabled && 'u-textLight',
+            disabled && 'u-textLight'
           )}
         >
           <div className="u-flexGrow1">{children}</div>
@@ -114,19 +93,16 @@ export const Item: RefForwardingComponent<'div', ItemProps> = React.forwardRef(
               {typeof badge === 'function' ? (
                 badge()
               ) : (
-                <Badge variant={disabled ? 'default' : 'positive'}>
-                  {badge}
-                </Badge>
+                <Badge variant={disabled ? BadgeVariant.DEFAULT : BadgeVariant.POSITIVE}>{badge}</Badge>
               )}
             </span>
           )}
         </Component>
       </div>
     );
-  },
+  }
 );
 
 Item.defaultProps = defaultProps;
 Item.displayName = 'TopMenuItem';
 Item.propTypes = propTypes;
-export default Item;
