@@ -2,13 +2,15 @@
 import ownerDocument from 'dom-helpers/ownerDocument';
 import { useState, useEffect } from 'react';
 
-export type Ref =
-  React.MutableRefObject<HTMLElement | null>
-  | (() => React.MutableRefObject<HTMLElement | null>)
-  | HTMLElement
+export type DOMContainer<T extends HTMLElement = HTMLElement> =
+  | React.RefObject<T | null>
+  | (() => T | React.RefObject<T | null> | null)
+  | T
   | null;
 
-const resolveRef = (ref: Ref) => {
+const resolveRef = <T extends HTMLElement>(
+  ref: DOMContainer<T> | undefined,
+) : T | HTMLElement | undefined | null => {
   if (typeof document === 'undefined') return undefined;
   if (ref == null) return ownerDocument().body;
   // eslint-disable-next-line no-param-reassign
@@ -21,9 +23,9 @@ const resolveRef = (ref: Ref) => {
   return null;
 };
 
-export default function useWaitForDOMRef(
-  ref: Ref,
-  onResolved: (resolvedRef: HTMLElement | null) => void,
+export default function useWaitForDOMRef<T extends HTMLElement = HTMLElement>(
+  ref: DOMContainer<T> | undefined,
+  onResolved?: (element: T | HTMLElement) => void,
 ) {
   const [resolvedRef, setRef] = useState(() => resolveRef(ref));
 

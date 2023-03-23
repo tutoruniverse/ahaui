@@ -135,7 +135,7 @@ describe('utils/createPopperConfig', () => {
           arrow: {
             options: {
               padding: 10,
-            }
+            },
           },
           preventOverflow: {
             enabled: false,
@@ -147,9 +147,9 @@ describe('utils/createPopperConfig', () => {
           },
           flip: {
             enabled: false,
-          }
+          },
         },
-      }
+      },
     });
 
     expect(popperConfig).toEqual({

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { render } from '@testing-library/react';
 import useWaitForDOMRef from 'hooks/useWaitForDOMRef';
-import type { Ref } from 'hooks/useWaitForDOMRef';
+import type { DOMContainer } from 'hooks/useWaitForDOMRef';
 
 jest.mock('utils/setRef', () => jest.fn());
 jest.mock('dom-helpers/ownerDocument', () => jest.fn(() => ({
@@ -35,7 +35,7 @@ describe('hooks/useWaitForDOMRef', () => {
     }) => {
       const domRef = useRef(domElement);
 
-      let inputRef: Ref = domRef;
+      let inputRef: DOMContainer = domRef;
       if (domElement === null && refIsNull) {
         inputRef = null;
       } else if (refIsFunction) {
@@ -83,8 +83,6 @@ describe('hooks/useWaitForDOMRef', () => {
         handleResultTesting={getResultTesting(div)}
       />,
     );
-
-
 
     rerender(
       <TestingComponent

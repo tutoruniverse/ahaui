@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import useRootClose from 'hooks/useRootClose';
+import type { MouseEvents } from 'hooks/useRootClose';
 import userEvent from '@testing-library/user-event';
 import { render, fireEvent } from '@testing-library/react';
 
@@ -16,7 +17,7 @@ describe('useRootClose', () => {
     children,
   }: {
     onRootClose: jest.Mock;
-    event?: keyof HTMLElementEventMap;
+    event?: MouseEvents;
     disabled?: boolean;
     children: JSX.Element | string;
   }) => {
@@ -58,7 +59,7 @@ describe('useRootClose', () => {
   describe.each([
     undefined,
     'click',
-  ] as (undefined | keyof HTMLElementEventMap)[])('using default event', (event) => {
+  ] as (undefined | MouseEvents)[])('using default event', (event) => {
     it('should close when clicked outside', () => {
       const handleRootClose = jest.fn();
 

@@ -3,6 +3,12 @@ import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import type { GenericFunction } from 'types/common';
 import * as Popper from '@popperjs/core';
 
+export type Options = Popper.Options;
+export type Instance = Popper.Instance;
+export type Placement = Popper.Placement;
+export type VirtualElement = Popper.VirtualElement;
+export type State = Popper.State;
+
 type PopperStyles = Partial<CSSStyleDeclaration>;
 
 type ArrowStyles = Partial<CSSStyleDeclaration>;
@@ -17,17 +23,17 @@ export type Modifier<
 > = Popper.Modifier<Name, OptionsWithUndefined<Options>>;
 
 export type PopperConfig = Omit<
-  Popper.Options,
+  Options,
   'modifiers' | 'placement' | 'strategy'
 > & {
   enabled?: boolean;
-  placement?: Popper.Options['placement'];
-  strategy?: Popper.Options['strategy'];
-  modifiers?: Popper.Options['modifiers'];
+  placement?: Options['placement'];
+  strategy?: Options['strategy'];
+  modifiers?: Options['modifiers'];
 };
 
 interface PopperState {
-  placement: Popper.Placement;
+  placement: Placement;
   update: GenericFunction;
   outOfBoundaries: boolean;
   styles: PopperStyles;
@@ -35,12 +41,12 @@ interface PopperState {
 }
 
 export interface UsePopperProps {
-  placement: Popper.Placement;
+  placement: Placement;
   update: () => void;
   forceUpdate: () => void;
   attributes: Record<string, Record<string, any>>;
   styles: Record<string, Partial<CSSStyleDeclaration>>;
-  state?: Popper.State;
+  state?: State;
 }
 
 const initialPopperStyles: PopperStyles = {
@@ -52,7 +58,6 @@ const initialPopperStyles: PopperStyles = {
 };
 
 const initialArrowStyles: ArrowStyles = {};
-
 
 /**
  * Position an element relative some reference element using Popper.js
@@ -67,8 +72,8 @@ const initialArrowStyles: ArrowStyles = {};
  * @param {Function}     options.onFirstUpdate function to be called on the first popper render
  */
 export default function usePopper(
-  referenceElement: HTMLElement | Popper.VirtualElement,
-  popperElement: HTMLElement,
+  referenceElement: HTMLElement | VirtualElement | null | undefined,
+  popperElement: HTMLElement | null | undefined,
   {
     enabled = true,
     placement = 'bottom',
@@ -76,7 +81,7 @@ export default function usePopper(
     modifiers = [],
   }: PopperConfig = {},
 ): PopperState {
-  const popperInstanceRef = useRef<Popper.Instance | null>(null);
+  const popperInstanceRef = useRef<Instance | null>(null);
 
   const update = useCallback(() => {
     if (popperInstanceRef.current) {
@@ -98,7 +103,7 @@ export default function usePopper(
       enabled: true,
       phase: 'write',
       requires: ['computeStyles'],
-      fn: (data: Popper.ModifierArguments<OptionsWithUndefined<Popper.Options>>) => {
+      fn: (data: Popper.ModifierArguments<OptionsWithUndefined<Options>>) => {
         const { state } = data;
 
         setPopperState({

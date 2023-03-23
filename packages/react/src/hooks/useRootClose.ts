@@ -16,6 +16,17 @@ function isModifiedEvent(event: KeyboardEvent) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 }
 
+export type MouseEvents = {
+  [K in keyof GlobalEventHandlersEventMap]: GlobalEventHandlersEventMap[K] extends MouseEvent
+  ? K
+  : never;
+}[keyof GlobalEventHandlersEventMap];
+
+export interface RootCloseOptions {
+  disabled?: boolean;
+  clickTrigger?: MouseEvents;
+}
+
 /**
  * The `useRootClose` hook registers your callback on the document
  * when rendered. Powers the `<Overlay/>` component. This is used achieve modal
@@ -29,15 +40,12 @@ function isModifiedEvent(event: KeyboardEvent) {
  * @param {string}  options.clickTrigger The DOM event name (click, mousedown, etc) to attach listeners on
  */
 function useRootClose(
-  ref: React.MutableRefObject<HTMLElement | null> | HTMLElement,
-  onRootClose: (event: React.MouseEvent) => void,
+  ref: React.MutableRefObject<HTMLElement | null> | HTMLElement | null | undefined,
+  onRootClose?: (event: Event) => void,
   {
     disabled,
     clickTrigger = 'click',
-  }: {
-    disabled?: boolean;
-    clickTrigger?: keyof HTMLElementEventMap;
-  } = {},
+  }: RootCloseOptions = {},
 ) {
   const preventMouseRootCloseRef = useRef(false);
   const onClose = onRootClose;

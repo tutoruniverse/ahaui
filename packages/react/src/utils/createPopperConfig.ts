@@ -15,7 +15,7 @@ type OffsetFunction = (details: {
   placement: Popper.Placement;
 }) => OffsetValue;
 
-type Offset = OffsetFunction | OffsetValue;
+export type Offset = OffsetFunction | OffsetValue;
 
 export type PopperOptions = {
   flip?: boolean;
@@ -47,6 +47,7 @@ export function toModifierMap(modifiers: Modifiers | undefined) {
 export function toModifierArray(map: Modifiers | undefined = {}) {
   if (Array.isArray(map)) return map;
   return Object.keys(map).map((k) => {
+    // eslint-disable-next-line no-param-reassign
     map[k].name = k;
     return map[k];
   });
