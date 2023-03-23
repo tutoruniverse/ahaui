@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Badge, BadgeVariant } from 'components/Badge';
 import { TopMenu } from './index';
 
 const TopMenuFn: any = TopMenu;
@@ -19,15 +20,54 @@ export default {
 const Template: ComponentStory<typeof TopMenuFn> = (args) => (
   <TopMenuFn {...args}>
     <TopMenuFn.Item eventKey="home">Home</TopMenuFn.Item>
-    <TopMenuFn.Item eventKey="about">About</TopMenuFn.Item>
     <TopMenuFn.SubMenu
-      eventKey="sub-menu"
-      title="Sub menu"
+      eventKey="products"
+      badge={() => <Badge variant={BadgeVariant.POSITIVE_SUBTLE}>New</Badge>}
+      title="Products"
     >
-      <TopMenuFn.Item eventKey="whats-new">What's new?</TopMenuFn.Item>
-      <TopMenuFn.Item eventKey="getting-started">Getting started</TopMenuFn.Item>
+      <TopMenuFn.Item eventKey="excelchat">Excelchat</TopMenuFn.Item>
+      <TopMenuFn.SubMenu
+        badge={() => <Badge variant={BadgeVariant.POSITIVE_SUBTLE}>New</Badge>}
+        eventKey="querychat"
+        title="Querychat"
+      >
+        <TopMenuFn.Item eventKey="sqlquerychat">SQLQuerychat</TopMenuFn.Item>
+        <TopMenuFn.Item eventKey="queryai">QueryAI</TopMenuFn.Item>
+      </TopMenuFn.SubMenu>
+      <TopMenuFn.Item
+        eventKey="knp"
+        disabled
+      >
+        KNP Project
+      </TopMenuFn.Item>
     </TopMenuFn.SubMenu>
-    <TopMenuFn.Item eventKey="contact">Contact</TopMenuFn.Item>
+    <TopMenuFn.Item
+      eventKey="platform"
+      badge={() => <Badge variant={BadgeVariant.POSITIVE_SUBTLE}>New</Badge>}
+    >
+      Platform
+    </TopMenuFn.Item>
+    <TopMenuFn.Item
+      eventKey="press"
+      disabled
+    >
+      Press
+    </TopMenuFn.Item>
+    <TopMenuFn.SubMenu
+      eventKey="blog"
+      title="Blog"
+    >
+      <TopMenuFn.Item eventKey="excel_tutorial">Excel Tutorial</TopMenuFn.Item>
+      <TopMenuFn.Item eventKey="excel_help">Excel Help</TopMenuFn.Item>
+      <TopMenuFn.Item eventKey="excel_problems">Excel Problems</TopMenuFn.Item>
+      <TopMenuFn.Item eventKey="sql_tutorial">SQL Tutorial</TopMenuFn.Item>
+    </TopMenuFn.SubMenu>
+    <TopMenuFn.Item
+      eventKey="about"
+      disabled
+    >
+      About
+    </TopMenuFn.Item>
   </TopMenuFn>
 );
 
