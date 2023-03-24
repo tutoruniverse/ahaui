@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Item from './Item';
+import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
+import { Item } from './Item';
 
 const propTypes = {
   /** Enable Structured Data `https://schema.org/BreadcrumbList` */
@@ -11,7 +12,20 @@ const defaultProps = {
   schema: false,
 };
 
-const Breadcrumb = React.forwardRef(({ className, schema, children, ...props }, ref) => {
+interface BreadcrumbProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement> {
+  /** Enable Structured Data `https://schema.org/BreadcrumbList` */
+  schema: boolean;
+}
+
+interface BreadcrumbRefForwardingComponent<TInitial extends React.ElementType, P = unknown>
+  extends RefForwardingComponent<TInitial, P> {
+  Item?: typeof Item;
+}
+
+export const Breadcrumb: BreadcrumbRefForwardingComponent<'div', BreadcrumbProps> = React.forwardRef<
+  any,
+  BreadcrumbProps
+>(({ className, schema, children, ...props }, ref) => {
   let schemasList;
   let schemasItem;
   if (schema) {
@@ -26,28 +40,23 @@ const Breadcrumb = React.forwardRef(({ className, schema, children, ...props }, 
     };
   }
   const numChildren = React.Children.count(children);
-  const modifiedChildren = React.Children.map(children, (child, index) => {
+  const modifiedChildren = React.Children.map(children, (child: any, index) => {
     if (!child) {
       return null;
     }
-    return React.cloneElement(
-      child, ({
-        ...schemasItem,
-        schema,
-        isLast: index === numChildren - 1,
-        position: index + 1,
-      })
-    );
+    return React.cloneElement(child, {
+      ...schemasItem,
+      schema,
+      isLast: index === numChildren - 1,
+      position: index + 1,
+    });
   });
   return (
     <ul
       ref={ref}
       {...props}
       {...schemasList}
-      className={classNames(
-        'Breadcrumb',
-        'u-marginNone u-paddingNone u-text200'
-      )}
+      className={classNames('Breadcrumb', 'u-marginNone u-paddingNone u-text200', className && className)}
     >
       {modifiedChildren}
     </ul>
@@ -58,4 +67,3 @@ Breadcrumb.displayName = 'Breadcrumb';
 Breadcrumb.defaultProps = defaultProps;
 Breadcrumb.propTypes = propTypes;
 Breadcrumb.Item = Item;
-export default Breadcrumb;
