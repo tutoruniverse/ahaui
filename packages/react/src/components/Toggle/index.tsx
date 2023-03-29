@@ -32,7 +32,7 @@ const defaultProps = {
   ariaLabel: 'Toggle',
 };
 
-interface ToggleProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement> {
+interface ToggleProps extends PrefixProps, React.HTMLAttributes<HTMLButtonElement> {
   /** Set the visual state of the Toggle to active */
   checked: boolean;
   /** Disables the disabled, preventing mouse events, even if the underlying component is an `<a>` element */
@@ -47,7 +47,7 @@ interface ToggleProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement> 
   ariaLabel: string;
 }
 
-export const Toggle: RefForwardingComponent<'div', ToggleProps> = React.forwardRef<any, ToggleProps>(
+export const Toggle: RefForwardingComponent<'button', ToggleProps> = React.forwardRef(
   (
     {
       className,
@@ -59,14 +59,10 @@ export const Toggle: RefForwardingComponent<'div', ToggleProps> = React.forwardR
       ariaLabel,
       as: Component = 'button',
       ...props
-    },
+    }: ToggleProps,
     ref
   ) => (
-    <div
-      className={classNames('u-flexInline u-alignItemsCenter', className && className)}
-      {...props}
-      ref={ref}
-    >
+    <div className={classNames('u-flexInline u-alignItemsCenter', className && className)}>
       <Component
         className={classNames(
           'Toggle',
@@ -75,9 +71,9 @@ export const Toggle: RefForwardingComponent<'div', ToggleProps> = React.forwardR
           disabled && 'is-disabled u-cursorNotAllow u-pointerEventsNone'
         )}
         aria-label={ariaLabel}
-        // data-label-on={!nonLabel ? textLabelOn : undefined}
-        // data-label-off={!nonLabel ? textLabelOff : undefined}
         disabled={Component === 'button' ? disabled : undefined}
+        ref={ref}
+        {...props}
       >
         <div className={classNames('Toggle-handle', 'u-positionAbsolute u-backgroundWhite')} />
       </Component>
