@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
-import SafeAnchor from 'components/SafeAnchor';
+import { SafeAnchor } from 'components/SafeAnchor';
 
 const propTypes = {
   /**
@@ -25,43 +25,29 @@ const propTypes = {
 };
 const defaultProps = {};
 
-interface ItemProps extends PrefixProps, React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * `href` attribute for the inner `a` element
-   * @default #
-   */
-  href: string;
+interface ItemProps extends PrefixProps, React.HTMLAttributes<HTMLAnchorElement> {
   /**
    * Non-render the SafeAnchor
    */
   noHref: boolean;
-  /**
-   * `title` attribute for the inner `a` element
-   */
-  title: string;
-  /**
-   * `target` attribute for the inner `a` element
-   */
   target: string;
   position: string;
   schema: boolean;
   isLast: boolean;
 }
 
-export const Item: RefForwardingComponent<'span', ItemProps> = React.forwardRef<any, ItemProps>(
-  ({ className, children, noHref, position, schema, isLast, ...props }, ref) => {
+export const Item: RefForwardingComponent<'span', ItemProps> = React.forwardRef(
+  ({ className, children, noHref, position, schema, isLast, ...props }: ItemProps, ref) => {
     const Component = isLast || noHref ? 'span' : SafeAnchor;
     return (
-      <li
-        ref={ref}
-        className={classNames('Breadcrumb-item', 'u-inlineBlock', className && className)}
-      >
+      <li className={classNames('Breadcrumb-item', 'u-inlineBlock', className && className)}>
         {schema ? (
           <React.Fragment>
             <SafeAnchor
-              {...props}
               className={classNames(!isLast && 'u-textGray', !isLast && !noHref && 'hover:u-textLink')}
               itemProp="item"
+              ref={ref}
+              {...props}
             >
               <span itemProp="name">{children}</span>
             </SafeAnchor>
@@ -72,8 +58,9 @@ export const Item: RefForwardingComponent<'span', ItemProps> = React.forwardRef<
           </React.Fragment>
         ) : (
           <Component
-            {...props}
             className={classNames(!isLast && 'u-textGray', !isLast && !noHref && 'hover:u-textLink')}
+            ref={ref}
+            {...props}
           >
             {children}
           </Component>

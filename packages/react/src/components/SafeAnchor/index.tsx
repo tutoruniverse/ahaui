@@ -40,61 +40,61 @@ export interface SafeAnchorProps extends PrefixProps, React.HTMLAttributes<HTMLB
  * links, which is usually desirable for Buttons, NavItems, DropdownItems, etc.
  */
 
-const SafeAnchor: RefForwardingComponent<'a', SafeAnchorProps> = React.forwardRef((props: SafeAnchorProps, ref) => {
-  const { as: Component = 'a', disabled, onKeyDown, innerRef } = props;
-  let propsHref: unknown = {};
-  let propsTabIndex: unknown = {};
+export const SafeAnchor: RefForwardingComponent<'a', SafeAnchorProps> = React.forwardRef(
+  (props: SafeAnchorProps, ref) => {
+    const { as: Component = 'a', disabled, onKeyDown, innerRef } = props;
+    let propsHref: any = {};
+    let propsTabIndex: any = {};
 
-  const mergeRefs = useMergedRefs(ref, innerRef);
+    const mergeRefs = useMergedRefs(ref, innerRef);
 
-  const handleClick = (event) => {
-    const { disabled, href, onClick } = props;
-    if (disabled || isTrivialHref(href)) {
-      event.preventDefault();
+    const handleClick = (event) => {
+      const { disabled, href, onClick } = props;
+      if (disabled || isTrivialHref(href)) {
+        event.preventDefault();
+      }
+
+      if (disabled) {
+        event.stopPropagation();
+        return;
+      }
+
+      if (onClick) {
+        onClick(event);
+      }
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === ' ') {
+        event.preventDefault();
+        handleClick(event);
+      }
+    };
+
+    if (isTrivialHref(props.href)) {
+      propsHref = {
+        role: props.role || 'button',
+        href: props.href || '#',
+      };
     }
 
     if (disabled) {
-      event.stopPropagation();
-      return;
+      propsTabIndex = {
+        'tabIndex': -1,
+        'aria-disabled': true,
+      };
     }
-
-    if (onClick) {
-      onClick(event);
-    }
-  };
-  const handleKeyDown = (event) => {
-    if (event.key === ' ') {
-      event.preventDefault();
-      handleClick(event);
-    }
-  };
-
-  if (isTrivialHref(props.href)) {
-    propsHref = {
-      role: props.role || 'button',
-      href: props.href || '#',
-    };
+    return (
+      <Component
+        ref={mergeRefs}
+        {...props}
+        {...propsHref}
+        {...propsTabIndex}
+        onClick={handleClick}
+        onKeyDown={createChainedFunction(handleKeyDown, onKeyDown)}
+      />
+    );
   }
-
-  if (disabled) {
-    propsTabIndex = {
-      'tabIndex': -1,
-      'aria-disabled': true,
-    };
-  }
-  return (
-    <Component
-      ref={mergeRefs}
-      {...props}
-      {...propsHref}
-      {...propsTabIndex}
-      onClick={handleClick}
-      onKeyDown={createChainedFunction(handleKeyDown, onKeyDown)}
-    />
-  );
-});
+);
 
 SafeAnchor.propTypes = propTypes;
 SafeAnchor.displayName = 'SafeAnchor';
-
-export default SafeAnchor;
