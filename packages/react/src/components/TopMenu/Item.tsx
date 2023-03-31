@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { PrefixProps, RefForwardingComponent } from 'interfaces/helpers';
-import SafeAnchor from 'components/SafeAnchor';
+import { SafeAnchor } from 'components/SafeAnchor';
 import { Badge, BadgeVariant } from 'components/Badge';
 import TopMenuContext from './Context';
 
