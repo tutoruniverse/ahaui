@@ -21,6 +21,10 @@ interface TransitionCallbacks {
   onExiting?(node: HTMLElement): any;
 }
 
+export type TransitionType = React.ComponentType<
+  { in?: boolean; appear?: boolean } & TransitionCallbacks
+>;
+
 interface OverlayBaseProps extends TransitionCallbacks {
   /**
    * Enables the Popper.js `flip` modifier, allowing the Overlay to
@@ -59,9 +63,7 @@ interface OverlayBaseProps extends TransitionCallbacks {
    * A `react-transition-group@2.0.0` `<Transition/>` component
    * used to animate the overlay as it changes visibility.
    */
-  transition?: React.ComponentType<
-    { in?: boolean; appear?: boolean } & TransitionCallbacks
-  >;
+  transition?: TransitionType;
   /**
    * A callback invoked by the overlay when it wishes to be hidden. Required if
    * `rootClose` is specified.
@@ -90,9 +92,9 @@ interface OverlayBaseProps extends TransitionCallbacks {
     outOfBoundaries: boolean;
     styleTooltip: React.CSSProperties;
     state?: State;
-    ref: React.RefCallback<HTMLElement>;
+    ref: React.RefObject<HTMLDivElement>;
     arrowProps: Record<string, any> & {
-      ref: React.RefCallback<HTMLElement>;
+      ref: React.RefObject<HTMLDivElement>;
       style: React.CSSProperties;
     };
   }) => React.ReactNode;
@@ -117,7 +119,6 @@ const OverlayBase = React.forwardRef<HTMLElement, OverlayBaseProps>((props, oute
 
   const container = useWaitForDOMRef(props.container);
   const target = useWaitForDOMRef(props.target);
-
   const [exited, setExited] = useState(!props.show);
 
   const { styles, arrowStyles, ...popper } = usePopper(target, rootElement, createPopperConfig({
@@ -142,7 +143,7 @@ const OverlayBase = React.forwardRef<HTMLElement, OverlayBaseProps>((props, oute
     }
   };
 
-  const mountOverlay = props.show || (Transition && !exited);
+  const mountOverlay = props.show || !!(Transition && !exited);
 
   useRootClose(rootElement, props.onHide, {
     disabled: !props.rootClose || props.rootCloseDisabled,
@@ -157,11 +158,11 @@ const OverlayBase = React.forwardRef<HTMLElement, OverlayBaseProps>((props, oute
   let child = props.children({
     ...popper,
     show: !!props.show,
-    styleTooltip: styles as React.CSSProperties,
-    ref: mergedRef,
+    styleTooltip: styles as any,
+    ref: mergedRef as any,
     arrowProps: {
-      style: arrowStyles as React.CSSProperties,
-      ref: attachArrowRef,
+      style: arrowStyles as any,
+      ref: attachArrowRef as any,
     },
   });
   if (Transition) {

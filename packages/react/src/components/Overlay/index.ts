@@ -1,6 +1,7 @@
 import Base from './Base';
 import Trigger from './Trigger';
 
-const Overlay = Base;
-Overlay.Trigger = Trigger;
+const Overlay = Object.assign(Base, {
+  Trigger,
+});
 export default Overlay;

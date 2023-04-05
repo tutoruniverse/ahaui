@@ -1,87 +1,85 @@
 import { contains } from 'dom-helpers';
 import React, { cloneElement, useState, useRef } from 'react';
-import PropTypes from 'prop-types';
 import warning from 'warning';
+import type { GenericFunction } from 'types/common';
+import type { PopperConfig, Placement } from 'hooks/usePopper';
 import OverlayBase from './Base';
 
-const normalizeDelay = delay => ((delay && typeof delay === 'object') ? delay : { show: delay, hide: delay });
-const triggerType = PropTypes.oneOf(['click', 'hover', 'focus']);
-const propTypes = {
-  children: PropTypes.element.isRequired,
+type Delay = number | {
+  show: number;
+  hide: number;
+}
+const normalizeDelay = (delay: Delay) => ((delay && typeof delay === 'object') ? delay : { show: delay, hide: delay });
+
+type Trigger = 'hover' | 'click' | 'focus' | Array<'hover' | 'click' | 'focus'>;
+
+interface TriggerProps {
+  children: JSX.Element,
   /**
    * Specify which action or actions trigger Overlay visibility
    * @type {'hover' | 'click' |'focus' | Array<'hover' | 'click' |'focus'>}
    */
-  trigger: PropTypes.oneOfType([triggerType, PropTypes.arrayOf(triggerType)]),
+  trigger?: Trigger;
+
+  /**
+   * Specify where the overlay element is positioned in relation to the target element
+   */
+  placement?: Placement;
 
   /**
    * A millisecond delay amount to show and hide the Overlay once triggered
    */
-  delay: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({
-      show: PropTypes.number,
-      hide: PropTypes.number,
-    }),
-  ]),
+  delay: Delay;
 
   /**
    * If true, also register hover events to overlay. Must use with delay.hide and hover trigger.
    */
-  hoverOverlay: PropTypes.bool,
+  hoverOverlay?: boolean;
 
   /**
    * The initial visibility state of the Overlay. For more nuanced visibility
    * control, consider using the Overlay component directly.
    */
-  defaultShow: PropTypes.bool,
+  defaultShow: boolean;
 
   /**
    * An element or text to overlay next to the target.
    */
-  overlay: PropTypes.oneOfType([PropTypes.func, PropTypes.element.isRequired]),
+  overlay: Element | GenericFunction;
 
   /**
    * A Popper.js config object passed to the the underlying popper instance.
    */
-  popperConfig: PropTypes.object,
+  popperConfig?: PopperConfig;
 
   // Overridden props from `<Overlay>`.
   /**
-   * @private
+   * Ref to an element to where the overlay is positioned relative.
    */
-  targetRef: PropTypes.oneOf([null]),
+  targetRef?: React.RefObject<HTMLElement>;
+}
 
-  /**
-   * @private
-   */
-  onHide: PropTypes.oneOf([null]),
-
-  /**
-   * @private
-   */
-  show: PropTypes.oneOf([null]),
-};
-
-const defaultProps = {
-  popperConfig: {},
-  trigger: ['hover', 'focus'],
-  hoverOverlay: false,
-  targetRef: null,
-};
-
-const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultShow, popperConfig, hoverOverlay, targetRef,
-  ...props }, ref) => {
+const Trigger = React.forwardRef<HTMLElement, TriggerProps>(({
+  trigger = ['hover', 'focus'] as Trigger,
+  overlay,
+  delay,
+  children,
+  defaultShow,
+  popperConfig = {},
+  hoverOverlay = false,
+  targetRef = undefined,
+  ...props
+}, ref) => {
   const triggerRef = useRef(ref);
   const [show, setShow] = useState(!!defaultShow);
-  const [showTimer, setShowTimer] = useState(null);
-  const [hideTimer, setHideTimer] = useState(null);
+  const [showTimer, setShowTimer] = useState<NodeJS.Timeout | null>(null);
+  const [hideTimer, setHideTimer] = useState<NodeJS.Timeout | null>(null);
   const child = React.Children.only(children);
   const getChildProps = () => React.Children.only(children).props;
 
   const handleShow = () => {
     const delayState = normalizeDelay(delay);
-    if (!delayState.show) {
+    if (delayState.show === 0) {
       setShow(true);
     } else {
       setShowTimer(setTimeout(() => {
@@ -91,7 +89,7 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
   };
   const handleHide = () => {
     const delayState = normalizeDelay(delay);
-    if (!delayState.hide) {
+    if (delayState.hide === 0) {
       setShow(false);
     } else {
       setHideTimer(setTimeout(() => {
@@ -100,15 +98,18 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
     }
   };
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent) => {
     const { onClick } = getChildProps();
     setShow(!show);
     if (onClick) onClick(e);
   };
 
-  const handleMouseOverOut = (handler, e, relatedNative) => {
+  const handleMouseOverOut = (handler: () => void, e: React.MouseEvent, relatedNative: 'fromElement' | 'toElement') => {
     const target = e.currentTarget;
-    const related = e.relatedTarget || e.nativeEvent[relatedNative];
+    const related = e.relatedTarget
+      //@ts-ignore
+      || e.nativeEvent[relatedNative];
+
     if ((!related || related !== target) && !contains(target, related)) {
       const isShow = (relatedNative === 'fromElement');
       if (isShow) {
@@ -118,19 +119,18 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
         showTimer && clearTimeout(showTimer);
         setShowTimer(null);
       }
-      handler(e);
+      handler();
     }
   };
-  const handleMouseOver = e => handleMouseOverOut(handleShow, e, 'fromElement');
-  const handleMouseOut = e => handleMouseOverOut(handleHide, e, 'toElement');
-  const triggerProps = {};
-  const overlayProps = {};
+  const handleMouseOver = (e: React.MouseEvent) => handleMouseOverOut(handleShow, e, 'fromElement');
+  const handleMouseOut = (e: React.MouseEvent) => handleMouseOverOut(handleHide, e, 'toElement');
+  const triggerProps: Record<string, GenericFunction> = {};
+  const overlayProps: Record<string, GenericFunction> = {};
 
-  const triggers = trigger == null ? [] : [].concat(trigger);
+  const triggers = ([] as Array<string>).concat(trigger);
   if (triggers.indexOf('click') !== -1) {
     triggerProps.onClick = handleClick;
   }
-
   if (triggers.indexOf('focus') !== -1) {
     triggerProps.onFocus = handleShow;
     triggerProps.onBlur = handleHide;
@@ -160,18 +160,17 @@ const Trigger = React.forwardRef(({ trigger, overlay, delay, children, defaultSh
           ...popperConfig,
           modifiers: {
             ...popperConfig.modifiers,
-          },
+          } as any,
         }}
         show={show}
         onHide={handleHide}
-        target={targetRef ? targetRef.current : triggerRef.current}
+        target={targetRef ? targetRef.current : triggerRef.current as React.RefObject<HTMLElement>}
       >
-        {props => overlay({ ...props, ...overlayProps })}
+        {props => (typeof overlay === 'function' ? overlay({ ...props, ...overlayProps }) : overlay)}
       </OverlayBase>
     </>
   );
 });
+
 Trigger.displayName = 'OverlayTrigger';
-Trigger.propTypes = propTypes;
-Trigger.defaultProps = defaultProps;
 export default Trigger;
