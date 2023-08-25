@@ -1,0 +1,131 @@
+.playgroundContainer {
+  margin-bottom: var(--ifm-leading);
+}
+
+.playgroundHeader {
+  letter-spacing: 0.08rem;
+  padding: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-content);
+  font-size: var(--ifm-code-font-size);
+
+  &:first-of-type {
+    background: var(--ifm-color-emphasis-600);
+    color: var(--ifm-color-content-inverse);
+  }
+}
+
+.playgroundEditor {
+  font: var(--ifm-code-font-size) / var(--ifm-pre-line-height) var(--ifm-font-family-monospace) !important;
+  /* rtl:ignore */
+  direction: ltr;
+  max-height: 60vh;
+  --ifm-pre-border-radius: 0px;
+  overflow: auto;
+
+
+  pre {
+    padding: 1rem !important;
+    float: left;
+    min-width: 100%;
+  }
+}
+
+.playgroundPreview {
+  padding: 1rem;
+}
+
+.playgroundEditorNoWrapped {
+  pre {
+    white-space: pre !important;
+  }
+}
+
+/* Imitate theme-code */
+.playgroundEditorContainer {
+  overflow: auto;
+
+  &:hover .playgroundEditorButton {
+    opacity: 0.4;
+
+    &[data-is-copied='true'] {
+      opacity: 1;
+    }
+  }
+}
+
+.playgroundEditorButtonGroup {
+  display: flex;
+  column-gap: 0.2rem;
+  position: absolute;
+  right: calc(var(--ifm-pre-padding) / 2);
+  top: calc(var(--ifm-pre-padding) / 2);
+
+  .playgroundEditorButton:hover {
+    opacity: 1;
+  }
+}
+
+.playgroundEditorButton {
+  display: flex;
+  align-items: center;
+  background: var(--prism-background-color);
+  color: var(--prism-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  padding: 0.4rem;
+  line-height: 0;
+  transition: opacity var(--ifm-transition-fast) ease-in-out;
+  opacity: 0;
+
+  &[data-is-wrapped='true'] {
+    .playgroundEditorButtonWordWrapSvg {
+      color: var(--ifm-color-primary);
+    }
+  }
+
+  &[data-is-copied='true'] {
+    .playgroundEditorButtonCopySvg {
+      transform: scale(0.33);
+      opacity: 0;
+    }
+
+    .playgroundEditorButtonCopySuccessSvg {
+      transform: translate(-50%, -50%) scale(1);
+      transition-delay: 0.075s;
+      opacity: 1;
+    }
+  }
+}
+
+.playgroundEditorButtonWordWrapSvg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.playgroundEditorButtonCopySpan {
+  position: relative;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.playgroundEditorButtonCopySvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: currentColor;
+  opacity: inherit;
+  width: inherit;
+  height: inherit;
+  transition: all var(--ifm-transition-fast) ease;
+}
+
+.playgroundEditorButtonCopySuccessSvg {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.33);
+  opacity: 0;
+  color: #00d600;
+}

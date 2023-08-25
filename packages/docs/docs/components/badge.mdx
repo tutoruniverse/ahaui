@@ -1,0 +1,51 @@
+---
+title: Badges
+---
+
+import CodeView from "@site/src/components/CodeView";
+import BadgeSubtle from "@site/examples/Badge/Subtle";
+import BadgeBold from "@site/examples/Badge/Bold";
+
+import StbBadgeStructure1 from "@site/assets/structure/stb_badge-structure.jpg";
+import StbBadgeStructure2 from "@site/assets/structure/stb_badge-structure@2x.jpg";
+
+# Badges
+
+## Introduction
+
+A badge contains a status or a numeric value, to indicate a running tally or quantity-based summary.
+
+<img
+  className="u-maxWidthFull"
+  src={StbBadgeStructure1}
+  srcSet={`${StbBadgeStructure2} 2x`}
+  alt="Badge structure"
+/>
+<ol className="u-paddingLeftLarge u-textGray u-marginTopTiny">
+  <li>Background</li>
+  <li>Text</li>
+</ol>
+
+## Examples
+
+### Variants
+
+#### Subtle Style
+
+Designed by lighter color, subtle badges are used for less important information.
+
+<CodeView codeText={BadgeSubtle} transparentBackground />
+
+#### Bold Style
+
+Designed by lighter color, bold badges are used for important information.
+
+<CodeView codeText={BadgeBold} transparentBackground />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="Badge" importName="Badge" />

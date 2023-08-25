@@ -1,0 +1,118 @@
+---
+title: Form Check
+---
+
+import CodeView from "@site/src/components/CodeView";
+import checkNormal from "@site/examples/Form/checkNormal";
+import checkDisabled from "@site/examples/Form/checkDisabled";
+import checkSelected from "@site/examples/Form/checkSelected";
+import checkSelectedDisabled from "@site/examples/Form/checkSelectedDisabled";
+import checkFeedback from "@site/examples/Form/checkFeedback";
+import checkCustomLabel from "@site/examples/Form/checkCustomLabel";
+import checkButtonLabel from "@site/examples/Form/checkButtonLabel";
+import multipleRadioButtons from "@site/examples/Form/multipleRadioButtons";
+
+import StbCheckBoxStructure1 from "@site/assets/structure/stb_check-box-structure.jpg";
+import StbCheckBoxStructure2 from "@site/assets/structure/stb_check-box-structure@2x.jpg";
+import StbRadioButtonStructure1 from "@site/assets/structure/stb_radio-button-structure.jpg";
+import StbRadioButtonStructure2 from "@site/assets/structure/stb_radio-button-structure@2x.jpg";
+
+# Checkbox and Radio Button
+
+## Introduction
+
+### Checkbox
+
+A checkbox is a square box that is checked when activated. Checkboxes allow users to choose multiple options over a series of options.
+
+<img
+  className="u-maxWidthFull"
+  src={StbCheckBoxStructure1}
+  srcSet={`${StbCheckBoxStructure2} 2x`}
+  alt="Checkbox structure"
+/>
+<ol className="u-paddingLeftLarge u-textGray u-marginTopTiny">
+  <li>
+    Checkbox icon &nbsp;
+    <i className="u-text200">
+      - a 16x16px square box icon that indicates different states of a checkbox.
+    </i>
+  </li>
+  <li>
+    Label&nbsp;
+    <i className="u-text200">
+      - Standard label alignment is left-aligned and on the right of the
+      checkbox icon.
+    </i>
+  </li>
+</ol>
+
+### Radio Button
+
+A radio button is a small circle button that is checked when activated. Radio buttons allow users to choose only one option over a series of options.
+
+<img
+  className="u-maxWidthFull"
+  src={StbRadioButtonStructure1}
+  srcSet={`${StbRadioButtonStructure2} 2x`}
+  alt="Radio button structure"
+/>
+
+<ol className="u-paddingLeftLarge u-textGray u-marginTopTiny ">
+  <li>
+    Radio button icon &nbsp;
+    <i className="u-text200">
+      - a 16x16px circle box icon that indicates different states of a radio
+      button.
+    </i>
+  </li>
+  <li>
+    Label&nbsp;
+    <i className="u-text200">
+      - Standard label alignment is left-aligned and on the right of the
+      checkbox icon.
+    </i>
+  </li>
+</ol>
+
+## Examples
+
+### Normal
+
+<CodeView codeText={checkNormal} />
+
+### Disabled
+
+<CodeView codeText={checkDisabled} />
+
+### Selected
+
+<CodeView codeText={checkSelected} />
+
+### Selected Disabled
+
+<CodeView codeText={checkSelectedDisabled} />
+
+### Valid/Invalid
+
+<CodeView codeText={checkFeedback} />
+
+### Custom label
+
+<CodeView codeText={checkCustomLabel} />
+
+### Button label
+
+<CodeView codeText={checkButtonLabel} />
+
+### Multiple radio buttons
+
+<CodeView codeText={multipleRadioButtons} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="FormCheck" importName="Form" />

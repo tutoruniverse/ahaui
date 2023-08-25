@@ -1,0 +1,147 @@
+---
+title: Skeleton
+---
+
+import { Media, Icon, Skeleton, Avatar } from "@ahaui/react";
+import CodeView from "@site/src/components/CodeView";
+
+# Skeleton
+
+## Introduction
+
+Display a placeholder preview of the content before the data gets loaded to reduce load-time frustration. The Skeleton can be used to illustrate the layout of a component or block content.
+
+By default, a single Skeleton item is basically a gray block of which the width and the height are set to 100% and 16px respectively.
+
+## Examples
+
+### Text
+
+The default shape of the Skeleton and can be used to illustrate a text line. Two or more shapes can be used to represent a paragraph.
+
+<CodeView codeText={"<Skeleton />"} />
+
+### Circle
+
+Often used to illustrate an Avatar.
+
+<CodeView codeText={'<Skeleton variant="circle" width={40} height={40} />'} />
+
+### Rectangle
+
+To represent the media content such as image and video.
+
+<CodeView codeText={"<Skeleton height={118} />"} />
+
+### Other Examples
+
+**Excelchat Learning Lesson Item**
+
+<div className="u-flex u-paddingSmall u-border u-borderLighter u-roundedMedium u-marginBottomMedium">
+  <div
+    className="u-flex u-flexColumn u-flexShrink0  u-backgroundLightest"
+    style={{ width: 210 }}
+  >
+    <Media src="https://s3.us-east-2.amazonaws.com/gotit-pro-prod-excel-private/learning/assets/module-thumbnails/thumbnail-module-1.png" />
+    <div className="u-fontMedium u-paddingExtraSmall">Lesson 1</div>
+  </div>
+  <div className="u-marginLeftSmall u-flexGrow1">
+    <div className="u-flex u-justifyContentBetween u-marginBottomSmall">
+      <div className="u-text400 u-fontMedium u-flexGrow1">
+        Spreadsheet Design
+      </div>
+      <div className="u-textGray u-text200 u-flex u-alignItemsCenter">
+        <Icon name="timer" size="extraSmall" className="u-marginRightTiny" />
+        20 mins to complete
+      </div>
+    </div>
+    <div className="u-textTruncate-3">
+      Build your beautifully organized spreadsheet from scratch. In this
+      Learning Module, you'll learn the essentials of formatting cells
+      containing Text, Currency, Dates, and Numbers.
+    </div>
+  </div>
+</div>
+<CodeView
+  codeText={`<div className="u-flex">
+    <Skeleton width={210} height={118} />
+    <div className="u-marginLeftSmall u-flexGrow1">
+      <Skeleton width="60%" />
+      <Skeleton />
+      <Skeleton />
+    </div>
+</div>`}
+/>
+
+**Table example**
+
+<CodeView
+  codeText={`<table className="Table u-backgroundWhite u-textDark u-text200">
+      <thead>
+        <tr>
+          <th><Skeleton width="25%" /></th>
+          <th><Skeleton width="25%" /></th>
+          <th><Skeleton width="25%" /></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><Skeleton width="50%"/></td>
+          <td><Skeleton width="50%"/></td>
+          <td><Skeleton width="50%"/></td>
+        </tr>
+        <tr>
+          <td><Skeleton /></td>
+          <td><Skeleton /></td>
+          <td><Skeleton /></td>
+        </tr>
+      </tbody>
+    </table>`}
+/>
+
+## Design Reference
+
+**Use the correct shapes**
+
+An avatar is always a circle even though it’s a photo, so don't use a rectangle or a square to represent an avatar.
+
+<div className="Grid u-marginBottomLarge">
+  <div className="u-sizeFull md:u-size1of4">
+    <div>
+      <div className="u-marginBottomSmall">
+        <Avatar
+          src="https://raw.githubusercontent.com/gotitinc/aha-assets/master/gotit/avatar/default.svg"
+          width={96}
+          height={96}
+        />
+      </div>
+      <div className="u-fontMedium u-text400">Lucifer S.Morningstar </div>
+      <div>Head of Design</div>
+      <div>Got It, Inc.</div>
+    </div>
+  </div>
+  <div className="u-sizeFull md:u-size1of4 md:u-offset1of12">
+    <div className="u-marginBottomSmall">
+      <Skeleton variant="circle" width={96} height={96} />
+    </div>
+    <Skeleton width="50%" />
+    <Skeleton width="50%" />
+    <Skeleton width="25%" />
+    <div className="u-borderBottom u-borderLarge u-borderPositive u-marginTopSmall" />
+    <div className="u-textPositive">Do</div>
+  </div>
+  <div className="u-sizeFull md:u-size1of4 md:u-offset1of12">
+    <div className="u-marginBottomSmall">
+      <Skeleton width={96} height={96} />
+    </div>
+    <Skeleton width="50%" />
+    <Skeleton width="50%" />
+    <Skeleton width="25%" />
+    <div className="u-borderBottom u-borderLarge u-borderNegative u-marginTopSmall" />
+    <div className="u-textNegative">Don't</div>
+  </div>
+</div>
+
+## API
+
+<ComponentApi name="Skeleton" importName="Skeleton" />

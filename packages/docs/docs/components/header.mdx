@@ -1,0 +1,96 @@
+---
+title: Header
+---
+
+import CodeView from "@site/src/components/CodeView";
+
+import desktopHeader from "@site/examples/Header/desktop";
+import mobileHeader from "@site/examples/Header/mobile";
+import loginHeader from "@site/examples/Header/login";
+
+import DefaultHeaderStructure1 from "@site/assets/structure/default-header-structure.jpg";
+import DefaultHeaderStructure2 from "@site/assets/structure/default-header-structure@2x.jpg";
+import AbsoluteHeaderStructure1 from "@site/assets/structure/absolute-header-structure.jpg";
+import AbsoluteHeaderStructure2 from "@site/assets/structure/absolute-header-structure@2x.jpg";
+
+# Header
+
+## Introduction
+
+Header structure is a template that explains the areas in the header and how it work which helps combine other components to create a consistent user experience.
+
+### Default
+
+<img
+  src={DefaultHeaderStructure1}
+  srcSet={`${DefaultHeaderStructure2} 2x`}
+  alt="Header structure"
+  className="u-maxWidthFull"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Container: Using container to wrap header contents and grid system to set
+    fix-width or full-width header.
+  </li>
+  <li>Logo: Using this area for logo of the site.</li>
+  <li>
+    Main content wrapper: Used to wrap all the header contents, except logo.
+    This part is also replaced by a hamburger button on mobile.
+  </li>
+  <li>
+    Right: Often used to present icons, CTA buttons or components about users'
+    account.
+  </li>
+  <li>Left: Often used to display top menu of the site.</li>
+</ol>
+
+### Absolute
+
+<img
+  src={AbsoluteHeaderStructure1}
+  srcSet={`${AbsoluteHeaderStructure2} 2x`}
+  alt="Header structure"
+  className="u-maxWidthFull"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Container: Using container to wrap header contents and grid system to set
+    fix-width or full-width header.
+  </li>
+  <li>Logo: Using this area for logo of the site.</li>
+  <li>
+    Main content wrapper: Used to wrap all the header contents, except logo.
+    This part is also replaced by a hamburger button on mobile.
+  </li>
+  <li>
+    Right: Often used to present icons, CTA buttons or components about users'
+    account.
+  </li>
+  <li>
+    Absolute center-aligned objects: Using this area to display the components
+    which are always center-aligned such as a countdown or session remaining
+    component in workspace.
+  </li>
+</ol>
+
+## Examples
+
+### Desktop layout
+
+Note: Only "LEFT" area or "CENTER" area is shown up at a time.
+
+<CodeView transparentBackground codeText={desktopHeader} />
+
+### Mobile layout
+
+<CodeView transparentBackground codeText={mobileHeader} />
+
+### Examples
+
+<CodeView transparentBackground codeText={loginHeader} />
+
+## API
+
+<ComponentApi name="Header" importName="Header" />
+<ComponentApi name="HeaderHeaderContext" displayName="HeaderMobile.HeaderContext" importName="HeaderMobile" />
+<ComponentApi name="HeaderMobile" displayName="HeaderMobile" importName="HeaderMobile" />

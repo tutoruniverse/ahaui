@@ -1,0 +1,165 @@
+---
+title: Bubble Chat
+---
+
+import CodeView from "@site/src/components/CodeView";
+import textMessageBubbleChat from "@site/examples/BubbleChat/textMessage";
+import fileMessageBubbleChat from "@site/examples/BubbleChat/fileMessage";
+import typingMessageBubbleChat from "@site/examples/BubbleChat/typingMessage";
+import senderMessageBubbleChat from "@site/examples/BubbleChat/senderMessage";
+import reviserMessageBubbleChat from "@site/examples/BubbleChat/reviserMessage";
+import systemMessageBubbleChat from "@site/examples/BubbleChat/systemMessage";
+import imageMessageBubbleChat from "@site/examples/BubbleChat/imageMessage";
+
+import StbBubbleChatStructure1 from "@site/assets/structure/stb_bubble-chat-structure.jpg";
+import StbBubbleChatStructure2 from "@site/assets/structure/stb_bubble-chat-structure@2x.jpg";
+
+# Bubble Chat
+
+## Introduction
+
+The component is used to represent the real-time and archived messages of three main objects: users, experts and system.
+
+<img
+  src={StbBubbleChatStructure1}
+  srcSet={`${StbBubbleChatStructure2} 2x`}
+  alt="Bubble Chat"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>Message background</li>
+  <li>Message content</li>
+  <li>Avatar</li>
+  <li>Time stamp</li>
+</ol>
+
+## Examples
+
+### Text Message
+
+<CodeView codeText={textMessageBubbleChat} />
+
+### File Message
+
+<CodeView codeText={fileMessageBubbleChat} />
+
+### Image Message
+
+<CodeView codeText={imageMessageBubbleChat} />
+
+### Typing Message
+
+<CodeView codeText={typingMessageBubbleChat} />
+
+### Outbound Message
+
+Normally this style is applied for users. Outbound messages use the system’s primary color and right-aligned.
+
+<CodeView codeText={senderMessageBubbleChat} />
+
+### Inbound Message
+
+Normally this style is applied for experts. Inbound messages use the system’s secondary color, left-aligned and have an avatar on the left.
+
+<CodeView codeText={reviserMessageBubbleChat} />
+
+### System Message
+
+System messages use the system’s primary-light color, left-aligned and have products’ avatars on the left.
+
+<CodeView codeText={systemMessageBubbleChat} />
+
+### Variants
+
+**Light**
+
+<CodeView
+  codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="light"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`}
+/>
+
+**Primary**
+
+<CodeView
+  codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="primary"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`}
+/>
+
+**PrimaryLight**
+
+<CodeView
+  codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="primaryLight"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`}
+/>
+
+**Dark**
+
+<CodeView
+  codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="dark"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`}
+/>
+
+**TransparentDark**
+
+<CodeView
+  exampleClassName="u-backgroundDark"
+  codeText={`<div style={{ maxWidth: 360 }}
+>
+  <BubbleChat
+    variant="transparentDark"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`}
+/>
+
+**TransparentLight**
+
+<CodeView
+  codeText={`<div style={{ maxWidth: 360 }}>
+  <BubbleChat
+    variant="transparentLight"
+    type="outbound"
+    avatar={(() => <Avatar size="small" className="u-backgroundPrimaryLighter u-textPrimary u-text100" text="KT" />)}
+    text="Welcome to Aha Design System"
+    time="16:23"
+  />
+</div>`}
+/>
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="BubbleChat" importName="BubbleChat" />

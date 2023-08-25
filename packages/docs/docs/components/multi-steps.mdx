@@ -1,0 +1,87 @@
+---
+title: Multi Steps
+---
+import CodeView from '@site/src/components/CodeView';
+import horizontalMultiSteps from '@site/examples/MultiSteps/horizontal';
+import verticalMultiSteps from '@site/examples/MultiSteps/vertical';
+import whiteMultiSteps from '@site/examples/MultiSteps/white';
+import primaryMultiSteps from '@site/examples/MultiSteps/primary';
+import accentMultiSteps from '@site/examples/MultiSteps/accent';
+import warningMultiSteps from '@site/examples/MultiSteps/warning';
+import positiveMultiSteps from '@site/examples/MultiSteps/positive';
+import negativeMultiSteps from '@site/examples/MultiSteps/negative';
+import StbMultiStepsStructure1 from "@site/assets/structure/stb_multi-steps-structure.jpg"
+import StbMultiStepsStructure2 from "@site/assets/structure/stb_multi-steps-structure@2x.jpg"
+
+# Multi Steps
+
+## Introduction
+
+The component is used when a progress needs to be divided into multiple logical and numbered steps.
+
+<img
+  src={StbMultiStepsStructure1}
+  srcSet={`${StbMultiStepsStructure2} 2x`}
+  className="u-maxWidthFull"
+  alt="MultiSteps"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+      Step
+    <i className="u-text200"> - Display step number or current state of the step.</i>
+  </li>
+  <li>
+      Label
+    <span className="u-marginLeftTiny u-text200">(optional)</span>
+    &nbsp;
+    <i className="u-text200"> - Display short & descriptive name/title of the step.</i>
+  </li>
+  <li>
+      Progress bar
+    <i className="u-text200"> - Indicate the current progress of the process.</i>
+  </li>
+  <li>
+      Substrate
+    <i className="u-text200"> -  Indicate the full achievable process.</i>
+  </li>
+</ol>
+
+## Examples
+
+### Direction
+
+#### Horizontal
+
+<CodeView codeText={horizontalMultiSteps} />
+
+#### Vertical
+
+<CodeView codeText={verticalMultiSteps} />
+
+### Styles
+
+#### Dark
+
+Used on a dark color background.
+
+<CodeView codeText={whiteMultiSteps} exampleClassName="u-backgroundDark" />
+
+#### Light
+
+Used on a light color background.
+
+<CodeView codeText={primaryMultiSteps} />
+<CodeView codeText={accentMultiSteps} />
+<CodeView codeText={warningMultiSteps} />
+<CodeView codeText={positiveMultiSteps} />
+<CodeView codeText={negativeMultiSteps} />
+
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="MultiSteps" importName="MultiSteps" />
+<ComponentApi name="MultiStepsItem" />

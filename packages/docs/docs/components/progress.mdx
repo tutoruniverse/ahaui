@@ -1,0 +1,82 @@
+---
+title: Progress
+---
+
+import CodeView from '@site/src/components/CodeView';
+
+import groupProgress from '@site/examples/Progress/group';
+import variantsProgress from '@site/examples/Progress/variants';
+
+import StbProgressStructure1 from '@site/assets/structure/stb_progress-structure.jpg';
+import StbProgressStructure2 from '@site/assets/structure/stb_progress-structure@2x.jpg';
+
+# Progress
+
+## Introduction
+
+The component is used to help users to indicate the current state; and guide them through a set of steps in a specific process.
+
+<img
+  src={StbProgressStructure1}
+  srcSet={`${StbProgressStructure2} 2x`}
+  alt="Progress structure"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+      Indicator
+    <i className="u-text200"> - An animated or fixed bar which is used to indicate the current state of the process.</i>
+  </li>
+  <li>
+      Label
+    <i className="u-text200"> - A text object, which is used to shortly describe the current state (i.e. percentage).</i>
+  </li>
+  <li>
+      Progress bar
+    <i className="u-text200">
+        - A fixed-width bar, with outlined or secondary colors, that indicates the whole process.
+    </i>
+  </li>
+
+</ol>
+
+## Examples
+
+### Types
+
+#### Default
+
+<CodeView codeText={'<Progress now={35} />'} />
+
+#### With label
+
+The progress with label’s `height` should be at least `16px`.
+
+<CodeView codeText={'<Progress now={35} label="35%" height={16} />'} />
+
+#### Striped
+
+<CodeView codeText={'<Progress striped now={35} />'} />
+
+#### Animated
+
+<CodeView codeText={'<Progress animated striped now={35} />'} />
+
+#### Border
+
+<CodeView codeText={'<Progress now={65} border />'} />
+
+### Progress group
+
+<CodeView codeText={groupProgress} />
+
+### Variants
+
+<CodeView exampleClassName="example-progress" codeText={variantsProgress} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="Progress" importName="Progress" />

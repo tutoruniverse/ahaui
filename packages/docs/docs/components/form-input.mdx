@@ -1,0 +1,292 @@
+---
+title: Form Input
+---
+
+import { Form } from "@ahaui/react";
+import CodeView from "@site/src/components/CodeView";
+import inputText from "@site/examples/Form/inputText";
+import inputPassword from "@site/examples/Form/inputPassword";
+import inputEmail from "@site/examples/Form/inputEmail";
+import inputNumber from "@site/examples/Form/inputNumber";
+import inputTextArea from "@site/examples/Form/inputTextArea";
+import inputSelect from "@site/examples/Form/inputSelect";
+import inputMultiSelect from "@site/examples/Form/inputMultiSelect";
+import inputFile from "@site/examples/Form/inputFile";
+import inputNormal from "@site/examples/Form/inputNormal";
+import inputDisabled from "@site/examples/Form/inputDisabled";
+import inputReadOnly from "@site/examples/Form/inputReadOnly";
+import inputValid from "@site/examples/Form/inputValid";
+import inputInvalid from "@site/examples/Form/inputInvalid";
+import inputSizeSmall from "@site/examples/Form/inputSizeSmall";
+import inputSizeNormal from "@site/examples/Form/inputSizeNormal";
+import inputSizeLarge from "@site/examples/Form/inputSizeLarge";
+
+import groupBasic from "@site/examples/Form/groupBasic";
+import group2Basic from "@site/examples/Form/groupBasic-2";
+import group3Basic from "@site/examples/Form/groupBasic-3";
+import groupMultipleAddon from "@site/examples/Form/groupMultipleAddon";
+import groupMultipleInput from "@site/examples/Form/groupMultipleInput";
+import groupSize from "@site/examples/Form/groupSize";
+import groupButtonAddon from "@site/examples/Form/groupButtonAddon";
+import group2ButtonAddon from "@site/examples/Form/groupButtonAddon-2";
+import group3ButtonAddon from "@site/examples/Form/groupButtonAddon-3";
+import group4ButtonAddon from "@site/examples/Form/groupButtonAddon-4";
+import group5ButtonAddon from "@site/examples/Form/groupButtonAddon-5";
+
+import StbInputTextField1 from "@site/assets/structure/stb_input-text-field.jpg";
+import StbInputTextField2 from "@site/assets/structure/stb_input-text-field@2x.jpg";
+import StbInputTextArea1 from "@site/assets/structure/stb_input-text-area.jpg";
+import StbInputTextArea2 from "@site/assets/structure/stb_input-text-area@2x.jpg";
+
+# Inputs
+
+## Introduction
+
+Input fields/areas that allow users to enter/edit the input values.
+
+### Text input (single line)
+
+<img
+  src={StbInputTextField1}
+  srcSet={`${StbInputTextField2} 2x`}
+  className="u-maxWidthFull"
+  alt="Input structure"
+/>
+
+### Textarea (multiple lines)
+
+<img
+  src={StbInputTextArea1}
+  srcSet={`${StbInputTextArea2} 2x`}
+  className="u-maxWidthFull"
+  alt="Input structure"
+/>
+
+<ol className="u-paddingLeftLarge u-textGray u-marginTopTiny">
+  <li>
+    Label &nbsp;
+    <i className="u-text200">
+      - Short descriptive text which corresponds to the information required
+      inside the field.
+    </i>
+  </li>
+  <li>
+    Placeholder&nbsp;
+    <i className="u-text200">
+      - The placeholder specifies a short hint that describes the expected value
+      of an input field (i.e. a sample value or a short description of the
+      expected format).
+    </i>
+  </li>
+  <li>
+    Value&nbsp;
+    <i className="u-text200">
+      - The value specifies the text information, data or value which is entered
+      by users.
+    </i>
+  </li>
+  <li>
+    Feedback&nbsp;
+    <i className="u-text200">
+      - The feedback displays the messages from the system in specific cases
+      i.e. invalid input, valid input, etc.
+    </i>
+  </li>
+  <li>
+    Input border&nbsp;
+    <i className="u-text200">
+      - The input border attribute specifies different input states (hovered,
+      invalid, valid, etc.) by colors.
+    </i>
+  </li>
+  <li>
+    Input background&nbsp;
+    <i className="u-text200">
+      - The standard input background is white. It will only be changed to grey
+      when the field is disabled.
+    </i>
+  </li>
+</ol>
+
+## Examples
+
+### Variants
+
+**Text**
+
+<CodeView codeText={inputText} />
+
+**Password**
+
+<CodeView codeText={inputPassword} />
+
+**Email**
+
+<CodeView codeText={inputEmail} />
+
+**Number**
+
+<CodeView codeText={inputNumber} />
+
+**Textarea**
+
+<CodeView codeText={inputTextArea} />
+
+**Select**
+
+<CodeView codeText={inputSelect} />
+
+**Multiple select**
+
+<CodeView codeText={inputMultiSelect} />
+
+**File input**
+
+<CodeView codeText={inputFile} />
+
+### States
+
+**Normal**
+
+<CodeView codeText={inputNormal} />
+
+**Disabled**
+
+Disabled fields can’t be focused on. Their values are uneditable and can be passed through the submission process
+
+<CodeView codeText={inputDisabled} />
+
+**Read-only**
+
+Read-only fields’ values are uneditable but can be focused and passed through the submission process
+
+<CodeView codeText={inputReadOnly} />
+
+**Valid**
+
+Valid fields contain values which are verified by real-time checking system
+
+<CodeView codeText={inputValid} />
+
+**Invalid**
+
+Invalid fields contain values which are marked as invalid by real-time checking system
+
+<CodeView codeText={inputInvalid} />
+
+### Sizes
+
+**Small (container height = 28px)**
+
+<CodeView codeText={inputSizeSmall} />
+
+**Normal (container height = 36px)**
+
+<CodeView codeText={inputSizeNormal} />
+
+**Large (container height = 48px)**
+
+<CodeView codeText={inputSizeLarge} />
+
+## Form Group
+
+Input group wraps inputs and buttons for more complex components.
+
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<label>` above the input group.
+
+<CodeView codeText={groupBasic} />
+<CodeView codeText={group2Basic} />
+<CodeView codeText={group3Basic} />
+
+### Button addons
+
+<CodeView codeText={groupButtonAddon} />
+<CodeView codeText={group2ButtonAddon} />
+<CodeView codeText={group3ButtonAddon} />
+<CodeView codeText={group4ButtonAddon} />
+<CodeView codeText={group5ButtonAddon} />
+
+### Multiple inputs
+
+<CodeView codeText={groupMultipleInput} />
+
+### Multiple addons
+
+<CodeView codeText={groupMultipleAddon} />
+
+### Sizes
+
+<CodeView codeText={groupSize} />
+
+## Design Reference
+
+Don’t use multiple lines for label & feedback
+
+<div className="Grid u-marginBottomLarge">
+  <div className="u-sizeFull md:u-size1of2">
+    <Form.Group controlId="exampleForm.DSRe1">
+      <Form.Label>Input</Form.Label>
+      <Form.Input isValid type="text"></Form.Input>
+      <Form.Feedback>Lorem Ipsum is simply dummy text</Form.Feedback>
+    </Form.Group>
+    <div className="u-borderBottom u-borderLarge u-borderPositive u-marginTopSmall u-paddingTopMedium" />
+    <div className="u-textPositive">Do</div>
+  </div>
+  <div className="u-sizeFull md:u-size1of2">
+    <Form.Group controlId="exampleForm.DSRe2">
+      <Form.Label>Input</Form.Label>
+      <Form.Input isInvalid type="text"></Form.Input>
+      <Form.Feedback type="invalid">
+        Lorem Ipsum is simply dummy text
+      </Form.Feedback>
+      <Form.Feedback type="invalid">
+        Lorem Ipsum is simply dummy text
+      </Form.Feedback>
+    </Form.Group>
+    <div className="u-borderBottom u-borderLarge u-borderNegative u-marginTopSmall" />
+    <div className="u-textNegative">Don't</div>
+  </div>
+</div>
+
+Avoid too long placeholder, label & feedback
+
+<div className="Grid u-marginBottomLarge">
+  <div className="u-sizeFull md:u-size1of2">
+    <Form.Group controlId="exampleForm.DSRe3" className="u-paddingBottomTiny">
+      <Form.Label>Input</Form.Label>
+      <Form.Input
+        isValid
+        type="text"
+        placeholder="Lorem Ipsum is simply dummy text"
+      ></Form.Input>
+      <Form.Feedback>Lorem Ipsum is simply dummy text</Form.Feedback>
+    </Form.Group>
+    <div className="u-borderBottom u-borderLarge u-borderPositive u-marginTopSmall u-paddingTopSmall" />
+    <div className="u-textPositive">Do</div>
+  </div>
+  <div className="u-sizeFull md:u-size1of2">
+    <Form.Group controlId="exampleForm.DSRe4">
+      <Form.Label>Input</Form.Label>
+      <Form.Input
+        isInvalid
+        type="text"
+        placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      ></Form.Input>
+      <Form.Feedback type="invalid">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry.
+      </Form.Feedback>
+    </Form.Group>
+    <div className="u-borderBottom u-borderLarge u-borderNegative u-marginTopSmall" />
+    <div className="u-textNegative">Don't</div>
+  </div>
+</div>
+
+## API
+
+<ComponentApi name="FormInput" />
+<ComponentApi name="FormFeedback" />
+<ComponentApi name="FormFile" />
+<ComponentApi name="FormSelect" />
+<ComponentApi name="FormLabel" />
+<ComponentApi name="FormGroup" />

@@ -1,0 +1,66 @@
+---
+title: Composer
+---
+import CodeView from '@site/src/components/CodeView';
+import defaultComposer from '@site/examples/Composer/default';
+import multipleLineComposer from '@site/examples/Composer/multipleLine';
+import customSendButtonComposer from '@site/examples/Composer/customSendButton';
+import StbComposerStructure1 from "@site/assets/structure/stb_composer-structure.jpg"
+import StbComposerStructure2 from "@site/assets/structure/stb_composer-structure@2x.jpg"
+
+# Composer
+
+
+## Introduction
+
+Displaying at the bottom of the chat window, the Composer component helps users to enter and edit the text messages, and also, attach files.
+<img
+  src={StbComposerStructure1}
+  srcSet={`${StbComposerStructure2} 2x`}
+  className="u-maxWidthFull"
+  alt="composer"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Input field
+    <i className="u-text200">
+      - A text field that lets users enter and edit text.
+    </i>
+  </li>
+  <li>
+    File attachment
+    <i className="u-text200">
+      - A button that lets users attach files.
+    </i>
+  </li>
+  <li>
+    Top divider
+    <i className="u-text200">
+      - Helps separating Composer with other components above (i.e. bubble chat).
+    </i>
+  </li>
+</ol>
+
+## Examples
+
+### Normal
+
+<CodeView codeText={defaultComposer} />
+
+### Custom
+
+<CodeView codeText={customSendButtonComposer} />
+
+### Multiple Lines
+
+In case the input text is too long, the Composer can expand to show a specific and predefined number of text lines.. A scroll bar will be displayed.
+
+<CodeView codeText={multipleLineComposer} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="Composer" importName="Composer" />

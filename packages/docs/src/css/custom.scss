@@ -1,0 +1,162 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+ /* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #375de7;
+  --ifm-color-primary-dark: #2c4ab8;
+  --ifm-color-primary-darker: #21388b;
+  --ifm-color-primary-light: #d7defa;
+  --ifm-color-primary-lighter: #e7ecfc;
+  --ifm-color-accent: #ed6200;
+  --ifm-color-accent-dark: #d55800;
+  --ifm-color-accent-darker: #a64500;
+  --ifm-color-accent-light: #fbdfcc;
+  --ifm-color-accent-lighter: #fff1e8;
+  --ifm-color-danger: #d0021b;
+  --ifm-color-danger-dark: #b50016;
+  --ifm-color-danger-darker: #960012;
+  --ifm-color-danger-light: #f6bcc3;
+  --ifm-color-danger-lighter: #ffd2d8;
+  --ifm-color-warning: #ffc400;
+  --ifm-color-warning-dark: #ff991f;
+  --ifm-color-warning-light: #fff0b3;
+  --ifm-color-warning-lighter: #fdf4d0;
+  --ifm-color-success: #22a861;
+  --ifm-color-success-dark: #019044;
+  --ifm-color-success-darker: #017a3a;
+  --ifm-color-success-light: #aceccb;
+  --ifm-color-success-lighter: #d7f9e7;
+  --ifm-color-info: #375de7;
+  --ifm-color-info-dark: #2c4ab8;
+  --ifm-color-info-darker: #21388b;
+  --ifm-color-info-light: #d7defa;
+  --ifm-color-info-lighter: #e7ecfc;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-container-width-xl: 1420
+
+  --prism-color: #393A34;
+  --prism-background-color: #f6f8fa;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima */
+[data-theme='dark'] {
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Override AHA css base color */
+:root {
+  --colorPrimary: var(--ifm-color-primary) !important;
+  --colorPrimaryLighter: var(--ifm-color-primary-lighter) !important;
+  --colorPrimaryLight: var(--ifm-color-primary-light) !important;
+  --colorPrimaryDark: var(--ifm-color-primary-dark) !important;
+  --colorPrimaryDarker: var(--ifm-color-primary-darker) !important;
+  --colorFocusPrimary: var(--ifm-color-primary) !important;
+  --colorAccent: var(--ifm-color-accent) !important;
+  --colorAccentLight: var(--ifm-color-accent-light) !important;
+  --colorAccentLighter: : var(--ifm-color-accent-lighter) !important;
+  --colorAccentDark: var(--ifm-color-accent-dark) !important;
+  --colorAccentDarker: var(--ifm-color-accent-darker) !important;
+  --colorFocusAccent: var(--ifm-color-accent) !important;
+  --colorNegative: var(--ifm-color-danger) !important;
+  --colorNegativeLight: var(--ifm-color-danger-light) !important;
+  --colorNegativeLighter: var(--ifm-color-danger-lighter) !important;
+  --colorNegativeDark: var(--ifm-color-danger-dark) !important;
+  --colorNegativeDarker: var(--ifm-color-danger-darker) !important;
+  --colorFocusNegative: var(--ifm-color-danger) !important;
+  --colorWarning: var(--ifm-color-warning) !important;
+  --colorWarningLight: var(--ifm-color-warning-light) !important;
+  --colorWarningLighter: var(--ifm-color-warning-lighter) !important;
+  --colorWarningDark: var(--ifm-color-warning-dark) !important;
+  --colorFocusWarning: var(--ifm-color-warning) !important;
+  --colorPositive: var(--ifm-color-success) !important;
+  --colorPositiveLight: var(--ifm-color-success-light) !important;
+  --colorPositiveLighter: var(--ifm-color-success-lighter) !important;
+  --colorPositiveDark: var(--ifm-color-success-dark) !important;
+  --colorPositiveDarker: var(--ifm-color-success-darker) !important;
+  --colorFocusPositive: var(--ifm-color-success) !important;
+  --colorInformation: var(--ifm-color-info) !important;
+  --colorInformationLight: var(--ifm-color-info-light) !important;
+  --colorInformationLighter: var(--ifm-color-info-lighter) !important;
+  --colorInformationDark: var(--ifm-color-info-dark) !important;
+  --colorInformationDarker: var(--ifm-color-info-darker) !important;
+  --colorFocusInformation: var(--ifm-color-info) !important;
+}
+
+/* Text color */
+body {
+  color: var(--ifm-font-color-base) !important;
+}
+
+/* Navigation color */
+a .pagination-nav__label {
+  color: var(--ifm-link-color);
+}
+
+a.footer__link-item {
+  color: var(--ifm-footer-link-color);
+}
+
+a:hover {
+  color: var(--ifm-link-color) !important;
+}
+
+/* Button color */
+a.Button:hover {
+  color: var(--ifm-color-info-contrast-background) !important;
+}
+
+.theme-doc-markdown.markdown table {
+  display: table
+}
+
+.theme-doc-markdown.markdown table tr:nth-child(2n) {
+  background-color: #fff
+}
+
+/* Example CSS */
+.example-grids .Grid {
+  padding-bottom: 1rem;
+}
+
+.example-grids .Grid:first-child {
+  padding-top: 1rem;
+}
+
+.example-grids [class^="u-size"] span {
+  background-color: rgba(23,43,77,.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  text-align: center;
+  height: 100%;
+}
+
+/* Example CSS*/
+.example-flexbox .b-highlight {
+  background-color: rgba(23, 43, 77, 0.07);
+  border: 1px solid rgba(23, 43, 77, 0.07);
+}
+
+/* Custom code style */
+div[class^='language'] {
+  box-shadow: none;
+
+  pre {
+    border: 1px solid #dfe1e6;
+    border-color: #ebecf0;
+    border-radius: 0px;
+    font: var(--ifm-code-font-size) / var(--ifm-pre-line-height) var(--ifm-font-family-monospace);
+  }
+}
+
+.Table--striped tbody tr:nth-of-type(even) .prism-code {
+  background-color: var(--ifm-color-secondary-lightest)!important;
+}

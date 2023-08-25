@@ -1,0 +1,124 @@
+---
+title: Modal
+---
+import CodeView from '@site/src/components/CodeView';
+import smallModal from '@site/examples/Modal/small';
+import mediumModal from '@site/examples/Modal/medium';
+import largeModal from '@site/examples/Modal/large';
+import extraLargeModal from '@site/examples/Modal/extraLarge';
+import oneCTAModal from '@site/examples/Modal/oneCTA';
+import twoCTAModal from '@site/examples/Modal/twoCTA';
+import twoCTAFullModal from '@site/examples/Modal/twoCTAFull';
+import twoCTAPartModal from '@site/examples/Modal/twoCTAPart';
+import stepModal from '@site/examples/Modal/step';
+import launchModal from '@site/examples/Modal/launch';
+import askModal from '@site/examples/Modal/ask';
+import StbModalStructure1 from "@site/assets/structure/stb_modal-structure.jpg"
+import StbModalStructure2 from "@site/assets/structure/stb_modal-structure@2x.jpg"
+
+
+# Modal
+
+## Introduction
+
+Using modals to provide an opportunity to display content in a layer above the app, requiring user interaction with focused actions or alerts.
+
+Standard modals are basic containers with a close `“X”`. The primary action button is a primary system color, other actions are secondary color.
+
+<img
+  src={StbModalStructure1}
+  srcSet={StbModalStructure2}
+  alt="Modal structure"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+      Header
+    <i className="u-text200"> -  Contains modal title and close button.</i>
+  </li>
+  <li>
+      Body
+    <i className="u-text200"> - Includes paragraphs, forms, images or icons which have a purpose to overview or add more detail for the modal title, or provide input forms to get data from users to complete a task. The body has top padding is 16px while left, right and bottom padding are 24px.</i>
+  </li>
+  <li>
+      Footer
+    <i className="u-text200"> - Contains CTA buttons and notes for the actions.</i>
+  </li>
+  <li>
+      Container
+    <i className="u-text200"> - Using container as a wrapper of header, body, and footer; make a separation between modal and the background by its shadow.</i>
+  </li>
+</ol>
+
+## Examples
+
+### Sizes
+
+Depends on content to choose a suitable modal size.
+
+#### Small
+
+<CodeView exampleClassName="example-modal" codeText={smallModal} />
+
+#### Medium
+
+<CodeView exampleClassName="example-modal" codeText={mediumModal} />
+
+#### Large
+
+<CodeView exampleClassName="example-modal" codeText={largeModal} />
+
+#### Extra large
+
+<CodeView exampleClassName="example-modal" codeText={extraLargeModal} />
+
+### Footer types
+
+#### One CTA
+
+Using a full width button for CTA to gain more focus and expand the click area.
+
+<CodeView exampleClassName="example-modal" codeText={oneCTAModal} />
+
+#### Two CTA
+
+Using auto-width buttons for CTAs and left-aligned as default.
+
+<CodeView exampleClassName="example-modal" codeText={twoCTAModal} />
+
+#### Two CTA - Full width
+
+Using 2 full width buttons in some case CTA button's copies are too long.
+
+<CodeView exampleClassName="example-modal" codeText={twoCTAFullModal} />
+
+#### Two CTA - 2 columns
+
+Using 2 columns button for small modal size only to keep balance.
+
+<CodeView exampleClassName="example-modal" codeText={twoCTAPartModal} />
+
+#### Multiple steps
+
+Using for showing multiple steps of modals. A primary button is right-aligned for next action and a secondary button is left-aligned for back action.
+
+<CodeView exampleClassName="exampleModal" codeText={stepModal} />
+
+#### Accent buttons
+
+Replace a primary button by an accent button when using modal for Ask flow or Payment flow with all types.
+
+<CodeView exampleClassName="example-modal" codeText={askModal} />
+
+### Live demo
+
+<CodeView codeText={launchModal} />
+
+## Design Reference
+
+N/A
+
+
+## API
+
+<ComponentApi name="Modal" importName="Modal" />
+<ComponentApi name="ModalHeader" />

@@ -1,0 +1,64 @@
+---
+title: Chat Box
+---
+import CodeView from '@site/src/components/CodeView';
+
+import defaultChatBox from '!raw-loader!@site/examples/ChatBox/default';
+import fullWidthChatBox from '!raw-loader!@site/examples/ChatBox/fullWidth';
+
+import BubbleChatStructureDo1 from "@site/assets/ref/bubble-chat-structure-do.jpg"
+import BubbleChatStructureDo2 from "@site/assets/ref/bubble-chat-structure-do@2x.jpg"
+
+import BubbleChatStructureDont1 from "@site/assets/ref/bubble-chat-structure-dont.jpg"
+import BubbleChatStructureDont2 from "@site/assets/ref/bubble-chat-structure-dont@2x.jpg"
+
+# Chat Box
+
+## Introduction
+
+ChatBox is an interactive area which is designed to allow users to chat with each other through sending messages and attachments.
+
+## Examples
+
+Some examples of full components ChatBox.
+
+### Default
+
+Default ChatBox is designed for use on the left/right of the screen.
+
+<CodeView codeText={defaultChatBox} />
+
+### Full-width
+
+ChatBox can be expanded to be a larger space in the design.
+
+<CodeView codeText={fullWidthChatBox} />
+
+## Design Reference
+
+**(Ex:) Set max-width 560px for bubble chat in full-width ChatBox**
+
+In order to ensure the user reading experience with the number of words on a line is not too large, the width of the bubble chat should be controlled in the case of the full-width ChatBox.
+
+<div className="Grid u-marginBottomLarge">
+  <div className="u-sizeFull md:u-size1of2">
+    <img
+      className="u-maxWidthFull"
+      src={BubbleChatStructureDo1}
+      srcSet={`${BubbleChatStructureDo2} 2x`}
+      alt="Accordion Do"
+    />
+    <div className="u-borderBottom u-borderLarge u-borderPositive u-marginTopSmall" />
+    <div className="u-textPositive">Do</div>
+  </div>
+  <div className="u-sizeFull md:u-size1of2">
+    <img
+      className="u-maxWidthFull"
+      src={BubbleChatStructureDont1}
+      srcSet={`${BubbleChatStructureDont2} 2x`}
+      alt="Accordion Dont"
+    />
+    <div className="u-borderBottom u-borderLarge u-borderNegative u-marginTopSmall" />
+    <div className="u-textNegative">Don't</div>
+  </div>
+</div>

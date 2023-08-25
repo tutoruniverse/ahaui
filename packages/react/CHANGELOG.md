@@ -1,17 +1,12 @@
-## Release 2.1.0
+## Release 2.1.0 - Unreleased
 
 ### Fixed
-* BubbleChat: Use bottom alignment for `avatar`, update chat time text color to satisfy contrast ratio
+* BubbleChat: Use bottom alignment for avatar
 * BubbleChat.Image: Set `lineHeight` to `0` to make image in the same baseline with avatar
 * Dropdown.Container: Correct extra props that are passed to internal `div`, so incompatible props (such as `popperConfig`) are excluded
-* Composer: Allow passing `className` and `style` to `attachButtonProps`, `inputProps`, and `sendButtonProps`, addd delay on tooltip of Composer
+* Composer: Allow passing `className` and `style` to `attachButtonProps`, `inputProps`, and `sendButtonProps`
 * Button: add className `u-fontMedium` to sync value with UI
 * Message, Modal, Toggle: add aria-label for accessibility
-* Badge: Update text color of 'default' variant to satisfy contrast ratio
-* Rating: Add `activeIconClassName` prop to customize active icon class name
-* Icon: Add `logOut`, `wallet`, `bulb`, `home`, `call`, `launch`, `binoculars`, `openExternal`, `math`, `magic`, `pause`, `wallet`, `hammer`
-* SearchBox: Add `searchButtonProps`
-
 ### Added
 * Type definitions
 

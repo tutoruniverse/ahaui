@@ -1,0 +1,372 @@
+---
+title: Animation
+---
+
+import { Icon } from "@ahaui/react";
+import classNames from "classnames";
+
+# Animation
+
+export const classExtractAnimation = [
+  {
+    copy: "Transform Rotate",
+    description:
+      "A positive value will rotate the element in the clockwise direction.",
+  },
+  { className: "", description: "Default" },
+  { className: "u-rotate0", description: "Rotate 0°" },
+  { className: "u-rotate45", description: "Rotate 45°" },
+  { className: "u-rotate90", description: "Rotate 90°" },
+  { className: "u-rotate135", description: "Rotate 135°" },
+  { className: "u-rotate180", description: "Rotate 180°" },
+  { className: "u-rotate225", description: "Rotate 225°" },
+  { className: "u-rotate270", description: "Rotate 270°" },
+  { className: "u-rotate315", description: "Rotate 315°" },
+  {
+    className: "hover:u-rotate45",
+    description: "Example of rotating on hover",
+  },
+  { copy: "Flip" },
+  { className: "", iconName: "twitter", description: "Default" },
+  {
+    className: "u-flipHorizontal",
+    iconName: "twitter",
+    description: "transform: scale(-1, 1);",
+  },
+  {
+    className: "u-flipVertical",
+    iconName: "twitter",
+    description: "transform: scale(1, -1);",
+  },
+  {
+    className: "hover:u-flipHorizontal",
+    iconName: "twitter",
+    description: "Example of flipping on hover",
+  },
+  { copy: "Transform Scale" },
+  { className: "", iconName: "twitter", description: "Default" },
+  { className: "u-scale0", iconName: "twitter", description: "0%" },
+  { className: "u-scale50", iconName: "twitter", description: "50%" },
+  { className: "u-scale75", iconName: "twitter", description: "75%" },
+  { className: "u-scale90", iconName: "twitter", description: "90%" },
+  { className: "u-scale100", iconName: "twitter", description: "100%" },
+  { className: "u-scale110", iconName: "twitter", description: "110%" },
+  { className: "u-scale125", iconName: "twitter", description: "125%" },
+  { className: "u-scale150", iconName: "twitter", description: "150%" },
+  {
+    className: "hover:u-scale110",
+    iconName: "twitter",
+    description: "Example of scaling on hover",
+  },
+  { copy: "Transform Skew" },
+  { className: "", iconName: "youtube", description: "Default" },
+  { className: "u-skewHorizontal0", iconName: "youtube", description: "" },
+  { className: "u-skewHorizontal3", iconName: "youtube", description: "" },
+  { className: "u-skewHorizontal6", iconName: "youtube", description: "" },
+  { className: "u-skewHorizontal9", iconName: "youtube", description: "" },
+  { className: "u-skewHorizontal12", iconName: "youtube", description: "" },
+  { className: "u-skewVertical0", iconName: "youtube", description: "" },
+  { className: "u-skewVertical3", iconName: "youtube", description: "" },
+  { className: "u-skewVertical6", iconName: "youtube", description: "" },
+  { className: "u-skewVertical9", iconName: "youtube", description: "" },
+  { className: "u-skewVertical12", iconName: "youtube", description: "" },
+  {
+    className: "hover:u-skewVertical6",
+    iconName: "youtube",
+    description: "",
+  },
+  { copy: "Transition Duration" },
+  {
+    className: "u-duration75",
+    description: "transition-duration: 75ms;",
+    preview: false,
+  },
+  {
+    className: "u-duration100",
+    description: "transition-duration: 100ms;",
+    preview: false,
+  },
+  {
+    className: "u-duration150",
+    description: "transition-duration: 150ms;",
+    preview: false,
+  },
+  {
+    className: "u-duration200",
+    description: "transition-duration: 200ms;",
+    preview: false,
+  },
+  {
+    className: "u-duration300",
+    description: "transition-duration: 300ms;",
+    preview: false,
+  },
+  {
+    className: "u-duration500",
+    description: "transition-duration: 500ms;",
+    preview: false,
+  },
+  {
+    className: "u-duration700",
+    description: "transition-duration: 700ms;",
+    preview: false,
+  },
+  {
+    className: "u-duration1000",
+    description: "transition-duration: 1000ms;",
+    preview: false,
+  },
+  { copy: "Transition Delay" },
+  {
+    className: "u-delay75",
+    description: "transition-delay: 75ms;",
+    preview: false,
+  },
+  {
+    className: "u-delay100",
+    description: "transition-delay: 100ms;",
+    preview: false,
+  },
+  {
+    className: "u-delay150",
+    description: "transition-delay: 150ms;",
+    preview: false,
+  },
+  {
+    className: "u-delay200",
+    description: "transition-delay: 200ms;",
+    preview: false,
+  },
+  {
+    className: "u-delay300",
+    description: "transition-delay: 300ms;",
+    preview: false,
+  },
+  {
+    className: "u-delay500",
+    description: "transition-delay: 500ms;",
+    preview: false,
+  },
+  {
+    className: "u-delay700",
+    description: "transition-delay: 700ms;",
+    preview: false,
+  },
+  {
+    className: "u-delay1000",
+    description: "transition-delay: 1000ms;",
+    preview: false,
+  },
+  { copy: "Transition Timing Function" },
+  {
+    className: "u-easeLinear",
+    description: "transition-timing-function: linear;",
+    preview: false,
+  },
+  {
+    className: "u-easeIn",
+    description: "transition-timing-function: cubic-bezier(0.4, 0, 1, 1);",
+    preview: false,
+  },
+  {
+    className: "u-easeOut",
+    description: "transition-timing-function: cubic-bezier(0, 0, 0.2, 1);",
+    preview: false,
+  },
+  {
+    className: "u-easeInOut",
+    description: "transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);",
+    preview: false,
+  },
+  { copy: "Transition Property" },
+  {
+    className: "u-transitionNone",
+    description: "transition-property: none;",
+    preview: false,
+  },
+  {
+    className: "u-transitionAll",
+    description: "transition-property: all;",
+    preview: false,
+  },
+  {
+    className: "u-transitionBasic",
+    description:
+      "transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;",
+    preview: false,
+  },
+  {
+    className: "u-transitionColors",
+    description:
+      "transition-property: background-color, border-color, color, fill, stroke;",
+    preview: false,
+  },
+  {
+    className: "u-transitionOpacity",
+    description: "transition-property: opacity;",
+    preview: false,
+  },
+  {
+    className: "u-transitionShadow",
+    description: "transition-property: box-shadow;",
+    preview: false,
+  },
+  {
+    className: "u-transitionTransform",
+    description: "transition-property: transform;",
+    preview: false,
+  },
+  {
+    copy: "Animation Iteration Count",
+    description:
+      'The "animation-iteration-count" property specifies the number of times an animation should be played.',
+  },
+  {
+    className: "u-iterationCount1",
+    description: "animation-iteration-count: 1;",
+    preview: false,
+  },
+  {
+    className: "u-iterationCount2",
+    description: "animation-iteration-count: 2;",
+    preview: false,
+  },
+  {
+    className: "u-iterationCount3",
+    description: "animation-iteration-count: 3;",
+    preview: false,
+  },
+  {
+    className: "u-iterationCountInfinite",
+    description: "animation-iteration-count: infinite;",
+    preview: false,
+  },
+  { copy: "Spin" },
+  { className: "", iconName: "refresh", description: "Default" },
+  { className: "u-spin", iconName: "refresh", description: "Spin" },
+  { className: "u-spinReverse", iconName: "refresh", description: "Reverse" },
+  {
+    className: "hover:u-spin",
+    iconName: "refresh",
+    description: "Example of spinning on hover",
+  },
+  { copy: "Animation Speed" },
+  {
+    description: "Slower",
+    className: "u-animatedSlower",
+    addClassName: "u-spin",
+    iconName: "refresh",
+  },
+  {
+    description: "Slow",
+    className: "u-animatedSlow",
+    addClassName: "u-spin",
+    iconName: "refresh",
+  },
+  {
+    description: "Normal",
+    className: "u-animatedNormal",
+    addClassName: "u-spin",
+    iconName: "refresh",
+  },
+  {
+    description: "Fast",
+    className: "u-animatedFast",
+    addClassName: "u-spin",
+    iconName: "refresh",
+  },
+  {
+    description: "Faster",
+    className: "u-animatedFaster",
+    addClassName: "u-spin",
+    iconName: "refresh",
+  },
+  { copy: "Fade" },
+  {
+    description: "FadeInUp",
+    className: "u-animationFadeInUp",
+    addClassName: "u-transitionAll u-duration1000",
+    iconName: "mail",
+  },
+  {
+    description: "FadeInDown",
+    className: "u-animationFadeInDown",
+    addClassName: "u-transitionAll u-duration1000",
+    iconName: "mail",
+  },
+  {
+    description: "FadeInLeft",
+    className: "u-animationFadeInLeft",
+    addClassName: "u-transitionAll u-duration1000",
+    iconName: "mail",
+  },
+  {
+    description: "FadeInRight",
+    className: "u-animationFadeInRight",
+    addClassName: "u-transitionAll u-duration1000",
+    iconName: "mail",
+  },
+  { copy: "Demonstration" },
+  {
+    className: "",
+    addClassName:
+      "hover:u-textPositive hover:u-scale150 u-transitionBasic u-easeInOut u-duration1000",
+    iconName: "earth",
+    description:
+      'The icon color is dark by default. Change the color and scale up on mouse hover. CSS class name: ".u-transitionBasic .u-easeInOut .u-duration1000 .hover:u-textPositive .hover:u-scale150"',
+  },
+];
+
+## Introduction
+
+One object should be applied to only one transform. Try to use nested objects for multiple transforms.
+
+## ClassName
+
+<table className="Table Table--layoutFixed u-backgroundWhite u-textDark u-border u-borderTopNone">
+  <thead>
+    <tr>
+      <th>CSS Class</th>
+      <th width="140">Preview</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {classExtractAnimation.map((item) =>
+      item.copy ? (
+        <tr key={item.index}>
+          <td colSpan="3" className="u-fontMedium u-backgroundLightest">
+            {item.copy}
+            <br />
+            <small className="u-fontRegular">{item.description}</small>
+          </td>
+        </tr>
+      ) : (
+        <tr key={item.index}>
+          <td className="u-textNoWrap">
+            <code>{item.className && `.${item.className}`}</code>
+          </td>
+          <td className="u-positionRelative">
+            {item.preview !== false && (
+              <Icon
+                name={item.iconName || "arrowRoundUp"}
+                className={classNames(
+                  item.className && item.className,
+                  item.addClassName && item.addClassName
+                )}
+                size="medium"
+              />
+            )}
+          </td>
+          <td className="u-textGray u-text200">{item.description}</td>
+        </tr>
+      )
+    )}
+  </tbody>
+</table>
+
+<div class="u-text200 u-marginBottomMedium u-marginTopSmall">
+  <span class="u-textNegative">*</span>&nbsp;
+  <span class="u-fontMedium">Notes:</span>&nbsp;
+  <i>It's possible to add delays directly on the element's class attribute.</i>
+</div>
