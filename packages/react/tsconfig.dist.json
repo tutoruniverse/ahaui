@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./dist",
+    "rootDir": "./dist",
+    "paths": {
+      "components/*": ["./components/*"],
+      "constants/*": ["./constants/*"],
+      "hooks/*": ["./hooks/*"],
+      "types/*": ["./types/*"],
+      "utils/*": ["./utils/*"]
+    }
+  }
+}

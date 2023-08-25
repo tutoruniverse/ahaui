@@ -1,0 +1,44 @@
+---
+title: Page Layout
+---
+
+import CodeView from '@site/src/components/CodeView';
+
+import defaultLayout from '@site/examples/PageLayout/default';
+import withoutFooterLayout from '@site/examples/PageLayout/withoutFooter';
+import bodyOnlyLayout from '@site/examples/PageLayout/bodyOnly';
+
+
+# Page Layout
+
+## Introduction
+
+A web page layout is a pattern that defines a website’s structure. It helps to build consistent structures across the site.
+
+## Examples
+
+### Default
+
+The most basic usage, which has 3 main parts across the page: Header, Body and Footer.
+
+<CodeView codeText={defaultLayout} />
+
+### Without Footer
+
+Used for pages where the footer is not necessary, for example inside a web app.
+
+<CodeView codeText={withoutFooterLayout} />
+
+### Body only
+
+Recommended to use when showing the system messages related pages, such as "System maintenance" or "Page not found".
+
+<CodeView codeText={bodyOnlyLayout} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="PageLayout" importName="PageLayout" />

@@ -1,0 +1,61 @@
+---
+title: Separator
+---
+
+import CodeView from '@site/src/components/CodeView';
+import separatorColor from '@site/examples/Separator/color';
+import separatorLineType from '@site/examples/Separator/lineType';
+
+import StbSeparatorStructure1 from "@site/assets/structure/stb_separator-structure.jpg";
+import StbSeparatorStructure2 from "@site/assets/structure/stb_separator-structure@2x.jpg";
+
+# Separator
+
+## Introduction
+
+A divider that separates two different sets of content.
+
+<img
+  src={StbSeparatorStructure1}
+  srcSet={`${StbSeparatorStructure2} 2x`}
+  className="u-maxWidthFull"
+  alt="Separator"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Label
+  </li>
+  <li>
+    Left line
+  </li>
+  <li>Right line</li>
+</ol>
+
+## Examples
+
+### Default
+
+A solid Separator without a label.
+<CodeView codeText={'<Separator  />'} />
+
+### With label
+
+A dashed Separator with label center-aligned.
+
+<CodeView codeText={'<Separator label="Label" />'} />
+
+### Colors
+
+<CodeView codeText={separatorColor} />
+
+### Line styles
+
+<CodeView codeText={separatorLineType} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="Separator" importName="Separator" />

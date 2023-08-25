@@ -1,0 +1,84 @@
+---
+title: Rating
+---
+
+import CodeView from '@site/src/components/CodeView';
+
+import selectedRating from '@site/examples/Rating/selected';
+import withLabelRating from '@site/examples/Rating/withLabel';
+import withNumberRating from '@site/examples/Rating/withNumber';
+
+import StbRatingStructure1 from "@site/assets/structure/stb_rating-structure.jpg";
+import StbRatingStructure2 from "@site/assets/structure/stb_rating-structure@2x.jpg";
+
+# Rating
+
+## Introduction
+
+Ratings are used to collect feedback from users. The stars in the component indicate a performance rating from one to five.
+
+<img
+  src={StbRatingStructure1}
+  srcSet={`${StbRatingStructure2} 2x`}
+  alt="Rating structure"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Container
+    <i className="u-text200"> - Indicates the normal unrated state.</i>
+  </li>
+  <li>
+    Rating
+    <i className="u-text200"> - Indicates the actual rating of an user.</i>
+  </li>
+  <li>
+    Label
+    <i className="u-text200"> - Additional and descriptive information (i.e. ratings in number)</i>
+  </li>
+</ol>
+
+## Examples
+
+### States
+
+#### Normal
+
+<CodeView codeText={'<Rating value={null} readOnly />'} />
+
+#### Hover/Selected
+
+<CodeView codeText={selectedRating} />
+
+#### Disabled
+
+<CodeView codeText={'<Rating value={null} disabled />'} />
+
+<CodeView codeText={'<Rating value={3} disabled />'} />
+
+### Types
+
+#### With label
+
+<CodeView codeText={withLabelRating} />
+
+#### With rating number
+
+<CodeView codeText={withNumberRating} />
+
+### Sizes
+
+#### Normal
+
+<CodeView codeText={'<Rating value={3} readOnly />'} />
+
+#### Small
+
+<CodeView codeText={'<Rating value={3} size="extraSmall" readOnly />'} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="Rating" importName="Rating" />

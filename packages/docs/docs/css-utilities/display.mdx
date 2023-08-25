@@ -1,0 +1,152 @@
+---
+title: Display
+---
+
+import CodeView from "@site/src/components/CodeView";
+
+import inline from "@site/examples/CSS/Display/inline";
+import inlineBlock from "@site/examples/CSS/Display/inlineBlock";
+import block from "@site/examples/CSS/Display/block";
+import flex from "@site/examples/CSS/Display/flex";
+import flexInline from "@site/examples/CSS/Display/flexInline";
+import hidden from "@site/examples/CSS/Display/hidden";
+import table from "@site/examples/CSS/Display/table";
+import responsive from "@site/examples/CSS/Display/responsive";
+
+# Display
+
+## Introduction
+
+The default display value for most elements is block or inline.
+
+A block-level element always starts on a new line and takes up the full width available. An inline element does not start on a new line and only takes up as much width as necessary.
+
+## Examples
+
+### Inline
+
+Class: `.u-inline`
+
+<CodeView codeText={inline} />
+
+### Inline block
+
+Class: `.u-inlineBlock`
+
+<CodeView codeText={inlineBlock} />
+
+### Block
+
+Class: `.u-block`
+
+<CodeView codeText={block} />
+
+### Flex
+
+Class: `.u-flex`. See more about Flexbox.
+
+<CodeView codeText={flex} />
+
+### Inline flex
+
+Class: `.u-flexInline`
+
+<CodeView codeText={flexInline} />
+
+### Hidden
+
+Class: `.u-hidden`. Use to hide elements without deleting and recreating them. In this example, the item "Two" is hidden.
+
+<CodeView codeText={hidden} />
+
+### Table
+
+Classes: `.u-table`, `.u-tableRow`, `.u-tableCell`. Use some "div" tags to make a table.
+
+<CodeView codeText={table} />
+
+## Responsive display
+
+<table className="Table u-backgroundWhite u-borderLeft u-borderRight u-borderBottom">
+  <thead>
+    <tr>
+      <th width="200">Screen Size</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colSpan="2" className="u-backgroundLightest">
+        <strong>Hidden:</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>Hidden on all</td>
+      <td>
+        <code>.u-hidden</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Hidden only on sm</td>
+      <td>
+        <code>.sm:u-hidden .md:u-block</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Hidden only on md</td>
+      <td>
+        <code>.md:u-hidden .lg:u-block</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Hidden only on lg</td>
+      <td>
+        <code>.lg:u-hidden .xl:u-block</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Hidden only on xl</td>
+      <td>
+        <code>.xl:u-hidden</code>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" className="u-backgroundLightest">
+        <strong>Visible:</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>Visible on all</td>
+      <td>
+        <code>.u-block</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Visible only on sm</td>
+      <td>
+        <code>.u-hidden .sm:u-block .md:u-hidden</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Visible only on md</td>
+      <td>
+        <code>.u-hidden .md:u-block .lg:u-hidden</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Visible only on lg</td>
+      <td>
+        <code>.u-hidden .lg:u-block .xl:u-hidden</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Visible only on xl</td>
+      <td>
+        <code>.u-hidden .xl:u-block</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+Resize the browser to see the change:
+
+<CodeView codeText={responsive} />

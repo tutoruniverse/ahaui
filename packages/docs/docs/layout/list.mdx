@@ -1,0 +1,61 @@
+---
+title: List
+---
+import CodeView from '@site/src/components/CodeView';
+
+import discListStyle from '@site/examples/CSS/List/disc';
+import circleListStyle from '@site/examples/CSS/List/circle';
+import squareListStyle from '@site/examples/CSS/List/square';
+import underlineListStyle from '@site/examples/CSS/List/underline';
+import unstyledListStyle from '@site/examples/CSS/List/unstyled';
+import decimalListStyle from '@site/examples/CSS/List/decimal';
+import upperRomanListStyle from '@site/examples/CSS/List/upperRoman';
+import lowerAlphaListStyle from '@site/examples/CSS/List/lowerAlpha';
+
+
+# List Style
+
+## Introduction
+
+Unordered lists (`<ul>`) - the list items are marked with bullets.
+Ordered lists (`<ol>`) - the list items are marked with numbers or letters.
+
+All list are customized to remove their left padding and put the bullets inside of the box by adding  `.u-paddingLeftNone`  and  `.u-listStylePositionInside`  utilities classes.
+
+## Examples
+
+### Unordered lists
+
+#### Disc (default)
+
+<CodeView codeText={discListStyle}/>
+
+#### Circle
+
+<CodeView codeText={circleListStyle}/>
+
+#### Square
+
+<CodeView codeText={squareListStyle}/>
+
+#### Underline
+
+<CodeView codeText={underlineListStyle}/>
+
+#### Unstyled
+
+<CodeView codeText={unstyledListStyle}/>
+
+### Ordered lists
+
+#### Decimal (default)
+
+<CodeView codeText={decimalListStyle}/>
+
+#### Upper Roman
+
+<CodeView codeText={upperRomanListStyle}/>
+
+#### Lower Alpha
+
+<CodeView codeText={lowerAlphaListStyle}/>

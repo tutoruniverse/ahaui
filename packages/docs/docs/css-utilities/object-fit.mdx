@@ -1,0 +1,62 @@
+---
+title: Object Fit
+---
+import classNames from 'classnames';
+import CatImage from "@site/assets/demo/cat.jpg"
+
+# Object Fit
+
+export const classExtractCursors = [
+  { className: 'u-objectContain', description: 'The replaced content is scaled to maintain its aspect ratio while fitting within the element’s content box. The entire object is made to fill the box, while preserving its aspect ratio, so the object will be "letterboxed" if its aspect ratio does not match the aspect ratio of the box.' },
+  { className: 'u-objectCover', description: 'The replaced content is sized to maintain its aspect ratio while filling the element’s entire content box. If the object\'s aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.' },
+  { className: 'u-objectFill', description: 'The replaced content is sized to fill the element’s content box. The entire object will completely fill the box. If the object\'s aspect ratio does not match the aspect ratio of its box, then the object will be stretched to fit.' },
+  { className: 'u-objectScaleDown', description: 'The content is sized as if none or contain were specified, whichever would result in a smaller concrete object size.' },
+  { className: 'u-objectNone', description: 'The replaced content is not resized.' },
+];
+
+## Introduction
+
+The object-fit CSS property sets how the content of a replaced element, such as an `<img>` or `<video>`, should be resized to fit its container.
+
+## ClassName
+
+<table className="Table Table--layoutFixed u-backgroundWhite u-textDark u-border u-borderTopNone ">
+  <thead>
+    <tr>
+      <th width="200">CSS Class</th>
+      <th>Preview</th>
+      <th width="320">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {classExtractCursors.map(item => (
+      <tr key={item.index}>
+        <td className="u-textNoWrap">
+          <code>.{item.className}</code>
+        </td>
+        <td className="u-positionRelative">
+          <div
+            className={classNames(
+              'u-backgroundLighter u-border borderGray'
+            )}
+          >
+            <img
+              src={CatImage}
+              className={classNames(
+                'u-block u-widthFull',
+                item.className && item.className
+              )}
+              style={{
+                height: 128
+               }}
+              alt="Spot illustrations"
+            />
+          </div>
+        </td>
+        <td className="u-textGray">
+          {item.description}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

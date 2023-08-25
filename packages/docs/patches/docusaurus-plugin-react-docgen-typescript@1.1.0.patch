@@ -1,0 +1,142 @@
+diff --git a/dist/cjs/index.js b/dist/cjs/index.js
+index 9d8963fe9f978d69104f14047ac4ff939f403f63..8a08799b8987a39f7fa88bb038d932250d62e091 100644
+--- a/dist/cjs/index.js
++++ b/dist/cjs/index.js
+@@ -60,7 +60,7 @@ const getParser = (config, options, parserOptions) => {
+   }
+   return (0, import_react_docgen_typescript.withDefaultConfig)(parserOptions).parse;
+ };
+-function plugin(context, { src, global = false, route, tsConfig, compilerOptions, parserOptions }) {
++function plugin(context, { src, global = false, route, tsConfig, compilerOptions, parserOptions, getFileName }) {
+   return {
+     name: "docusaurus-plugin-react-docgen-typescript",
+     async loadContent() {
+@@ -101,9 +101,10 @@ function plugin(context, { src, global = false, route, tsConfig, compilerOptions
+           }
+         }));
+       } else {
+-        content.map(
+-          (component) => createData(`${component.displayName}.json`, JSON.stringify(component.props))
+-        );
++        content.map((component) => {
++          const fileName = getFileName && getFileName(component) || component.displayName;
++          return createData(`${fileName}.json`, JSON.stringify(component.props));
++        });
+       }
+     }
+   };
+diff --git a/dist/cjs/index.js.map b/dist/cjs/index.js.map
+index 00dc0bbe3be791d37dfd6dbba78c4bb9fabc7370..df944f96960da6ce783d1a8b518a34fc1bddf117 100644
+--- a/dist/cjs/index.js.map
++++ b/dist/cjs/index.js.map
+@@ -1,7 +1,7 @@
+ {
+   "version": 3,
+   "sources": ["../../src/index.ts"],
+-  "sourcesContent": ["import path from 'path';\nimport { promisify } from 'util';\nimport Glob from 'glob';\n\nimport {\n  withCustomConfig,\n  ParserOptions,\n  ComponentDoc,\n  FileParser,\n  withCompilerOptions,\n  withDefaultConfig,\n} from 'react-docgen-typescript';\n\nimport { Plugin, DocusaurusContext, RouteConfig } from '@docusaurus/types';\nimport { CompilerOptions } from 'typescript';\n\nconst glob = promisify(Glob);\n\ntype Route = Pick<RouteConfig, 'exact' | 'component' | 'path' | 'priority'>;\n\ntype Union =\n  | {\n      global?: undefined | false;\n      route: Route;\n    }\n  | {\n      global: boolean;\n      route?: Route;\n    };\n\nexport type Options = Union & {\n  src: string | string[];\n  tsConfig?: string;\n  compilerOptions?: CompilerOptions;\n  parserOptions?: ParserOptions;\n  globOptions: null;\n};\n\nconst getParser = (\n  config?: Options['tsConfig'],\n  options?: Options['compilerOptions'],\n  parserOptions?: Options['parserOptions']\n): FileParser['parse'] => {\n  if (config) {\n    return withCustomConfig(config, parserOptions).parse;\n  } else if (options) {\n    return withCompilerOptions(options, parserOptions).parse;\n  }\n\n  return withDefaultConfig(parserOptions).parse;\n};\n\nexport default function plugin(\n  context: DocusaurusContext,\n  { src, global = false, route, tsConfig, compilerOptions, parserOptions }: Options\n): Plugin<ComponentDoc[]> {\n  return {\n    name: 'docusaurus-plugin-react-docgen-typescript',\n    async loadContent() {\n      return getParser(\n        tsConfig,\n        compilerOptions,\n        parserOptions\n      )(\n        await glob(Array.isArray(src) ? src.join(',') : src, {\n          absolute: true,\n        })\n      );\n    },\n    configureWebpack(config) {\n      return {\n        resolve: {\n          alias: {\n            '@docgen': path.join(\n              config.resolve.alias['@generated'],\n              'docusaurus-plugin-react-docgen-typescript',\n              'default'\n            ),\n          },\n        },\n      };\n    },\n    async contentLoaded({ content, actions }): Promise<void> {\n      const { createData, setGlobalData, addRoute } = actions;\n\n      if (global) {\n        console.warn(\n          'Using global data can potentially slow down your entire app. Use with care \u2764\uFE0F'\n        );\n\n        setGlobalData(content);\n      } else if (route) {\n        addRoute({\n          ...route,\n          modules: {\n            docgen: await createData('docgen.json', JSON.stringify(content)),\n          },\n        });\n      } else {\n        content.map(component =>\n          createData(`${component.displayName}.json`, JSON.stringify(component.props))\n        );\n      }\n    },\n  };\n}\n"],
+-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,kBAAiB;AACjB,kBAA0B;AAC1B,kBAAiB;AAEjB,qCAOO;AAKP,MAAM,WAAO,uBAAU,YAAAA,OAAI;AAsB3B,MAAM,YAAY,CAChB,QACA,SACA,kBACwB;AACxB,MAAI,QAAQ;AACV,eAAO,iDAAiB,QAAQ,aAAa,EAAE;AAAA,EACjD,WAAW,SAAS;AAClB,eAAO,oDAAoB,SAAS,aAAa,EAAE;AAAA,EACrD;AAEA,aAAO,kDAAkB,aAAa,EAAE;AAC1C;AAEe,SAAR,OACL,SACA,EAAE,KAAK,SAAS,OAAO,OAAO,UAAU,iBAAiB,cAAc,GAC/C;AACxB,SAAO;AAAA,IACL,MAAM;AAAA,IACN,MAAM,cAAc;AAClB,aAAO;AAAA,QACL;AAAA,QACA;AAAA,QACA;AAAA,MACF;AAAA,QACE,MAAM,KAAK,MAAM,QAAQ,GAAG,IAAI,IAAI,KAAK,GAAG,IAAI,KAAK;AAAA,UACnD,UAAU;AAAA,QACZ,CAAC;AAAA,MACH;AAAA,IACF;AAAA,IACA,iBAAiB,QAAQ;AACvB,aAAO;AAAA,QACL,SAAS;AAAA,UACP,OAAO;AAAA,YACL,WAAW,YAAAC,QAAK;AAAA,cACd,OAAO,QAAQ,MAAM,YAAY;AAAA,cACjC;AAAA,cACA;AAAA,YACF;AAAA,UACF;AAAA,QACF;AAAA,MACF;AAAA,IACF;AAAA,IACA,MAAM,cAAc,EAAE,SAAS,QAAQ,GAAkB;AACvD,YAAM,EAAE,YAAY,eAAe,SAAS,IAAI;AAEhD,UAAI,QAAQ;AACV,gBAAQ;AAAA,UACN;AAAA,QACF;AAEA,sBAAc,OAAO;AAAA,MACvB,WAAW,OAAO;AAChB,iBAAS,iCACJ,QADI;AAAA,UAEP,SAAS;AAAA,YACP,QAAQ,MAAM,WAAW,eAAe,KAAK,UAAU,OAAO,CAAC;AAAA,UACjE;AAAA,QACF,EAAC;AAAA,MACH,OAAO;AACL,gBAAQ;AAAA,UAAI,eACV,WAAW,GAAG,UAAU,oBAAoB,KAAK,UAAU,UAAU,KAAK,CAAC;AAAA,QAC7E;AAAA,MACF;AAAA,IACF;AAAA,EACF;AACF;",
++  "sourcesContent": ["import path from 'path';\nimport { promisify } from 'util';\nimport Glob from 'glob';\n\nimport {\n  withCustomConfig,\n  ParserOptions,\n  ComponentDoc,\n  FileParser,\n  withCompilerOptions,\n  withDefaultConfig,\n} from 'react-docgen-typescript';\n\nimport { Plugin, DocusaurusContext, RouteConfig } from '@docusaurus/types';\nimport { CompilerOptions } from 'typescript';\n\nconst glob = promisify(Glob);\n\ntype Route = Pick<RouteConfig, 'exact' | 'component' | 'path' | 'priority'>;\n\ntype Union =\n  | {\n      global?: undefined | false;\n      route: Route;\n    }\n  | {\n      global: boolean;\n      route?: Route;\n    };\n\nexport type Options = Union & {\n  src: string | string[];\n  tsConfig?: string;\n  compilerOptions?: CompilerOptions;\n  parserOptions?: ParserOptions;\n  globOptions: null;\n  getFileName?: (component: ComponentDoc) => string;\n};\n\nconst getParser = (\n  config?: Options['tsConfig'],\n  options?: Options['compilerOptions'],\n  parserOptions?: Options['parserOptions']\n): FileParser['parse'] => {\n  if (config) {\n    return withCustomConfig(config, parserOptions).parse;\n  } else if (options) {\n    return withCompilerOptions(options, parserOptions).parse;\n  }\n\n  return withDefaultConfig(parserOptions).parse;\n};\n\nexport default function plugin(\n  context: DocusaurusContext,\n  { src, global = false, route, tsConfig, compilerOptions, parserOptions, getFileName }: Options\n): Plugin<ComponentDoc[]> {\n  return {\n    name: 'docusaurus-plugin-react-docgen-typescript',\n    async loadContent() {\n      return getParser(\n        tsConfig,\n        compilerOptions,\n        parserOptions\n      )(\n        await glob(Array.isArray(src) ? src.join(',') : src, {\n          absolute: true,\n        })\n      );\n    },\n    configureWebpack(config) {\n      return {\n        resolve: {\n          alias: {\n            '@docgen': path.join(\n              config.resolve.alias['@generated'],\n              'docusaurus-plugin-react-docgen-typescript',\n              'default'\n            ),\n          },\n        },\n      };\n    },\n    async contentLoaded({ content, actions }): Promise<void> {\n      const { createData, setGlobalData, addRoute } = actions;\n\n      if (global) {\n        console.warn(\n          'Using global data can potentially slow down your entire app. Use with care \u2764\uFE0F'\n        );\n\n        setGlobalData(content);\n      } else if (route) {\n        addRoute({\n          ...route,\n          modules: {\n            docgen: await createData('docgen.json', JSON.stringify(content)),\n          },\n        });\n      } else {\n        content.map(component => {\n          const fileName = (getFileName && getFileName(component)) || component.displayName;\n\n          return createData(`${fileName}.json`, JSON.stringify(component.props))\n        });\n      }\n    },\n  };\n}\n"],
++  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,kBAAiB;AACjB,kBAA0B;AAC1B,kBAAiB;AAEjB,qCAOO;AAKP,MAAM,WAAO,uBAAU,YAAAA,OAAI;AAuB3B,MAAM,YAAY,CAChB,QACA,SACA,kBACwB;AACxB,MAAI,QAAQ;AACV,eAAO,iDAAiB,QAAQ,aAAa,EAAE;AAAA,EACjD,WAAW,SAAS;AAClB,eAAO,oDAAoB,SAAS,aAAa,EAAE;AAAA,EACrD;AAEA,aAAO,kDAAkB,aAAa,EAAE;AAC1C;AAEe,SAAR,OACL,SACA,EAAE,KAAK,SAAS,OAAO,OAAO,UAAU,iBAAiB,eAAe,YAAY,GAC5D;AACxB,SAAO;AAAA,IACL,MAAM;AAAA,IACN,MAAM,cAAc;AAClB,aAAO;AAAA,QACL;AAAA,QACA;AAAA,QACA;AAAA,MACF;AAAA,QACE,MAAM,KAAK,MAAM,QAAQ,GAAG,IAAI,IAAI,KAAK,GAAG,IAAI,KAAK;AAAA,UACnD,UAAU;AAAA,QACZ,CAAC;AAAA,MACH;AAAA,IACF;AAAA,IACA,iBAAiB,QAAQ;AACvB,aAAO;AAAA,QACL,SAAS;AAAA,UACP,OAAO;AAAA,YACL,WAAW,YAAAC,QAAK;AAAA,cACd,OAAO,QAAQ,MAAM,YAAY;AAAA,cACjC;AAAA,cACA;AAAA,YACF;AAAA,UACF;AAAA,QACF;AAAA,MACF;AAAA,IACF;AAAA,IACA,MAAM,cAAc,EAAE,SAAS,QAAQ,GAAkB;AACvD,YAAM,EAAE,YAAY,eAAe,SAAS,IAAI;AAEhD,UAAI,QAAQ;AACV,gBAAQ;AAAA,UACN;AAAA,QACF;AAEA,sBAAc,OAAO;AAAA,MACvB,WAAW,OAAO;AAChB,iBAAS,iCACJ,QADI;AAAA,UAEP,SAAS;AAAA,YACP,QAAQ,MAAM,WAAW,eAAe,KAAK,UAAU,OAAO,CAAC;AAAA,UACjE;AAAA,QACF,EAAC;AAAA,MACH,OAAO;AACL,gBAAQ,IAAI,eAAa;AACvB,gBAAM,WAAY,eAAe,YAAY,SAAS,KAAM,UAAU;AAEtE,iBAAO,WAAW,GAAG,iBAAiB,KAAK,UAAU,UAAU,KAAK,CAAC;AAAA,QACvE,CAAC;AAAA,MACH;AAAA,IACF;AAAA,EACF;AACF;",
+   "names": ["Glob", "path"]
+ }
+diff --git a/dist/esm/index.js b/dist/esm/index.js
+index 6dcbe38090933ca89e6a921e22606e3def98e138..934072a583b8f3334ed44d19e1369b019c4b2e39 100644
+--- a/dist/esm/index.js
++++ b/dist/esm/index.js
+@@ -15,7 +15,7 @@ const getParser = (config, options, parserOptions) => {
+   }
+   return withDefaultConfig(parserOptions).parse;
+ };
+-function plugin(context, { src, global = false, route, tsConfig, compilerOptions, parserOptions }) {
++function plugin(context, { src, global = false, route, tsConfig, compilerOptions, parserOptions, getFileName }) {
+   return {
+     name: "docusaurus-plugin-react-docgen-typescript",
+     async loadContent() {
+@@ -57,9 +57,10 @@ function plugin(context, { src, global = false, route, tsConfig, compilerOptions
+           }
+         });
+       } else {
+-        content.map(
+-          (component) => createData(`${component.displayName}.json`, JSON.stringify(component.props))
+-        );
++        content.map((component) => {
++          const fileName = getFileName && getFileName(component) || component.displayName;
++          return createData(`${fileName}.json`, JSON.stringify(component.props));
++        });
+       }
+     }
+   };
+diff --git a/dist/esm/index.js.map b/dist/esm/index.js.map
+index a9801cac39c2775f5b8a804fe64395b8179e7ef8..72ae1ca478a28772ec6ad368f489eac106940575 100644
+--- a/dist/esm/index.js.map
++++ b/dist/esm/index.js.map
+@@ -1,7 +1,7 @@
+ {
+   "version": 3,
+   "sources": ["../../src/index.ts"],
+-  "sourcesContent": ["import path from 'path';\nimport { promisify } from 'util';\nimport Glob from 'glob';\n\nimport {\n  withCustomConfig,\n  ParserOptions,\n  ComponentDoc,\n  FileParser,\n  withCompilerOptions,\n  withDefaultConfig,\n} from 'react-docgen-typescript';\n\nimport { Plugin, DocusaurusContext, RouteConfig } from '@docusaurus/types';\nimport { CompilerOptions } from 'typescript';\n\nconst glob = promisify(Glob);\n\ntype Route = Pick<RouteConfig, 'exact' | 'component' | 'path' | 'priority'>;\n\ntype Union =\n  | {\n      global?: undefined | false;\n      route: Route;\n    }\n  | {\n      global: boolean;\n      route?: Route;\n    };\n\nexport type Options = Union & {\n  src: string | string[];\n  tsConfig?: string;\n  compilerOptions?: CompilerOptions;\n  parserOptions?: ParserOptions;\n  globOptions: null;\n};\n\nconst getParser = (\n  config?: Options['tsConfig'],\n  options?: Options['compilerOptions'],\n  parserOptions?: Options['parserOptions']\n): FileParser['parse'] => {\n  if (config) {\n    return withCustomConfig(config, parserOptions).parse;\n  } else if (options) {\n    return withCompilerOptions(options, parserOptions).parse;\n  }\n\n  return withDefaultConfig(parserOptions).parse;\n};\n\nexport default function plugin(\n  context: DocusaurusContext,\n  { src, global = false, route, tsConfig, compilerOptions, parserOptions }: Options\n): Plugin<ComponentDoc[]> {\n  return {\n    name: 'docusaurus-plugin-react-docgen-typescript',\n    async loadContent() {\n      return getParser(\n        tsConfig,\n        compilerOptions,\n        parserOptions\n      )(\n        await glob(Array.isArray(src) ? src.join(',') : src, {\n          absolute: true,\n        })\n      );\n    },\n    configureWebpack(config) {\n      return {\n        resolve: {\n          alias: {\n            '@docgen': path.join(\n              config.resolve.alias['@generated'],\n              'docusaurus-plugin-react-docgen-typescript',\n              'default'\n            ),\n          },\n        },\n      };\n    },\n    async contentLoaded({ content, actions }): Promise<void> {\n      const { createData, setGlobalData, addRoute } = actions;\n\n      if (global) {\n        console.warn(\n          'Using global data can potentially slow down your entire app. Use with care \u2764\uFE0F'\n        );\n\n        setGlobalData(content);\n      } else if (route) {\n        addRoute({\n          ...route,\n          modules: {\n            docgen: await createData('docgen.json', JSON.stringify(content)),\n          },\n        });\n      } else {\n        content.map(component =>\n          createData(`${component.displayName}.json`, JSON.stringify(component.props))\n        );\n      }\n    },\n  };\n}\n"],
+-  "mappings": "AAAA,OAAO,UAAU;AACjB,SAAS,iBAAiB;AAC1B,OAAO,UAAU;AAEjB;AAAA,EACE;AAAA,EAIA;AAAA,EACA;AAAA,OACK;AAKP,MAAM,OAAO,UAAU,IAAI;AAsB3B,MAAM,YAAY,CAChB,QACA,SACA,kBACwB;AACxB,MAAI,QAAQ;AACV,WAAO,iBAAiB,QAAQ,aAAa,EAAE;AAAA,EACjD,WAAW,SAAS;AAClB,WAAO,oBAAoB,SAAS,aAAa,EAAE;AAAA,EACrD;AAEA,SAAO,kBAAkB,aAAa,EAAE;AAC1C;AAEe,SAAR,OACL,SACA,EAAE,KAAK,SAAS,OAAO,OAAO,UAAU,iBAAiB,cAAc,GAC/C;AACxB,SAAO;AAAA,IACL,MAAM;AAAA,IACN,MAAM,cAAc;AAClB,aAAO;AAAA,QACL;AAAA,QACA;AAAA,QACA;AAAA,MACF;AAAA,QACE,MAAM,KAAK,MAAM,QAAQ,GAAG,IAAI,IAAI,KAAK,GAAG,IAAI,KAAK;AAAA,UACnD,UAAU;AAAA,QACZ,CAAC;AAAA,MACH;AAAA,IACF;AAAA,IACA,iBAAiB,QAAQ;AACvB,aAAO;AAAA,QACL,SAAS;AAAA,UACP,OAAO;AAAA,YACL,WAAW,KAAK;AAAA,cACd,OAAO,QAAQ,MAAM,YAAY;AAAA,cACjC;AAAA,cACA;AAAA,YACF;AAAA,UACF;AAAA,QACF;AAAA,MACF;AAAA,IACF;AAAA,IACA,MAAM,cAAc,EAAE,SAAS,QAAQ,GAAkB;AACvD,YAAM,EAAE,YAAY,eAAe,SAAS,IAAI;AAEhD,UAAI,QAAQ;AACV,gBAAQ;AAAA,UACN;AAAA,QACF;AAEA,sBAAc,OAAO;AAAA,MACvB,WAAW,OAAO;AAChB,iBAAS;AAAA,UACP,GAAG;AAAA,UACH,SAAS;AAAA,YACP,QAAQ,MAAM,WAAW,eAAe,KAAK,UAAU,OAAO,CAAC;AAAA,UACjE;AAAA,QACF,CAAC;AAAA,MACH,OAAO;AACL,gBAAQ;AAAA,UAAI,eACV,WAAW,GAAG,UAAU,oBAAoB,KAAK,UAAU,UAAU,KAAK,CAAC;AAAA,QAC7E;AAAA,MACF;AAAA,IACF;AAAA,EACF;AACF;",
++  "sourcesContent": ["import path from 'path';\nimport { promisify } from 'util';\nimport Glob from 'glob';\n\nimport {\n  withCustomConfig,\n  ParserOptions,\n  ComponentDoc,\n  FileParser,\n  withCompilerOptions,\n  withDefaultConfig,\n} from 'react-docgen-typescript';\n\nimport { Plugin, DocusaurusContext, RouteConfig } from '@docusaurus/types';\nimport { CompilerOptions } from 'typescript';\n\nconst glob = promisify(Glob);\n\ntype Route = Pick<RouteConfig, 'exact' | 'component' | 'path' | 'priority'>;\n\ntype Union =\n  | {\n      global?: undefined | false;\n      route: Route;\n    }\n  | {\n      global: boolean;\n      route?: Route;\n    };\n\nexport type Options = Union & {\n  src: string | string[];\n  tsConfig?: string;\n  compilerOptions?: CompilerOptions;\n  parserOptions?: ParserOptions;\n  globOptions: null;\n  getFileName?: (component: ComponentDoc) => string;\n};\n\nconst getParser = (\n  config?: Options['tsConfig'],\n  options?: Options['compilerOptions'],\n  parserOptions?: Options['parserOptions']\n): FileParser['parse'] => {\n  if (config) {\n    return withCustomConfig(config, parserOptions).parse;\n  } else if (options) {\n    return withCompilerOptions(options, parserOptions).parse;\n  }\n\n  return withDefaultConfig(parserOptions).parse;\n};\n\nexport default function plugin(\n  context: DocusaurusContext,\n  { src, global = false, route, tsConfig, compilerOptions, parserOptions, getFileName }: Options\n): Plugin<ComponentDoc[]> {\n  return {\n    name: 'docusaurus-plugin-react-docgen-typescript',\n    async loadContent() {\n      return getParser(\n        tsConfig,\n        compilerOptions,\n        parserOptions\n      )(\n        await glob(Array.isArray(src) ? src.join(',') : src, {\n          absolute: true,\n        })\n      );\n    },\n    configureWebpack(config) {\n      return {\n        resolve: {\n          alias: {\n            '@docgen': path.join(\n              config.resolve.alias['@generated'],\n              'docusaurus-plugin-react-docgen-typescript',\n              'default'\n            ),\n          },\n        },\n      };\n    },\n    async contentLoaded({ content, actions }): Promise<void> {\n      const { createData, setGlobalData, addRoute } = actions;\n\n      if (global) {\n        console.warn(\n          'Using global data can potentially slow down your entire app. Use with care \u2764\uFE0F'\n        );\n\n        setGlobalData(content);\n      } else if (route) {\n        addRoute({\n          ...route,\n          modules: {\n            docgen: await createData('docgen.json', JSON.stringify(content)),\n          },\n        });\n      } else {\n        content.map(component => {\n          const fileName = (getFileName && getFileName(component)) || component.displayName;\n\n          return createData(`${fileName}.json`, JSON.stringify(component.props))\n        });\n      }\n    },\n  };\n}\n"],
++  "mappings": "AAAA,OAAO,UAAU;AACjB,SAAS,iBAAiB;AAC1B,OAAO,UAAU;AAEjB;AAAA,EACE;AAAA,EAIA;AAAA,EACA;AAAA,OACK;AAKP,MAAM,OAAO,UAAU,IAAI;AAuB3B,MAAM,YAAY,CAChB,QACA,SACA,kBACwB;AACxB,MAAI,QAAQ;AACV,WAAO,iBAAiB,QAAQ,aAAa,EAAE;AAAA,EACjD,WAAW,SAAS;AAClB,WAAO,oBAAoB,SAAS,aAAa,EAAE;AAAA,EACrD;AAEA,SAAO,kBAAkB,aAAa,EAAE;AAC1C;AAEe,SAAR,OACL,SACA,EAAE,KAAK,SAAS,OAAO,OAAO,UAAU,iBAAiB,eAAe,YAAY,GAC5D;AACxB,SAAO;AAAA,IACL,MAAM;AAAA,IACN,MAAM,cAAc;AAClB,aAAO;AAAA,QACL;AAAA,QACA;AAAA,QACA;AAAA,MACF;AAAA,QACE,MAAM,KAAK,MAAM,QAAQ,GAAG,IAAI,IAAI,KAAK,GAAG,IAAI,KAAK;AAAA,UACnD,UAAU;AAAA,QACZ,CAAC;AAAA,MACH;AAAA,IACF;AAAA,IACA,iBAAiB,QAAQ;AACvB,aAAO;AAAA,QACL,SAAS;AAAA,UACP,OAAO;AAAA,YACL,WAAW,KAAK;AAAA,cACd,OAAO,QAAQ,MAAM,YAAY;AAAA,cACjC;AAAA,cACA;AAAA,YACF;AAAA,UACF;AAAA,QACF;AAAA,MACF;AAAA,IACF;AAAA,IACA,MAAM,cAAc,EAAE,SAAS,QAAQ,GAAkB;AACvD,YAAM,EAAE,YAAY,eAAe,SAAS,IAAI;AAEhD,UAAI,QAAQ;AACV,gBAAQ;AAAA,UACN;AAAA,QACF;AAEA,sBAAc,OAAO;AAAA,MACvB,WAAW,OAAO;AAChB,iBAAS;AAAA,UACP,GAAG;AAAA,UACH,SAAS;AAAA,YACP,QAAQ,MAAM,WAAW,eAAe,KAAK,UAAU,OAAO,CAAC;AAAA,UACjE;AAAA,QACF,CAAC;AAAA,MACH,OAAO;AACL,gBAAQ,IAAI,eAAa;AACvB,gBAAM,WAAY,eAAe,YAAY,SAAS,KAAM,UAAU;AAEtE,iBAAO,WAAW,GAAG,iBAAiB,KAAK,UAAU,UAAU,KAAK,CAAC;AAAA,QACvE,CAAC;AAAA,MACH;AAAA,IACF;AAAA,EACF;AACF;",
+   "names": []
+ }
+diff --git a/dist/types/index.d.ts b/dist/types/index.d.ts
+index 5f640aafd67f3d085439db5e4c631ea2230d63cd..20357cd7cee6d79b380dcdf0617049ebc99b53b3 100644
+--- a/dist/types/index.d.ts
++++ b/dist/types/index.d.ts
+@@ -15,7 +15,8 @@ export type Options = Union & {
+     compilerOptions?: CompilerOptions;
+     parserOptions?: ParserOptions;
+     globOptions: null;
++    getFileName?: (component: ComponentDoc) => string;
+ };
+-export default function plugin(context: DocusaurusContext, { src, global, route, tsConfig, compilerOptions, parserOptions }: Options): Plugin<ComponentDoc[]>;
++export default function plugin(context: DocusaurusContext, { src, global, route, tsConfig, compilerOptions, parserOptions, getFileName }: Options): Plugin<ComponentDoc[]>;
+ export {};
+ //# sourceMappingURL=index.d.ts.map
+\ No newline at end of file
+diff --git a/dist/types/index.d.ts.map b/dist/types/index.d.ts.map
+index 206b3599f932eaee758faa243d06f9b572cad150..0f598221272e09bb7904cb114f3a83da93e618bb 100644
+--- a/dist/types/index.d.ts.map
++++ b/dist/types/index.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/index.ts"],"names":[],"mappings":"AAIA,OAAO,EAEL,aAAa,EACb,YAAY,EAIb,MAAM,yBAAyB,CAAC;AAEjC,OAAO,EAAE,MAAM,EAAE,iBAAiB,EAAE,WAAW,EAAE,MAAM,mBAAmB,CAAC;AAC3E,OAAO,EAAE,eAAe,EAAE,MAAM,YAAY,CAAC;AAI7C,KAAK,KAAK,GAAG,IAAI,CAAC,WAAW,EAAE,OAAO,GAAG,WAAW,GAAG,MAAM,GAAG,UAAU,CAAC,CAAC;AAE5E,KAAK,KAAK,GACN;IACE,MAAM,CAAC,EAAE,SAAS,GAAG,KAAK,CAAC;IAC3B,KAAK,EAAE,KAAK,CAAC;CACd,GACD;IACE,MAAM,EAAE,OAAO,CAAC;IAChB,KAAK,CAAC,EAAE,KAAK,CAAC;CACf,CAAC;AAEN,MAAM,MAAM,OAAO,GAAG,KAAK,GAAG;IAC5B,GAAG,EAAE,MAAM,GAAG,MAAM,EAAE,CAAC;IACvB,QAAQ,CAAC,EAAE,MAAM,CAAC;IAClB,eAAe,CAAC,EAAE,eAAe,CAAC;IAClC,aAAa,CAAC,EAAE,aAAa,CAAC;IAC9B,WAAW,EAAE,IAAI,CAAC;CACnB,CAAC;AAgBF,MAAM,CAAC,OAAO,UAAU,MAAM,CAC5B,OAAO,EAAE,iBAAiB,EAC1B,EAAE,GAAG,EAAE,MAAc,EAAE,KAAK,EAAE,QAAQ,EAAE,eAAe,EAAE,aAAa,EAAE,EAAE,OAAO,GAChF,MAAM,CAAC,YAAY,EAAE,CAAC,CAkDxB"}
+\ No newline at end of file
++{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/index.ts"],"names":[],"mappings":"AAIA,OAAO,EAEL,aAAa,EACb,YAAY,EAIb,MAAM,yBAAyB,CAAC;AAEjC,OAAO,EAAE,MAAM,EAAE,iBAAiB,EAAE,WAAW,EAAE,MAAM,mBAAmB,CAAC;AAC3E,OAAO,EAAE,eAAe,EAAE,MAAM,YAAY,CAAC;AAI7C,KAAK,KAAK,GAAG,IAAI,CAAC,WAAW,EAAE,OAAO,GAAG,WAAW,GAAG,MAAM,GAAG,UAAU,CAAC,CAAC;AAE5E,KAAK,KAAK,GACN;IACE,MAAM,CAAC,EAAE,SAAS,GAAG,KAAK,CAAC;IAC3B,KAAK,EAAE,KAAK,CAAC;CACd,GACD;IACE,MAAM,EAAE,OAAO,CAAC;IAChB,KAAK,CAAC,EAAE,KAAK,CAAC;CACf,CAAC;AAEN,MAAM,MAAM,OAAO,GAAG,KAAK,GAAG;IAC5B,GAAG,EAAE,MAAM,GAAG,MAAM,EAAE,CAAC;IACvB,QAAQ,CAAC,EAAE,MAAM,CAAC;IAClB,eAAe,CAAC,EAAE,eAAe,CAAC;IAClC,aAAa,CAAC,EAAE,aAAa,CAAC;IAC9B,WAAW,EAAE,IAAI,CAAC;IAClB,WAAW,CAAC,EAAE,CAAC,SAAS,EAAE,YAAY,KAAK,MAAM,CAAC;CACnD,CAAC;AAgBF,MAAM,CAAC,OAAO,UAAU,MAAM,CAC5B,OAAO,EAAE,iBAAiB,EAC1B,EAAE,GAAG,EAAE,MAAc,EAAE,KAAK,EAAE,QAAQ,EAAE,eAAe,EAAE,aAAa,EAAE,WAAW,EAAE,EAAE,OAAO,GAC7F,MAAM,CAAC,YAAY,EAAE,CAAC,CAoDxB"}
+\ No newline at end of file
+diff --git a/src/index.ts b/src/index.ts
+index 2ffff342fbacaa77ddb07cb3a08dc4acbfddc447..e23892bdafd760993333b46684f1f2eb3e757d17 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -34,6 +34,7 @@ export type Options = Union & {
+   compilerOptions?: CompilerOptions;
+   parserOptions?: ParserOptions;
+   globOptions: null;
++  getFileName?: (component: ComponentDoc) => string;
+ };
+ 
+ const getParser = (
+@@ -52,7 +53,7 @@ const getParser = (
+ 
+ export default function plugin(
+   context: DocusaurusContext,
+-  { src, global = false, route, tsConfig, compilerOptions, parserOptions }: Options
++  { src, global = false, route, tsConfig, compilerOptions, parserOptions, getFileName }: Options
+ ): Plugin<ComponentDoc[]> {
+   return {
+     name: 'docusaurus-plugin-react-docgen-typescript',
+@@ -97,9 +98,11 @@ export default function plugin(
+           },
+         });
+       } else {
+-        content.map(component =>
+-          createData(`${component.displayName}.json`, JSON.stringify(component.props))
+-        );
++        content.map(component => {
++          const fileName = (getFileName && getFileName(component)) || component.displayName;
++
++          return createData(`${fileName}.json`, JSON.stringify(component.props))
++        });
+       }
+     },
+   };

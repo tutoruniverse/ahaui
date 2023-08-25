@@ -1,0 +1,118 @@
+---
+title: Tab
+---
+
+import CodeView from "@site/src/components/CodeView";
+
+import defaultTabs from "@site/examples/Tab/default";
+import defaultStateTabs from "@site/examples/Tab/defaultState";
+import defaultFullWidthTabs from "@site/examples/Tab/defaultFullWidth";
+import borderBottomTabs from "@site/examples/Tab/borderBottom";
+import defaultVerticalTabs from "@site/examples/Tab/defaultVertical";
+import defaultFilledTabs from "@site/examples/Tab/defaultFill";
+import defaultVerticalFilledTabs from "@site/examples/Tab/defaultVerticalFill";
+import defaultFullWidthFilledTabs from "@site/examples/Tab/defaultFillFullWidth";
+
+import StbTabsStructure1 from "@site/assets/structure/stb_tabs-structure.jpg";
+import StbTabsStructure2 from "@site/assets/structure/stb_tabs-structure@2x.jpg";
+
+# Tab
+
+## Introduction
+
+Tas are used to group several similar or related contents together, which helps users to navigate back and forth easily without getting away from the current page.
+
+<img
+  src={StbTabsStructure1}
+  srcSet={`${StbTabsStructure2} 2x`}
+  className="u-maxWidthFull"
+  alt="Tabs"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Label
+    <i className="u-text200">
+      {" "}
+      - Clear providing and concise explanations of the content within.
+    </i>
+  </li>
+  <li>
+    Tab item bottom-border
+    <i className="u-text200">
+      {" "}
+      - Active tab indicated by a 2px primary color bottom-border
+    </i>
+  </li>
+  <li>
+    Tabs bottom-border
+    <i className="u-text200">
+      {" "}
+      - Similar to Item border, but in grey; has full-width API as default.
+    </i>
+  </li>
+</ol>
+
+## Examples
+
+### Item States
+
+<CodeView codeText={defaultStateTabs} />
+
+#### Normal
+
+The default state that describes the item is interactivable
+
+#### Active
+
+Label text-color will be changed to primary color and primary color bottom-border appears.
+
+#### Hover
+
+Normal label’s color will be changed to primary-color
+
+#### Disabled
+
+Label text-color is in light-color, indicates that the tab is not interactiveable
+
+### Direction
+
+#### Horizontal
+
+The most basic usage.
+
+<CodeView codeText={defaultTabs} />
+
+Full-width
+
+<CodeView codeText={defaultFullWidthTabs} />
+
+With the bottom-border
+
+<CodeView codeText={borderBottomTabs} />
+
+#### Vertical
+
+<CodeView codeText={defaultVerticalTabs} />
+
+### Visual Styles: Filled
+
+#### Horizontal
+
+<CodeView codeText={defaultFilledTabs} />
+
+Full-width
+
+<CodeView codeText={defaultFullWidthFilledTabs} />
+
+#### Vertical
+
+<CodeView codeText={defaultVerticalFilledTabs} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="Tab" importName="Tab" />
+<ComponentApi name="TabItem" />

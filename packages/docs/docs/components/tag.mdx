@@ -1,0 +1,85 @@
+---
+title: Tag
+---
+
+import { Tag } from '@ahaui/react';
+
+import CodeView from '@site/src/components/CodeView';
+import tagRemove from '@site/examples/Tag/remove';
+import tagSubtle from '@site/examples/Tag/subtle';
+import tagBold from '@site/examples/Tag/bold';
+
+import StbTagStructure1 from "@site/assets/structure/stb_tag-structure.jpg";
+import StbTagStructure2 from "@site/assets/structure/stb_tag-structure@2x.jpg";
+
+# Tag
+
+## Introduction
+
+Tags are used to label different objects, normally multiple objects with similar types, in a compact format. Tags are either removable or non-removable.
+
+<img
+  className="u-maxWidthFull"
+  src={StbTagStructure1}
+  srcSet={`${StbTagStructure2} 2x`}
+  alt="Tag structure"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Background
+  </li>
+  <li>
+    Text
+  </li>
+  <li>
+    Icon&nbsp;
+    <i className="u-text200">- Close button optional</i>
+  </li>
+</ol>
+
+## Examples
+
+### Tag text
+
+<CodeView codeText={'<Tag>Default</Tag>'} />
+
+### Removable tag
+
+<CodeView codeText={tagRemove} />
+
+### Subtle Style
+
+Designed with light colors, subtle badges are used for less important information.
+
+<CodeView codeText={tagSubtle} transparentBackground />
+
+### Bold Style
+
+Designed with bold colors, bold badges are used for important information.
+
+<CodeView codeText={tagBold} />
+
+## Design Reference
+
+Don’t use multiple lines for label & feedback
+
+<div className="Grid u-marginBottomLarge">
+  <div className="u-sizeFull md:u-size1of2">
+    <Tag>Tag</Tag>
+    <div className="u-borderBottom u-borderLarge u-borderPositive u-marginTopSmall u-paddingTopSmall " />
+    <div className="u-textPositive">Do</div>
+  </div>
+  <div className="u-sizeFull md:u-size1of2">
+    <Tag>
+      Tag
+      <br />
+      multiple lines
+    </Tag>
+    <div className="u-borderBottom u-borderLarge u-borderNegative u-marginTopSmall" />
+    <div className="u-textNegative">Don't</div>
+  </div>
+</div>
+
+## API
+
+<ComponentApi name="Tag" importName="Tag" />

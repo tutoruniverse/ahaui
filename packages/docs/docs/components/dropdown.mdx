@@ -1,0 +1,66 @@
+---
+title: Dropdown
+---
+import CodeView from '@site/src/components/CodeView';
+import downLeft from '@site/examples/Dropdown/downLeft';
+import downRight from '@site/examples/Dropdown/downRight';
+import upLeft from '@site/examples/Dropdown/upLeft';
+import upRight from '@site/examples/Dropdown/upRight';
+import StbDropdownStructure1 from "@site/assets/structure/stb_dropdown-structure.jpg"
+import StbDropdownStructure2 from "@site/assets/structure/stb_dropdown-structure@2x.jpg"
+
+
+# Dropdown
+
+## Introduction
+
+Dropdowns are contextual overlays used to display lists of actions, which are triggered by toggleable parent objects (i.e. buttons).
+<img
+  src={StbDropdownStructure1}
+  srcSet={`${StbDropdownStructure2} 2x`}
+  className="u-maxWidthFull"
+  alt="Dropdown"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Menu
+    <i className="u-text200"> - Contain actionable items.</i>
+  </li>
+  <li>
+    Parent object
+    <i className="u-text200"> - Toggleable objects that trigger the overlays. </i>
+  </li>
+</ol>
+
+## Examples
+
+### Directions
+
+Based on the position of it’s parent object (i.e. buttons), the dropdowns will be displayed with several directions:
+
+#### Down-left
+
+<CodeView codeText={downLeft} />
+
+#### Down-right
+
+<CodeView codeText={downRight} />
+
+#### Up-left
+
+<CodeView codeText={upLeft} />
+
+#### Up-right
+
+<CodeView codeText={upRight} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="Dropdown" importName="Dropdown" />
+<ComponentApi name="DropdownButton" />
+<ComponentApi name="DropdownToggle" />
+<ComponentApi name="DropdownContainer" />

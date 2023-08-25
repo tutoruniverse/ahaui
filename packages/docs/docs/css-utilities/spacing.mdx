@@ -1,0 +1,364 @@
+---
+title: Spacing
+---
+
+import classNames from 'classnames';
+
+# Spacing
+
+export const classExtractSides = [
+  { copy: 'Padding' },
+  { className: 'u-paddingTopSmall' },
+  { className: 'u-paddingRightSmall' },
+  { className: 'u-paddingLeftSmall' },
+  { className: 'u-paddingBottomSmall' },
+  { className: 'u-paddingVerticalSmall' },
+  { className: 'u-paddingHorizontalSmall' },
+  { copy: 'Margin' },
+  { className: 'u-marginTopSmall', margin: true },
+  { className: 'u-marginRightSmall', margin: true },
+  { className: 'u-marginLeftSmall', margin: true },
+  { className: 'u-marginBottomSmall', margin: true },
+  { className: 'u-marginVerticalSmall', margin: true },
+  { className: 'u-marginHorizontalSmall', margin: true },
+];
+
+export const classExtractSpaceAllSides = [
+  { copy: 'Padding' },
+  { className: 'u-paddingNone', description: 'padding: 0px;',},
+  { className: 'u-paddingTopNone', description: 'padding-top: 0px;',},
+  { className: 'u-paddingBottomNone', description: 'padding-bottom: 0px;',},
+  { className: 'u-paddingLeftNone', description: 'padding-left: 0px;',},
+  { className: 'u-paddingRightNone', description: 'padding-right: 0px;',},
+  { className: 'u-paddingMiniscule', description: 'padding: 1px;',},
+  { className: 'u-paddingTopMiniscule', description: 'padding-top: 1px',},
+  { className: 'u-paddingRightMiniscule', description: 'padding-right: 1px;',},
+  { className: 'u-paddingBottomMiniscule', description: 'padding-bottom: 1px;',},
+  { className: 'u-paddingLeftMiniscule', description: 'padding-left: 1px;',},
+  { className: 'u-paddingVerticalMiniscule', description: 'padding-top: 1px; padding-bottom: 1px;',},
+  { className: 'u-paddingHorizontalMiniscule', description: 'padding-left: 1px; padding-right: 1px;',},
+  { className: 'u-paddingExtraTiny', description: 'padding: 2px;',},
+  { className: 'u-paddingTopExtraTiny', description: 'padding-top: 2px',},
+  { className: 'u-paddingRightExtraTiny', description: 'padding-right: 2px;',},
+  { className: 'u-paddingBottomExtraTiny', description: 'padding-bottom: 2px;',},
+  { className: 'u-paddingLeftExtraTiny', description: 'padding-left: 2px;',},
+  { className: 'u-paddingVerticalExtraTiny', description: 'padding-top: 2px; padding-bottom: 2px;',},
+  { className: 'u-paddingHorizontalExtraTiny', description: 'padding-left: 2px; padding-right: 2px;',},
+  { className: 'u-paddingTiny', description: 'padding: 4px;',},
+  { className: 'u-paddingTopTiny', description: 'padding-top: 4px',},
+  { className: 'u-paddingRightTiny', description: 'padding-right: 4px;',},
+  { className: 'u-paddingBottomTiny', description: 'padding-bottom: 4px;',},
+  { className: 'u-paddingLeftTiny', description: 'padding-left: 4px;',},
+  { className: 'u-paddingVerticalTiny', description: 'padding-top: 4px; padding-bottom: 4px;',},
+  { className: 'u-paddingHorizontalTiny', description: 'padding-left: 4px; padding-right: 4px;',},
+  { className: 'u-paddingExtraSmall', description: 'padding: 8px;',},
+  { className: 'u-paddingTopExtraSmall', description: 'padding-top: 8px;',},
+  { className: 'u-paddingRightExtraSmall', description: 'padding-right: 8px;',},
+  { className: 'u-paddingBottomExtraSmall', description: 'padding-bottom: 8px;',},
+  { className: 'u-paddingLeftExtraSmall', description: 'padding-left: 8px;',},
+  { className: 'u-paddingVerticalExtraSmall', description: 'padding-top: 8px; padding-bottom: 8px;',},
+  { className: 'u-paddingHorizontalExtraSmall', description: 'padding-left: 8px; padding-right: 8px;',},
+  { className: 'u-paddingSmall', description: 'padding: 16px;',},
+  { className: 'u-paddingTopSmall', description: 'padding-top: 16px;',},
+  { className: 'u-paddingRightSmall', description: 'padding-right: 16px;',},
+  { className: 'u-paddingBottomSmall', description: 'padding-bottom: 16px;',},
+  { className: 'u-paddingLeftSmall', description: 'padding-left: 16px;',},
+  { className: 'u-paddingVerticalSmall', description: 'padding-top: 16px; padding-bottom: 16px;',},
+  { className: 'u-paddingHorizontalSmall', description: 'padding-left: 16px; padding-right: 16px;',},
+  { className: 'u-paddingMedium', description: 'padding: 24px;',},
+  { className: 'u-paddingTopMedium', description: 'padding-top: 24px;',},
+  { className: 'u-paddingRightMedium', description: 'padding-right: 24px;',},
+  { className: 'u-paddingBottomMedium', description: 'padding-bottom: 24px;',},
+  { className: 'u-paddingLeftMedium', description: 'padding-left: 24px;',},
+  { className: 'u-paddingVerticalMedium', description: 'padding-top: 24px; padding-bottom: 24px;',},
+  { className: 'u-paddingHorizontalMedium', description: 'padding-left: 24px; padding-right: 24px;',},
+  { className: 'u-paddingLarge', description: 'padding: 32px;',},
+  { className: 'u-paddingTopLarge', description: 'padding-top: 32px;',},
+  { className: 'u-paddingRightLarge', description: 'padding-right: 32px;',},
+  { className: 'u-paddingBottomLarge', description: 'padding-bottom: 32px;',},
+  { className: 'u-paddingLeftLarge', description: 'padding-left: 32px;',},
+  { className: 'u-paddingVerticalLarge', description: 'padding-top: 32px; padding-bottom: 32px;',},
+  { className: 'u-paddingHorizontalLarge', description: 'padding-left: 32px; padding-right: 32px;',},
+  { className: 'u-paddingExtraLarge', description: 'padding: 64px;',},
+  { className: 'u-paddingTopExtraLarge', description: 'padding-top: 64px;',},
+  { className: 'u-paddingRightExtraLarge', description: 'padding-right: 64px;',},
+  { className: 'u-paddingBottomExtraLarge', description: 'padding-bottom: 64px;',},
+  { className: 'u-paddingLeftExtraLarge', description: 'padding-left: 64px;',},
+  { className: 'u-paddingVerticalExtraLarge', description: 'padding-top: 64px; padding-bottom: 64px;',},
+  { className: 'u-paddingHorizontalExtraLarge', description: 'padding-left: 64px; padding-right: 64px;',},
+  { className: 'u-paddingExtraLargePlus', description: 'padding: 96px;',},
+  { className: 'u-paddingTopExtraLargePlus', description: 'padding-top: 96px;',},
+  { className: 'u-paddingRightExtraLargePlus', description: 'padding-right: 96px;',},
+  { className: 'u-paddingBottomExtraLargePlus', description: 'padding-bottom: 96px;',},
+  { className: 'u-paddingLeftExtraLargePlus', description: 'padding-left: 96px;',},
+  { className: 'u-paddingVerticalExtraLargePlus', description: 'padding-top: 96px; padding-bottom: 96px;',},
+  { className: 'u-paddingHorizontalExtraLargePlus', description: 'padding-left: 96px; padding-right: 96px;',},
+  { className: 'u-paddingHuge', description: 'padding: 128px;',},
+  { className: 'u-paddingTopHuge', description: 'padding-top: 128px;',},
+  { className: 'u-paddingRightHuge', description: 'padding-right: 128px;',},
+  { className: 'u-paddingBottomHuge', description: 'padding-bottom: 128px;',},
+  { className: 'u-paddingLeftHuge', description: 'padding-left: 128px;',},
+  { className: 'u-paddingVerticalHuge', description: 'padding-top: 128px; padding-bottom: 128px;',},
+  { className: 'u-paddingHorizontalHuge', description: 'padding-left: 128px; padding-right: 128px;',},
+  { copy: 'Margin' },
+  { className: 'u-marginNone', description: 'margin: 0px;',},
+  { className: 'u-marginTopNone', description: 'margin-top: 0px;',},
+  { className: 'u-marginBottomNone', description: 'margin-bottom: 0px;',},
+  { className: 'u-marginLeftNone', description: 'margin-left: 0px;',},
+  { className: 'u-marginRightNone', description: 'margin-right: 0px;',},
+  { className: 'u-marginMiniscule', description: 'margin: 1px;',},
+  { className: 'u-marginTopMiniscule', description: 'margin-top: 1px;',},
+  { className: 'u-marginRightMiniscule', description: 'margin-right: 1px;',},
+  { className: 'u-marginBottomMiniscule', description: 'margin-bottom: 1px;',},
+  { className: 'u-marginLeftMiniscule', description: 'margin-left: 1px;',},
+  { className: 'u-marginVerticalMiniscule', description: 'margin-top: 1px; margin-bottom: 1px;',},
+  { className: 'u-marginHorizontalMiniscule', description: 'margin-left: 1px; margin-right: 1px;',},
+  { className: 'u-marginExtraTiny', description: 'margin: 2px;',},
+  { className: 'u-marginTopExtraTiny', description: 'margin-top: 2px;',},
+  { className: 'u-marginRightExtraTiny', description: 'margin-right: 2px;',},
+  { className: 'u-marginBottomExtraTiny', description: 'margin-bottom: 2px;',},
+  { className: 'u-marginLeftExtraTiny', description: 'margin-left: 2px;',},
+  { className: 'u-marginVerticalExtraTiny', description: 'margin-top: 2px; margin-bottom: 2px;',},
+  { className: 'u-marginHorizontalExtraTiny', description: 'margin-left: 2px; margin-right: 2px;',},
+  { className: 'u-marginTiny', description: 'margin: 4px;',},
+  { className: 'u-marginTopTiny', description: 'margin-top: 4px;',},
+  { className: 'u-marginRightTiny', description: 'margin-right: 4px;',},
+  { className: 'u-marginBottomTiny', description: 'margin-bottom: 4px;',},
+  { className: 'u-marginLeftTiny', description: 'margin-left: 4px;',},
+  { className: 'u-marginVerticalTiny', description: 'margin-top: 4px; margin-bottom: 4px;',},
+  { className: 'u-marginHorizontalTiny', description: 'margin-left: 4px; margin-right: 4px;',},
+  { className: 'u-marginExtraSmall', description: 'margin: 8px;',},
+  { className: 'u-marginTopExtraSmall', description: 'margin-top: 8px;',},
+  { className: 'u-marginRightExtraSmall', description: 'margin-right: 8px;',},
+  { className: 'u-marginBottomExtraSmall', description: 'margin-bottom: 8px;',},
+  { className: 'u-marginLeftExtraSmall', description: 'margin-left: 8px;',},
+  { className: 'u-marginVerticalExtraSmall', description: 'margin-top: 8px; margin-bottom: 8px;',},
+  { className: 'u-marginHorizontalExtraSmall', description: 'margin-left: 8px; margin-right: 8px;',},
+  { className: 'u-marginSmall', description: 'margin: 16px;',},
+  { className: 'u-marginTopSmall', description: 'margin-top: 16px;',},
+  { className: 'u-marginRightSmall', description: 'margin-right: 16px;',},
+  { className: 'u-marginBottomSmall', description: 'margin-bottom: 16px;',},
+  { className: 'u-marginLeftSmall', description: 'margin-left: 16px;',},
+  { className: 'u-marginVerticalSmall', description: 'margin-top: 16px; margin-bottom: 16px;',},
+  { className: 'u-marginHorizontalSmall', description: 'margin-left: 16px; margin-right: 16px;',},
+  { className: 'u-marginMedium', description: 'margin: 24px;',},
+  { className: 'u-marginTopMedium', description: 'margin-top: 24px;',},
+  { className: 'u-marginRightMedium', description: 'margin-right: 24px;',},
+  { className: 'u-marginBottomMedium', description: 'margin-bottom: 24px;',},
+  { className: 'u-marginLeftMedium', description: 'margin-left: 24px;',},
+  { className: 'u-marginVerticalMedium', description: 'margin-top: 24px; margin-bottom: 24px;',},
+  { className: 'u-marginHorizontalMedium', description: 'margin-left: 24px; margin-right: 24px;',},
+  { className: 'u-marginLarge', description: 'margin: 32px;',},
+  { className: 'u-marginTopLarge', description: 'margin-top: 32px;',},
+  { className: 'u-marginRightLarge', description: 'margin-right: 32px;',},
+  { className: 'u-marginBottomLarge', description: 'margin-bottom: 32px;',},
+  { className: 'u-marginLeftLarge', description: 'margin-left: 32px;',},
+  { className: 'u-marginVerticalLarge', description: 'margin-top: 32px; margin-bottom: 32px;',},
+  { className: 'u-marginHorizontalLarge', description: 'margin-left: 32px; margin-right: 32px;',},
+  { className: 'u-marginExtraLarge', description: 'margin: 64px;',},
+  { className: 'u-marginTopExtraLarge', description: 'margin-top: 64px;',},
+  { className: 'u-marginRightExtraLarge', description: 'margin-right: 64px;',},
+  { className: 'u-marginBottomExtraLarge', description: 'margin-bottom: 64px;',},
+  { className: 'u-marginLeftExtraLarge', description: 'margin-left: 64px;',},
+  { className: 'u-marginVerticalExtraLarge', description: 'margin-top: 64px; margin-bottom: 64px;',},
+  { className: 'u-marginHorizontalExtraLarge', description: 'margin-left: 64px; margin-right: 64px;',},
+  { className: 'u-marginExtraLargePlus', description: 'margin: 96px;',},
+  { className: 'u-marginTopExtraLargePlus', description: 'margin-top: 96px;',},
+  { className: 'u-marginRightExtraLargePlus', description: 'margin-right: 96px;',},
+  { className: 'u-marginBottomExtraLargePlus', description: 'margin-bottom: 96px;',},
+  { className: 'u-marginLeftExtraLargePlus', description: 'margin-left: 96px;',},
+  { className: 'u-marginVerticalExtraLargePlus', description: 'margin-top: 96px; margin-bottom: 96px;',},
+  { className: 'u-marginHorizontalExtraLargePlus', description: 'margin-left: 96px; margin-right: 96px;',},
+  { className: 'u-marginHuge', description: 'margin: 128px;',},
+  { className: 'u-marginTopHuge', description: 'margin-top: 128px;',},
+  { className: 'u-marginRightHuge', description: 'margin-right: 128px;',},
+  { className: 'u-marginBottomHuge', description: 'margin-bottom: 128px;',},
+  { className: 'u-marginLeftHuge', description: 'margin-left: 128px;',},
+  { className: 'u-marginVerticalHuge', description: 'margin-top: 128px; margin-bottom: 128px;',},
+  { className: 'u-marginHorizontalHuge', description: 'margin-left: 128px; margin-right: 128px;',},
+];
+
+export const classExtractWidthHeight = [
+  { copy: 'Width' },
+  { className: 'u-widthMiniscule', description: 'width: 1px;', },
+  { className: 'u-widthExtraTiny', description: 'width: 2px;', },
+  { className: 'u-widthTiny', description: 'width: 4px;', },
+  { className: 'u-widthExtraSmall', description: 'width: 8px;', },
+  { className: 'u-widthSmall', description: 'width: 16px;', },
+  { className: 'u-widthMedium', description: 'width: 24px;', },
+  { className: 'u-widthLarge', description: 'width: 32px;', },
+  { className: 'u-widthExtraLarge', description: 'width: 64px;', },
+  { className: 'u-widthExtraLargePlus', description: 'width: 96px;', },
+  { className: 'u-widthHuge', description: 'width: 128px;', },
+  { className: 'u-widthAuto', description: 'width: auto;', },
+  { className: 'u-widthFull', description: 'width: 100%;', },
+  { className: 'u-minWidth-0', description: 'min-width: 0;', },
+  { className: 'u-minWidthFull', description: 'min-width: 100%;', },
+  { className: 'u-maxWidthFull', description: 'max-width: 100%;', },
+  { className: 'u-screenWidthFull', description: 'min-width: 100vw;', },
+  { copy: 'Height' },
+  { className: 'u-heightMiniscule', description: 'height: 1px;', },
+  { className: 'u-heightExtraTiny', description: 'height: 2px;', },
+  { className: 'u-heightTiny', description: 'height: 4px;', },
+  { className: 'u-heightExtraSmall', description: 'height: 8px;', },
+  { className: 'u-heightSmall', description: 'height: 16px;', },
+  { className: 'u-heightMedium', description: 'height: 24px;', },
+  { className: 'u-heightLarge', description: 'height: 32px;', },
+  { className: 'u-heightExtraLarge', description: 'height: 64px;', },
+  { className: 'u-heightExtraLargePlus', description: 'height: 96px;', },
+  { className: 'u-heightHuge', description: 'height: 128px;', },
+  { className: 'u-heightAuto', description: 'height: auto;', },
+  { className: 'u-heightFull', description: 'height: 100%;', },
+  { className: 'u-screenHeightFull', description: 'min-height: 100vh;', },
+];
+
+
+## CSS Box Model
+
+The CSS box model is essentially a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content.
+
+<div className="u-marginBottomMedium u-backgroundWarningLight u-border u-borderDashed u-borderGray u-paddingVerticalTiny u-paddingHorizontalSmall u-textCenter">
+  margin
+  <div className="u-backgroundBlack u-paddingVerticalTiny u-paddingHorizontalSmall">
+    <span className="u-textWhite">border</span>
+    <div className="u-backgroundPositiveLight u-paddingVerticalTiny u-paddingHorizontalSmall">
+      padding
+      <div className="u-backgroundWhite u-paddingSmall">
+        Content
+      </div>
+        &nbsp;
+    </div>
+      &nbsp;
+  </div>
+    &nbsp;
+</div>
+
+## Padding and Margin
+
+Assign responsive-friendly `margin` or `padding` values to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are built from a default Sass map ranging from `4px` to `96px`.
+
+The classes are named using the format `.u-{property}{sides}{size}`  for `xs` and  `.{breakpoint}:u-{property}{sides}{size}`  for `sm`, `md`, `lg`, `xl`, and `xxl`.
+
+### Sides
+
+<table className="Table Table--layoutFixed u-backgroundWhite u-textDark u-border u-borderTopNone ">
+  <thead>
+    <tr>
+      <th>CSS Class</th>
+      <th width="240">Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    {classExtractSides.map(item => (
+      item.copy ? (
+        <tr key={item.index}>
+          <td colSpan="2" className="u-fontMedium u-backgroundLightest">
+            {item.copy}
+          </td>
+        </tr>
+      ) : (
+        <tr key={item.index}>
+          <td className="u-textNoWrap">
+            <code>
+              {item.className && `.${item.className}`}
+            </code>
+          </td>
+          <td className="u-positionRelative u-marginExtraSmall">
+            <div className={classNames(
+                'u-border u-inlineBlock u-lineHeightNone',
+                item.margin ? 'u-backgroundWarningLighter': 'u-backgroundPositiveLight'
+              )}>
+              <div
+                className={classNames(
+                  'u-inlineBlock',
+                  item.className && item.className
+                )}
+                >
+                <div className="u-backgroundOpaline" style={{
+                  width: 32 ,
+                  height: 24,
+                }}/>
+              </div>
+            </div>
+          </td>
+        </tr>
+      )
+    ))}
+  </tbody>
+</table>
+
+### Available classes
+
+<table className="Table Table--layoutFixed u-backgroundWhite u-textDark u-border u-borderTopNone ">
+  <thead>
+    <tr>
+      <th>CSS Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {classExtractSpaceAllSides.map(item => (
+      item.copy ? (
+        <tr key={item.index}>
+          <td colSpan="2" className="u-fontMedium u-backgroundLightest">
+            {item.copy}
+          </td>
+        </tr>
+      ) : (
+        <tr key={item.index}>
+          <td className="u-textNoWrap">
+            <code>
+              {item.className && `.${item.className}`}
+            </code>
+          </td>
+          <td className="u-textGray u-text200">
+            {item.description}
+          </td>
+        </tr>
+      )
+    ))}
+  </tbody>
+</table>
+
+### Responsive classes
+The padding and margin includes six tiers of predefined classes for building complex responsive spacing. Customize the space of your component on extra small, small, medium, large, or extra large devices however you see fit.
+
+* `sm:u-margin/paddingX`  - To use at the smallest Media Query breakpoint.
+* `md:u-margin/paddingX`  - To use at the medium Media Query breakpoint.
+* `lg:u-margin/paddingX`  - To use at the large Media Query breakpoint.
+* `xl:u-margin/paddingX`  - To use at the extra large or desktop Media Query breakpoint.
+* `xxl:u-margin/paddingX`  - To use at the monitor Media Query breakpoint.
+
+## Width and Height
+
+<table className="Table Table--layoutFixed u-backgroundWhite u-textDark u-border u-borderTopNone "
+>
+  <thead>
+    <tr>
+      <th>CSS Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {classExtractWidthHeight.map(item => (
+      item.copy ? (
+        <tr key={item.index}>
+          <td colSpan="2" className="u-fontMedium u-backgroundLightest">
+            {item.copy}
+          </td>
+        </tr>
+      ) : (
+        <tr key={item.index}>
+          <td className="u-textNoWrap">
+            <code>
+              {item.className && `.${item.className}`}
+            </code>
+          </td>
+          <td className="u-textGray u-text200">
+            {item.description}
+          </td>
+        </tr>
+      )
+    ))}
+  </tbody>
+</table>

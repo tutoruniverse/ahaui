@@ -1,0 +1,37 @@
+---
+title: Search Box
+---
+
+import CodeView from '@site/src/components/CodeView';
+
+import StbInputGroupStructure1 from "@site/assets/structure/stb_input-group-structure.jpg";
+import StbInputGroupStructure2 from "@site/assets/structure/stb_input-group-structure@2x.jpg";
+
+# Search Box
+
+## Introduction
+
+A search box acts as the field for a query input or search term from the user, to search and retrieve related information from the database. It typically appears as a single-line text box and is usually accompanied by a search button that initiates the search command.
+
+<img
+  src={StbInputGroupStructure1}
+  srcSet={`${StbInputGroupStructure2} 2x`}
+  alt="Input group structure"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>Text field</li>
+  <li>Button</li>
+</ol>
+
+## Examples
+
+<CodeView codeText={'<SearchBox placeholder="Search..." />'} />
+<CodeView codeText={'<SearchBox placeholder="Search..." buttonText="Search" buttonIcon={null} />'} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="SearchBox" importName="SearchBox" />

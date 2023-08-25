@@ -1,0 +1,149 @@
+---
+title: Icons
+---
+
+import { useState, useMemo } from "react";
+import classNames from "classnames";
+import { Icon, Form, Overlay, Tooltip } from "@ahaui/react";
+import CodeView from "@site/src/components/CodeView";
+import colorIcon from "@site/examples/Icon/color";
+import sizeIcon from "@site/examples/Icon/size";
+
+import StbIconGrid1 from "@site/assets/structure/stb_icon-grid.jpg";
+import StbIconGrid2 from "@site/assets/structure/stb_icon-grid@2x.jpg";
+import StbIconShapes1 from "@site/assets/structure/stb_icon-shapes.jpg";
+import StbIconShapes2 from "@site/assets/structure/stb_icon-shapes@2x.jpg";
+
+
+export const AllIcons = () => {
+  {/* TODO: Use `icons` from @ahaui/react when local aha package is */}
+  const icons = useMemo(() => ({}), []);
+  const [iconDisplay, setIconDisplay] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setIconDisplay(null);
+    setSearchText(value.toLowerCase());
+  };
+  return (
+    <>
+      <Form.Group controlId="search-icon" sizeControl="small">
+        <Form.Input
+          value={searchText}
+          onChange={handleSearch}
+          placeholder="Search icon ..."
+        />
+      </Form.Group>
+      {iconDisplay && (
+        <CodeView
+          horizontal
+          show
+          codeText={`<Icon size="medium" name="${iconDisplay}"/>`}
+        />
+      )}
+      <div className="u-positionRelative u-paddingSmall u-marginBottomExtraSmall u-border u-borderSmall u-borderUltraLight u-roundedMedium">
+        {Object.keys(icons)
+          .filter((item) => item.includes(searchText))
+          .map((item) => (
+            <div
+              onClick={() => setIconDisplay(item)}
+              key={item}
+              className={classNames(
+                "u-marginRightSmall u-marginBottomSmall u-cursorPointer u-inlineBlock",
+                iconDisplay === item && "u-textPrimary"
+              )}
+            >
+              <Overlay.Trigger
+                placement="bottom"
+                delay={{ show: 500, hide: 1000 }}
+                hoverOverlay
+                overlay={(props) => (
+                  <Tooltip id="tooltip-icon-search" {...props}>
+                    {item}
+                  </Tooltip>
+                )}
+              >
+                <Icon name={item} size="medium" />
+              </Overlay.Trigger>
+            </div>
+          ))}
+      </div>
+    </>
+  );
+};
+
+## Introduction
+
+Icons are used to visualize the common actions, provide visual context and enhance usability. They should be simple, yet bold enough to grab users' attention.
+
+### Icon grid
+
+Regular icons are designed on an 18px grid and exported on a 24px artboard.
+
+<img
+  className="u-maxWidthFull"
+  src={StbIconGrid1}
+  srcSet={`${StbIconGrid2} 2x`}
+  alt="Icon grid"
+/>
+<ol className="u-paddingLeftLarge u-textGray u-marginTopTiny">
+  <li>
+    Container&nbsp;
+    <i className="u-text200">- The exported icon canvas.</i>
+  </li>
+  <li>
+    Padding&nbsp;
+    <i className="u-text200">The white space around the actual icon.</i>
+  </li>
+  <li>
+    Safe area&nbsp;
+    <i className="u-text200">
+      The area which is used to display the actual icon.
+    </i>
+  </li>
+</ol>
+
+### Shapes
+
+<div className="Grid u-marginBottomSmall">
+  <div className="u-size1of1">
+    <img
+      className="u-maxWidthFull"
+      src={StbIconShapes1}
+      srcSet={`${StbIconShapes2} 2x`}
+      alt="Icon grid"
+    />
+    <div className="u-flex u-textGray u-text200 u-marginTopTiny u-textCenter">
+      <span className="u-sizeFill">Square</span>
+      <span className="u-sizeFill">Circle</span>
+      <span className="u-sizeFill">Horizontal rectangle</span>
+      <span className="u-sizeFill">Vertical rectangle</span>
+    </div>
+  </div>
+</div>
+
+## Examples
+
+### All
+
+<AllIcons />
+
+### Colors
+
+Icons share the same colors set as text colors, such as `.u-textPrimary`, `.u-textWhite`
+
+<CodeView codeText={colorIcon} />
+
+### Sizes
+
+Currently, there are 6 sizes of icons.
+
+<CodeView codeText={sizeIcon} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="Icon" importName="Icon" />

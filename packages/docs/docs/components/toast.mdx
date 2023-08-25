@@ -1,0 +1,56 @@
+---
+title: Toast
+---
+
+import CodeView from '@site/src/components/CodeView';
+
+import defaultToast from '@site/examples/Toast/default';
+
+import StbToastMessagesStructure1 from "@site/assets/structure/stb_toast-messages-structure.jpg";
+import StbToastMessagesStructure2 from "@site/assets/structure/stb_toast-messages-structure@2x.jpg";
+
+# Toast Messages
+
+## Introduction
+
+It is a small message that shows up in a box at the corner of the screen and disappears on its own after a few seconds. It is simple feedback about an operation in which current activity remains visible and interactive.
+
+<img
+  src={StbToastMessagesStructure1}
+  srcSet={`${StbToastMessagesStructure2} 2x`}
+  className="u-maxWidthFull"
+  alt="Toast Messages"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+  Heading
+    <i className="u-text200">
+- A title to explain what the message content is about.
+    </i>
+  </li>
+  <li>
+  Message
+    <i className="u-text200"> - The information that the system wants to send to users. Message content can include paragraphs and links.</i>
+  </li>
+  <li>
+  Close button
+    <i className="u-text200"> - Optional to close the message immediately.</i>
+  </li>
+  <li>
+  Progress bar
+    <i className="u-text200"> - The display time remaining of the message before it disappears.</i>
+  </li>
+</ol>
+
+## Examples
+
+<CodeView codeText={defaultToast}/>
+
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="ToastContainer" importName="ToastContainer" />

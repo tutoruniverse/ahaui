@@ -1,0 +1,51 @@
+---
+title: User Select
+---
+import classNames from 'classnames';
+
+# User Select
+
+export const classExtractCursors = [
+  { className: 'u-userSelectAuto', description: 'Default. Text can be selected if the browser allows it' },
+  { className: 'u-userSelectNone', description: 'Prevent text selection	' },
+  { className: 'u-userSelectText', description: 'The text can be selected by the user' },
+  { className: 'u-userSelectAll', description: 'Text selection is made with one click instead of a double-click' },
+];
+
+## Introduction
+
+Use the CSS-Utility user-select to control the text of an element can be selected.
+
+## ClassName
+
+<table className="Table Table--layoutFixed u-backgroundWhite u-textDark u-border u-borderTopNone">
+  <thead>
+    <tr>
+      <th width="200">CSS Class</th>
+      <th width="140">Preview</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {classExtractCursors.map(item => (
+      <tr key={item.index}>
+        <td className="u-textNoWrap">
+          <code>.{item.className}</code>
+        </td>
+        <td className="u-positionRelative">
+          <div
+            className={classNames(
+              'u-marginExtraSmall u-positionAbsolute u-positionFull u-flex u-alignItemsCenter u-justifyContentCenter u-paddingHorizontalSmall u-textNoWrap',
+              item.className && item.className
+            )}
+          >
+            Double-click me!
+          </div>
+        </td>
+        <td className="u-textGray">
+          {item.description}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

@@ -1,0 +1,40 @@
+import { createRef } from 'react';
+import setRef from 'utils/setRef';
+
+describe('utils/setRef', () => {
+  describe('setRef should run', () => {
+    it('should run with ref is React Ref', () => {
+      const ref = createRef();
+
+      const testValue = 'test';
+      setRef(ref, testValue);
+      expect(ref.current).toBe(testValue);
+    });
+
+    it('should run with ref is function', () => {
+      const ref = jest.fn();
+
+      const testValue = {
+        test: 'test',
+      };
+
+      setRef(ref, testValue);
+      expect(ref).toBeCalled();
+      expect(ref).toBeCalledWith(testValue);
+    });
+  });
+
+  describe('setRef should not run', () => {
+    it('should not run with ref is null or undefined', () => {
+      const nullRef = null;
+      const undefinedRef = undefined;
+      const testValue = 'test';
+
+      setRef(nullRef, testValue);
+      expect(nullRef).toBeNull();
+
+      setRef(undefinedRef, testValue);
+      expect(undefinedRef).toBeUndefined();
+    });
+  });
+});

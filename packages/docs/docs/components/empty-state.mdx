@@ -1,0 +1,66 @@
+---
+title: Empty State
+---
+
+import CodeView from "@site/src/components/CodeView";
+import generalEmptyState from "@site/examples/EmptyState/general";
+
+import StbEmptyStatesStructure1 from "@site/assets/structure/stb_empty-states-structure.jpg";
+import StbEmptyStatesStructure2 from "@site/assets/structure/stb_empty-states-structure@2x.jpg";
+
+# Empty State
+
+## Introduction
+
+Empty states are moments in a user’s experience with a product where there is nothing to display.
+
+<img
+  src={StbEmptyStatesStructure1}
+  srcSet={`${StbEmptyStatesStructure2} 2x`}
+  className="u-maxWidthFull"
+  alt="Empty states"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+    Illustration
+    <i className="u-text200">
+      {" "}
+      - It has a purpose to overview or add more detail for the title below.
+    </i>
+  </li>
+  <li>
+    Heading
+    <i className="u-text200"> - Naming the state or call to action content.</i>
+  </li>
+  <li>
+    Description
+    <i className="u-text200">
+      {" "}
+      - Adding more detail for the heading, giving directions for users to walk-through
+      the empty states.
+    </i>
+  </li>
+  <li>
+    CTA Buttons
+    <i className="u-text200">
+      {" "}
+      - CTA Buttons - Optional call to actions to walk-through the empty states.
+    </i>
+  </li>
+</ol>
+
+## Examples
+
+### General empty
+
+Nothing to show.
+
+<CodeView codeText={generalEmptyState} />
+
+## Design Reference
+
+N/A
+
+## API
+
+<ComponentApi name="EmptyState" importName="EmptyState" />

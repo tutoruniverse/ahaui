@@ -1,0 +1,99 @@
+---
+title: Sidebar Menu
+---
+
+import CodeView from '@site/src/components/CodeView';
+
+import levelsSidebarMenu from '@site/examples/SidebarMenu/levels';
+import statesSidebarMenu from '@site/examples/SidebarMenu/states';
+import sizeMediumSidebarMenu from '@site/examples/SidebarMenu/sizeMedium';
+import sizeSmallSidebarMenu from '@site/examples/SidebarMenu/sizeSmall';
+
+import StbSidebarStructure1 from "@site/assets/structure/stb_sidebar-structure.jpg";
+import StbSidebarStructure2 from "@site/assets/structure/stb_sidebar-structure@2x.jpg";
+
+# Sidebar Menu
+
+## Introduction
+
+Sidebar is a graphical control element that displays main navigation to the right or left side of an application window or operating system desktop to navigate away between pages.
+
+<img
+  src={StbSidebarStructure1}
+  srcSet={`${StbSidebarStructure2} 2x`}
+  className="u-maxWidthFull"
+  alt="Sidebar"
+/>
+<ol className="u-textGray u-marginTopTiny">
+  <li>
+      Left icon
+    <i className="u-text200"> - Used to visualize the Menu Item and provide visual context and enhance usability. Menu Items in sub-menus do not support the left icon. Left icons are optional.</i>
+  </li>
+  <li>
+      Label
+    <i className="u-text200"> - Concise & descriptive title of the content within.</i>
+  </li>
+  <li>
+      Badge
+    <i className="u-text200"> - An optional right-aligned badge, that contains a status or a numeric value, to indicate a running tally or a quantity-based summary.</i>
+  </li>
+  <li>
+      Toggle icon
+    <i className="u-text200"> - A left-aligned icon, used to visualize the sub-menu and provide clickable action to open and close the sub-menu.</i>
+  </li>
+  <li>
+      Indicator
+    <i className="u-text200"> - A left border which indicates active items.</i>
+  </li>
+  <li>
+      Background
+    <i className="u-text200"> - A slight change in background color of the item when hovered or selected.</i>
+  </li>
+</ol>
+
+## Examples
+
+### Levels
+
+<CodeView codeText={levelsSidebarMenu} transparentBackground />
+
+### Sizes
+
+#### Medium
+
+Default size.
+
+<CodeView codeText={sizeMediumSidebarMenu} transparentBackground />
+
+#### Small
+
+<CodeView codeText={sizeSmallSidebarMenu} transparentBackground />
+
+Smaller size can be applied for both Sidebar menu levels.
+
+### States
+
+#### Normal
+
+Default state.
+
+#### Active
+
+Item background color will be changed to grey with the Indicator activated in primary color.
+
+#### Disabled
+
+Item background color will be changed to grey with the Indicator activated in primary color.
+
+<CodeView codeText={statesSidebarMenu} />
+
+## Design Reference
+
+N/A
+
+
+## API
+
+<ComponentApi name="SidebarMenu" importName="SidebarMenu" />
+<ComponentApi name="SidebarMenuItem" />
+<ComponentApi name="SidebarMenuSubMenu" />
