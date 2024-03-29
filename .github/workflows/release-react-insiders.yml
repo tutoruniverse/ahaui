@@ -39,6 +39,8 @@ jobs:
         env:
           CI: true
 
+      - run: pnpm install --store-dir=node_modules/.pnpm-store
+
       - name: Resolve version
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
