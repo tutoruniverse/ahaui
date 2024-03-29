@@ -34,12 +34,11 @@ jobs:
         run: |
           corepack enable
           corepack prepare pnpm@8.15.5 --activate
-          pnpm add -g clean-package
-          pnpm install
         env:
           CI: true
 
       - run: pnpm install --store-dir=node_modules/.pnpm-store
+      - run: pnpm add clean-package --workspace-root --store-dir=node_modules/.pnpm-store
 
       - name: Resolve version
         id: vars

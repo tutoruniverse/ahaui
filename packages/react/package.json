@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "pnpm build",
     "dev": "rollup -c -w",
     "format": "eslint --ext js src --fix",
     "lint": "eslint --ext js src"
