@@ -22,16 +22,19 @@ jobs:
         with:
           node-version: "${{ env.NODE }}"
 
-      - name: Set up yarn cache
-        id: yarn-cache
+      - name: Set up pnpm cache
+        id: pnpm-cache
         uses: actions/cache@v2
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - name: Install dependencies with yarn
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile
+      - name: Install dependencies with pnpm
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
+        run: |
+          corepack enable
+          corepack prepare pnpm@8.15.5 --activate
+          pnpm install --frozen-lockfile
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint

@@ -3,13 +3,14 @@
   "version": "2.1.6",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "sideEffects": false,
   "files": [
     "es/*.{js,map}",
     "lib/*.{js,map}",
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c --bundleConfigAsCjs",
     "prepublishOnly": "yarn build",
     "dev": "rollup -c -w",
     "format": "eslint --ext js src --fix",

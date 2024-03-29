@@ -25,13 +25,17 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}-${{ matrix.node-version }}
+          key: nodeModules-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ matrix.node-version }}
           restore-keys: |
             nodeModules-
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn global add clean-package && yarn install
+        run: |
+          corepack enable
+          corepack prepare pnpm@8.15.5 --activate
+          pnpm add -g clean-package
+          pnpm install
         env:
           CI: true
 
