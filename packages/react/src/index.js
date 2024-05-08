@@ -12,7 +12,6 @@ export { default as Collapse } from './components/Collapse';
 export { default as Composer } from './components/Composer';
 export { default as Counter } from './components/Counter';
 export { default as Card } from './components/Card';
-export { Calendar, DatePicker, DateRangePicker, TimePicker } from './components/Calender';
 export { default as Dropdown } from './components/Dropdown';
 export { useToggle } from './components/Dropdown/Toggle';
 export { default as EmptyState } from './components/EmptyState';

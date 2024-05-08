@@ -7,8 +7,6 @@ declare module '@ahaui/react' {
   import React from 'react';
   import { TextareaAutosizeProps } from 'react-textarea-autosize';
   import { ReactNodeLike } from 'prop-types';
-  import { CalendarProps as ReactCalendarProps } from 'react-calendar';
-  import { DatePickerProps as ReactDatePickerProps } from 'react-date-picker';
   import { Settings as SlickSettingsProps } from 'react-slick';
   import { PopperOptions, Placement as PopperPlacement } from 'popper.js';
   import { toast as toastBase, ToastPosition } from 'react-toastify';
@@ -424,63 +422,6 @@ declare module '@ahaui/react' {
     Label: React.FC<HTMLBaseProps>;
     Group: typeof ButtonGroup;
   };
-
-  export interface CalendarProps extends ReactCalendarProps {
-    className?: string;
-  }
-  export const Calendar: React.FC<CalendarProps>;
-
-  export interface DatePickerProps extends ReactDatePickerProps {
-    className?: string;
-    noClearIcon?: boolean;
-    size?: Pick<IconProps, 'size'>;
-    version?: 1 | 2;
-    calendarClassName?: string | string[];
-  }
-  export const DatePicker: React.FC<DatePickerProps>;
-
-  export interface DateRangePickerProps {
-    className?: string | string[];
-    noClearIcon?: boolean;
-    size?: Pick<IconProps, 'size'>;
-    autoFocus?: boolean;
-    calendarAriaLabel?: string;
-    calendarClassName?: string | string[];
-    clearAriaLabel?: string;
-    closeCalendar?: boolean;
-    dayAriaLabel?: string;
-    dayPlaceholder?: string;
-    disabled?: boolean;
-    disableCalendar?: boolean;
-    format?: string;
-    isOpen?: boolean;
-    locale?: string;
-    maxDate?: Pick<CalendarProps, 'maxDate'>;
-    minDate?: Pick<CalendarProps, 'minDate'>;
-    maxDetail?: Pick<CalendarProps, 'maxDetail'>;
-    minDetail?: Pick<CalendarProps, 'minDetail'>;
-    monthAriaLabel?: string;
-    monthPlaceholder?: string;
-    name?: string;
-    nativeInputAriaLabel?: string;
-    onCalendarClose?: () => void;
-    onCalendarOpen?: () => void;
-    onChange?: Pick<CalendarProps, 'onChange'>;
-    openCalendarOnFocus?: boolean;
-    rangeDivider?: string;
-    required?: boolean;
-    showLeadingZeros?: boolean;
-    value?: Pick<CalendarProps, 'value'>;
-    yearAriaLabel?: string;
-    yearPlaceholder?: string;
-  }
-  export const DateRangePicker: React.FC<DateRangePickerProps>;
-
-  export interface TimePickerProps extends HTMLBaseProps {
-    noClearIcon?: boolean;
-    size?: InputSize;
-  }
-  export const TimePicker: React.FC<TimePickerProps>;
 
   export interface CardProps extends HTMLBaseProps {
     body?: boolean;
