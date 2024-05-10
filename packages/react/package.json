@@ -38,8 +38,8 @@
     "lodash.once": "4.1.1"
   },
   "peerDependencies": {
-    "react": "^16.9.0 || 17.x",
-    "react-dom": "^16.9.0 || 17.x"
+    "react": "^16.9.0 || ^17.x || ^18.x",
+    "react-dom": "^16.9.0 || ^17.x || ^18.x"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
