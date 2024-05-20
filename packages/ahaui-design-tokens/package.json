@@ -1,0 +1,12 @@
+{
+  "name": "@ahaui/design-tokens",
+  "version": "0.0.0-beta1",
+  "description": "Aha Design Tokens",
+  "scripts": {
+    "build": "node ./src/index.mjs",
+    "prebuild": "rm -rf dist && mkdir dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

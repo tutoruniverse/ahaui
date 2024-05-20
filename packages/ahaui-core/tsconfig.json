@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+    "jsx": "react",
+		"noEmit": true,
+		"noEmitOnError": false,
+		"strict": true,
+		"pretty": true,
+		"lib": ["ESNext"],
+		"types": ["node", "react"],
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"moduleResolution": "node",
+		// "emitDeclarationOnly": false,
+		"allowSyntheticDefaultImports": true,
+		"target": "ESNext",
+		"module": "esnext",
+	},
+	"include": ["./src"],
+	"exclude": ["node_modules"],
+}

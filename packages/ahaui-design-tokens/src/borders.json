@@ -1,0 +1,50 @@
+{
+  "borderWidth": {
+    "--border-large": {
+      "value": "8px",
+      "type": "borderWidth"
+    },
+    "--border-medium": {
+      "value": "4px",
+      "type": "borderWidth"
+    },
+    "--border-small": {
+      "value": "2px",
+      "type": "borderWidth"
+    },
+    "--border-xsmall": {
+      "value": "1px",
+      "type": "borderWidth"
+    },
+    "--border-none": {
+      "value": "0",
+      "type": "borderWidth"
+    }
+  },
+  "borderRadius": {
+    "--border-radius-extra-large": {
+      "value": "16px",
+      "type": "borderRadius"
+    },
+    "--border-radius-large": {
+      "value": "8px",
+      "type": "borderRadius"
+    },
+    "--border-radius-medium": {
+      "value": "4px",
+      "type": "borderRadius"
+    },
+    "--border-radius-small": {
+      "value": "2px",
+      "type": "borderRadius"
+    },
+    "--border-circle": {
+      "value": "50%",
+      "type": "borderRadius"
+    },
+    "--border-radius-none": {
+      "value": "0",
+      "type": "borderRadius"
+    }
+  }
+}

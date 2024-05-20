@@ -1,0 +1,94 @@
+{
+  "sizing": {
+    "--size-huge": {
+      "value": "128px",
+      "type": "sizing"
+    },
+    "--size-extra-large-plus": {
+      "value": "96px",
+      "type": "sizing"
+    },
+    "--size-extra-large": {
+      "value": "64px",
+      "type": "sizing"
+    },
+    "--size-large": {
+      "value": "32px",
+      "type": "sizing"
+    },
+    "--size-medium": {
+      "value": "24px",
+      "type": "sizing"
+    },
+    "--size-small": {
+      "value": "16px",
+      "type": "sizing"
+    },
+    "--size-extra-small": {
+      "value": "8px",
+      "type": "sizing"
+    },
+    "--size-tiny": {
+      "value": "4px",
+      "type": "sizing"
+    },
+    "--size-extra-tiny": {
+      "value": "2px",
+      "type": "sizing"
+    },
+    "--size-miniscule": {
+      "value": "1px",
+      "type": "sizing"
+    },
+    "--size-none": {
+      "value": "0",
+      "type": "sizing"
+    }
+  },
+  "spacing": {
+    "--spacing-huge": {
+      "value": "128px",
+      "type": "spacing"
+    },
+    "--spacing-extra-large-plus": {
+      "value": "96px",
+      "type": "spacing"
+    },
+    "--spacing-extra-large": {
+      "value": "64px",
+      "type": "spacing"
+    },
+    "--spacing-large": {
+      "value": "32px",
+      "type": "spacing"
+    },
+    "--spacing-medium": {
+      "value": "24px",
+      "type": "spacing"
+    },
+    "--spacing-small": {
+      "value": "16px",
+      "type": "spacing"
+    },
+    "--spacing-extra-small": {
+      "value": "8px",
+      "type": "spacing"
+    },
+    "--spacing-tiny": {
+      "value": "4px",
+      "type": "spacing"
+    },
+    "--spacing-extra-tiny": {
+      "value": "2px",
+      "type": "spacing"
+    },
+    "--spacing-miniscule": {
+      "value": "1px",
+      "type": "spacing"
+    },
+    "--spacing-none": {
+      "value": "0",
+      "type": "spacing"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@kyle-test/core-2",
+  "version": "0.0.0-a22",
+  "description": "Aha Design System - Core",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "clear": "rm -rf dist",
+    "postbuild": "cp package.json dist",
+    "pub": "yarn clear && yarn build && cd dist && npm publish --access public"
+  },
+  "sideEffects": false,
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "@types/react": "^17.0.0 || ^18.0.0",
+    "react": "^17.0.0 || ^18.0.0"
+  },
+  "types": "index.d.ts",
+  "main": "index.js",
+  "module": "index.js",
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  }
+}
